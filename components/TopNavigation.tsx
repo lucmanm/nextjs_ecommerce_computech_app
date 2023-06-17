@@ -19,7 +19,10 @@ const TopNavigation = ({
           </div>
         ))}
       </div>
-      <div className="p-2">Language</div>
+      <div className="p-2 border flex font-medium gap-x-2">
+        <Image src="language.svg" width={18} height={18} alt="language" />
+        <span>langage</span>
+      </div>
     </div>
   );
 };

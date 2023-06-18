@@ -3,3 +3,14 @@ export const topNavigationMenu = [
   { title: "Wishlist", url: "/", imageSrc: "heart.svg", altImage: "heart" },
   { title: "Track", url: "/", imageSrc: "truck.svg", altImage: "truck" },
 ];
+
+export const footerInfo = [
+  {
+    title: "Contact Us!",
+    
+  },
+  {title: "Company" ,
+ },
+  {title: "Help"  },
+  {title: "Payment Acceptable"  }
+]

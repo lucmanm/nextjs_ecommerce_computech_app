@@ -16,7 +16,7 @@ const Footer = () => {
           <div className="flex gap-4">
             {/* Looped for cont us company and help */}
             {footerInfo.map(({ title, info }) => (
-              <div key={title} className="">
+              <div key={title} className="border-2 border-blue-950">
                 <span className="font-semibold">{title}</span>
                 {info.map(({ title, info }: FooterInfoProps) => (
                   <p key={title} className=" leading-7">

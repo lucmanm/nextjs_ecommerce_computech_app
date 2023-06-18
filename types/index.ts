@@ -11,3 +11,9 @@ export interface TopNavigationProps {
   imageSrc?: string;
   altImage?: string;
 }
+
+export interface FooterInfoProps {
+  title?: string;
+  info?: string;
+  url?: string | Boolean;
+}

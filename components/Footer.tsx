@@ -1,4 +1,4 @@
-import { Logo, footerInfo } from "@/constant";
+import { logoUrl, footerInfo } from "@/constant";
 import { FooterInfoProps } from "@/types";
 import Image from "next/image";
 import React from "react";
@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="dt:container flex flex-wrap">
         <div className="flex py-4">
           <div className="flex-1 border">
-            <Image src={Logo.url} width={100} height={100} alt={Logo.title} />
+            <Image src={logoUrl[0][0]} width={100} height={100} alt={logoUrl[1]} />
           </div>
           <div className="flex gap-4">
             {/* Looped for cont us company and help */}

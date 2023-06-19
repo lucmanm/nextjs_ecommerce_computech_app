@@ -6,10 +6,10 @@ export const topNavigationMenu = [
 ];
 // All Footer Informations
 
-export const Logo = {
-  title: "Logo",
-  url: "/computech-logo.png",
-};
+export const logoUrl = [
+  {title: "Logo", url: "/computech-logo.png",},
+  {title: "Logo", url: "/computech-logo.png",}
+]
 
 export const footerInfo = [
   {

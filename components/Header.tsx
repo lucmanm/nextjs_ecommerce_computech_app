@@ -1,14 +1,20 @@
 import React from "react";
 import { CustomButton, TopNavigation } from "@/components";
 import Image from "next/image";
+import { logoUrl } from "@/constant";
 
 const Header = () => {
+
+  // Destructuring Array of Logo
+  const [,{title, url}] = logoUrl;
   return (
     <header className="border-b bg-slate-100">
       <TopNavigation />
-      <div className="dt:container flex flex-wrap gap-2">
+      <div className="bg-white p-2">
+
+      <div className="dt:container flex flex-wrap gap-2 bg-whi">
         <div>
-          <Image src={}/>
+          <Image src={url} width={150} height={0} alt={title}/>
         </div>
         <div>
           <input type="search" placeholder="search"/>
@@ -18,6 +24,7 @@ const Header = () => {
         <div>icon</div>
       </div>
 
+      </div>
     </header>
   );
 };

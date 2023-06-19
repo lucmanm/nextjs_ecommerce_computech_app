@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="dt:container flex flex-wrap">
         <div className="flex py-4">
           <div className="flex-1 border">
-            <Image src={logoUrl[0][0]} width={100} height={100} alt={logoUrl[1]} />
+            <Image src={logoUrl[0].url} width={100} height={100} alt={logoUrl[1].title} />
           </div>
           <div className="flex gap-4">
             {/* Looped for cont us company and help */}

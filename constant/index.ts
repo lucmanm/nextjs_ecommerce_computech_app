@@ -7,8 +7,8 @@ export const topNavigationMenu = [
 // All Footer Informations
 
 export const logoUrl = [
-  {title: "Logo", url: "/computech-logo.png",},
-  {title: "Logo", url: "/computech-logo.png",}
+  {title: "square logo", url: "/computech-logo.png",},
+  {title: "landscape logo", url: "/computech-landscape-logo.png",},
 ]
 
 export const footerInfo = [
@@ -40,13 +40,30 @@ export const footerInfo = [
     ],
   },
 ];
+
 export const paymentMethod = [
   {
     title: "Payment Acceptable",
-    info: [
+  },
+  [
       { title: "Mada", url: "/" },
       { title: "Visa", url: "/" },
       { title: "MasterCard", url: "/" },
-    ],
-  },
+  ]
 ];
+
+export const categories = [
+  {
+    title: "All Categories",
+    list: ["Desktop", "Laptop", "Printer","Scanner", "Server", "Ink & Toner Catridges", "UPS"]
+  },
+  {
+    title: "Brand",
+    list: [
+      {Brand: "Dell", urlLogo:"/"},
+      {Brand: "HP", urlLogo:"/"},
+      {Brand: "APC", urlLogo:"/"},
+      {Brand: "Zebra", urlLogo:"/"},
+    ]
+  },
+]

@@ -15,5 +15,9 @@ export interface TopNavigationProps {
 export interface FooterInfoProps {
   title?: string;
   info?: string;
-  url?: string | Boolean;
+  url?: string;
+}
+
+export interface paymentMethodProps {
+  title?: string;
 }

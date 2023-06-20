@@ -7,9 +7,23 @@ export const topNavigationMenu = [
 // All Footer Informations
 
 export const logoUrl = [
-  {title: "square logo", url: "/computech-logo.png",},
-  {title: "landscape logo", url: "/computech-landscape-logo.png",},
+  {title: "square logo", url: "/computech-logo.png", link: "/"},
+  {title: "landscape logo", url: "/computech-landscape-logo.png",link: "/"},
 ]
+
+// Payment Methid Categories
+export const paymentMethod = [
+  {
+    title: "Payment Acceptable",
+  },
+  {
+    paymentCard: [
+      { title: "Mada", imageUrl:"/mada-logo.png", url: "/" },
+      { title: "Visa", imageUrl:"/visa-logo.png", url: "/" },
+      { title: "MasterCard", imageUrl:"/mastercard-logo.png", url: "/" },
+    ],
+  }
+];
 
 export const footerInfo = [
   {
@@ -41,21 +55,20 @@ export const footerInfo = [
   },
 ];
 
-export const paymentMethod = [
-  {
-    title: "Payment Acceptable",
-  },
-  [
-      { title: "Mada", url: "/" },
-      { title: "Visa", url: "/" },
-      { title: "MasterCard", url: "/" },
-  ]
-];
 
+// Product and Brand Categories
 export const categories = [
   {
     title: "All Categories",
-    list: ["Desktop", "Laptop", "Printer","Scanner", "Server", "Ink & Toner Catridges", "UPS"]
+    list: [
+      {Product: "Desktop", url: "/"},
+      {Product: "Laptop", url: "/"},
+      {Product: "Printer", url: "/"},
+      {Product: "Scanner", url: "/"},
+      {Product: "Server", url: "/"},
+      {Product: "Ink & Toner Catridges", url: "/"},
+      {Product: "UPS", url: "/"},
+    ]
   },
   {
     title: "Brand",

@@ -1,22 +1,32 @@
-import { logoUrl, footerInfo } from "@/constant";
-import { FooterInfoProps } from "@/types";
+import { logoUrl, footerInfo, paymentMethod } from "@/constant";
+import { FooterInfoProps, paymentMethodProps} from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
+  // Destructuring Payment Methid
+  const [{title},{paymentCard}] = paymentMethod;
   return (
     // The Entire Footer Container
     <footer className=" bg-gray-200">
       {/* Container for the entire div */}
       <div className="dt:container flex flex-wrap">
-        <div className="flex py-4">
-          <div className="flex-1 border">
-            <Image src={logoUrl[0].url} width={100} height={100} alt={logoUrl[1].title} />
+        <div className="flex py-4 w-full">
+          <div className="flex-none px-6 py-1">
+            <Link href={logoUrl[0].link}>
+             <Image 
+             src={logoUrl[0].url} 
+             height={100} 
+             width={100} 
+             alt={logoUrl[0].title} 
+             />
+            </Link>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 w-full min-w-fit">
             {/* Looped for cont us company and help */}
             {footerInfo.map(({ title, info }) => (
-              <div key={title} className="border-2 border-blue-950">
+              <div key={title} className="grow">
                 <span className="font-semibold">{title}</span>
                 {info.map(({ title, info }: FooterInfoProps) => (
                   <p key={title} className=" leading-7">
@@ -25,6 +35,20 @@ const Footer = () => {
                 ))}
               </div>
             ))}
+          </div>
+        </div>
+        <div className="relative w-full flex-1 gap-y-2 py-4">
+          {/* Payment Method Acceptable */}
+          <div><span className="font-semibold">{title}</span></div>
+          {/* Payment Methods Logos */}
+          <div className="flex gap-4">
+            {
+              paymentCard?.map(({title, imageUrl})=>(
+                <div key={title}>
+                  <Image src={imageUrl} width={50} height={50} alt={title}/>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>

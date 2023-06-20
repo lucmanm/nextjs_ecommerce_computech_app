@@ -2,6 +2,7 @@ import React from "react";
 import { CustomButton, TopNavigation } from "@/components";
 import Image from "next/image";
 import { logoUrl } from "@/constant";
+import Link from "next/link";
 
 const Header = () => {
 
@@ -14,7 +15,9 @@ const Header = () => {
 
       <div className="dt:container flex flex-wrap gap-2 bg-whi">
         <div>
-          <Image src={url} width={150} height={0} alt={title}/>
+          <Link href="/">
+            <Image src={url} width={150} height={0} alt={title}/>
+          </Link>
         </div>
         <div>
           <input type="search" placeholder="search"/>

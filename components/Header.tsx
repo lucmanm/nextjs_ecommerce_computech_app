@@ -8,7 +8,7 @@ const Header = () => {
   // Destructuring Array of Logo
   const [, { title, url }] = logoUrl;
   return (
-    <header className="border-b bg-slate-100 shadow-lg">
+    <header className="border-b bg-slate-100 shadow-lg ">
         <TopNavigation />
         <div className="bg-white p-2">
           <div className="dt:container flex flex-wrap gap-2 bg-whi">

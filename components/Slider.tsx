@@ -6,7 +6,7 @@ import { sliderImages } from "@/constant";
 const Slider = () => {
   return (
     <Splide
-      className="dt:container mt-8 rounded-xl overflow-hidden"
+      className="dt:container mt-8 rounded-xl overflow-hidden "
       aria-label="slider ">
       {sliderImages.map(({ title, url }) => (
         <SplideSlide key={url}>

@@ -21,3 +21,8 @@ export interface FooterInfoProps {
 export interface paymentMethodProps {
   title?: string;
 }
+export interface ProductCategoryProps {
+  product?: string;
+  url?: string;
+}
+

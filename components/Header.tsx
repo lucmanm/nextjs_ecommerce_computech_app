@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomButton, TopNavigation } from "@/components";
+import { CustomButton, TopNavigation, CategoryMenu } from "@/components";
 import Image from "next/image";
 import { logoUrl } from "@/constant";
 import Link from "next/link";
@@ -22,7 +22,9 @@ const Header = () => {
         <div>
           <input type="search" placeholder="search"/>
         </div>
-        <div>Category</div>
+        <div>
+          <CategoryMenu/>
+        </div>
         <div>Brand</div>
         <div>icon</div>
       </div>

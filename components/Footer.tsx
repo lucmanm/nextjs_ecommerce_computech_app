@@ -37,7 +37,8 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="relative w-full flex-1 gap-y-2 py-4">
+        {/* Payment Methdd Container */}
+        <div className="relative w-full pb-2 flex justify-center items-center gap-x-2">
           {/* Payment Method Acceptable */}
           <div><span className="font-semibold">{title}</span></div>
           {/* Payment Methods Logos */}

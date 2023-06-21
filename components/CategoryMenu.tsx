@@ -5,6 +5,7 @@ import React from 'react'
 
 const CategoryMenu = () => {
     // const [{},{}] = categorieses;
+    console.table(categories[0].title)
   return (
     <>
      {/* Desktop Category Menu */}
@@ -19,12 +20,13 @@ const CategoryMenu = () => {
             </div>
             <div className="hidden group-hover:block group-focus:visible">
               <div className="absolute top-full flex w-full flex-col overflow-hidden rounded pt-3 shadow-md">
-                {categories[0].list.map(({product, url})=>(
+                {categories[0].list.map(({product, url}: ProductCategoryProps)=>(
                     <Link
                     key={product}
                     href={url}
                     className="w-full border border-b-gray-300 bg-gray-200 px-2 py-3 font-medium text-gray-600 hover:bg-gray-100 hover:text-black">
                     {product}
+                    
                   </Link>
                 ))}
               </div>

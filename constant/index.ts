@@ -67,22 +67,22 @@ export const categories = [
   {
     title: "All Categories",
     list: [
-      {Product: "Desktop", url: "/"},
-      {Product: "Laptop", url: "/"},
-      {Product: "Printer", url: "/"},
-      {Product: "Scanner", url: "/"},
-      {Product: "Server", url: "/"},
-      {Product: "Ink & Toner Catridges", url: "/"},
-      {Product: "UPS", url: "/"},
+      {product: "Desktop", url: "/"},
+      {product: "Laptop", url: "/"},
+      {product: "Printer", url: "/"},
+      {product: "Scanner", url: "/"},
+      {product: "Server", url: "/"},
+      {product: "Ink & Toner Catridges", url: "/"},
+      {product: "UPS", url: "/"},
     ]
   },
   {
     title: "Brand",
     list: [
-      { Brand: "Dell", urlLogo: "/" },
-      { Brand: "HP", urlLogo: "/" },
-      { Brand: "APC", urlLogo: "/" },
-      { Brand: "Zebra", urlLogo: "/" },
+      { brand: "Dell", url: "/" },
+      { brand: "HP", url: "/" },
+      { brand: "APC", url: "/" },
+      { brand: "Zebra", url: "/" },
     ],
   },
 ];

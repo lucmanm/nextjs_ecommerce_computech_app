@@ -4,8 +4,6 @@ import Link from 'next/link';
 import React from 'react'
 
 const CategoryMenu = () => {
-    // const [{},{}] = categorieses;
-    console.table(categories[0].title)
   return (
     <>
      {/* Desktop Category Menu */}
@@ -24,9 +22,8 @@ const CategoryMenu = () => {
                     <Link
                     key={product}
                     href={url}
-                    className="w-full border border-b-gray-300 bg-gray-200 px-2 py-3 font-medium text-gray-600 hover:bg-gray-100 hover:text-black">
-                    {product}
-                    
+                    className="w-full border border-b-gray-300 bg-gray-200 px-2 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black">
+                    <span>{product}</span>
                   </Link>
                 ))}
               </div>

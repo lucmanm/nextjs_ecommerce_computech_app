@@ -4,12 +4,19 @@ export const topNavigationMenu = [
   { title: "Wishlist", url: "/", imageSrc: "heart.svg", altImage: "heart" },
   { title: "Track", url: "/", imageSrc: "truck.svg", altImage: "truck" },
 ];
-// All Footer Informations
 
+export const sliderImages = [
+  { title: "square logo", url: "/slider-images/image1.jpg", link: "/" },
+  { title: "landscape logo", url: "/slider-images/image2.jpg", link: "/" },
+  { title: "landscape logo", url: "/slider-images/image3.jpg", link: "/" },
+  { title: "landscape logo", url: "/slider-images/image4.jpg", link: "/" },
+  { title: "landscape logo", url: "/slider-images/image5.jpg", link: "/" },
+];
+// All Footer Informations
 export const logoUrl = [
-  {title: "square logo", url: "/computech-logo.png", link: "/"},
-  {title: "landscape logo", url: "/computech-landscape-logo.png",link: "/"},
-]
+  { title: "square logo", url: "/computech-logo.png", link: "/" },
+  { title: "landscape logo", url: "/computech-landscape-logo.png", link: "/" },
+];
 
 // Payment Methid Categories
 export const paymentMethod = [
@@ -18,11 +25,11 @@ export const paymentMethod = [
   },
   {
     paymentCard: [
-      { title: "Mada", imageUrl:"/mada-logo.png", url: "/" },
-      { title: "Visa", imageUrl:"/visa-logo.png", url: "/" },
-      { title: "MasterCard", imageUrl:"/mastercard-logo.png", url: "/" },
+      { title: "Mada", imageUrl: "/mada-logo.png", url: "/" },
+      { title: "Visa", imageUrl: "/visa-logo.png", url: "/" },
+      { title: "MasterCard", imageUrl: "/mastercard-logo.png", url: "/" },
     ],
-  }
+  },
 ];
 
 export const footerInfo = [
@@ -55,28 +62,27 @@ export const footerInfo = [
   },
 ];
 
-
 // Product and Brand Categories
 export const categories = [
   {
     title: "All Categories",
     list: [
-      {product: "Desktop", url: "/"},
-      {product: "Laptop", url: "/"},
-      {product: "Printer", url: "/"},
-      {product: "Scanner", url: "/"},
-      {product: "Server", url: "/"},
-      {product: "Ink & Toner Catridges", url: "/"},
-      {product: "UPS", url: "/"},
+      {Product: "Desktop", url: "/"},
+      {Product: "Laptop", url: "/"},
+      {Product: "Printer", url: "/"},
+      {Product: "Scanner", url: "/"},
+      {Product: "Server", url: "/"},
+      {Product: "Ink & Toner Catridges", url: "/"},
+      {Product: "UPS", url: "/"},
     ]
   },
   {
     title: "Brand",
     list: [
-      {Brand: "Dell", urlLogo:"/"},
-      {Brand: "HP", urlLogo:"/"},
-      {Brand: "APC", urlLogo:"/"},
-      {Brand: "Zebra", urlLogo:"/"},
-    ]
+      { Brand: "Dell", urlLogo: "/" },
+      { Brand: "HP", urlLogo: "/" },
+      { Brand: "APC", urlLogo: "/" },
+      { Brand: "Zebra", urlLogo: "/" },
+    ],
   },
-]
+];

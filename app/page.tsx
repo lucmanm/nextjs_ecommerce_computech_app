@@ -1,5 +1,11 @@
+"use client";
+import Slider from "@/components/Slider";
 import Image from "next/image";
 
 export default function Home() {
-  return <main className="overflow-hidden"></main>;
+  return (
+    <main className="overflow-hidden">
+      <Slider />
+    </main>
+  );
 }

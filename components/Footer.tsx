@@ -1,26 +1,26 @@
 import { logoUrl, footerInfo, paymentMethod } from "@/constant";
-import { FooterInfoProps, paymentMethodProps} from "@/types";
+import { FooterInfoProps, paymentMethodProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
   // Destructuring Payment Methid
-  const [{title},{paymentCard}] = paymentMethod;
+  const [{ title }, { paymentCard }] = paymentMethod;
   return (
     // The Entire Footer Container
-    <footer className=" bg-gray-200">
+    <footer className=" bg-gray-200 mt-8">
       {/* Container for the entire div */}
       <div className="dt:container flex flex-wrap">
         <div className="flex py-4 w-full">
           <div className="flex-none px-6 py-1">
             <Link href={logoUrl[0].link}>
-             <Image 
-             src={logoUrl[0].url} 
-             height={100} 
-             width={100} 
-             alt={logoUrl[0].title} 
-             />
+              <Image
+                src={logoUrl[0].url}
+                height={100}
+                width={100}
+                alt={logoUrl[0].title}
+              />
             </Link>
           </div>
           <div className="flex gap-4 w-full min-w-fit">
@@ -40,16 +40,16 @@ const Footer = () => {
         {/* Payment Methdd Container */}
         <div className="relative w-full pb-2 flex justify-center items-center gap-x-2">
           {/* Payment Method Acceptable */}
-          <div><span className="font-semibold">{title}</span></div>
+          <div>
+            <span className="font-semibold">{title}</span>
+          </div>
           {/* Payment Methods Logos */}
           <div className="flex gap-4">
-            {
-              paymentCard?.map(({title, imageUrl})=>(
-                <div key={title}>
-                  <Image src={imageUrl} width={50} height={50} alt={title}/>
-                </div>
-              ))
-            }
+            {paymentCard?.map(({ title, imageUrl }) => (
+              <div key={title}>
+                <Image src={imageUrl} width={50} height={50} alt={title} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

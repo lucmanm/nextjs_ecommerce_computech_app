@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="relative">
+      <body className="relative bg-slate-100">
         <Header />
         {children}
         <Footer />

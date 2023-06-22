@@ -21,7 +21,7 @@ export const logoUrl = [
 // Payment Methid Categories
 export const paymentMethod = [
   {
-    title: "Payment Acceptable",
+    title: "We Accept",
   },
   {
     paymentCard: [

@@ -6,6 +6,7 @@ import Product from "./Product";
 import DropdownMenu from "./DropdownMenu";
 import ProductCategory from "./ProductCategory";
 import BrandSlider from "./BrandSlider";
+import ProductCategorySlider from "./ProductCategorySlider";
 export {
   Header,
   Footer,
@@ -15,4 +16,5 @@ export {
   DropdownMenu,
   ProductCategory,
   BrandSlider,
+  ProductCategorySlider,
 };

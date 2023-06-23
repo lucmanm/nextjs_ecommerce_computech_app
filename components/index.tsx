@@ -5,6 +5,7 @@ import CustomButton from "./CustomButton";
 import Product from "./Product";
 import DropdownMenu from "./DropdownMenu";
 import ProductCategory from "./ProductCategory";
+import BrandSlider from "./BrandSlider";
 export {
   Header,
   Footer,
@@ -13,4 +14,5 @@ export {
   Product,
   DropdownMenu,
   ProductCategory,
+  BrandSlider,
 };

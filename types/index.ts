@@ -3,6 +3,9 @@ import { MouseEventHandler } from "react";
 export interface CustomButtonProps {
   btnType?: "button" | "submit";
   clickHandler?: MouseEventHandler<HTMLButtonElement>;
+  icon?: string;
+  title?: string;
+  customButtonStyle?: string;
 }
 
 export interface TopNavigationProps {
@@ -21,8 +24,12 @@ export interface FooterInfoProps {
 export interface paymentMethodProps {
   title?: string;
 }
-export interface ProductCategoryProps {
-  product?: string;
-  url?: string;
+export interface ListProps {
+  description?: string;
+  imgLink?: string;
+  url: string;
 }
-
+export interface ProductCategoryProps {
+  title?: string;
+  list: ListProps[];
+}

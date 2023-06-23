@@ -67,22 +67,29 @@ export const categories = [
   {
     title: "All Categories",
     list: [
-      {product: "Desktop", url: "/"},
-      {product: "Laptop", url: "/"},
-      {product: "Printer", url: "/"},
-      {product: "Scanner", url: "/"},
-      {product: "Server", url: "/"},
-      {product: "Ink & Toner Catridges", url: "/"},
-      {product: "UPS", url: "/"},
-    ]
+      { description: "Desktop", imgLink: "", url: "/" },
+      { description: "Laptop", imgLink: "", url: "/" },
+      { description: "Printer", imgLink: "", url: "/" },
+      { description: "Scanner", imgLink: "", url: "/" },
+      { description: "Server", imgLink: "", url: "/" },
+      { description: "Ink & Toner Catridges", imgLink: "", url: "/" },
+      { description: "UPS", imgLink: "", url: "/" },
+    ],
   },
   {
     title: "Brand",
     list: [
-      { brand: "Dell", url: "/" },
-      { brand: "HP", url: "/" },
-      { brand: "APC", url: "/" },
-      { brand: "Zebra", url: "/" },
+      { description: "Adobe", imgLink: "/brand-images/adobe.png", url: "/" },
+      {
+        description: "AutoDesk",
+        imgLink: "/brand-images/autodesk.jpg",
+        url: "/",
+      },
+      { description: "APC", imgLink: "/brand-images/apc.png", url: "/" },
+      { description: "Dell", imgLink: "/brand-images/dell.svg", url: "/" },
+      { description: "HP", imgLink: "/brand-images/hp.png", url: "/" },
+      { description: "Lenovo", imgLink: "/brand-images/lenovo.png", url: "/" },
+      { description: "Zebra", imgLink: "/brand-images/zebra.png", url: "/" },
     ],
   },
 ];

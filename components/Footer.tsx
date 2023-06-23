@@ -11,7 +11,7 @@ const Footer = () => {
     // The Entire Footer Container
     <footer className=" mt-8 bg-gray-200">
       {/* Container for the entire div */}
-      <div className="flex flex-wrap dt:container">
+      <div className="flex flex-wrap px-4 dt:container dt:px-0">
         <div className="flex w-full py-4 ">
           <div className="flex w-full min-w-fit flex-col gap-4 dt:flex-row">
             <div className="flex-none px-6 py-1">
@@ -55,12 +55,10 @@ const Footer = () => {
       </div>
       {/* Copyright information */}
       <div className="bg-blue-950">
-        <div className="min-w-max flex-grow p-1 text-center text-white dt:container">
-          <span>
-            COPYRIGHT © 2022. COMPUTECH COMPANY. C. R. NO. 4030079509 VAT ID
-            311079231900003. ALL RIGHTS RESERVED.
-          </span>
-        </div>
+        <p className="px-4 py-2 text-center font-semibold text-white">
+          COPYRIGHT © 2022. COMPUTECH COMPANY. C. R. NO. 4030079509 VAT ID
+          311079231900003. ALL RIGHTS RESERVED.
+        </p>
       </div>
     </footer>
   );

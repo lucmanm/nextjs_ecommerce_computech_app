@@ -9,6 +9,7 @@ import BrandSlider from "./BrandSlider";
 import ProductCategorySlider from "./ProductCategorySlider";
 import CarouselSlider from "./CarouselSlider";
 import Slider from "./Slider";
+import SearchInput from "./SearchInput";
 export {
   Header,
   Footer,
@@ -20,5 +21,6 @@ export {
   BrandSlider,
   ProductCategorySlider,
   CarouselSlider,
-  Slider
+  Slider,
+  SearchInput,
 };

@@ -4,16 +4,16 @@ import { SliderProps } from "@/types";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";
 
-const Slider = ({sliderhead, list}: SliderProps) => {
+const Slider = ({
+  sliderhead,
+  list,
+  subtitle,
+  sliderCustomerStyle,
+  arrow,
+}: SliderProps) => {
   return (
-    <div className="flex flex-col py-2">
-    {sliderhead &&
-        <div className="">
-        <span className="relative rounded-full bg-white px-4 py-1 text-sm font-semibold text-blue-950 shadow-md tb:text-base ">
-          {sliderhead}
-        </span>
-         </div>
-    }
+    <div className="slider__container">
+      {sliderhead && <span className="slider__header">{sliderhead}</span>}
 
       <Splide
         hasTrack={false}
@@ -21,7 +21,7 @@ const Slider = ({sliderhead, list}: SliderProps) => {
           type: "loop",
           perPage: 7,
           gap: "1.5rem",
-          arrows: false,
+          arrows: arrow,
           pagination: false,
           breakpoints: {
             1024: { perPage: 5 },
@@ -29,13 +29,23 @@ const Slider = ({sliderhead, list}: SliderProps) => {
           },
         }}
         tag="section"
-        aria-labelledby="brand-slider">
+        aria-labelledby="product-brand-slider">
         <SplideTrack className="py-4">
           {list.map(({ description, imgLink }) => (
             <SplideSlide
-              key={description}
-              className="flex items-center justify-center rounded-lg bg-white p-3 hover:shadow-md hover:cursor-pointer">
-              <Image src={imgLink} width={100} height={100} alt={description} />
+              key={imgLink}
+              className="flex max-w-fit flex-col gap-y-2">
+              <div className={`slider__slider ${sliderCustomerStyle}`}>
+                <Image
+                  src={imgLink}
+                  width={100}
+                  height={100}
+                  alt={description}
+                />
+              </div>
+              {subtitle && (
+                <span className="slider__subtitle__style">{description}</span>
+              )}
             </SplideSlide>
           ))}
         </SplideTrack>

@@ -71,7 +71,11 @@ export const categories = [
       { description: "Desktop", imgLink: "/icons/computer.svg", url: "/" },
       { description: "monitor", imgLink: "/icons/monitor.svg", url: "/" },
       { description: "Laptop", imgLink: "/icons/laptop.svg", url: "/" },
-      { description: "Ink & Toner Catridges", imgLink: "/icons/peripherals.svg", url: "/" },
+      {
+        description: "Ink & Toner Catridges",
+        imgLink: "/icons/peripherals.svg",
+        url: "/",
+      },
       { description: "Printer", imgLink: "/icons/printer.svg", url: "/" },
       { description: "Scanner", imgLink: "/icons/scanner.svg", url: "/" },
       { description: "Server", imgLink: "/icons/server.svg", url: "/" },

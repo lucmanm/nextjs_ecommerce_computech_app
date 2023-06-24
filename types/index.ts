@@ -25,8 +25,8 @@ export interface paymentMethodProps {
   title?: string;
 }
 export interface ListProps {
-  description?: string;
-  imgLink?: string;
+  description: string;
+  imgLink: string;
   url: string;
 }
 export interface ProductCategoryProps {
@@ -34,7 +34,11 @@ export interface ProductCategoryProps {
   list: ListProps[];
 }
 
-export interface SliderProps{
+export interface SliderProps {
   sliderhead?: string;
   list: ListProps[];
+  subtitle?: boolean;
+  sliderSlide?: string;
+  sliderCustomerStyle?: string;
+  arrow?: boolean;
 }

@@ -16,7 +16,6 @@ const BrandSlider = () => {
         hasTrack={false}
         options={{
           type: "loop",
-          perPage: 7,
           gap: "1.5rem",
           arrows: false,
           pagination: false,
@@ -29,10 +28,15 @@ const BrandSlider = () => {
         aria-labelledby="brand-slider">
         <SplideTrack className="py-4">
           {categories[1].list.map(({ description, imgLink }) => (
-            <SplideSlide
-              key={description}
-              className="flex items-center justify-center rounded-lg bg-white p-3 hover:shadow-md hover:cursor-pointer">
-              <Image src={imgLink} width={100} height={100} alt={description} />
+            <SplideSlide key={description} className="flex max-w-fit">
+              <div className="flex items-center justify-center rounded-lg bg-white p-3 hover:cursor-pointer hover:shadow-md">
+                <Image
+                  src={imgLink}
+                  width={100}
+                  height={100}
+                  alt={description}
+                />
+              </div>
             </SplideSlide>
           ))}
         </SplideTrack>

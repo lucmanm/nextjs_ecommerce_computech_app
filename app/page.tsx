@@ -3,17 +3,26 @@ import {
   ProductCategory,
   BrandSlider,
   ProductCategorySlider,
+  CarouselSlider,
+  Slider,
 } from "@/components";
-import Slider from "@/components/Slider";
 import { categories } from "@/constant";
+import React from "react";
 
 export default function Home() {
-  const [,] = categories;
+      // Destrcucturing Product categories & Brand List
+        const [
+            { title: productTitle, list: productList },
+            { title: brandTitle, list: brandList },
+        ] = categories;
   return (
     <main className="flex flex-col gap-y-4 overflow-hidden">
       <section className="mx-auto ml-4 w-full dt:container">
-        <Slider />
-        <ProductCategorySlider />
+        <CarouselSlider />
+
+        {/* Product Categeory Slider Image */}
+        <Slider list={productList}/>
+
         <ProductCategory />
         {/* Brand Slider Components */}
         <BrandSlider />

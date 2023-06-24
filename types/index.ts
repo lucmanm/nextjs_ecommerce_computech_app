@@ -33,3 +33,8 @@ export interface ProductCategoryProps {
   title?: string;
   list: ListProps[];
 }
+
+export interface SliderProps{
+  sliderhead?: string;
+  list: ListProps[];
+}

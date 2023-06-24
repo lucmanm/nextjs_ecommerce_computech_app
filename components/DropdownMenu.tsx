@@ -19,7 +19,7 @@ const DropdownMenu = ({ title, list }: ProductCategoryProps) => {
                   key={description}
                   href={url}
                   className="white w-full whitespace-pre border border-b-gray-300 bg-gray-200 px-2 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black">
-                  <span>{description}</span>
+                  <span className="capitalize">{description}</span>
                 </Link>
               ))}
             </div>

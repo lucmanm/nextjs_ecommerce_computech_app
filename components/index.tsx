@@ -7,6 +7,8 @@ import DropdownMenu from "./DropdownMenu";
 import ProductCategory from "./ProductCategory";
 import BrandSlider from "./BrandSlider";
 import ProductCategorySlider from "./ProductCategorySlider";
+import CarouselSlider from "./CarouselSlider";
+import Slider from "./Slider";
 export {
   Header,
   Footer,
@@ -17,4 +19,6 @@ export {
   ProductCategory,
   BrandSlider,
   ProductCategorySlider,
+  CarouselSlider,
+  Slider
 };

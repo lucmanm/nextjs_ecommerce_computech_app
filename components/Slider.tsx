@@ -1,19 +1,46 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+"use client";
+import { categories } from "@/constant";
+import { SliderProps } from "@/types";
+import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";
-import "@splidejs/react-splide/css";
-import { sliderImages } from "@/constant";
 
-const Slider = () => {
+const Slider = ({sliderhead, list}: SliderProps) => {
   return (
-    <Splide
-      className="mt-8 overflow-hidden rounded-md dt:container tb:rounded-xl"
-      aria-label="slider ">
-      {sliderImages.map(({ title, url }) => (
-        <SplideSlide key={url}>
-          <Image src={url} width={1280} height={100} alt={title} />
-        </SplideSlide>
-      ))}
-    </Splide>
+    <div className="flex flex-col py-2">
+    {sliderhead &&
+        <div className="">
+        <span className="relative rounded-full bg-white px-4 py-1 text-sm font-semibold text-blue-950 shadow-md tb:text-base ">
+          {sliderhead}
+        </span>
+         </div>
+    }
+
+      <Splide
+        hasTrack={false}
+        options={{
+          type: "loop",
+          perPage: 7,
+          gap: "1.5rem",
+          arrows: false,
+          pagination: false,
+          breakpoints: {
+            1024: { perPage: 5 },
+            640: { perPage: 4, gap: "1rem" },
+          },
+        }}
+        tag="section"
+        aria-labelledby="brand-slider">
+        <SplideTrack className="py-4">
+          {list.map(({ description, imgLink }) => (
+            <SplideSlide
+              key={description}
+              className="flex items-center justify-center rounded-lg bg-white p-3 hover:shadow-md hover:cursor-pointer">
+              <Image src={imgLink} width={100} height={100} alt={description} />
+            </SplideSlide>
+          ))}
+        </SplideTrack>
+      </Splide>
+    </div>
   );
 };
 

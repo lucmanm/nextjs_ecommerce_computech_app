@@ -67,13 +67,15 @@ export const categories = [
   {
     title: "All Categories",
     list: [
-      { description: "Desktop", imgLink: "", url: "/" },
-      { description: "Laptop", imgLink: "", url: "/" },
-      { description: "Printer", imgLink: "", url: "/" },
-      { description: "Scanner", imgLink: "", url: "/" },
-      { description: "Server", imgLink: "", url: "/" },
-      { description: "Ink & Toner Catridges", imgLink: "", url: "/" },
-      { description: "UPS", imgLink: "", url: "/" },
+      { description: "All in One", imgLink: "/icons/all-in-one.svg", url: "/" },
+      { description: "Desktop", imgLink: "/icons/computer.svg", url: "/" },
+      { description: "monitor", imgLink: "/icons/monitor.svg", url: "/" },
+      { description: "Laptop", imgLink: "/icons/laptop.svg", url: "/" },
+      { description: "Ink & Toner Catridges", imgLink: "/icons/peripherals.svg", url: "/" },
+      { description: "Printer", imgLink: "/icons/printer.svg", url: "/" },
+      { description: "Scanner", imgLink: "/icons/scanner.svg", url: "/" },
+      { description: "Server", imgLink: "/icons/server.svg", url: "/" },
+      { description: "UPS", imgLink: "/icons/ups-battery.png", url: "/" },
     ],
   },
   {

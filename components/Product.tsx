@@ -3,7 +3,7 @@ import CustomButton from "./CustomButton";
 
 const Product = () => {
   return (
-    <div className="mx-auto my-1 flex w-60 flex-col gap-3 overflow-hidden rounded-lg bg-white p-2 shadow-md dt:p-3">
+    <div className="mx-auto my-1 flex w-60 flex-col gap-3 overflow-hidden rounded-lg bg-white p-2 hover:shadow-md dt:p-3 hover:cursor-pointer">
       <div className="">
         <Image
           src="/aioimg.jpg"

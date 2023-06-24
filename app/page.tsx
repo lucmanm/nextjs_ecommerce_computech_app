@@ -5,21 +5,27 @@ import {
   ProductCategorySlider,
   CarouselSlider,
   Slider,
+  CustomButton,
 } from "@/components";
 import { categories } from "@/constant";
 import React from "react";
 
 export default function Home() {
+
   // Destrcucturing Product categories & Brand List
   const [
     { title: productTitle, list: productList },
     { title: brandTitle, list: brandList },
   ] = categories;
+
   return (
     <main className="flex flex-col gap-y-4 overflow-hidden">
       <section className="mx-auto ml-4 w-full dt:container">
+        {/* Main Slider of homepage */}
         <CarouselSlider />
 
+          <CustomButton btnType="button" title="Add to Cart" customButtonStyle="btn__primary"/>
+        
         {/* all Product Type  Data  - import Slider Components  */}
         <Slider
           subtitle={true} //Enable and Disable below secription
@@ -27,6 +33,7 @@ export default function Home() {
           sliderCustomerStyle="rounded-full" //Csutom style for slider
         />
 
+        {/* Category of products display */}
         <ProductCategory />
 
         {/* Brand Data - import Slider Components */}

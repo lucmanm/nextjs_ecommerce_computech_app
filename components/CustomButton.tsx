@@ -3,16 +3,16 @@ import Image from "next/image";
 
 const CustomButton = ({
   btnType,
-  clickHandler,
   icon,
   title,
   customButtonStyle,
+  clickHandler,
 }: CustomButtonProps) => {
   return (
     <button
       disabled={false}
       type={btnType || "button"}
-      className={`rounded-full bg-slate-100 p-1.5 shadow hover:ring-blue-950 active:shadow-inner`}
+      className={`btn ${customButtonStyle}`} 
       onClick={clickHandler}>
       <span>{title && title}</span>
 

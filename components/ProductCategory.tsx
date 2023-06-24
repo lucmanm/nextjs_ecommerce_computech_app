@@ -6,12 +6,10 @@ import Product from "./Product";
 
 const ProductCategory = () => {
   return (
-    <div className="flex flex-col py-2">
-      <div className="">
-        <span className="relative rounded-full bg-white px-4 py-1 text-sm font-semibold text-blue-950 shadow-md tb:text-base">
+    <div className="slider__container">
+        <span className="slider__header">
           Product Category
         </span>
-      </div>
       <Splide
         hasTrack={false}
         options={{

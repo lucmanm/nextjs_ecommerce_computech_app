@@ -2,7 +2,6 @@ import { logoUrl, footerInfo, paymentMethod } from "@/constant";
 import { FooterInfoProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Footer = () => {
   // Destructuring Payment Methid

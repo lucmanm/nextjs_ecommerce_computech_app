@@ -1,4 +1,3 @@
-import React from "react";
 import { CustomButton, TopNavigation, DropdownMenu } from "@/components";
 import Image from "next/image";
 import { logoUrl, categories } from "@/constant";

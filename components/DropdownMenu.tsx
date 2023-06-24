@@ -1,7 +1,6 @@
 import { categories } from "@/constant";
 import { ProductCategoryProps } from "@/types";
 import Link from "next/link";
-import React from "react";
 
 const DropdownMenu = ({ title, list }: ProductCategoryProps) => {
   return (

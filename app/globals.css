@@ -11,7 +11,7 @@
   font-family: "Barlow", sans-serif;
 }
 .slider__container {
-  @apply flex flex-col py-3;
+  @apply flex flex-col gap-y-2;
 }
 .slider__header {
   @apply relative max-w-fit rounded-full bg-white px-5 py-2 tb:py-1  text-xs font-semibold text-blue-950 shadow-md tb:text-base;

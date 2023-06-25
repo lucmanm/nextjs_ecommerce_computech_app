@@ -18,7 +18,7 @@ const CarouselSlider = () => {
       autoplay: true,
       interval: 5000,
     }}
-    className="mt-8 overflow-hidden rounded-md dt:container tb:rounded-xl bg-white"
+    className="overflow-hidden rounded-md dt:container tb:rounded-xl bg-white"
     aria-label="slider ">
       <SplideTrack>
         {sliderImages.map(({ title, url }) => (

@@ -3,7 +3,6 @@ import {
   ProductCategory,
   CarouselSlider,
   Slider,
-  CustomButton,
 } from "@/components";
 import { categories } from "@/constant";
 import React from "react";
@@ -18,7 +17,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col gap-y-4 overflow-hidden">
-      <section className="mx-auto ml-4 w-full dt:container">
+      <section className="flex flex-col mx-auto ml-4 w-full dt:container  gap-y-9">
         {/* Main Slider of homepage */}
         <CarouselSlider />
         {/* all Product Type  Data  - import Slider Components  */}

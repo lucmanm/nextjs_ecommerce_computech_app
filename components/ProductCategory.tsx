@@ -8,7 +8,7 @@ const ProductCategory = () => {
   return (
     <div className="slider__container">
         <span className="slider__header">
-          Product Category
+          New Arrival
         </span>
       <Splide
         hasTrack={false}

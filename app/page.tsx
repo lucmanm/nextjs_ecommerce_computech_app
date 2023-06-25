@@ -1,8 +1,6 @@
 "use client";
 import {
   ProductCategory,
-  BrandSlider,
-  ProductCategorySlider,
   CarouselSlider,
   Slider,
   CustomButton,
@@ -23,9 +21,6 @@ export default function Home() {
       <section className="mx-auto ml-4 w-full dt:container">
         {/* Main Slider of homepage */}
         <CarouselSlider />
-
-          <CustomButton btnType="button" title="Add to Cart" customButtonStyle="btn__primary"/>
-        
         {/* all Product Type  Data  - import Slider Components  */}
         <Slider
           subtitle={true} //Enable and Disable below secription

@@ -10,25 +10,33 @@
   box-sizing: border-box;
   font-family: "Barlow", sans-serif;
 }
-.slider__container {
-  @apply flex flex-col gap-y-2;
-}
-.slider__header {
-  @apply relative max-w-fit rounded-full bg-white px-5 py-2 tb:py-1  text-xs font-semibold text-blue-950 shadow-md tb:text-base;
-}
-.slider__slider {
-  @apply flex h-full items-center justify-center overflow-hidden bg-white p-6 hover:cursor-pointer hover:shadow-md active:shadow-inner;
-}
-.slider__subtitle__style {
-  @apply text-center text-xs font-semibold capitalize dt:whitespace-nowrap dt:text-sm;
-}
-.btn{
-  @apply relative p-1.5 capitalize rounded-full overflow-hidden shadow focus:shadow-md active:shadow-inner ring-0 hover:bg-gray-100 hover:text-slate-900 hover:border-gray-100;
+@layer base {
+  h2 {
+    @apply text-2xl tb:text-4xl;
+  }
 }
 
-.btn__default{
-  @apply px-5 bg-white  font-semibold text-blue-900;
-}
-.btn__primary {
-  @apply px-5 bg-blue-900 ring-0 font-semibold text-slate-100;
+@layer components {
+  .slider__container {
+    @apply flex flex-col gap-y-2;
+  }
+  .slider__header {
+    @apply relative max-w-fit rounded-full bg-white px-5 py-2 text-xs  font-bold text-blue-950 shadow-md tb:py-1 tb:text-base;
+  }
+  .slider__slider {
+    @apply flex  flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md active:shadow-inner;
+  }
+  .slider__subtitle__style {
+    @apply whitespace-pre text-center text-xs font-medium capitalize dt:text-sm;
+  }
+  .btn {
+    @apply relative overflow-hidden rounded-full p-1.5 capitalize shadow ring-0 hover:border-gray-100 hover:bg-gray-100 hover:text-slate-900 focus:shadow-md active:shadow-inner;
+  }
+
+  .btn__default {
+    @apply bg-white px-5  font-semibold text-blue-900;
+  }
+  .btn__primary {
+    @apply bg-blue-900 px-5 font-semibold text-slate-100 ring-0;
+  }
 }

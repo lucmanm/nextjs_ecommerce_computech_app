@@ -25,7 +25,7 @@ const Slider = ({
           pagination: false,
           breakpoints: {
             1024: { perPage: 5 },
-            640: { perPage: 4, gap: "1rem" },
+            640: { perPage: 7, gap: "1rem" },
           },
         }}
         tag="section"
@@ -34,7 +34,7 @@ const Slider = ({
           {list.map(({ description, imgLink }) => (
             <SplideSlide
               key={imgLink}
-              className="flex max-w-fit flex-col gap-y-2">
+              className="flex max-w-fit flex-col gap-y-2 ">
               <div className={`slider__slider ${sliderCustomerStyle}`}>
                 <Image
                   src={imgLink}

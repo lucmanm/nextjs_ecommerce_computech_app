@@ -8,7 +8,7 @@ const Footer = () => {
   const [{ title }, { paymentCard }] = paymentMethod;
   return (
     // The Entire Footer Container
-    <footer className=" mt-8 bg-gray-200">
+    <footer className=" mt-8 bg-gray-200 text-xs tb:text-base">
       {/* Container for the entire div */}
       <div className="flex flex-wrap px-4 dt:container dt:px-0">
         <div className="flex w-full py-4 ">
@@ -28,7 +28,7 @@ const Footer = () => {
               <div key={title} className="grow">
                 <span className="font-semibold">{title}</span>
                 {info.map(({ title, info }: FooterInfoProps) => (
-                  <p key={title} className=" leading-7">
+                  <p key={title} className=" tb:leading-7">
                     {title} {info}
                   </p>
                 ))}
@@ -37,7 +37,7 @@ const Footer = () => {
           </div>
         </div>
         {/* Payment Methdd Container */}
-        <div className="relative flex w-full flex-col items-center justify-center gap-x-2 pb-2 tb:flex-row">
+        <div className="relative flex w-full items-center justify-center gap-x-2 pb-2 ">
           {/* Payment Method Acceptable */}
           <div>
             <span className="font-semibold">{title}</span>
@@ -53,8 +53,8 @@ const Footer = () => {
         </div>
       </div>
       {/* Copyright information */}
-      <div className="bg-blue-950">
-        <p className="px-4 py-2 text-center font-semibold text-white">
+      <div className="bg-blue-950 ">
+        <p className="px-4 py-2 text-center text-xs font-semibold text-white tb:text-base">
           COPYRIGHT © 2022. COMPUTECH COMPANY. C. R. NO. 4030079509 VAT ID
           311079231900003. ALL RIGHTS RESERVED.
         </p>

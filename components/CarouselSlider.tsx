@@ -1,25 +1,23 @@
-"use client"
+"use client";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";
-import '@splidejs/react-splide/css';
+import "@splidejs/react-splide/css";
 import { sliderImages } from "@/constant";
 
 const CarouselSlider = () => {
   return (
     <Splide
-    hasTrack={false}
-    options={{
+      hasTrack={false}
+      options={{
         type: "loop",
-      gap: "1rem;",
-      width: 1280,
-      pagination: false,
-      arrows: false,
-      resetProgress: false,
-      autoplay: true,
-      interval: 5000,
-    }}
-    className="overflow-hidden rounded-md dt:container tb:rounded-xl bg-white"
-    aria-label="slider ">
+        gap: "1rem;",
+        pagination: false,
+        arrows: false,
+        autoplay: true,
+        interval: 5000,
+      }}
+      className="overflow-hidden rounded-md bg-white dt:container tb:rounded-xl"
+      aria-label="slider ">
       <SplideTrack>
         {sliderImages.map(({ title, url }) => (
           <SplideSlide key={url}>

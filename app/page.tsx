@@ -1,14 +1,9 @@
 "use client";
-import {
-  ProductCategory,
-  CarouselSlider,
-  Slider,
-} from "@/components";
+import { ProductCategory, CarouselSlider, Slider } from "@/components";
 import { categories } from "@/constant";
 import React from "react";
 
 export default function Home() {
-
   // Destrcucturing Product categories & Brand List
   const [
     { title: productTitle, list: productList },
@@ -16,15 +11,16 @@ export default function Home() {
   ] = categories;
 
   return (
-    <main className="flex flex-col gap-y-4 overflow-hidden">
-      <section className="flex flex-col mx-auto ml-4 w-full dt:container  gap-y-9">
+    <main className="flex flex-col overflow-hidden">
+      <section className="mx-auto ml-4 mt-8 flex flex-col gap-y-8 dt:container">
         {/* Main Slider of homepage */}
         <CarouselSlider />
+
         {/* all Product Type  Data  - import Slider Components  */}
         <Slider
           subtitle={true} //Enable and Disable below secription
           list={productList}
-          sliderCustomerStyle="rounded-full" //Csutom style for slider
+          sliderCustomerStyle="rounded-full w-20 h-20 dt:w-28 dt:h-28" //Csutom style for slider
         />
 
         {/* Category of products display */}
@@ -35,7 +31,7 @@ export default function Home() {
           subtitle={false} //Enable and Disable below secription
           sliderhead={brandTitle} //Title or description
           list={brandList} //Array output in descriptions
-          sliderCustomerStyle="rounded-lg" //Csutom style for slider
+          sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28" //Csutom style for slider
           arrow={true}
         />
       </section>

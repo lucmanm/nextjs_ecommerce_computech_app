@@ -7,13 +7,12 @@ import Product from "./Product";
 const ProductCategory = () => {
   return (
     <div className="slider__container">
-        <span className="slider__header">
-          New Arrival
-        </span>
+      <span className="slider__header">New Arrival</span>
       <Splide
         hasTrack={false}
         options={{
-          perPage: 5,
+          type: "loop",
+          perPage: 1,
           rewind: true,
           gap: "1.5rem",
           perMove: 1,
@@ -29,7 +28,7 @@ const ProductCategory = () => {
         aria-label="slider">
         <SplideTrack className="">
           {sliderImages.map(({ url }) => (
-            <SplideSlide key={url} className="rounded-lg py-4">
+            <SplideSlide key={url} className="flex max-w-fit flex-col gap-y-2">
               <Product />
             </SplideSlide>
           ))}

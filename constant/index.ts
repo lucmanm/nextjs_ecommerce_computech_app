@@ -72,7 +72,7 @@ export const categories = [
       { description: "monitor", imgLink: "/icons/monitor.svg", url: "/" },
       { description: "Laptop", imgLink: "/icons/laptop.svg", url: "/" },
       {
-        description: "Ink & Toner Catridges",
+        description: "Ink & Toner",
         imgLink: "/icons/peripherals.svg",
         url: "/",
       },

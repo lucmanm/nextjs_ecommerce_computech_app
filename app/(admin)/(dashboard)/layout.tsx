@@ -3,11 +3,8 @@ import { Footer, Header } from "@/components";
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
-
 export const metadata = {
-  title: "CompuTech",
-  description:
-    "An Online Computer Store Selling Desktop Computer, Laptop, Printer, Servers etc.",
+  title: "Admin Dashboard",
 };
 
 export default function RootLayout({
@@ -16,10 +13,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className="relative bg-slate-100">
-        {children}
-      </body>
-    </html>
+    <main>
+      {children}
+      <Footer />
+    </main>
   );
 }

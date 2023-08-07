@@ -139,24 +139,44 @@ export const dashboardSidebar = [
             },
         ],
     },
-
     {
-        title: "Pages",
+        title: "Products",
         links: [
             {
-                name: "orders",
-                icon: "/default/order.svg",
-                url: "/dashboard/orders",
+                name: "Product List",
+                icon: "/default/product.svg",
+                url: "/dashboard/product-list",
+            },
+        ],
+    },
+        {
+        title: "Categories",
+        links: [
+            {
+                name: "Category List",
+                icon: "/default/product.svg",
+                url: "/dashboard/product-list",
             },
             {
-                name: "Category",
-                icon: "/default/category.svg",
-                url: "/dashboard/category",
+                name: "Create Category",
+                icon: "/default/product.svg",
+                url: "/dashboard/product-list",
+            },
+        ],
+    },
+
+    {
+        title: "Brands",
+        links: [
+            {
+                name: "Brand List",
+                icon: "/default/product.svg",
+                url: "/dashboard/product-list",
             },
             {
-                name: "Brand",
-                icon: "/default/brand.svg",
-                url: "/dashboard/brand",
+                name: "Create Brand",
+                icon: "/default/product.svg",
+                url: "/dashboard/product-list",
             },
         ],
     },

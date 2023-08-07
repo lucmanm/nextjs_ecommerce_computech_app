@@ -32,6 +32,7 @@ export interface ListProps {
 export interface ProductCategoryProps {
   title?: string;
   list: ListProps[];
+  Link: string;
 }
 
 export interface SliderProps {

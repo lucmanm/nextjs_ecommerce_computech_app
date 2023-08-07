@@ -6,9 +6,9 @@ import { dashboardSidebar } from "@/lib/constant";
 
 const Sidebar = () => {
   return (
-    <aside className="relative h-screen space-y-2 overflow-auto border-2 bg-white p-2 text-sm shadow-sm">
+    <aside className="relative h-screen space-y-2 overflow-hidden p-2 text- shadow-sm bg-blue-950">
       {/* SideBar header Menu */}
-      <div className="flex items-center justify-between border border-black">
+      <div className="flex items-center justify-between border-black">
         <Link href="/" onClick={() => {}} className="border border-black">
           {/* <Image
                         src={`/computech-landscape-logo.png`}
@@ -30,7 +30,7 @@ const Sidebar = () => {
         {/* Sidebar Menu Pages*/}
         {dashboardSidebar.map((link) => (
           <div key={link.title}>
-            <p className="rounded bg-blue-950 px-2 py-2 font-medium uppercase text-gray-400">
+            <p className="rounded bg-blue-950 px-2 py-2 font-normal uppercase text-slate-100">
               {link.title}
             </p>
             {/* Sub Category pages. */}
@@ -38,7 +38,7 @@ const Sidebar = () => {
               <Link
                 key={link.name}
                 href={`${link.url}`}
-                className="flex items-center gap-2 rounded py-2 pl-5 capitalize hover:bg-slate-100"
+                className="flex items-center gap-2 rounded py-2 pl-5 capitalize text-white hover:text-blue-950 hover:bg-slate-100 font-light"
               >
                 <Image src={link.icon} alt="icon" height={16} width={16} />
                 <span className="capatilize">{link.name}</span>

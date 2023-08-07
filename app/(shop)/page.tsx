@@ -12,7 +12,7 @@ export default function Home() {
 
     return (
         <main className="flex flex-col overflow-hidden">
-            <section className="mx-auto ml-4 mt-8 flex flex-col gap-y-8 dt:container">
+            <section className="ml-4 mt-8 flex flex-col gap-y-8">
                 {/* Main Slider of homepage */}
                 <CarouselSlider />
 

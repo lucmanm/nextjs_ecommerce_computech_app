@@ -11,10 +11,11 @@ import Link from "next/link";
 const Header = () => {
     // Destructuring Array of Logo
     const [, { title, url }] = logoUrl;
+
     // Destrcucturing Product categories & Brand List
     const [
-        { title: productTitle, list: productList },
-        { title: brandTitle, list: brandList },
+      { title: productTitle, list: productList },
+      { title: brandTitle, list: brandList },
     ] = categories;
 
     return (

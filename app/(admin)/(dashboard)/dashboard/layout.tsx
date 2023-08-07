@@ -16,7 +16,7 @@ export default function adminDashboardRootL({
       <div className="w-56">
         <Sidebar />
       </div>
-      <div className="min-h-screen grow border-2 p-4 space-y-2">
+      <div className="min-h-screen grow space-y-2">
         <Navigation />
         {children}
       </div>

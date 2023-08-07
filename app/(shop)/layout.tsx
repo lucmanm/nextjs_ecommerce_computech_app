@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <main>
       <Header />
-      {children}
+      <section className="dt:container">{children}</section>
       <Footer />
     </main>
   );

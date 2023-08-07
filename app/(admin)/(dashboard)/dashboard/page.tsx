@@ -1,14 +1,7 @@
-import Navigation from "@/components/admin/Navigation";
-import Sidebar from "@/components/admin/Sidebar";
+import React from "react";
 
-const adminDashboard = ({ children }: { children: React.ReactNode }) => {
-    return (
-        <main className="flex">
-            <Sidebar />
-            <Navigation />
-            {children}
-        </main>
-    );
+const adminDashboard = () => {
+    return <div>adminDashboard</div>;
 };
 
 export default adminDashboard;

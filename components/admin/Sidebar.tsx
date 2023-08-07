@@ -33,7 +33,7 @@ const Sidebar = () => {
                 {/* Sidebar Menu Pages*/}
                 {dashboardSidebar.map((link) => (
                     <div key={link.title}>
-                        <p className="rounded bg-blue-950 px-2 py-1 font-medium uppercase text-gray-400">
+                        <p className="rounded bg-blue-950 px-2 py-2 font-medium uppercase text-gray-400">
                             {link.title}
                         </p>
                         {/* Sub Category pages. */}
@@ -41,7 +41,7 @@ const Sidebar = () => {
                             <Link
                                 key={link.name}
                                 href={`${link.url}`}
-                                className="flex items-center gap-2 rounded py-2 pl-5 capitalize hover:bg-blue-200">
+                                className="flex items-center gap-2 rounded py-2 pl-5 capitalize hover:bg-slate-100">
                                 <Image
                                     src={link.icon}
                                     alt="icon"

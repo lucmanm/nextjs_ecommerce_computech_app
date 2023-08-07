@@ -134,7 +134,7 @@ export const dashboardSidebar = [
         links: [
             {
                 name: "Products",
-                icon: "/default/product.svg",
+                icon: "/default/dashboard.svg",
                 url: "/dashboard/product-list",
             },
         ],
@@ -147,6 +147,11 @@ export const dashboardSidebar = [
                 icon: "/default/product.svg",
                 url: "/dashboard/product-list",
             },
+            {
+                name: "Create Product",
+                icon: "/default/product.svg",
+                url: "/dashboard/product-list/create",
+            },
         ],
     },
         {
@@ -154,12 +159,12 @@ export const dashboardSidebar = [
         links: [
             {
                 name: "Category List",
-                icon: "/default/product.svg",
+                icon: "/default/category.svg",
                 url: "/dashboard/product-list",
             },
             {
                 name: "Create Category",
-                icon: "/default/product.svg",
+                icon: "/default/category.svg",
                 url: "/dashboard/product-list",
             },
         ],
@@ -170,12 +175,12 @@ export const dashboardSidebar = [
         links: [
             {
                 name: "Brand List",
-                icon: "/default/product.svg",
+                icon: "/default/brand.svg",
                 url: "/dashboard/product-list",
             },
             {
                 name: "Create Brand",
-                icon: "/default/product.svg",
+                icon: "/default/brand.svg",
                 url: "/dashboard/product-list",
             },
         ],

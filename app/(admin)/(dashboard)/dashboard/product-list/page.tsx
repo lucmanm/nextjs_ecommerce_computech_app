@@ -1,5 +1,4 @@
 import InputField from "@/components/form/InputField";
-import DashboardSvg from "@/public/default/dashboard";
 import React from "react";
 
 const ProductList = () => {

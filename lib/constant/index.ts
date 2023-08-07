@@ -146,17 +146,17 @@ export const dashboardSidebar = [
             {
                 name: "orders",
                 icon: "/default/order.svg",
-                url: "/dashboard/product-list",
+                url: "/dashboard/orders",
             },
             {
                 name: "Category",
                 icon: "/default/category.svg",
-                url: "/dashboard/product-list",
+                url: "/dashboard/category",
             },
             {
                 name: "Brand",
                 icon: "/default/brand.svg",
-                url: "/dashboard/product-list",
+                url: "/dashboard/brand",
             },
         ],
     },

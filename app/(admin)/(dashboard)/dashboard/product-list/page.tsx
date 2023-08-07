@@ -1,7 +1,12 @@
+import InputField from "@/components/form/InputField";
 import React from "react";
 
 const ProductList = () => {
-    return <div>ProductList</div>;
+  return (
+    <section className="bg-white shadow h-screen p-4 rounded">
+      <InputField/>
+    </section>
+  );
 };
 
 export default ProductList;

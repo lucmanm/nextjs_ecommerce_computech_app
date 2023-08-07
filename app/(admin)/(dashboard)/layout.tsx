@@ -4,18 +4,13 @@ import { Footer, Header } from "@/components";
 
 // const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
-  title: "Admin Dashboard",
+    title: "Admin Dashboard",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <main>
-      {children}
-      <Footer />
-    </main>
-  );
+    return <main>{children}</main>;
 }

@@ -1,9 +1,14 @@
-import React from 'react'
+import Navigation from "@/components/admin/Navigation";
+import Sidebar from "@/components/admin/Sidebar";
 
-const page = () => {
-  return (
-    <div>page</div>
-  )
-}
+const adminDashboard = ({ children }: { children: React.ReactNode }) => {
+    return (
+        <main className="flex">
+            <Sidebar />
+            <Navigation />
+            {children}
+        </main>
+    );
+};
 
-export default page
+export default adminDashboard;

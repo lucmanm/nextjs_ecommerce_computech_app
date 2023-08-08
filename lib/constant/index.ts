@@ -1,6 +1,11 @@
 //Top Navigation Information
 export const topNavigationMenu = [
-    { title: "SignIn", url: "/dashboard", imageSrc: "profile.svg", altImage: "user" },
+    {
+        title: "SignIn",
+        url: "/dashboard",
+        imageSrc: "profile.svg",
+        altImage: "user",
+    },
     { title: "Wishlist", url: "/", imageSrc: "heart.svg", altImage: "heart" },
     { title: "Track", url: "/", imageSrc: "truck.svg", altImage: "truck" },
 ];
@@ -149,18 +154,18 @@ export const dashboardSidebar = [
             },
         ],
     },
-        {
+    {
         title: "Categories",
         links: [
             {
                 name: "Category List",
                 icon: "/default/category.svg",
-                url: "/dashboard/product-list",
+                url: "/dashboard/category-list",
             },
             {
                 name: "Create Category",
                 icon: "/default/category.svg",
-                url: "/dashboard/product-list",
+                url: "/dashboard/category-list/create",
             },
         ],
     },
@@ -171,12 +176,12 @@ export const dashboardSidebar = [
             {
                 name: "Brand List",
                 icon: "/default/brand.svg",
-                url: "/dashboard/product-list",
+                url: "/dashboard/brand-list",
             },
             {
                 name: "Create Brand",
                 icon: "/default/brand.svg",
-                url: "/dashboard/product-list",
+                url: "/dashboard/brand-list/create",
             },
         ],
     },

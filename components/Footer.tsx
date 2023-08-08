@@ -63,8 +63,8 @@ const Footer = () => {
             </div>
             {/* Copyright information */}
             <div className="bg-blue-950 ">
-                <p className="px-4 py-2 text-center text-xs font-semibold text-white tb:text-base">
-                    COPYRIGHT © 2022. COMPUTECH COMPANY. C. R. NO. 4030079509
+                <p className="px-4 py-2 text-center text-white">
+                    COPYRIGHT © 2023. COMPUTECH COMPANY. C. R. NO. 4030079509
                     VAT ID 311079231900003. ALL RIGHTS RESERVED.
                 </p>
             </div>

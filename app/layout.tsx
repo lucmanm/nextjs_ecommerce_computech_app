@@ -5,21 +5,21 @@ import { Footer, Header } from "@/components";
 // const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: "CompuTech",
-  description:
-    "An Online Computer Store Selling Desktop Computer, Laptop, Printer, Servers etc.",
+    title: "CompuTech",
+    description:
+        "An Online Computer Store Selling Desktop Computer, Laptop, Printer, Servers etc.",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className="relative bg-slate-100  text-base font-medium">
-        {children}
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <body className="relative bg-slate-100 text-sm font-medium  tb:text-base">
+                {children}
+            </body>
+        </html>
+    );
 }

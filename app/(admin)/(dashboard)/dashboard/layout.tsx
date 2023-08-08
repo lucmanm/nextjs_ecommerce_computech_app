@@ -3,23 +3,23 @@ import Sidebar from "@/components/admin/Sidebar";
 import Navigation from "@/components/admin/Navigation";
 
 export const metadata = {
-  title: "Admin Dashboard",
+    title: "Admin Dashboard",
 };
 
 export default function adminDashboardRootL({
-  children,
+    children,
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }) {
-  return (
-    <main className="relative flex flex-wrap">
-      <div className="w-56">
-        <Sidebar />
-      </div>
-      <div className="min-h-screen grow space-y-2">
-        <Navigation />
-        {children}
-      </div>
-    </main>
-  );
+    return (
+        <main className="relative flex flex-wrap">
+            <div className="w-56">
+                <Sidebar />
+            </div>
+            <div className="min-h-screen grow space-y-2">
+                <Navigation />
+                {children}
+            </div>
+        </main>
+    );
 }

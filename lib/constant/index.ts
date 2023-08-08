@@ -6,11 +6,12 @@ export const topNavigationMenu = [
 ];
 
 export const sliderImages = [
-    { title: "square logo", url: "/slider-images/image1.jpg", link: "/" },
-    { title: "landscape logo", url: "/slider-images/image2.jpg", link: "/" },
-    { title: "landscape logo", url: "/slider-images/image3.jpg", link: "/" },
-    { title: "landscape logo", url: "/slider-images/image4.jpg", link: "/" },
-    { title: "landscape logo", url: "/slider-images/image5.jpg", link: "/" },
+    { title: "Desktop", url: "/slider-images/Desktop.png", link: "/" },
+    { title: "Monitor", url: "/slider-images/Monitor.png", link: "/" },
+    { title: "All-in-one", url: "/slider-images/All-in-one.png", link: "/" },
+    { title: "Laptop", url: "/slider-images/Laptop.png", link: "/" },
+    { title: "Printer", url: "/slider-images/Printer.png", link: "/" },
+    { title: "Server", url: "/slider-images/Server.png", link: "/" },
 ];
 // All Footer Informations
 export const logoUrl = [

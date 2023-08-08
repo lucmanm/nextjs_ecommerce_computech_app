@@ -2,7 +2,7 @@ import { categories } from "@/lib/constant";
 import { ProductCategoryProps } from "@/types";
 import Link from "next/link";
 
-const DropdownMenu = ({ title, list, link }: ProductCategoryProps) => {
+const DropdownMenu = ({ title, list }: ProductCategoryProps) => {
   return (
     <>
       {/* Desktop Category Menu */}

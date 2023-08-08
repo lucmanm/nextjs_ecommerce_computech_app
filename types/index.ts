@@ -1,13 +1,5 @@
 import { MouseEventHandler } from "react";
 
-export interface CustomButtonProps {
-    btnType?: "button" | "submit";
-    clickHandler?: MouseEventHandler<HTMLButtonElement>;
-    icon?: string;
-    title?: string;
-    customButtonStyle?: string;
-}
-
 export interface TopNavigationProps {
     title?: string;
     url?: string;

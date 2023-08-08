@@ -1,6 +1,6 @@
 //Top Navigation Information
 export const topNavigationMenu = [
-    { title: "SignIn", url: "/", imageSrc: "profile.svg", altImage: "user" },
+    { title: "SignIn", url: "/dashboard", imageSrc: "profile.svg", altImage: "user" },
     { title: "Wishlist", url: "/", imageSrc: "heart.svg", altImage: "heart" },
     { title: "Track", url: "/", imageSrc: "truck.svg", altImage: "truck" },
 ];
@@ -131,13 +131,7 @@ export const categories = [
 export const dashboardSidebar = [
     {
         title: "Dashboard",
-        links: [
-            {
-                name: "Products",
-                icon: "/default/dashboard.svg",
-                url: "/dashboard/product-list",
-            },
-        ],
+        links: [],
     },
     {
         title: "Products",

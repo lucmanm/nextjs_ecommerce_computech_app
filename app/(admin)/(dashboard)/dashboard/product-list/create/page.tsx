@@ -1,9 +1,12 @@
+import Title from "@/components/Title";
+import Button from "@/components/form/Button";
 import InputField from "@/components/form/InputField";
 import React from "react";
 
 const CreateProduct = () => {
   return (
     <section className="m-72 rounded bg-white p-4 shadow">
+      <Title>Add Product</Title>
       <InputField
         type="text"
         name="model"
@@ -29,6 +32,7 @@ const CreateProduct = () => {
         placeholder="Stock Quantity"
         required
       />
+      <Button/>
     </section>
   );
 };

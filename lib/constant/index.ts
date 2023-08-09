@@ -133,7 +133,7 @@ export const categories = [
         ],
     },
 ];
-
+// Administrator Side
 export const dashboardSidebar = [
     {
         title: "Dashboard",
@@ -186,3 +186,11 @@ export const dashboardSidebar = [
         ],
     },
 ];
+
+// Settings
+export const Settings = [
+    "General",
+    "Top Bar",
+    "Slider",
+    "Shipping & Tax"
+]

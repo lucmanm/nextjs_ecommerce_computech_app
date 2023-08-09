@@ -188,9 +188,23 @@ export const dashboardSidebar = [
 ];
 
 // Settings
-export const Settings = [
-    "general",
-    "top Bar",
-    "slider",
-    "shipping and Tax"
-]
+export const Settings = ["general", "top Bar", "slider", "shipping and Tax"];
+
+export const shopSettings = [
+    {
+        name: "general",
+        slug: "settings",
+    },
+    {
+        name: "Top Navigation",
+        slug: "Top-Navigation",
+    },
+    {
+        name: "slider",
+        slug: "slider",
+    },
+    {
+        name: "shipping and Tax",
+        slug: "shipping-and-tax",
+    },
+];

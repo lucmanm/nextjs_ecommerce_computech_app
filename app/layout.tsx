@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="relative bg-slate-100 text-sm font-normal  tb:text-base">
+            <body className="relative bg-slate-100 text-sm font-normal  tb:text-sm">
                 {children}
             </body>
         </html>

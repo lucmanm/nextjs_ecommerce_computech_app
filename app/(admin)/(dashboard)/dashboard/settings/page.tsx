@@ -1,9 +1,16 @@
-import React from 'react'
+import Category from "@/components/Category";
+import Container from "@/components/Container";
+import Title from "@/components/Title";
+import React from "react";
 
 const SettingPage = () => {
   return (
-    <div>SettingPage</div>
-  )
-}
+    <Container>
+      <Title>
+        <Category />
+      </Title>
+    </Container>
+  );
+};
 
-export default SettingPage
+export default SettingPage;

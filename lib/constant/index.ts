@@ -189,8 +189,8 @@ export const dashboardSidebar = [
 
 // Settings
 export const Settings = [
-    "General",
-    "Top Bar",
-    "Slider",
-    "Shipping & Tax"
+    "general",
+    "top Bar",
+    "slider",
+    "shipping and Tax"
 ]

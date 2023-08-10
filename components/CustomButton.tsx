@@ -21,7 +21,7 @@ const CustomButton = ({
     <button
       disabled={false}
       type={btnType || "button"}
-      className={`btn ${customButtonStyle}`}
+      className={`relative overflow-hidden rounded-full p-1.5 capitalize shadow ring-0 hover:border-gray-100 hover:bg-gray-100 hover:text-slate-900 focus:shadow-md active:shadow-inner ${customButtonStyle}`}
       onClick={clickHandler}
     >
       <span>{title && title}</span>

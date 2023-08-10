@@ -16,21 +16,21 @@ export interface FooterInfoProps {
 export interface paymentMethodProps {
     title?: string;
 }
-export interface ListProps {
-    description: string;
-    imgLink: string;
-    url: string;
-}
-export interface ProductCategoryProps {
-    title?: string;
-    list: ListProps[];
-}
+// export interface ListProps {
+//     description: string;
+//     imgLink: string;
+//     url: string;
+// }
+// export interface ProductCategoryProps {
+//     title?: string;
+//     list: ListProps[];
+// }
 
-export interface SliderProps {
-    sliderhead?: string;
-    list: ListProps[];
-    subtitle?: boolean;
-    sliderSlide?: string;
-    sliderCustomerStyle?: string;
-    arrow?: boolean;
-}
+// export interface SliderProps {
+//     sliderhead?: string;
+//     list: ListProps[];
+//     subtitle?: boolean;
+//     sliderSlide?: string;
+//     sliderCustomerStyle?: string;
+//     arrow?: boolean;
+// }

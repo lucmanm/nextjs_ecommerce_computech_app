@@ -1,4 +1,3 @@
-"use client";
 import { ProductCategory, CarouselSlider, Slider } from "@/components";
 import { categories } from "@/lib/constant";
 import React from "react";

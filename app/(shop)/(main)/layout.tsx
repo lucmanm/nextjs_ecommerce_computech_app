@@ -20,7 +20,7 @@ export default function RootLayout({
     return (
         <main>
             <Header />
-            <section className="dt:container">{children}</section>
+            <section className="container">{children}</section>
             <Footer />
             <BottomNavigation />
         </main>

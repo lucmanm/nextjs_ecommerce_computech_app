@@ -2,7 +2,7 @@ import React from "react";
 
 const BottomNavigation = () => {
     return (
-        <div className="fixed bottom-4 left-0 z-50 h-16 w-full rounded-full border-t px-4 hover:rounded-full  tb:hidden">
+        <div className="fixed bottom-4 left-0 z-50 h-16 w-full rounded-full border-t px-4 hover:rounded-full  2xl:hidden">
             <div className="mx-auto grid h-full max-w-lg grid-cols-4 overflow-hidden rounded-full  bg-white font-medium ">
                 <button
                     type="button"

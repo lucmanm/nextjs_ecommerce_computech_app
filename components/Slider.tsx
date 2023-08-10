@@ -14,7 +14,7 @@ const Slider = ({
     return (
         <div className="flex flex-col gap-y-2">
             {sliderhead && (
-                <span className="tb:py-1 relative max-w-fit rounded-full bg-white px-5 py-2 font-bold text-blue-950 shadow-md">
+                <span className="relative max-w-fit rounded-full bg-white px-5 py-2 font-bold text-blue-950 shadow-md md:py-1">
                     {sliderhead}
                 </span>
             )}
@@ -24,12 +24,12 @@ const Slider = ({
                 options={{
                     type: "loop",
                     perPage: 7,
-                    gap: "20rem",
+                    gap: "2rem",
                     arrows: arrow,
                     pagination: false,
                     breakpoints: {
                         1024: { perPage: 5 },
-                        640: { perPage: 7, gap: "2rem" },
+                        640: { perPage: 7, gap: "7rem" },
                     },
                 }}
                 tag="section"

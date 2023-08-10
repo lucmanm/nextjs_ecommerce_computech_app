@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 type Products = {
     id: number;
     title: string;
@@ -13,6 +14,22 @@ type Products = {
 };
 
 
+export interface TopNavigationProps {
+    title?: string;
+    url?: string;
+    imageSrc?: string;
+    altImage?: string;
+}
+
+export interface FooterInfoProps {
+    title?: string;
+    info?: string;
+    url?: string;
+}
+
+export interface paymentMethodProps {
+    title?: string;
+}
 export interface ListProps {
     description: string;
     imgLink: string;

@@ -10,7 +10,7 @@ const TopNavigation = ({
     altImage,
 }: TopNavigationProps) => {
     return (
-      <div className="relative flex flex-wrap justify-between dt:container ">
+      <div className="relative flex flex-wrap justify-between container ">
         <div className="flex">
           {topNavigationMenu.map(({ title, url, imageSrc, altImage }) => (
             <div key={title}>

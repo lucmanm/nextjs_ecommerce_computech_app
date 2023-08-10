@@ -10,7 +10,7 @@ const Footer = () => {
         // The Entire Footer Container
         <footer className=" mt-8 bg-gray-200">
             {/* Container for the entire div */}
-            <div className="flex flex-wrap px-4 dt:container dt:px-0">
+            <div className="flex flex-wrap px-4 container dt:px-0">
                 <div className="flex w-full py-4 ">
                     <div className="flex w-full min-w-fit flex-col gap-4 dt:flex-row">
                         <div className="flex-none px-6 py-1">

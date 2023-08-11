@@ -15,8 +15,14 @@ import {
 import { Input } from "../ui/input";
 
 const formSchema = z.object({
-    email: z.string().min(2).max(50),
-    password: z.string().min(2).max(50),
+    email: z
+        .string()
+        .min(1, "Please Enter your Email")
+        .email("Invalid Email address"),
+    password: z
+        .string()
+        .min(1, "Please enter your password")
+        .min(8, "Password Must  atleast 8 characters"),
 });
 
 const SignInForm = () => {

@@ -2,12 +2,12 @@
 export const topNavigationMenu = [
     {
         title: "SignIn",
-        url: "/dashboard",
+        url: "/sign-in",
         imageSrc: "profile.svg",
         altImage: "user",
     },
     { title: "Wishlist", url: "/", imageSrc: "heart.svg", altImage: "heart" },
-    { title: "Track", url: "/", imageSrc: "truck.svg", altImage: "truck" },
+    { title: "Tracking", url: "/", imageSrc: "truck.svg", altImage: "truck" },
 ];
 
 export const sliderImages = [

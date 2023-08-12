@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
-import { Footer, Header } from "@/components";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import BottomNavigation from "@/components/BottomNavigation";
 // import { Inter } from 'next/font/google'
 
@@ -19,7 +20,7 @@ export default function RootLayout({
     return (
         <main>
             <Header />
-            <section className="dt:container">{children}</section>
+            <section className="md:container">{children}</section>
             <Footer />
             <BottomNavigation />
         </main>

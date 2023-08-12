@@ -1,4 +1,6 @@
-import { ProductCategory, CarouselSlider, Slider } from "@/components";
+import Slider  from "@/components/Slider";
+import ProductCategory from "@/components/ProductCategory";
+import CarouselSlider from "@/components/CarouselSlider";
 import { categories } from "@/lib/constant";
 import React from "react";
 

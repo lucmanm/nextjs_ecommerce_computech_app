@@ -8,12 +8,12 @@ const Footer = () => {
     const [{ title }, { paymentCard }] = paymentMethod;
     return (
         // The Entire Footer Container
-        <footer className=" mt-8 bg-gray-200">
+        <footer className="mt-8 bg-gray-200">
             {/* Container for the entire div */}
-            <div className="flex flex-wrap px-4 dt:container dt:px-0">
+            <div className="container flex flex-wrap px-4">
                 <div className="flex w-full py-4 ">
-                    <div className="flex w-full min-w-fit flex-col gap-4 dt:flex-row">
-                        <div className="flex-none px-6 py-1">
+                    <div className="flex flex-wrap  gap-4 md:flex-1">
+                        <div className="py-1">
                             <Link href={logoUrl[0].link}>
                                 <Image
                                     src={logoUrl[0].url}
@@ -23,15 +23,13 @@ const Footer = () => {
                                 />
                             </Link>
                         </div>
-                        {/* Looped for cont us company and help */}
+                        {/* Looped for contact us company and help */}
                         {footerInfo.map(({ title, info }) => (
-                            <div key={title} className="grow">
+                            <div key={title} className="grow ">
                                 <span className="font-semibold">{title}</span>
                                 {info.map(
                                     ({ title, info }: FooterInfoProps) => (
-                                        <p
-                                            key={title}
-                                            className=" tb:leading-7">
+                                        <p key={title} className="leading-7">
                                             {title} {info}
                                         </p>
                                     )
@@ -41,7 +39,7 @@ const Footer = () => {
                     </div>
                 </div>
                 {/* Payment Methdd Container */}
-                <div className="relative flex w-full items-center justify-center gap-x-2 pb-2 ">
+                <div className="relative flex-1 items-center justify-center gap-x-2 pb-2 ">
                     {/* Payment Method Acceptable */}
                     <div>
                         <span className="font-semibold">{title}</span>

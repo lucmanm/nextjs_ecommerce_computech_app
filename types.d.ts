@@ -13,13 +13,12 @@ type Products = {
     images: [];
 };
 
-
-export interface TopNavigationProps {
-    title?: string;
-    url?: string;
-    imageSrc?: string;
-    altImage?: string;
-}
+// export interface TopNavigationProps {
+//     title?: string;
+//     url?: string;
+//     imageSrc?: string;
+//     altImage?: string;
+// }
 
 export interface FooterInfoProps {
     title?: string;

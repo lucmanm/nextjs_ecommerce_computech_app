@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import { Footer, Header } from "@/components";
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -17,7 +16,7 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className="relative bg-slate-100 text-sm font-normal  tb:text-sm">
+            <body className="tb:text-sm relative bg-slate-100 text-sm  font-normal">
                 {children}
             </body>
         </html>

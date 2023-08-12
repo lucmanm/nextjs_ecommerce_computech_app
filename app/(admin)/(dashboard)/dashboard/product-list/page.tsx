@@ -1,19 +1,14 @@
-import getAllProducts from "@/app/api/(admin)/products/route";
 import Container from "@/components/Container";
 import Title from "@/components/Title";
 import Image from "next/image";
 import React from "react";
 
-const ProductList = async () => {
-    const products: Promise<any> = getAllProducts();
-    const product = await products;
-    console.log(product);
-
+const ProductList = () => {
     return (
         <Container>
             <Title>Products</Title>
 
-            <div className="sm:rounded-lg relative overflow-x-auto shadow-md">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <div className="flex items-center justify-between bg-white p-6 pb-4 dark:bg-gray-900">
                     <div>
                         <button

@@ -4,140 +4,222 @@ import { z } from "zod";
 import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { useRouter } from "next/navigation";
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "../ui/select";
 
-const formSchema = z
-  .object({
-    model: z.string().min(1, "Username is required").max(50),
-    description: z.string().min(1, "Please Enter Product description"),
-    password: z
-      .string()
-      .min(1, "Please enter your password")
-      .min(8, "Password Must  atleast 8 characters"),
-    confirmPassword: z
-      .string()
-      .min(1, "Password confirmation is required ")
-      .min(8, "Password Must  atleast 8 characters"),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "Passowrd does not match",
-  });
+const formSchema = z.object({
+    model: z.string().min(4, "Model Number required").max(50),
+    productDescription: z.string().min(5, "Please Enter Product description"),
+    brand: z.string(),
+    price: z
+        .number({
+            required_error: "Price is required",
+            invalid_type_error: "Price must be a number",
+        })
+        .safe(),
+    salePrice: z.number().int(),
+    stock: z.number().int(),
+    category: z.string(),
+});
 
 const AddProductForm = () => {
-  const router = useRouter();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      model: "",
-      description: "",
-      password: "",
-      confirmPassword: "",
-    },
-  });
+    const router = useRouter();
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    const response = await fetch("/api/user", {
-      method: "Post",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        model: values.model,
-        description: values.description,
-        password: values.password,
-      }),
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            model: "",
+            productDescription: "",
+            price: 0,
+            salePrice: 0,
+            stock: 0,
+            brand: "",
+            category: "",
+        },
     });
-    if (response.ok) {
-      router.push("/sign-in");
-    } else {
-      console.log("Registration Failed");
-    }
-  };
-  return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="mx-auto my-10 w-full space-y-8 rounded-md border-black bg-white p-4 capitalize "
-      >
-        <FormField
-          control={form.control}
-          name="model"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>model</FormLabel>
-              <FormControl>
-                <Input placeholder="model" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>description</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="Please enter product description"
-                  {...field}
+
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        const response = await fetch("/api/addproduct", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                model: values.model,
+                description: values.productDescription,
+                price: values.price,
+                salePrice: values.salePrice,
+                stock: values.stock,
+                brand: values.brand,
+                category: values.category,
+            }),
+        });
+        if (response.ok) {
+            router.push("");
+        } else {
+            console.log("Registration Failed");
+        }
+    };
+    return (
+        <Form {...form}>
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize ">
+                <FormField
+                    control={form.control}
+                    name="model"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Model</FormLabel>
+                            <FormControl>
+                                <Input placeholder="Model" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="price"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>price</FormLabel>
-              <FormControl>
-                <Input
-                type="number"
-                  placeholder="Please enter price"
-                  {...field}
+                <FormField
+                    control={form.control}
+                    name="productDescription"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Product Description</FormLabel>
+                            <FormControl>
+                                <Input
+                                    placeholder="Product description"
+                                    {...field}
+                                />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="salesPrice"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>price</FormLabel>
-              <FormControl>
-                <Input
-                type="number"
-                  placeholder="Sale Price"
-                  {...field}
+                <FormField
+                    control={form.control}
+                    name="brand"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Brand</FormLabel>
+                            <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select Brand" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="HP">HP</SelectItem>
+                                    <SelectItem value="Dell">Dell</SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <FormMessage />
+                        </FormItem>
+                    )}
                 />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <Button type="submit" size={"sm"} variant="default" className="w-full">
-          Save
-        </Button>
-      </form>
-    </Form>
-  );
+                <FormField
+                    control={form.control}
+                    name="category"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Category</FormLabel>
+                            <Select
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}>
+                                <FormControl>
+                                    <SelectTrigger>
+                                        <SelectValue placeholder="Select Category" />
+                                    </SelectTrigger>
+                                </FormControl>
+                                <SelectContent>
+                                    <SelectItem value="All in One">
+                                        All in One
+                                    </SelectItem>
+                                    <SelectItem value="Computer">
+                                        Computer
+                                    </SelectItem>
+                                    <SelectItem value="Laptop">
+                                        Laptop
+                                    </SelectItem>
+                                    <SelectItem value="Monitor">
+                                        Monitor
+                                    </SelectItem>
+                                    <SelectItem value="Printer">
+                                        Printer
+                                    </SelectItem>
+                                    <SelectItem value="Scanner">
+                                        Scanner
+                                    </SelectItem>
+                                </SelectContent>
+                            </Select>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="price"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>price</FormLabel>
+                            <FormControl>
+                                <Input placeholder="Selling Price" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="salePrice"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Sale Price</FormLabel>
+                            <FormControl>
+                                <Input placeholder="Sale Price" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <FormField
+                    control={form.control}
+                    name="stock"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>Stock available</FormLabel>
+                            <FormControl>
+                                <Input placeholder="Quantity" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+
+                <Button
+                    type="submit"
+                    size={"sm"}
+                    variant="default"
+                    className="w-full">
+                    Save
+                </Button>
+            </form>
+        </Form>
+    );
 };
 
 export default AddProductForm;

@@ -15,9 +15,10 @@ import {
 import { Input } from "../ui/input";
 import Link from "next/link";
 import GoogleSignInButton from "../GoogleSignInButton";
-import { Mail } from "lucide-react";
+import { Loader2, Mail } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const formSchema = z.object({
     email: z
@@ -31,6 +32,7 @@ const formSchema = z.object({
 });
 
 const SignInForm = () => {
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -41,6 +43,7 @@ const SignInForm = () => {
     });
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        setLoading(true);
         const signInData = await signIn("credentials", {
             email: values.email,
             password: values.password,
@@ -91,8 +94,13 @@ const SignInForm = () => {
                     type="submit"
                     size={"sm"}
                     variant="default"
-                    className="w-full">
-                    Sign In
+                    className="w-full"
+                    disabled={loading}>
+                    {loading ? (
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    ) : (
+                        "Sign In"
+                    )}
                 </Button>
                 <div className="mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block  after:h-px after:flex-grow after:bg-stone-400">
                     or

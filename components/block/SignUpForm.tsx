@@ -110,25 +110,7 @@ const SignUpForm = () => {
                             <FormLabel>Password</FormLabel>
                             <FormControl>
                                 <Input
-                                    type="password"
                                     placeholder="Enter Your Passord"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="confirmPassword"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Password</FormLabel>
-                            <FormControl>
-                                <Input
-                                    type="password"
-                                    placeholder="Re-enter your pasword"
                                     {...field}
                                 />
                             </FormControl>

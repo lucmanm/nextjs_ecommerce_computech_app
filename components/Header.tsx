@@ -18,7 +18,6 @@ export default function Header() {
 
   return (
     <header className="tb:shadow-md border-b bg-slate-100  ">
-      <TopNavigation />
       <div className="bg-white p-2">
         <div className="container flex flex-wrap items-center justify-between  gap-4">
           <div className="self-center">

@@ -1,5 +1,6 @@
 import Container from "@/components/Container";
 import Title from "@/components/Title";
+import AddProductForm from "@/components/block/AddProductForm";
 import Button from "@/components/form/Button";
 import InputField from "@/components/form/InputField";
 import React from "react";
@@ -8,7 +9,8 @@ const CreateProduct = () => {
     return (
         <Container>
             <Title>Add Product</Title>
-            <section className="my-6 rounded-md bg-white">
+            <AddProductForm/>
+            {/* <section className="my-6 rounded-md bg-white">
                 <form className="px-8 py-8">
                     <InputField
                         type="text"
@@ -42,7 +44,7 @@ const CreateProduct = () => {
                     />
                     <Button />
                 </form>
-            </section>
+            </section> */}
         </Container>
     );
 };

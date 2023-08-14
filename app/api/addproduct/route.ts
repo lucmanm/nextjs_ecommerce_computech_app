@@ -3,13 +3,32 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 // Define a schema for input validation using zod
+
 const productSchema = z.object({
-    model: z.string().min(4, "Model Number required").max(50),
-    productDescription: z.string().min(5, "Please Enter Product description"),
-    price: z.number().safe(),
-    salePrice: z.number().safe(),
-    stock: z.number().safe(),
+  model: z.string().min(4, "Model Number required").max(50),
+  productDescription: z.string().min(5, "Please Enter Product description"),
+  brand: z.string(),
+  price: z.coerce
+    .number({
+      required_error: "Price is required",
+      invalid_type_error: "Price must be a number",
+    })
+    .nonnegative({ message: "Negative is  not allowed" }),
+  salePrice: z.coerce
+    .number({
+      required_error: "Price is required",
+      invalid_type_error: "Price must be a number",
+    })
+    .nonnegative({ message: "Negative is  not allowed" }),
+  stock: z.coerce
+    .number({
+      required_error: "Price is required",
+      invalid_type_error: "Price must be a number",
+    })
+    .nonnegative({ message: "Negative is  not allowed" }),
+  category: z.string(),
 });
+
 
 // Define an async function to handle POST requests
 export async function POST(req: Request) {
@@ -18,7 +37,7 @@ export async function POST(req: Request) {
         const body = await req.json();
 
         // Validate and extract username, email, and password from the parsed body
-        const { model, productDescription, price, salePrice, stock } =
+        const { model, productDescription, price, salePrice, stock, brand, category } =
             productSchema.parse(body);
 
         // Check if the email is already registered

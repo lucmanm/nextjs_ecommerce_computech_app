@@ -1,5 +1,4 @@
 "use client";
-import { categories } from "@/lib/constant";
 import { SliderProps } from "@/types";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";

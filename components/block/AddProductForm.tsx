@@ -26,12 +26,24 @@ const formSchema = z.object({
   model: z.string().min(4, "Model Number required").max(50),
   productDescription: z.string().min(5, "Please Enter Product description"),
   brand: z.string(),
-  price: z.number({
-    required_error: "nonnegative",
-    invalid_type_error: "Price must be a number",
-  }).min(1),
-  salePrice: z.number().int(),
-  stock: z.number().int(),
+  price: z.coerce
+    .number({
+      required_error: "Price is required",
+      invalid_type_error: "Price must be a number",
+    })
+    .nonnegative({ message: "Negative is  not allowed" }),
+  salePrice: z.coerce
+    .number({
+      required_error: "Price is required",
+      invalid_type_error: "Price must be a number",
+    })
+    .nonnegative({ message: "Negative is  not allowed" }),
+  stock: z.coerce
+    .number({
+      required_error: "Price is required",
+      invalid_type_error: "Price must be a number",
+    })
+    .nonnegative({ message: "Negative is  not allowed" }),
   category: z.string(),
 });
 
@@ -50,8 +62,12 @@ const AddProductForm = () => {
       category: "",
     },
   });
+  console.log(form);
+  
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log(values);
+    
     const response = await fetch("/api/addproduct", {
       method: "POST",
       headers: {
@@ -68,11 +84,13 @@ const AddProductForm = () => {
       }),
     });
     if (response.ok) {
-      router.push("");
+      router.push("/dashboard");
     } else {
       console.log("Registration Failed");
     }
   };
+
+  
   return (
     <Form {...form}>
       <form
@@ -176,7 +194,7 @@ const AddProductForm = () => {
             <FormItem>
               <FormLabel>Sale Price</FormLabel>
               <FormControl>
-                <Input placeholder="Sale Price" {...field} />
+                <Input type="number" placeholder="Sale Price" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -189,7 +207,7 @@ const AddProductForm = () => {
             <FormItem>
               <FormLabel>Stock available</FormLabel>
               <FormControl>
-                <Input placeholder="Quantity" {...field} />
+                <Input type="number" placeholder="Quantity" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

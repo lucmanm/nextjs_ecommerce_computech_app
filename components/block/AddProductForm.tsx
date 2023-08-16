@@ -62,32 +62,31 @@ const AddProductForm = () => {
       category: "",
     },
   });
-  console.log(form);
   
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
     
-    const response = await fetch("/api/addproduct", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        model: values.model,
-        description: values.productDescription,
-        price: values.price,
-        salePrice: values.salePrice,
-        stock: values.stock,
-        brand: values.brand,
-        category: values.category,
-      }),
-    });
-    if (response.ok) {
-      router.push("/dashboard");
-    } else {
-      console.log("Registration Failed");
-    }
+    // const response = await fetch("/api/addproduct", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     model: values.model,
+    //     description: values.productDescription,
+    //     price: values.price,
+    //     salePrice: values.salePrice,
+    //     stock: values.stock,
+    //     brand: values.brand,
+    //     category: values.category,
+    //   }),
+    // });
+    // if (response.ok) {
+    //   router.push("/dashboard");
+    // } else {
+    //   console.log("Registration Failed");
+    // }
   };
 
   
@@ -141,8 +140,8 @@ const AddProductForm = () => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="HP">HP</SelectItem>
-                  <SelectItem value="Dell">Dell</SelectItem>
+                  <SelectItem value="1">HP</SelectItem>
+                  <SelectItem value="2">Dell</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -162,12 +161,11 @@ const AddProductForm = () => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="All in One">All in One</SelectItem>
-                  <SelectItem value="Computer">Computer</SelectItem>
-                  <SelectItem value="Laptop">Laptop</SelectItem>
-                  <SelectItem value="Monitor">Monitor</SelectItem>
-                  <SelectItem value="Printer">Printer</SelectItem>
-                  <SelectItem value="Scanner">Scanner</SelectItem>
+                  <SelectItem value="1">Desktop</SelectItem>
+                  <SelectItem value="2">Laptop</SelectItem>
+                  <SelectItem value="3">Mon itor</SelectItem>
+                  <SelectItem value="4">Printer</SelectItem>
+                  <SelectItem value="5">Scanner</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />

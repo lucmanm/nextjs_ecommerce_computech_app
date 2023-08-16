@@ -33,9 +33,7 @@ export async function POST(req: Request) {
                 brandId,
                 categoryId,
             },
-        });
-        console.log(createProduct);
-        
+        });        
         return NextResponse.json(
             { message: "Product Succesfully Created" },
             { status: 200 }

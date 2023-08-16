@@ -4,6 +4,7 @@ import Navigation from "@/components/admin/Navigation";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
     title: "Admin Dashboard",
@@ -17,15 +18,16 @@ export default async function adminDashboardRootL({
     const session = await getServerSession(authOptions);
     if (session?.user) {
         return (
-            <main className="relative flex flex-wrap">
-                <div className="w-56">
-                    <Sidebar />
-                </div>
-                <div className="min-h-screen grow space-y-2">
-                    <Navigation />
-                    {children}
-                </div>
-            </main>
+          <main className="relative flex flex-wrap">
+            <div className="w-56">
+              <Sidebar />
+            </div>
+            <div className="min-h-screen grow space-y-2">
+              <Navigation />
+              {children}
+            </div>
+            <Toaster />
+          </main>
         );
     }
     return redirect("/sign-in");

@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BottomNavigation from "@/components/BottomNavigation";
+
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -18,11 +19,11 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <main>
-            <Header />
-            <section className="md:container">{children}</section>
-            <Footer />
-            <BottomNavigation />
-        </main>
+      <main>
+        <Header />
+        <section className="md:container">{children}</section>
+        <Footer />
+        <BottomNavigation />
+      </main>
     );
 }

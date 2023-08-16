@@ -20,9 +20,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../ui/select";
-import { Textarea } from "../ui/textarea";
+import { Textarea } from "@/components/ui/textarea";
 import { Loader } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   model: z.string().min(4, "Model Number required").max(50),
@@ -50,6 +51,7 @@ const formSchema = z.object({
 });
 
 const AddProductForm = () => {
+  const { toast } = useToast();
   const [loading, setLoading] = useState(false)
   const router = useRouter();
 
@@ -87,11 +89,16 @@ const AddProductForm = () => {
     });
     if (response.ok) {
       setLoading(false);
-      // router.push("/dashboard");
+      toast({
+        description: "Product Successfully Created",
+        variant: "default",
+      });
+      // router.push();
     } else {
       console.log("Registration Failed");
       setLoading(false)
     }
+    
   };
 
   

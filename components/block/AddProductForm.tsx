@@ -95,7 +95,10 @@ const AddProductForm = () => {
       });
       // router.push();
     } else {
-      console.log("Registration Failed");
+      toast({
+        description: "Product Alredy Exist",
+        variant: "success",
+      });
       setLoading(false)
     }
     

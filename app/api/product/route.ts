@@ -13,12 +13,13 @@ export async function POST(req: Request) {
             brandId,
             categoryId,
         } = body;
+
         const checkModel = await db.product.findFirst({
             where: { model: model },
         });
         if (checkModel) {
             return NextResponse.json(
-                { product: null, message: "this Product Already Created!" },
+                { message: "this Product Already Created!" },
                 { status: 409 }
             );
         }
@@ -33,10 +34,13 @@ export async function POST(req: Request) {
                 categoryId,
             },
         });
+        console.log(createProduct);
+        
         return NextResponse.json(
-            { product: createProduct, message: "Product Succesfully Created" },
+            { message: "Product Succesfully Created" },
             { status: 200 }
         );
+                
     } catch (error) {
         return NextResponse.json(
             { message: "Something went wrong" },

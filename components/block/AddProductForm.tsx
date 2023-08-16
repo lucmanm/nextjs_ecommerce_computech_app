@@ -21,14 +21,15 @@ import {
   SelectValue,
 } from "../ui/select";
 import { Textarea } from "../ui/textarea";
+import { Loader } from "lucide-react";
+import { useState } from "react";
 
 const formSchema = z.object({
   model: z.string().min(4, "Model Number required").max(50),
   productDescription: z.string().min(5, "Please Enter Product description"),
-  brand: z.string(),
   price: z.coerce
-    .number({
-      required_error: "Price is required",
+  .number({
+    required_error: "Price is required",
       invalid_type_error: "Price must be a number",
     })
     .nonnegative({ message: "Negative is  not allowed" }),
@@ -38,16 +39,18 @@ const formSchema = z.object({
       invalid_type_error: "Price must be a number",
     })
     .nonnegative({ message: "Negative is  not allowed" }),
-  stock: z.coerce
+    stock: z.coerce
     .number({
       required_error: "Price is required",
       invalid_type_error: "Price must be a number",
     })
     .nonnegative({ message: "Negative is  not allowed" }),
-  category: z.string(),
+    brand: z.coerce.number(),
+    category: z.coerce.number(),
 });
 
 const AddProductForm = () => {
+  const [loading, setLoading] = useState(false)
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -58,35 +61,37 @@ const AddProductForm = () => {
       price: 0,
       salePrice: 0,
       stock: 0,
-      brand: "",
-      category: "",
+      brand: 0,
+      category: 0,
     },
   });
   
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    setLoading(true)
     
-    // const response = await fetch("/api/addproduct", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     model: values.model,
-    //     description: values.productDescription,
-    //     price: values.price,
-    //     salePrice: values.salePrice,
-    //     stock: values.stock,
-    //     brand: values.brand,
-    //     category: values.category,
-    //   }),
-    // });
-    // if (response.ok) {
-    //   router.push("/dashboard");
-    // } else {
-    //   console.log("Registration Failed");
-    // }
+    const response = await fetch("/api/product", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        model: values.model,
+        description: values.productDescription,
+        price: values.price,
+        salePrice: values.salePrice,
+        stock: values.stock,
+        brandId: values.brand,
+        categoryId: values.category,
+      }),
+    });
+    if (response.ok) {
+      setLoading(false);
+      // router.push("/dashboard");
+    } else {
+      console.log("Registration Failed");
+      setLoading(false)
+    }
   };
 
   
@@ -165,7 +170,7 @@ const AddProductForm = () => {
                   <SelectItem value="2">Laptop</SelectItem>
                   <SelectItem value="3">Mon itor</SelectItem>
                   <SelectItem value="4">Printer</SelectItem>
-                  <SelectItem value="5">Scanner</SelectItem>
+                  <SelectItem value="5">Server</SelectItem>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -212,8 +217,21 @@ const AddProductForm = () => {
           )}
         />
 
-        <Button type="submit" size={"sm"} variant="default" className="w-full">
-          Save
+        <Button
+          type="submit"
+          size={"sm"}
+          variant="default"
+          className="w-full"
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <Loader className="mr-2 h-4 w-4 animate-spin" />
+              Please Wait....
+            </>
+          ) : (
+            "Save"
+          )}
         </Button>
       </form>
     </Form>

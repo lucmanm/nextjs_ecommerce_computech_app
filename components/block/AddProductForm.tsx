@@ -91,13 +91,13 @@ const AddProductForm = () => {
       setLoading(false);
       toast({
         description: "Product Successfully Created",
-        variant: "default",
+        variant: "success",
       });
       // router.push();
     } else {
       toast({
         description: "Product Alredy Exist",
-        variant: "success",
+        variant: "destructive",
       });
       setLoading(false)
     }

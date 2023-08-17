@@ -6,13 +6,34 @@ import Image from "next/image";
 import { logoUrl, categories } from "@/lib/constant";
 import Link from "next/link";
 
+async function fetchProductCategory() {
+  const res = await fetch("http://localhost:3000/api/category");
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const data = await res.json();
+  return data.productCategory;
+}
+async function getBrand() {
+  const res = await fetch("http://localhost:3000/api/brand");
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  const data = await res.json();
+  return data.brand;
+}
+
+
+
 
 
 const Header = async () => {
+  const productCategories = await fetchProductCategory();
+  const brand = await getBrand();
 
   
   // Destructuring ArrafetchProductsy of Logo
-  
+
   const [, { title, url }] = logoUrl;
 
   // Destrcucturing Product categories & Brand List
@@ -36,12 +57,16 @@ const Header = async () => {
           </div>
           <div className="">
             {/* Product Category Menu */}
-            <DropdownMenu title={productTitle} list={productList} />
+            <DropdownMenu
+              title="Category"
+              productCategories={productCategories}
+            />
           </div>
           {/* Brands Menu */}
-          {/* <div className="">
-            <DropdownMenu title={brandTitle} list={brandList} />
-          </div> */}
+          <div className="">
+            <DropdownMenu title="Brand" productCategories={brand} />
+            {/* <DropdownMenu title={brandTitle} list={brandList} /> */}
+          </div>
           <div className="">
             <CustomButton btnType="button" icon="/heart.svg" />
           </div>

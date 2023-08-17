@@ -4,8 +4,11 @@ import { NextResponse } from "next/server";
 
 export const GET = async (req: Request, res: NextResponse) => {
   try {
-    const category = await db.category.findMany();
-    return NextResponse.json({ message: "success", category }, { status: 200 });
+    const productCategory = await db.category.findMany();
+    return NextResponse.json(
+      { message: "success", productCategory },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
       { message: "fetching cetegory Error", error },

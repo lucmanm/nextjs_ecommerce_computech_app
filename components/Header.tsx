@@ -1,13 +1,18 @@
-import  CustomButton  from "@/components/CustomButton";
-import  TopNavigation  from "@/components/TopNavigation";
-import  DropdownMenu  from "@/components/DropdownMenu";
-import  SearchInput  from "@/components/SearchInput";
+import CustomButton from "@/components/CustomButton";
+import TopNavigation from "@/components/TopNavigation";
+import DropdownMenu from "@/components/DropdownMenu";
+import SearchInput from "@/components/SearchInput";
 import Image from "next/image";
 import { logoUrl, categories } from "@/lib/constant";
 import Link from "next/link";
 
-export default function Header() {
-  // Destructuring Array of Logo
+
+
+const Header = async () => {
+
+  
+  // Destructuring ArrafetchProductsy of Logo
+  
   const [, { title, url }] = logoUrl;
 
   // Destrcucturing Product categories & Brand List
@@ -18,6 +23,7 @@ export default function Header() {
 
   return (
     <header className="tb:shadow-md border-b bg-slate-100  ">
+      {/* <TopNavigation/> */}
       <div className="bg-white p-2">
         <div className="container flex flex-wrap items-center justify-between  gap-4">
           <div className="self-center">
@@ -29,11 +35,13 @@ export default function Header() {
             <SearchInput />
           </div>
           <div className="">
+            {/* Product Category Menu */}
             <DropdownMenu title={productTitle} list={productList} />
           </div>
-          <div className="">
+          {/* Brands Menu */}
+          {/* <div className="">
             <DropdownMenu title={brandTitle} list={brandList} />
-          </div>
+          </div> */}
           <div className="">
             <CustomButton btnType="button" icon="/heart.svg" />
           </div>
@@ -41,4 +49,5 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+export default Header;

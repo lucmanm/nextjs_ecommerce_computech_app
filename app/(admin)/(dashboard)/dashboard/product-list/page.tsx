@@ -15,6 +15,8 @@ async function fetchProducts() {
 
 const ProductList = async () => {
   const products = await fetchProducts();
+  console.log(products);
+  
   return (
     <Container>
       <Title>Products</Title>

@@ -4,7 +4,20 @@ import CarouselSlider from "@/components/CarouselSlider";
 import { categories } from "@/lib/constant";
 import React from "react";
 
-export default function Home() {
+
+async function fetchProductCategory() {
+  const res = await fetch("http://localhost:3000/api/category", {
+    next: {
+      revalidate: 50,
+    },
+  });
+  const data = await res.json();
+  return data.productCategory;
+}
+
+export default async function ShopPage() {
+        const productCategories = fetchProductCategory();
+        console.log(productCategories);
     // Destrcucturing Product categories & Brand List
     const [
         { title: productTitle, list: productList },

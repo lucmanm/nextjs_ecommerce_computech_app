@@ -1,3 +1,4 @@
+import { ArrowDownCircle, Search } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 interface productsListProps {
@@ -24,21 +25,8 @@ const FlowBiteDataTable = ({ products }: productProps) => {
           >
             <span className="sr-only">Action button</span>
             Action
-            <svg
-              className="ml-2.5 h-2.5 w-2.5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 10 6"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 1 4 4 4-4"
-              />
-            </svg>
+            <ArrowDownCircle className="ml-2.5 h-3 w-3" />
+          
           </button>
           <div
             id="dropdownAction"
@@ -88,21 +76,7 @@ const FlowBiteDataTable = ({ products }: productProps) => {
         </label>
         <div className="relative">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg
-              className="h-4 w-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
+            <Search className="h-4 w-4 text-gray-500 dark:text-gray-400" />
           </div>
           <input
             type="text"
@@ -144,7 +118,10 @@ const FlowBiteDataTable = ({ products }: productProps) => {
         <tbody>
           {/* Product Listed Here */}
           {products?.map((product) => (
-            <tr key={product.id} className="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600">
+            <tr
+              key={product.id}
+              className="border-b bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-600"
+            >
               <td className="w-4 p-4">
                 <div className="flex items-center">
                   <input
@@ -169,7 +146,9 @@ const FlowBiteDataTable = ({ products }: productProps) => {
                 />
                 <div className="pl-3">
                   <div className="text-base font-semibold">{product.model}</div>
-                  <div className="font-normal text-gray-500">{product.description}</div>
+                  <div className="font-normal text-gray-500">
+                    {product.description}
+                  </div>
                 </div>
               </th>
               <td className="px-6 py-4">Category</td>

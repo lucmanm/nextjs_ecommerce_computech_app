@@ -15,6 +15,8 @@ import { Input } from "../ui/input";
 import Link from "next/link";
 import GoogleSignInButton from "../GoogleSignInButton";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 const formSchema = z
     .object({
@@ -38,6 +40,7 @@ const formSchema = z
     });
 
 const SignUpForm = () => {
+    const [loading, setLoading] = useState(false)
     const router = useRouter();
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -50,6 +53,7 @@ const SignUpForm = () => {
     });
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        setLoading(true)
         const response = await fetch("/api/user", {
             method: "Post",
             headers: {
@@ -62,101 +66,113 @@ const SignUpForm = () => {
             }),
         });
         if (response.ok) {
+            setLoading(false);
             router.push("/sign-in");
         } else {
             console.log("Registration Failed");
         }
     };
     return (
-        <Form {...form}>
-            <form
-                onSubmit={form.handleSubmit(onSubmit)}
-                className="mx-auto my-20 w-full space-y-8 rounded-md border-black bg-white p-4 capitalize shadow-md md:w-1/3">
-                <FormField
-                    control={form.control}
-                    name="username"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>username</FormLabel>
-                            <FormControl>
-                                <Input placeholder="username" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                                <Input
-                                    type="email"
-                                    placeholder="Please enter your email address"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="password"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Password</FormLabel>
-                            <FormControl>
-                                <Input
-                                    type="password"
-                                    placeholder="Enter Your Passord"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="confirmPassword"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Confirm Password</FormLabel>
-                            <FormControl>
-                                <Input
-                                    type="password"
-                                    placeholder="Confirm Your Passord"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <Button
-                    type="submit"
-                    size={"sm"}
-                    variant="default"
-                    className="w-full">
-                    Sign Up
-                </Button>
-                <div className="mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block  after:h-px after:flex-grow after:bg-stone-400">
-                    or
-                </div>
-                <GoogleSignInButton>Sign up with Google</GoogleSignInButton>
-                <p className="text-center text-gray-600">
-                    If you don&apos;t have an account, please&nbsp;.
-                    <Link
-                        className="inline text-blue-500 hover:underline"
-                        href="/sign-in">
-                        Sign up
-                    </Link>
-                </p>
-            </form>
-        </Form>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="mx-auto my-20 w-full space-y-8 rounded-md border-black bg-white p-4 capitalize shadow-md md:w-1/3"
+        >
+          <FormField
+            control={form.control}
+            name="username"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>username</FormLabel>
+                <FormControl>
+                  <Input placeholder="username" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    type="email"
+                    placeholder="Please enter your email address"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Enter Your Passord"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Confirm Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="Confirm Your Passord"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            type="submit"
+            size={"sm"}
+            variant="default"
+            className="w-full"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <span>Loading...</span>
+              </>
+            ) : (
+              "Sign Up"
+            )}
+          </Button>
+          <div className="mx-auto my-4 flex w-full items-center justify-evenly before:mr-4 before:block before:h-px before:flex-grow before:bg-stone-400 after:ml-4 after:block  after:h-px after:flex-grow after:bg-stone-400">
+            or
+          </div>
+          <GoogleSignInButton>Sign up with Google</GoogleSignInButton>
+          <p className="text-center text-gray-600">
+            If you don&apos;t have an account, please&nbsp;.
+            <Link
+              className="inline text-blue-500 hover:underline"
+              href="/sign-in"
+            >
+              Sign up
+            </Link>
+          </p>
+        </form>
+      </Form>
     );
 };
 

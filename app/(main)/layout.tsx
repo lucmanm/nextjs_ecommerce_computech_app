@@ -7,6 +7,7 @@ import BottomNavigation from "@/components/BottomNavigation";
 
 // const inter = Inter({ subsets: ['latin'] })
 
+
 export const metadata = {
     title: "CompuTech",
     description:
@@ -18,6 +19,7 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
+
     return (
       <main>
         <Header />

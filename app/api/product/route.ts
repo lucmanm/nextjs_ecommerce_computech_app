@@ -1,6 +1,5 @@
-import { db, prisma } from "@/lib/db";
+import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
-
 
 export const GET = async (req: Request, res: NextResponse) => {
   try {
@@ -13,7 +12,6 @@ export const GET = async (req: Request, res: NextResponse) => {
     );
   }
 };
-
 
 export async function POST(req: Request) {
   try {
@@ -30,6 +28,7 @@ export async function POST(req: Request) {
         { status: 409 }
       );
     }
+
     const createProduct = await db.product.create({
       data: {
         model,
@@ -41,6 +40,7 @@ export async function POST(req: Request) {
         categoryId,
       },
     });
+
     return NextResponse.json(
       { message: "Product Succesfully Created" },
       { status: 200 }

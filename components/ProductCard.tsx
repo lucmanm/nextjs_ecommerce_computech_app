@@ -16,7 +16,7 @@ interface CarProductProps {
 
 const ProductCard = ({ products }: CarProductProps) => {
     return (
-        <div className="flex flex-wrap gap-x-2 gap-y-2">
+        <div className="flex flex-wrap gap-x-2">
             {products?.map((product) => (
                 <div
                     key={product.id}

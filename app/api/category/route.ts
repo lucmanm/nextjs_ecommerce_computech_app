@@ -1,29 +1,27 @@
-import { db } from "@/lib/db";
+import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 
-
 export const GET = async (req: Request, res: NextResponse) => {
-  try {
-    const productCategory = await db.category.findMany();
-    return NextResponse.json(
-      { message: "success", productCategory },
-      { status: 200 }
-    );
-  } catch (error) {
-    return NextResponse.json(
-      { message: "fetching cetegory Error", error },
-      { status: 500 }
-    );
-  }
+    try {
+        const productCategory = await prisma.category.findMany();
+        return NextResponse.json(
+            { message: "success", productCategory },
+            { status: 200 }
+        );
+    } catch (error) {
+        return NextResponse.json(
+            { message: "fetching cetegory Error", error },
+            { status: 500 }
+        );
+    }
 };
-
 
 export async function POST(req: Request) {
     try {
         const body = await req.json();
         const { name } = body;
 
-        const checkbCategoryName = await db.category.findFirst({
+        const checkbCategoryName = await prisma.category.findFirst({
             where: { name: name },
         });
         if (checkbCategoryName) {
@@ -33,7 +31,7 @@ export async function POST(req: Request) {
             });
         }
 
-        const createCategory = await db.category.create({
+        const createCategory = await prisma.category.create({
             data: { name },
         });
         return NextResponse.json({

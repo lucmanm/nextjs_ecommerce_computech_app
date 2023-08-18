@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import { z } from "zod";
@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
         const { username, email, password } = userSchema.parse(body);
 
-        const existingUserByEmail = await db.user.findUnique({
+        const existingUserByEmail = await prisma.user.findUnique({
             where: { email: email },
         });
         if (existingUserByEmail) {
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
             );
         }
 
-        const existingUserByUsername = await db.user.findUnique({
+        const existingUserByUsername = await prisma.user.findUnique({
             where: { username: username },
         });
         if (existingUserByUsername) {
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
 
         const hashedPassword = await hash(password, 10);
 
-        const newUser = await db.user.create({
+        const newUser = await prisma.user.create({
             data: {
                 username,
                 email,

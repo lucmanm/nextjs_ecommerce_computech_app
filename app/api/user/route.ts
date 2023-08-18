@@ -1,7 +1,7 @@
-import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { hash } from "bcrypt";
 import { z } from "zod";
+import { prisma } from "@/lib/db";
 
 const userSchema = z.object({
     username: z.string().min(1, "Username is required").max(50),

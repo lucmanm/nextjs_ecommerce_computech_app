@@ -6,6 +6,7 @@ import React from "react";
 
 
 
+export const revaldiate = 0
 
 export default async function ShopPage() {
 

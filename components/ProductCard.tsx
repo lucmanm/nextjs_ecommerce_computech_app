@@ -36,16 +36,16 @@ const ProductCard = ({ products }: CarProductProps) => {
                     </div>
                     <div className="flex">
                         <div className="flex">
-                            <span className="tb:p-0.5 tb:text-lg inline-block self-end pb-1 pr-1 text-xs font-medium">
+                            {/* <span className="tb:p-0.5 tb:text-lg inline-block self-end pb-1 pr-1 text-xs font-medium">
                                 SR
                             </span>
                             <h2 className="leading-0 self-end p-0 font-semibold text-blue-950">
                                 0,000
-                            </h2>
+                            </h2> */}
                         </div>
-                        <span className="tb:p-0.5 tb:text-lg inline-block self-end pb-1 pl-1 text-xs font-medium text-red-500 line-through">
+                        {/* <span className="tb:p-0.5 tb:text-lg inline-block self-end pb-1 pl-1 text-xs font-medium text-red-500 line-through">
                             SR 0,000
-                        </span>
+                        </span> */}
                     </div>
                     <div className="">
                         <div className="mx-auto flex justify-evenly">

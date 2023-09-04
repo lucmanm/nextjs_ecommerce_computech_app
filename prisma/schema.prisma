@@ -8,12 +8,12 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
   username  String   @unique
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  id        String   @id @default(uuid())
 }
 
 model Category {
@@ -35,10 +35,10 @@ model Product {
   model       String
   salePrice   Float
   stock       Int
-  brand       Brand    @relation(fields: [brandId], references: [id])
   brandId     Int
-  category    Category @relation(fields: [categoryId], references: [id])
   categoryId  Int
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  brand       Brand    @relation(fields: [brandId], references: [id])
+  category    Category @relation(fields: [categoryId], references: [id])
 }

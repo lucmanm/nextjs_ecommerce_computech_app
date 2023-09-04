@@ -4,7 +4,7 @@ import SearchInput from "@/components/SearchInput";
 import Image from "next/image";
 import { logoUrl } from "@/lib/constant";
 import Link from "next/link";
-import { getProductCategory } from "@/lib/get/getCategory";
+import { getProductCategory } from "@/lib/actions/getCategory";
 
 const Header = async () => {
     const productCategories = await getProductCategory();

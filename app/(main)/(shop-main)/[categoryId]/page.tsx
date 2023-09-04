@@ -1,19 +1,19 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import Container from "@/components/Container";
 import ProductCard from "@/components/ProductCard";
-import { getProductCategoryslug } from "@/lib/get/getCategory";
+import { getProductCategoryslug } from "@/lib/actions/getCategory";
 import React from "react";
 
 interface CategoryPageProps {
     params: {
-        categoryslug: string;
+        categoryId: string;
     };
 }
 
 const CategoryPage = async ({
-    params: { categoryslug },
+    params: { categoryId },
 }: CategoryPageProps) => {
-    const productByCategory = await getProductCategoryslug(categoryslug);
+    const productByCategory = await getProductCategoryslug(categoryId);
     return (
         <Container>
             <Breadcrumb />

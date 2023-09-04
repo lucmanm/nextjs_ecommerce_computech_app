@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 
 export async function GET(
     request: Request,
-    { params }: { params: { categoryslug: string } }
+    { params }: { params: { categoryId: string } }
 ) {
-    const categorySlug = parseInt(params.categoryslug);
+    const categorySlug = parseInt(params.categoryId);
     try {
         const productCategory = await prisma.product.findMany({
             where: { categoryId: categorySlug },

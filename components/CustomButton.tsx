@@ -6,7 +6,7 @@ interface CustomButtonProps {
   icon?: string;
   title?: string;
   customButtonStyle?: string;
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
 const CustomButton = ({

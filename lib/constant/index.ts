@@ -185,6 +185,22 @@ export const dashboardSidebar = [
             },
         ],
     },
+    {
+        title: "Banners",
+        links: [
+            {
+                name: "Slider",
+                icon: "/default/brand.svg",
+                url: "/dashboard/sliders",
+            },
+            {
+                name: "Banners",
+                icon: "/default/brand.svg",
+                url: "/dashboard/banner",
+            },
+
+        ],
+    },
 ];
 
 // Settings

@@ -1,4 +1,4 @@
-import Navigation from "@/components/admin/Navigation";
+import Navigation from "@/app/(admin)/components/Navigation";
 import Sidebar from "@/app/(admin)/components/Sidebar";
 
 const OrdersPage = () => {

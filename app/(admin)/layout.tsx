@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import Sidebar from "@/app/(admin)/components/Sidebar";
-import Navigation from "@/components/admin/Navigation";
+import Navigation from "@/app/(admin)/components/Navigation";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";

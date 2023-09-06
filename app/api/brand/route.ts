@@ -17,8 +17,6 @@ export const GET = async (req: Request, res: NextResponse) => {
 const brandSchema = z.object({
   brand: z
     .string().toLowerCase()
-    .min(1, "Please enter brand name.")
-    .max(20, "Enter Maximum input"),
 });
 
 export async function POST(req: Request) {

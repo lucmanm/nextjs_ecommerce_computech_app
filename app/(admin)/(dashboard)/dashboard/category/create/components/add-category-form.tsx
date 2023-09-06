@@ -13,39 +13,39 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
-  brand: z
+  category: z
     .string()
     .min(1, "Please enter brand name.")
     .max(20, "Enter Maximum input"),
 });
 
-export const AddBrandForm = () => {
+export const AddCategoryForm = () => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      brand: "",
+      category: "",
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setLoading(true);
 
-    const response = await fetch("/api/brand", {
+    const response = await fetch("/api/category", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify({
-        brand: values.brand,
+        category: values.category,
       }),
     });
 
@@ -72,12 +72,12 @@ export const AddBrandForm = () => {
       >
         <FormField
           control={form.control}
-          name="brand"
+          name="category"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Brand Name</FormLabel>
+              <FormLabel>Category Name</FormLabel>
               <FormControl>
-                <Input placeholder="Brand" {...field} />
+                <Input placeholder="Category" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -4,9 +4,9 @@ import { z } from "zod";
 
 export const GET = async (req: Request) => {
     try {
-        const productCategories = await prisma.category.findMany();
+        const categories = await prisma.category.findMany();
         return NextResponse.json(
-            { message: "success", productCategories },
+            { message: "success", categories },
             { status: 201 }
         );
     } catch (error) {
@@ -17,11 +17,12 @@ export const GET = async (req: Request) => {
     }
 };
 
-const categorySchema = z.object({
-    category: z.string().toLowerCase()
-})
+
 
 export async function POST(req: Request) {
+    const categorySchema = z.object({
+        category: z.string().toLowerCase()
+    })
     try {
         const body = await req.json();
         const { category } = categorySchema.parse(body);

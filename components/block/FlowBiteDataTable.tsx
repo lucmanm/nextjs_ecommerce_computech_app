@@ -17,7 +17,6 @@ interface ProductsProps {
 }
 
 const FlowBiteDataTable: React.FC<ProductsProps> = ({ products }) => {
-  console.log(products);
   return (
     <div className="relative mt-2 overflow-x-auto sm:rounded-lg">
       <div className="flex items-center justify-between bg-white p-6 pb-4 dark:bg-gray-900">

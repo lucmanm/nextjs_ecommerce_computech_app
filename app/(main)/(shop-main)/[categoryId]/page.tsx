@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/Breadcrumb";
-import Container from "@/components/Container";
+import Container from "@/app/(admin)/components/Container";
 import ProductCard from "@/components/ProductCard";
 import { getProductCategoryslug } from "@/lib/actions/getCategory";
 import React from "react";

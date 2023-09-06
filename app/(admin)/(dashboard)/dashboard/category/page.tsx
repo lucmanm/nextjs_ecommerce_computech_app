@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/app/(admin)/components/Container";
 import React from "react";
 
 const CategoryPage = () => {

@@ -1,5 +1,4 @@
-import Container from "@/components/Container";
-import Title from "@/components/Title";
+import Container from "@/app/(admin)/components/Container";
 import FlowBiteDataTable from "@/components/block/FlowBiteDataTable";
 import { prisma } from "@/lib/db";
 import React from "react";
@@ -15,7 +14,7 @@ const ProductList = async () => {
   const products = await prisma.product.findMany();
 
   return (
-    <Container title="Products">
+    <Container title="Products" description="You can Mage add product here" btntype="create">
       <FlowBiteDataTable products={products} />
     </Container>
   );

@@ -1,11 +1,10 @@
-import Container from "@/components/Container";
-import Title from "@/components/Title";
+import Container from "@/app/(admin)/components/Container";
 import React from "react";
 
 const SliderPage = () => {
     return (
-        <Container title="Sliders">
-            Body of the data
+        <Container title="Sliders (0)" description="Manage your sliders" btntype="create">
+            Slider PAge
         </Container>
     );
 };

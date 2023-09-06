@@ -1,4 +1,4 @@
-import Container from "@/components/Container";
+import Container from "@/app/(admin)/components/Container";
 import { prisma } from "@/lib/db";
 import ProductForm from "./components/ProductForm";
 

@@ -15,18 +15,30 @@ import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 
 import { Loader } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
+import { Slider } from "@prisma/client";
+import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
-  label: z
-    .string()
-    .min(1, "Please enter label")
+  label: z.string().min(1, "Please enter label"),
+  imageUrl: z.string().min(1, "Pleast upload image"),
 });
 
-export const SliderForm = () => {
+interface SliderFormProps {
+  initialData: Slider[] | null;
+}
+
+export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+
+  const title = initialData ? "Edit Slider" : "Create Slider";
+  const description = initialData ? "Edit a Slider" : "Create a new Slider";
+  const toastMessage = initialData
+    ? "Slider updated successfully?"
+    : "Created successfully Slider";
+  const action = !initialData ? "Save Changes" : "Create";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -36,9 +48,10 @@ export const SliderForm = () => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+
+    //https://youtu.be/5miHyP6lExg?t=15092
     setLoading(true);
 
-  
     const response = await fetch("/api/category", {
       method: "POST",
       headers: {
@@ -46,6 +59,7 @@ export const SliderForm = () => {
       },
       body: JSON.stringify({
         label: values.label,
+        imageUrl: values.imageUrl,
       }),
     });
 
@@ -72,6 +86,24 @@ export const SliderForm = () => {
       >
         <FormField
           control={form.control}
+          name="imageUrl"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Slider Image</FormLabel>
+              <FormControl>
+                <ImageUpload
+                  value={field.value ? [field.value] : []}
+                  disabled={loading}
+                  onChange={(url) => field.onChange(url)}
+                  onRemove={() => field.onChange("")}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="label"
           render={({ field }) => (
             <FormItem>
@@ -96,7 +128,7 @@ export const SliderForm = () => {
               Please Wait....
             </>
           ) : (
-            "Save"
+            action
           )}
         </Button>
       </form>

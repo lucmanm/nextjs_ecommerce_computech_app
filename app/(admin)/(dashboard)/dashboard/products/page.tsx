@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import Title from "@/components/Title";
 import FlowBiteDataTable from "@/components/block/FlowBiteDataTable";
+import { prisma } from "@/lib/db";
 import React from "react";
 
 async function fetchProducts() {
@@ -10,7 +11,8 @@ async function fetchProducts() {
 }
 
 const ProductList = async () => {
-  const products = await fetchProducts();
+  // const products = await fetchProducts();
+  const products = await prisma.product.findMany();
 
   return (
     <Container title="Products">

@@ -1,18 +1,23 @@
+import { Product } from "@prisma/client";
 import { ArrowDownCircle, Search } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 interface productsListProps {
   id: number;
   model: string;
-  description: string
+  description: string;
 }
 
 interface productProps {
   products: productsListProps[];
 }
-const FlowBiteDataTable = ({ products }: productProps) => {
 
+interface ProductsProps {
+  products: Product[];
+}
 
+const FlowBiteDataTable: React.FC<ProductsProps> = ({ products }) => {
+  console.log(products);
   return (
     <div className="relative mt-2 overflow-x-auto sm:rounded-lg">
       <div className="flex items-center justify-between bg-white p-6 pb-4 dark:bg-gray-900">
@@ -26,7 +31,6 @@ const FlowBiteDataTable = ({ products }: productProps) => {
             <span className="sr-only">Action button</span>
             Action
             <ArrowDownCircle className="ml-2.5 h-3 w-3" />
-          
           </button>
           <div
             id="dropdownAction"

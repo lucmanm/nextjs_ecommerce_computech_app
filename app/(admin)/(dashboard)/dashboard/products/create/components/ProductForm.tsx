@@ -16,7 +16,9 @@ import { useRouter } from "next/navigation";
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "../../../../../../../components/ui/select";
@@ -147,29 +149,32 @@ const ProductForm: React.FC<ProductFormProps> = ({ categories, brands }) => {
 
         <FormField
           control={form.control}
-          name="categoryId"
+          name="brandId"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Category</FormLabel>
+              <FormLabel>Brand</FormLabel>
               <Select
                 disabled={loading}
                 onValueChange={field.onChange}
                 defaultValue={field.value}
               >
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger className="text-black">
                     <SelectValue
                       defaultValue={field.value}
-                      placeholder="Select Category"
+                      placeholder="Select Brand"
                     />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {brands.map(({ id, brand }) => (
-                    <SelectItem key={id} value={id}>
-                      <span className="capitalize">{brand}</span>
-                    </SelectItem>
-                  ))}
+                  <SelectGroup>
+                    <SelectLabel>Select Brand</SelectLabel>
+                    {brands.map(({ id, brand }) => (
+                      <SelectItem key={id} value={id}>
+                        <span className="capitalize">{brand}</span>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -197,11 +202,14 @@ const ProductForm: React.FC<ProductFormProps> = ({ categories, brands }) => {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  {categories.map(({ category, id }) => (
-                    <SelectItem key={id} value={id}>
-                      <span className="capitalize">{category}</span>
-                    </SelectItem>
-                  ))}
+                  <SelectGroup>
+                    <SelectLabel>Select Category</SelectLabel>
+                    {categories.map(({ category, id }) => (
+                      <SelectItem key={id} value={id}>
+                        <span className="capitalize">{category}</span>
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
                 </SelectContent>
               </Select>
               <FormMessage />

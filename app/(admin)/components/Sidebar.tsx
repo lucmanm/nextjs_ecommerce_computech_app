@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { dashboardSidebar } from "@/lib/constant";
 import CustomButton from "../../../components/CustomButton";
 import { usePathname } from "next/navigation";
 import {
@@ -24,14 +23,14 @@ const SideBarLabels = [
     title: "Products",
     links: [
       {
-        name: "Product List",
+        name: "Products",
         icon: <LayoutDashboard />,
-        url: "/dashboard/product-list",
+        url: "/dashboard/products",
       },
       {
         name: "Create Product",
         icon: <BadgePlus />,
-        url: "/dashboard/product-list/create",
+        url: "/dashboard/products/create",
       },
     ],
   },
@@ -41,12 +40,12 @@ const SideBarLabels = [
       {
         name: "Category List",
         icon: <SquareStack />,
-        url: "/dashboard/category-list",
+        url: "/dashboard/category",
       },
       {
         name: "Create Category",
         icon: <BadgePlus />,
-        url: "/dashboard/category-list/create",
+        url: "/dashboard/category/create",
       },
     ],
   },
@@ -55,14 +54,14 @@ const SideBarLabels = [
     title: "Brands",
     links: [
       {
-        name: "Brand List",
+        name: "Brands",
         icon: <Trello />,
-        url: "/dashboard/brand-list",
+        url: "/dashboard/brand",
       },
       {
         name: "Create Brand",
         icon: <BadgePlus />,
-        url: "/dashboard/brand-list/create",
+        url: "/dashboard/brand/create",
       },
     ],
   },
@@ -77,7 +76,7 @@ const SideBarLabels = [
       {
         name: "Banners",
         icon: <Clapperboard />,
-        url: "/dashboard/banner",
+        url: "/dashboard/banners",
       },
     ],
   },
@@ -97,7 +96,7 @@ const Sidebar = () => {
     >
       {/* SideBar header Menu */}
       <div className="flex items-center justify-between border-black py-2 pr-1">
-        <Link href="/" onClick={() => {}}>
+        <Link href="http://localhost:3000/dashboard" onClick={() => {}}>
           <Image
             src={`/computech-landscape-logo.png`}
             alt="computech logo"
@@ -118,7 +117,11 @@ const Sidebar = () => {
         {/* Sidebar Menu Pages*/}
         {SideBarLabels.map((link) => (
           <div key={link.title} className="space-y-2">
-            <p className={`rounded px-2 py-2 font-semibold uppercase text-blue-950 ${isOpen && "hidden"}`}>
+            <p
+              className={`rounded px-2 py-2 font-semibold uppercase text-blue-950 ${
+                isOpen && "hidden"
+              }`}
+            >
               {link.title}
             </p>
             {/* Sub Category pages. */}
@@ -126,14 +129,18 @@ const Sidebar = () => {
               <Link
                 key={link.name}
                 href={`${link.url}`}
-                className={`flex items-center gap-2 rounded-md  font-light capitalize truncate py-2 pl-3 ${
+                className={`flex items-center gap-2 truncate  rounded-md py-2 pl-3 font-light capitalize ${
                   pathname === link.url
                     ? " bg-blue-950 text-white"
                     : " hover:bg-blue-600 hover:text-white"
                 }`}
               >
-                <div >{link.icon}</div>
-                <span className={`capatilize font-medium ${isOpen && "hidden"}`}>{link.name}</span>
+                <div>{link.icon}</div>
+                <span
+                  className={`capatilize font-medium ${isOpen && "hidden"}`}
+                >
+                  {link.name}
+                </span>
               </Link>
             ))}
           </div>

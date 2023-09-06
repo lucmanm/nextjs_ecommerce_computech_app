@@ -1,11 +1,16 @@
 import React from "react";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
+import Container from "@/components/Container";
 
 const adminDashboard = async () => {
   const session = await getServerSession(authOptions);
   if (session?.user) {
-    return <div>Welcome {session?.user.username}</div>;
+    return (
+      <Container title="Dashboard">
+        <h2> Welcome:{session?.user.username}</h2>
+      </Container>
+    );
   }
 };
 

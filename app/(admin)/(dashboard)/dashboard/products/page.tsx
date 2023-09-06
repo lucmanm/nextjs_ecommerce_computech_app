@@ -11,10 +11,9 @@ async function fetchProducts() {
 
 const ProductList = async () => {
   const products = await fetchProducts();
-  
+
   return (
-    <Container>
-      <Title>Products</Title>
+    <Container title="Products">
       <FlowBiteDataTable products={products} />
     </Container>
   );

@@ -1,10 +1,11 @@
 import Container from "@/components/Container";
+import Title from "@/components/Title";
 import React from "react";
 
 const SliderPage = () => {
     return (
-        <Container>
-            Slider Page
+        <Container title="Sliders">
+            Body of the data
         </Container>
     );
 };

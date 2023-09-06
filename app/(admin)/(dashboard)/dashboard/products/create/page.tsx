@@ -5,12 +5,11 @@ import AddProductForm from "@/components/block/AddProductForm";
 import React from "react";
 
 const CreateProduct = () => {
-    return (
-        <Container>
-            <Title>Add Product</Title>
-            <AddProductForm/>
-        </Container>
-    );
+  return (
+    <Container title="Add Product">
+      <AddProductForm />
+    </Container>
+  );
 };
 
 export default CreateProduct;

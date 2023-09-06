@@ -1,7 +1,7 @@
-import React from "react";
+import Container from "@/components/Container";
 
-const BrandPage = () => {
-    return <div>BrandPage</div>;
+const BrandsPage = () => {
+  return <Container title="Brands">List Brand</Container>;
 };
 
-export default BrandPage;
+export default BrandsPage;

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { z } from "zod";
 
 export const GET = async (req: Request, res: NextResponse) => {
     try {
@@ -16,6 +17,17 @@ export const GET = async (req: Request, res: NextResponse) => {
     }
 };
 
+
+const productFormschema = z.object({
+    model: z.string(),
+    description: z.string(),
+    price: z.number(),
+    salePrice: z.number(),
+    stock: z.number(),
+    brandId: z.string(),
+    categoryId: z.string(),
+})
+
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -27,10 +39,17 @@ export async function POST(req: Request) {
             stock,
             brandId,
             categoryId,
-        } = body;
+        } = productFormschema.parse(body);
+        console.log(model,
+            description,
+            price,
+            salePrice,
+            stock,
+            brandId,
+            categoryId,);
 
         const checkModel = await prisma.product.findFirst({
-            where: { model: model },
+            where: { model },
         });
         if (checkModel) {
             return NextResponse.json(
@@ -52,10 +71,12 @@ export async function POST(req: Request) {
         });
 
         return NextResponse.json(
-            { message: "Product Succesfully Created" },
+            { createProduct, message: "Product Succesfully Created" },
             { status: 200 }
         );
     } catch (error) {
+        console.log("PRODUCT_ERROR", error);
+
         return NextResponse.json(
             { message: "Something went wrong" },
             { status: 500 }

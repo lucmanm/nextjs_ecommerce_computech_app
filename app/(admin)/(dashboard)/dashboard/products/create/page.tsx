@@ -1,13 +1,14 @@
 import Container from "@/components/Container";
-import Title from "@/components/Title";
-import AddProductForm from "@/components/block/AddProductForm";
+import { prisma } from "@/lib/db";
+import ProductForm from "./components/ProductForm";
 
-import React from "react";
+const CreateProduct = async () => {
+  const categories = await prisma.category.findMany();
+  const brands = await prisma.brand.findMany();
 
-const CreateProduct = () => {
   return (
     <Container title="Add Product">
-      <AddProductForm />
+      <ProductForm categories={categories} brands={brands} />
     </Container>
   );
 };

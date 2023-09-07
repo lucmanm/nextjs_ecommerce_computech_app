@@ -2,9 +2,14 @@
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";
 import "@splidejs/react-splide/css";
-import { sliderImages } from "@/lib/constant";
+import { SliderProps } from "@/types/table-types";
 
-const CarouselSlider = () => {
+interface CarouselSliderProps{
+    sliderData: SliderProps[]
+}
+
+
+const CarouselSlider: React.FC<CarouselSliderProps> = ({sliderData}) => {
     return (
         <Splide
             hasTrack={false}
@@ -19,7 +24,17 @@ const CarouselSlider = () => {
             className="overflow-hidden rounded-md bg-white dt:container tb:rounded-xl"
             aria-label="slider ">
             <SplideTrack>
-                {sliderImages.map(({ title, url }) => (
+                {sliderData.map(({  label, imageUrl}) => (
+                    <SplideSlide key={imageUrl}>
+                        <Image
+                            src={imageUrl}
+                            width={1280}
+                            height={100}
+                            alt={label}
+                        />
+                    </SplideSlide>
+                ))}
+                {/* {sliderImages.map(({ title, url }) => (
                     <SplideSlide key={url}>
                         <Image
                             src={url}
@@ -28,7 +43,7 @@ const CarouselSlider = () => {
                             alt={title}
                         />
                     </SplideSlide>
-                ))}
+                ))} */}
             </SplideTrack>
 
             <div className="splide__progress">

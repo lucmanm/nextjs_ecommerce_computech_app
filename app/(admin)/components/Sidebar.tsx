@@ -7,12 +7,14 @@ import CustomButton from "../../../components/CustomButton";
 import { usePathname } from "next/navigation";
 import {
   BadgePlus,
+  ChevronLeftCircle,
   Clapperboard,
   LayoutDashboard,
   Projector,
   SquareStack,
   Trello,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const SideBarLabels = [
   {
@@ -90,13 +92,16 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`relative h-screen transform space-y-8 overflow-hidden bg-white  shadow-sm ${
-        isOpen ? "w-14 transform p-1" : "w-56 p-2"
+      className={`relative h-screen  space-y-8 overflow-hidden bg-white  shadow-sm ${
+        isOpen ? "w-14 p-1 transition" : "w-56 p-2"
       } `}
     >
       {/* SideBar header Menu */}
-      <div className="flex items-center justify-between border-black py-2 pr-1">
-        <Link href="http://localhost:3000/dashboard" onClick={() => {}}>
+      <div className="flex items-center justify-between border-black p-2">
+        <Link
+          href="http://localhost:3000/dashboard"
+          className={`${isOpen && "hidden"}`}
+        >
           <Image
             src={`/computech-landscape-logo.png`}
             alt="computech logo"
@@ -104,14 +109,22 @@ const Sidebar = () => {
             width={110}
           />
         </Link>
-        <CustomButton btnType="button" clickHandler={clickHandler}>
+        <Button
+          className={`rounded-full ${isOpen ? "rotate-180 transition" : ""}`}
+          variant="ghost"
+          onClick={clickHandler}
+          size="icon"
+        >
+          <ChevronLeftCircle />
+        </Button>
+        {/* <CustomButton btnType="button" clickHandler={clickHandler}>
           <Image
             src={`/default/burger.svg`}
             alt="burger menu"
             height={24}
             width={24}
           />
-        </CustomButton>
+        </CustomButton> */}
       </div>
       <div>
         {/* Sidebar Menu Pages*/}

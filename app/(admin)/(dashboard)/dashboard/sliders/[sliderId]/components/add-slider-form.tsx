@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useRouter } from "next/navigation";
+import { redirect, useParams, useRouter } from "next/navigation";
 
 import { Loader } from "lucide-react";
 import React, { useState } from "react";
@@ -26,10 +26,13 @@ const formSchema = z.object({
 });
 
 interface SliderFormProps {
-  initialData: Slider[] | null;
+  initialData: Slider | null;
 }
 
 export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
+  const params = useParams();
+  const router = useRouter();
+
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -38,7 +41,7 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
   const toastMessage = initialData
     ? "Slider updated successfully?"
     : "Created successfully Slider";
-  const action = !initialData ? "Save Changes" : "Create";
+  const action = initialData ? "Save Changes" : "Create";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,32 +51,47 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-
     //https://youtu.be/5miHyP6lExg?t=15092
-    setLoading(true);
-
-    const response = await fetch("/api/category", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        label: values.label,
-        imageUrl: values.imageUrl,
-      }),
-    });
-
-    if (response.ok) {
-      setLoading(false);
+    try {
+      setLoading(true);
+      if (initialData) {
+        // const response = await fetch(`/api/sliders/${params.sliderId}`, {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-type": "application/json",
+        //   },
+        //   body: JSON.stringify({
+        //     label: values.label,
+        //     imageUrl: values.imageUrl,
+        //   }),
+        // });
+        console.log("You are in if statement");
+      } else {
+        const response = await fetch(`/api/sliders`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            label: values.label,
+            imageUrl: values.imageUrl,
+          }),
+        });
+        if (response.ok) {
+          toast({
+            description: toastMessage,
+            variant: "success",
+          });
+          router.refresh();
+          redirect("/dashboard/sliders");
+        }
+      }
+    } catch (error) {
       toast({
-        description: "Slider Successfully Created",
-        variant: "success",
-      });
-    } else {
-      toast({
-        description: "Slider label exist",
+        description: `[ERROR_SLIDER], Something Went Wong: ${error}`,
         variant: "destructive",
       });
+    } finally {
       setLoading(false);
     }
   };

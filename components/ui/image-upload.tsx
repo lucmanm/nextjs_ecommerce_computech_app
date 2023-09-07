@@ -39,9 +39,9 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         {value.map((url) => (
           <div
             key={url}
-            className="relative h-[200px] w-[200px] overflow-hidden rounded-md"
+            className="relative h-[200px] w-[400px] overflow-hidden rounded-md"
           >
-            <div className="absolute top-2 z-10 right-2">
+            <div className="absolute right-2 top-2 z-10">
               <Button
                 type="button"
                 onClick={() => onRemove(url)}

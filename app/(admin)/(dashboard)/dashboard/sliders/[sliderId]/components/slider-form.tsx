@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { useParams, useRouter } from "next/navigation";
 
 import { Loader } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Slider } from "@prisma/client";
 import ImageUpload from "@/components/ui/image-upload";
@@ -26,12 +26,13 @@ const formSchema = z.object({
   imageUrl: z.string().min(1, "Pleast upload image"),
 });
 
+
 interface SliderFormProps {
   initialData: Slider | null;
 }
 
 export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
-  console.log(initialData);
+
 
   const params = useParams();
   const router = useRouter();
@@ -41,15 +42,14 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
 
   const title = initialData ? "Edit Slider" : "Create Slider";
   const description = initialData ? "Edit a Slider" : "Create a new Slider";
-  const toastMessage = initialData
-    ? "Slider updated successfully?"
-    : "Created successfully Slider";
+  const toastMessage = initialData ? "Slider updated successfully?" : "Created successfully Slider";
   const action = initialData ? "Save Changes" : "Create";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
+    defaultValues: initialData || {
       label: "",
+      imageUrl:"",
     },
   });
 
@@ -67,7 +67,6 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
             imageUrl: values.imageUrl,
           }),
         });
-        console.log("You are in if statement");
       } else {
         const response = await fetch(`/api/sliders`, {
           method: "POST",

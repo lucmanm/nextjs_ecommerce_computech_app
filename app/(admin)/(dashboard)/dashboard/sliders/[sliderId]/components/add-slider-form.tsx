@@ -83,7 +83,7 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
             variant: "success",
           });
           router.refresh();
-          redirect("/dashboard/sliders");
+          router.push("/dashboard/sliders");
         }
       }
     } catch (error) {

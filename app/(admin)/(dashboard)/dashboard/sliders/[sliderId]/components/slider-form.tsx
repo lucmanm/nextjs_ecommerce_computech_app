@@ -58,7 +58,7 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
       setLoading(true);
       if (initialData) {
         const response = await fetch(`/api/sliders/${params.sliderId}`, {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-type": "application/json",
           },
@@ -67,6 +67,14 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
             imageUrl: values.imageUrl,
           }),
         });
+        if (response.ok) {
+          toast({
+            description: toastMessage,
+            variant: "success",
+          });
+          router.refresh();
+          router.push("/dashboard/sliders");
+        }
       } else {
         const response = await fetch(`/api/sliders`, {
           method: "POST",

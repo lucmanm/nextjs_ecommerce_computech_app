@@ -2,7 +2,7 @@
 import React from 'react'
 import { Settings } from '@/lib/constant';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Container from '../app/(admin)/components/Container';
+import Container from '../../../(admin)/components/Container';
 
 const Category = () => {
     const router = useRouter()

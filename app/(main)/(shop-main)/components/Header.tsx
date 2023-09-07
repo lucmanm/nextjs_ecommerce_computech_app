@@ -1,5 +1,5 @@
 import CustomButton from "@/components/CustomButton";
-import DropdownMenu from "@/components/DropdownMenu";
+import DropdownMenu from "@/app/(main)/(shop-main)/components/DropdownMenu";
 import SearchInput from "@/components/SearchInput";
 import Image from "next/image";
 import { logoUrl } from "@/lib/constant";
@@ -33,7 +33,7 @@ const Header = async () => {
                     <div className="">
                         {/* Product Category Menu */}
                         <DropdownMenu
-                            title="Category"
+                            title="All Category"
                             categories={categories}
                         />
                     </div>

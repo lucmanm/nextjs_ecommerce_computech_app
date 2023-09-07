@@ -12,13 +12,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { redirect, useParams, useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import { Loader } from "lucide-react";
 import React, { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Slider } from "@prisma/client";
 import ImageUpload from "@/components/ui/image-upload";
+import Container from "@/app/(admin)/components/Container";
 
 const formSchema = z.object({
   label: z.string().min(1, "Please enter label"),
@@ -51,7 +52,6 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    //https://youtu.be/5miHyP6lExg?t=15092
     try {
       setLoading(true);
       if (initialData) {
@@ -97,59 +97,65 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
-      >
-        <FormField
-          control={form.control}
-          name="imageUrl"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Slider Image</FormLabel>
-              <FormControl>
-                <ImageUpload
-                  value={field.value ? [field.value] : []}
-                  disabled={loading}
-                  onChange={(url) => field.onChange(url)}
-                  onRemove={() => field.onChange("")}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="label"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Slider Label</FormLabel>
-              <FormControl>
-                <Input placeholder="Slider label" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button
-          type="submit"
-          size={"sm"}
-          variant="default"
-          className="w-full"
-          disabled={loading}
+    <Container title={title} description={description}>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
         >
-          {loading ? (
-            <>
-              <Loader className="mr-2 h-4 w-4 animate-spin" />
-              Please Wait....
-            </>
-          ) : (
-            action
-          )}
-        </Button>
-      </form>
-    </Form>
+          <FormField
+            control={form.control}
+            name="imageUrl"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Slider Image</FormLabel>
+                <FormControl>
+                  <ImageUpload
+                    value={field.value ? [field.value] : []}
+                    disabled={loading}
+                    onChange={(url) => field.onChange(url)}
+                    onRemove={() => field.onChange("")}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="label"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Slider Label</FormLabel>
+                <FormControl>
+                  <Input
+                    disabled={loading}
+                    placeholder="Slider label"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            type="submit"
+            size={"sm"}
+            variant="default"
+            className="w-full"
+            disabled={loading}
+          >
+            {loading ? (
+              <>
+                <Loader className="mr-2 h-4 w-4 animate-spin" />
+                Please Wait....
+              </>
+            ) : (
+              action
+            )}
+          </Button>
+        </form>
+      </Form>
+    </Container>
   );
 };

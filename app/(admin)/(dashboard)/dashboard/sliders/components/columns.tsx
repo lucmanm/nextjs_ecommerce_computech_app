@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { z } from "zod";
+import CellAction from "./cell-action";
 
 export type SliderColumnProps = {
   id: string;
@@ -23,5 +23,9 @@ export const columns: ColumnDef<SliderColumnProps>[] = [
   {
     accessorKey: "createdAt",
     header: "Date Created",
+  },
+  {
+    accessorKey: "Action",
+    cell: ({ row }) => <CellAction data={row.original} />,
   },
 ];

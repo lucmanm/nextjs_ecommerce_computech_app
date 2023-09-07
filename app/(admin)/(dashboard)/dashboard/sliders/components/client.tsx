@@ -15,7 +15,7 @@ const ClientSliderTable: React.FC<SliderPageProps> = ({ data }) => {
       description="Manage your sliders"
       btntype="create"
     >
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={data} searchKey="label" />
     </Container>
   );
 };

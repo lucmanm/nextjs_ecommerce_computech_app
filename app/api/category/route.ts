@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-export const GET = async (req: Request) => {
+export async function GET(req: Request) {
     try {
         const categories = await prisma.category.findMany();
         return NextResponse.json(

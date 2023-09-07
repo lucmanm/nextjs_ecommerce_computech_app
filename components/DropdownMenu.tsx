@@ -2,16 +2,16 @@ import Link from "next/link";
 
 interface CategoryProps {
     id: number;
-    name: string;
+    category: string;
 }
 interface DropdownMenuProps {
     title: string;
-    productCategories: CategoryProps[];
+    categories: CategoryProps[];
 }
 
-const DropdownMenu = async ({
+const DropdownMenu = ({
     title,
-    productCategories,
+    categories,
 }: DropdownMenuProps) => {
     return (
         <>
@@ -24,14 +24,14 @@ const DropdownMenu = async ({
                     </div>
                     <div className="hidden group-hover:block group-focus:visible">
                         <div className="absolute top-full flex w-fit flex-col overflow-hidden rounded pt-3 shadow-md">
-                            {productCategories?.map(
-                                ({ id, name }: CategoryProps) => (
+                            {categories?.map(
+                                ({ id, category }: CategoryProps) => (
                                     <Link
                                         key={id}
                                         href={`${id}`}
                                         className="white w-full whitespace-pre border border-b-gray-300 bg-gray-200 px-2 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black">
                                         <span className="capitalize">
-                                            {name}
+                                            {category}
                                         </span>
                                     </Link>
                                 )

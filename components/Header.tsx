@@ -7,10 +7,9 @@ import Link from "next/link";
 import { getProductCategory } from "@/lib/actions/getCategory";
 
 const Header = async () => {
-    const productCategories = await getProductCategory();
+    const categories = await getProductCategory();
 
     // Destructuring ArrafetchProductsy of Logo
-
     const [, { title, url }] = logoUrl;
 
     return (
@@ -35,7 +34,7 @@ const Header = async () => {
                         {/* Product Category Menu */}
                         <DropdownMenu
                             title="Category"
-                            productCategories={productCategories}
+                            categories={categories}
                         />
                     </div>
                     {/* Brands Menu */}

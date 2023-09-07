@@ -6,7 +6,7 @@ interface SliderProps {
   };
 }
 const CreateSliderPage: React.FC<SliderProps> = async ({ params }) => {
-  const sliders = await prisma.slider.findUnique({
+  const sliders = await prisma.slider.findFirst({
     where: {
       id: params.sliderId,
     },

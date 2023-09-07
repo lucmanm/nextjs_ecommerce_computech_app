@@ -2,13 +2,14 @@ import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(
-    request: Request,
+    req: Request,
     { params }: { params: { categoryId: string } }
 ) {
-    const categorySlug = parseInt(params.categoryId);
+    
     try {
+        const categoryId = params.categoryId;
         const productCategory = await prisma.product.findMany({
-            where: { categoryId: categorySlug },
+            where: { id: categoryId },
         });
         return NextResponse.json(
             { message: "success", productCategory },

@@ -31,6 +31,8 @@ interface SliderFormProps {
 }
 
 export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
+  console.log(initialData);
+
   const params = useParams();
   const router = useRouter();
 
@@ -55,16 +57,16 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
     try {
       setLoading(true);
       if (initialData) {
-        // const response = await fetch(`/api/sliders/${params.sliderId}`, {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     label: values.label,
-        //     imageUrl: values.imageUrl,
-        //   }),
-        // });
+        const response = await fetch(`/api/sliders/${params.sliderId}`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            label: values.label,
+            imageUrl: values.imageUrl,
+          }),
+        });
         console.log("You are in if statement");
       } else {
         const response = await fetch(`/api/sliders`, {

@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface CellActionProps {
   data: SliderColumnProps;
@@ -17,9 +17,7 @@ interface CellActionProps {
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const router = useRouter();
-  const params = useParams();
   const pathname = usePathname();
-  // https://youtu.be/5miHyP6lExg?t=18146
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

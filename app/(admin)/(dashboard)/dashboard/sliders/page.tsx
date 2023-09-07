@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import React from "react";
+
 import ClientSliderTable from "./components/client";
 import { SliderColumnProps } from "./components/columns";
 import { z } from "zod";

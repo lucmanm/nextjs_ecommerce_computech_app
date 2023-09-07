@@ -1,4 +1,3 @@
-import Container from "@/app/(admin)/components/Container";
 import { SliderForm } from "./components/slider-form";
 import { prisma } from "@/lib/db";
 interface SliderProps {

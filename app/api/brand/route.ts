@@ -3,8 +3,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 export const GET = async (req: Request, res: NextResponse) => {
   try {
-    const brand = await prisma.brand.findMany();
-    return NextResponse.json({ message: "success", brand }, { status: 201 });
+    const brands = await prisma.brand.findMany();
+    return NextResponse.json({ message: "success", brands }, { status: 201 });
   } catch (error) {
     console.log("ERROR_BRAND", error);
     return NextResponse.json(
@@ -14,29 +14,30 @@ export const GET = async (req: Request, res: NextResponse) => {
   }
 };
 
-const brandSchema = z.object({
-  brand: z
-    .string().toLowerCase()
-});
 
 export async function POST(req: Request) {
 
   try {
+    const brandSchema = z.object({
+      brand: z.string().toLowerCase(),
+      imageUrl: z.string().toLowerCase()
+    });
+    
     const body = await req.json();
-    const { brand } = brandSchema.parse(body);
+    const { brand, imageUrl } = brandSchema.parse(body);
 
     const checkbBrandName = await prisma.brand.findFirst({
       where: { brand },
     });
 
     if (checkbBrandName) {
-      return new NextResponse("Brand name Exist", { status: 400 });
+      return new NextResponse("Brand name Exist", { status:500 });
     }
 
     const brandData = await prisma.brand.create({
       data: {
         brand,
-        imageUrl: "",
+        imageUrl,
       },
     });
 

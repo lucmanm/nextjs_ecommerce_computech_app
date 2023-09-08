@@ -58,12 +58,12 @@ const SideBarLabels = [
       {
         name: "Brands",
         icon: <Trello />,
-        url: "/dashboard/brand",
+        url: "/dashboard/brands",
       },
       {
         name: "Create Brand",
         icon: <BadgePlus />,
-        url: "/dashboard/brand/create",
+        url: "/dashboard/brands/create",
       },
     ],
   },

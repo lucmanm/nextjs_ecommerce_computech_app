@@ -20,36 +20,39 @@ import { useToast } from "@/components/ui/use-toast";
 import { Slider } from "@prisma/client";
 import ImageUpload from "@/components/ui/image-upload";
 import Container from "@/app/(admin)/components/Container";
+import { AlertModal } from "@/components/modals/alert-modal";
 
 const formSchema = z.object({
   label: z.string().min(1, "Please enter label"),
   imageUrl: z.string().min(1, "Pleast upload image"),
 });
 
-
 interface SliderFormProps {
   initialData: Slider | null;
 }
 
 export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
-
-
   const params = useParams();
   const router = useRouter();
 
   const { toast } = useToast();
+
+  const [open, setOpen] = useState(false);
+
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? "Edit Slider" : "Create Slider";
   const description = initialData ? "Edit a Slider" : "Create a new Slider";
-  const toastMessage = initialData ? "Slider updated successfully?" : "Created successfully Slider";
+  const toastMessage = initialData
+    ? "Slider updated successfully?"
+    : "Created successfully Slider";
   const action = initialData ? "Save Changes" : "Create";
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: initialData || {
       label: "",
-      imageUrl:"",
+      imageUrl: "",
     },
   });
 
@@ -105,66 +108,104 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
     }
   };
 
+
+  // const onDelete = async () =>{
+  //   try {
+  //     setLoading(true)
+  //     const response = await fetch(`/api/sliders`, {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         id: values.id,
+  //       }),
+  //     });
+  //     if (response.ok) {
+  //       toast({
+  //         description: toastMessage,
+  //         variant: "success",
+  //       });
+  //       router.refresh();
+  //     }
+  //   } catch (error) {
+  //     toast({
+  //       description: `[ERROR_ONDELETE], Something Went Wong: ${error}`,
+  //       variant: "destructive",
+  //     });
+  //   }finally{
+  //     setLoading(false)
+  //     setOpen(false)
+  //   }
+  // }
   return (
-    <Container title={title} description={description}>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
-        >
-          <FormField
-            control={form.control}
-            name="imageUrl"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Slider Image</FormLabel>
-                <FormControl>
-                  <ImageUpload
-                    value={field.value ? [field.value] : []}
-                    disabled={loading}
-                    onChange={(url) => field.onChange(url)}
-                    onRemove={() => field.onChange("")}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="label"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Slider Label</FormLabel>
-                <FormControl>
-                  <Input
-                    disabled={loading}
-                    placeholder="Slider label"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button
-            type="submit"
-            size={"sm"}
-            variant="default"
-            className="w-full"
-            disabled={loading}
+    <>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={() => {}}
+        loading={loading}
+      />
+      <Container title={title} description={description}>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
           >
-            {loading ? (
-              <>
-                <Loader className="mr-2 h-4 w-4 animate-spin" />
-                Please Wait....
-              </>
-            ) : (
-              action
-            )}
-          </Button>
-        </form>
-      </Form>
-    </Container>
+            <FormField
+              control={form.control}
+              name="imageUrl"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Slider Image</FormLabel>
+                  <FormControl>
+                    <ImageUpload
+                      value={field.value ? [field.value] : []}
+                      disabled={loading}
+                      onChange={(url) => field.onChange(url)}
+                      onRemove={() => field.onChange("")}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="label"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Slider Label</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Slider label"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              size={"sm"}
+              variant="default"
+              className="w-full"
+              disabled={loading}
+            >
+              {loading ? (
+                <>
+                  <Loader className="mr-2 h-4 w-4 animate-spin" />
+                  Please Wait....
+                </>
+              ) : (
+                action
+              )}
+            </Button>
+          </form>
+        </Form>
+      </Container>
+    </>
   );
 };

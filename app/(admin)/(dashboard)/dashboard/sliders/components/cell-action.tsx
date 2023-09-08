@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 
 interface CellActionProps {
   data: SliderColumnProps;
@@ -18,9 +19,9 @@ interface CellActionProps {
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const router = useRouter();
   const pathname = usePathname();
-
-  
+ 
   return (
+    <>
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="h-8 w-8 p-0">
@@ -43,6 +44,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+    </>
   );
 };
 

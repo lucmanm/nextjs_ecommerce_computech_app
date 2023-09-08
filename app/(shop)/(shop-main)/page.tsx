@@ -4,12 +4,15 @@ import CarouselSlider from "@/components/CarouselSlider";
 import { categories } from "@/lib/constant";
 import React from "react";
 import { getSliders } from "@/lib/actions/getSliders";
+import BrandSlider from "./components/brand-slider";
+import { getBrands } from "@/lib/actions/getBrands";
 
 
 export const revalidate = 0
 
 export default async function ShopPage() {
     const slider = await getSliders()
+    const brands = await getBrands()
     // Destrcucturing Product categories & Brand List
     
     const [
@@ -20,7 +23,7 @@ export default async function ShopPage() {
     return (
         <main className="flex flex-col overflow-hidden">
             <section className="ml-4 mt-8 flex flex-col gap-y-8">
-                {/* Main Slider of homepage */}
+                {/* Main brands of homepage */}
                 <CarouselSlider sliderData={slider}/>
 
                 {/* all Product Type  Data  - import Slider Components  */}
@@ -33,14 +36,13 @@ export default async function ShopPage() {
                 {/* Category of products display */}
                 <ProductCategory />
 
-                {/* Brand Data - import Slider Components */}
-                <Slider
-                    subtitle={false} //Enable and Disable below secription
-                    sliderhead={brandTitle} //Title or description
-                    list={brandList} //Array output in descriptions
-                    sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28" //Csutom style for slider
-                    arrow={true}
-                />
+                <BrandSlider
+                   subtitle={false} 
+                   sliderhead="Brand" 
+                   data={brands} 
+                   sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28" 
+                   arrow={true}
+               />
             </section>
         </main>
     );

@@ -1,10 +1,10 @@
 import CustomButton from "@/components/CustomButton";
-import DropdownMenu from "@/app/(main)/(shop-main)/components/DropdownMenu";
 import SearchInput from "@/components/SearchInput";
 import Image from "next/image";
 import { logoUrl } from "@/lib/constant";
 import Link from "next/link";
 import { getProductCategory } from "@/lib/actions/getCategory";
+import DropdownMenu from "./DropdownMenu";
 
 const Header = async () => {
     const categories = await getProductCategory();

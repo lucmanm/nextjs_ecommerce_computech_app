@@ -1,10 +1,12 @@
 import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { z } from "zod";
-export const GET = async (req: Request, res: NextResponse) => {
+
+
+export const GET = async (req: Request) => {
   try {
     const brands = await prisma.brand.findMany();
-    return NextResponse.json({ message: "success", brands }, { status: 201 });
+    return NextResponse.json({ message: "success", brands }, { status: 200 });
   } catch (error) {
     console.log("ERROR_BRAND", error);
     return NextResponse.json(

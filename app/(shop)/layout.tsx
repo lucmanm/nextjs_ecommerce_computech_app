@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
-import Header from "@/app/(main)/(shop-main)/components/Header";
 import Footer from "@/components/Footer";
 import BottomNavigation from "@/components/BottomNavigation";
+import Header from "./(shop-main)/components/Header";
 
 // import { Inter } from 'next/font/google'
 

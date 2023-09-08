@@ -20,7 +20,6 @@ import { useToast } from "@/components/ui/use-toast";
 import { Slider } from "@prisma/client";
 import ImageUpload from "@/components/ui/image-upload";
 import Container from "@/app/(admin)/components/Container";
-import { AlertModal } from "@/components/modals/alert-modal";
 
 const formSchema = z.object({
   label: z.string().min(1, "Please enter label"),
@@ -37,7 +36,6 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
 
   const { toast } = useToast();
 
-  const [open, setOpen] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -108,44 +106,8 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
     }
   };
 
-
-  // const onDelete = async () =>{
-  //   try {
-  //     setLoading(true)
-  //     const response = await fetch(`/api/sliders`, {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         id: values.id,
-  //       }),
-  //     });
-  //     if (response.ok) {
-  //       toast({
-  //         description: toastMessage,
-  //         variant: "success",
-  //       });
-  //       router.refresh();
-  //     }
-  //   } catch (error) {
-  //     toast({
-  //       description: `[ERROR_ONDELETE], Something Went Wong: ${error}`,
-  //       variant: "destructive",
-  //     });
-  //   }finally{
-  //     setLoading(false)
-  //     setOpen(false)
-  //   }
-  // }
   return (
     <>
-      <AlertModal
-        isOpen={open}
-        onClose={() => setOpen(false)}
-        onConfirm={() => {}}
-        loading={loading}
-      />
       <Container title={title} description={description}>
         <Form {...form}>
           <form

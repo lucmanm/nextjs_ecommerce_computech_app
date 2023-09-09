@@ -18,9 +18,9 @@ export default async function adminDashboardRootL({
   const session = await getServerSession(authOptions);
   if (session?.user) {
     return (
-      <main className="relative flex flex-wrap h-screen">
-          <Sidebar />
-        <div className="grow space-y-2">
+      <main className="flex h-screen">
+        <Sidebar />
+        <div className="min-h-screen grow">
           <Navigation />
           {children}
         </div>

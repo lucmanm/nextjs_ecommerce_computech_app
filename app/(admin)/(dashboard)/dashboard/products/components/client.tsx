@@ -9,6 +9,7 @@ interface SliderPageProps {
 }
 
 const ClientBrand: React.FC<SliderPageProps> = ({ data }) => {
+  
   return (
     <Container
       title={`Product Listed (${data.length})`}

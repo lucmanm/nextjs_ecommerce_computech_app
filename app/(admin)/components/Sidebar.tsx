@@ -91,9 +91,9 @@ const Sidebar = () => {
   const clickHandler = () => setIsOpen((prev) => !prev);
 
   return (
-    <aside
-      className={`relative h-screen  space-y-8 overflow-hidden bg-white  shadow-sm ${
-        isOpen ? "w-14 p-1 transition" : "w-56 p-2"
+    <div
+      className={`relative min-h-screen overflow-hidden bg-white transition duration-500 ease-in-out ${
+        isOpen ? "w-14 p-1 " : "w-72 p-2 "
       } `}
     >
       {/* SideBar header Menu */}
@@ -159,7 +159,7 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
-    </aside>
+    </div>
   );
 };
 

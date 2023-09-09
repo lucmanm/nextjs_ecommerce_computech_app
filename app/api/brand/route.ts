@@ -21,11 +21,12 @@ export async function POST(req: Request) {
 
   try {
     const brandSchema = z.object({
-      brand: z.string().toLowerCase(),
-      imageUrl: z.string().toLowerCase()
+      brand: z.string(),
+      imageUrl: z.string()
     });
     
     const body = await req.json();
+    
     const { brand, imageUrl } = brandSchema.parse(body);
 
     const checkbBrandName = await prisma.brand.findFirst({

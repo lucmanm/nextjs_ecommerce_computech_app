@@ -93,7 +93,7 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
           });
           router.refresh();
           router.push("/dashboard/brands");
-        }else{
+        } else {
           toast({
             description: "Brand exist",
             variant: "destructive",
@@ -144,6 +144,7 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
                   <FormLabel>Brand Name</FormLabel>
                   <FormControl>
                     <Input
+                      className="capitalize"
                       disabled={loading}
                       placeholder="Brand Name"
                       {...field}

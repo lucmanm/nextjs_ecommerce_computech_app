@@ -48,7 +48,7 @@ export async function DELETE(
       },
     });
     return NextResponse.json(
-      { message: "Data Accepted", slider },
+      { message: "Delete Accepted", slider },
       { status: 202 }
     );
   } catch (error) {

@@ -79,6 +79,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
+  // Issue #2: Type Error
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: productData || {
@@ -113,8 +114,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
             images: values.images,
           }),
         });
-        router.refresh();
-        router.push("/dashboard/products");
         if (response.ok) {
           toast({
             description: "Product Successfully updated",
@@ -152,6 +151,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
         variant: "destructive",
       });
     } finally {
+      router.refresh()
+      router.push(`/dashboard/products`)
       setLoading(false);
     }
   };

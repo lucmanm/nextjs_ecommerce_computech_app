@@ -29,24 +29,15 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
         const body = await req.json()
         const { model, description, price, salePrice, stock, brandId, categoryId, images } = productFormschema.parse(body)
 
-        await prisma.product.update({
-            where: {
-                id: params.productID
-            },
-            data: {
-                model, description, price, salePrice, stock, brandId, categoryId,
-                images: {
-                    deleteMany: {}
-                },
-            }
-        })
 
         const product = await prisma.product.update({
             where: {
                 id: params.productID
             },
             data: {
+                model, description, price, salePrice, stock, brandId, categoryId,
                 images: {
+                    deleteMany: {},
                     createMany: {
                         data: [
                             ...images.map((image: { imageUrl: string }) => image),
@@ -57,9 +48,27 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
         })
 
 
-
-
         return NextResponse.json({ message: "Update accepted", product }, { status: 201 })
+
+    } catch (error) {
+        console.log("ERROR_PRODUCT_UPDATE", error);
+        return NextResponse.json({ message: "[ERROR_PRODUCT_UPDATE], something went wrong" }, { status: 500 })
+    }
+}
+
+export async function DELETE(req: Request, { params }: { params: { productID: string } }) {
+    try {
+
+        await prisma.product.delete({
+            where: {
+                id: params.productID
+            },
+            include:{
+                images:{}
+            }
+        })
+
+        return NextResponse.json({ message: "Delete Accepted"}, { status: 201 })
 
     } catch (error) {
         console.log("ERROR_PRODUCT_UPDATE", error);

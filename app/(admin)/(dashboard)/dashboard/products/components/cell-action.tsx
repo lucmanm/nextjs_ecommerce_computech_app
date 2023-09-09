@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CategoryColumnProps } from "./columns";
+import { ProductColumnProps } from "./columns";
 
 import {
   DropdownMenu,
@@ -15,7 +15,7 @@ import { AlertModal } from "@/components/modals/alert-modal";
 import { toast } from "@/components/ui/use-toast";
 
 interface CellActionProps {
-  data: CategoryColumnProps;
+  data: ProductColumnProps;
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
@@ -28,27 +28,20 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await fetch(`/api/category/${data.id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          id: data.id,
-        }),
-      });
+      await fetch(`/api/product/${data.id}`, {
+        method: "DELETE"});
 
       toast({
         description: "Slider succefully deleted.",
         variant: "success",
       });
-      router.refresh();
     } catch (error) {
       toast({
         description: `[ERROR_ONDELETE], Something Went Wong: ${error}`,
         variant: "destructive",
       });
     } finally {
+      router.refresh()
       setLoading(false);
       setOpen(false);
     }

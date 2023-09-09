@@ -88,7 +88,7 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
           });
           router.refresh();
           router.push("/dashboard/category");
-        }else{
+        } else {
           toast({
             description: "Category exist",
             variant: "destructive",
@@ -125,7 +125,6 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
                       placeholder="Please enter category."
                       className="capitalize"
                       {...field}
-                      
                     />
                   </FormControl>
                   <FormMessage />

@@ -15,7 +15,7 @@ const ClientBrand: React.FC<SliderPageProps> = ({ data }) => {
       description="Manage your Products Here"
       btntype="create"
     >
-      <DataTable columns={columns} data={data} searchKey="model" />
+      <DataTable columns={columns} data={data} searchKey="description" />
     </Container>
   );
 };

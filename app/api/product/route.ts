@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-export const GET = async (req: Request, res: NextResponse) => {
+export const GET = async (req: Request) => {
     try {
         const products = await prisma.product.findMany();
         return NextResponse.json(
@@ -40,13 +40,6 @@ export async function POST(req: Request) {
             brandId,
             categoryId,
         } = productFormschema.parse(body);
-        console.log(model,
-            description,
-            price,
-            salePrice,
-            stock,
-            brandId,
-            categoryId,);
 
         const checkModel = await prisma.product.findFirst({
             where: { model },

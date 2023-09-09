@@ -1,18 +1,17 @@
 import { prisma } from "@/lib/db";
 
-import { ProductColumnProps } from "./components/columns";
+import { ProductColumnProps, productColumnSchema } from "./components/columns";
 import ClientBrand from "./components/client";
 
 const ProductsPage = async () => {
-
   const products = await prisma.product.findMany({
-    include:{
+    include: {
       brand: true,
-      category: true
-    }
+      category: true,
+    },
   });
 
-  const formattedproducts: ProductColumnProps[] = products.map((item) =>({
+  const formattedproducts: ProductColumnProps[] = products.map((item) => ({
     id: item.id,
     model: item.model,
     description: item.description,
@@ -20,9 +19,14 @@ const ProductsPage = async () => {
     stock: item.stock,
     brand: item.brand.brand,
     category: item.category.category,
-    createdAt: item.createdAt,
+    createdAt: new Date(item.createdAt).toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    }),
   }));
-  return <ClientBrand data={formattedproducts} />
+
+  return <ClientBrand data={formattedproducts} />;
 };
 
 export default ProductsPage;

@@ -4,8 +4,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import CellAction from "./cell-action";
 import { z } from "zod";
 
-
-const productColumnSchema = z.object({
+export const productColumnSchema = z.object({
   id: z.string(),
   description: z.string(),
   price: z.number(),
@@ -13,21 +12,20 @@ const productColumnSchema = z.object({
   stock: z.number(),
   brand: z.string(),
   category: z.string(),
-  createdAt: z.date()
-})
+  createdAt: z.string(),
+});
 export type ProductColumnProps = z.infer<typeof productColumnSchema>;
 
 export const columns: ColumnDef<ProductColumnProps>[] = [
   {
     accessorKey: "model",
     header: "Model",
-    
   },
   {
     accessorKey: "brand",
     header: "Brand",
   },
-  
+
   {
     accessorKey: "description",
     header: "Product Description",

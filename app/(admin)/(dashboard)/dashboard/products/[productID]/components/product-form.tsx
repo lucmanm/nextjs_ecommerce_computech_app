@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "../../../../../../../components/ui/form";
 import { Input } from "../../../../../../../components/ui/input";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import {
   Select,
   SelectContent,
@@ -66,9 +66,10 @@ const ProductForm: React.FC<ProductFormProps> = ({
   brands,
 }) => {
   const params = useParams();
+  const router = useRouter();
+  const pathname = usePathname();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -102,6 +103,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
             categoryId: values.categoryId,
           }),
         });
+        router.refresh();
+        router.push("/dashboard/products");
         if (response.ok) {
           toast({
             description: "Product Successfully updated",

@@ -9,12 +9,10 @@ interface SliderProps {
   };
 }
 const CategoryPage: React.FC<SliderProps> = async ({ params }) => {
-
-  
   if (params.categoryID === "create") {
     return <BrandForm initialData={null} />;
   }
-  
+
   const category = await prisma.category.findFirst({
     where: {
       id: params.categoryID,
@@ -24,8 +22,7 @@ const CategoryPage: React.FC<SliderProps> = async ({ params }) => {
   if (!category) {
     notFound();
   }
-  
-  
+
   return <BrandForm initialData={category} />;
 };
 

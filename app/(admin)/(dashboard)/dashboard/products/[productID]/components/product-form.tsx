@@ -1,7 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Button } from "../../../../../../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -10,9 +10,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../../../../../../../components/ui/form";
-import { Input } from "../../../../../../../components/ui/input";
-import { useParams, usePathname, useRouter } from "next/navigation";
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useParams, useRouter } from "next/navigation";
 import {
   Select,
   SelectContent,
@@ -21,43 +21,51 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../../../../../../../components/ui/select";
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { Brand, Category, Product } from "@prisma/client";
+import { Brand, Category, Image, Product } from "@prisma/client";
 import Container from "@/app/(admin)/components/Container";
+import ImageUpload from "@/components/ui/image-upload";
 
 interface ProductFormProps {
-  productData: Product | null;
+  productData: (Product & { images: Image[] }) | null;
   categories: Category[];
   brands: Brand[];
 }
 
 const formSchema = z.object({
-  model: z.string().min(4, "Model Number required").max(50),
+  model: z.string().min(4, "Model Number required").max(20),
   description: z.string().min(5, "Please Enter Product description"),
   price: z.coerce
     .number({
       required_error: "Price is required",
       invalid_type_error: "Price must be a number",
     })
-    .nonnegative({ message: "Negative is  not allowed" }),
+    .nonnegative({ message: "Negative is  not allowed" })
+    .min(0),
   salePrice: z.coerce
     .number({
       required_error: "Price is required",
       invalid_type_error: "Price must be a number",
     })
-    .nonnegative({ message: "Negative is  not allowed" }),
+    .nonnegative({ message: "Negative is  not allowed" })
+    .min(0),
   stock: z.coerce
     .number({
       required_error: "Price is required",
       invalid_type_error: "Price must be a number",
     })
     .nonnegative({ message: "Negative is  not allowed" }),
-  brandId: z.string(),
-  categoryId: z.string(),
+  brandId: z.string().min(1),
+  categoryId: z.string().min(1),
+  images: z
+    .object({
+      imageUrl: z.string(),
+    })
+    .array(),
 });
 
 const ProductForm: React.FC<ProductFormProps> = ({
@@ -67,7 +75,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
 }) => {
   const params = useParams();
   const router = useRouter();
-  const pathname = usePathname();
+
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -76,6 +84,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
     defaultValues: productData || {
       model: "",
       description: "",
+      images: [],
       price: 0,
       salePrice: 0,
       stock: 0,
@@ -101,6 +110,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             stock: values.stock,
             brandId: values.brandId,
             categoryId: values.categoryId,
+            images: values.images,
           }),
         });
         router.refresh();
@@ -125,6 +135,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             stock: values.stock,
             brandId: values.brandId,
             categoryId: values.categoryId,
+            images: values.images,
           }),
         });
         if (response.ok) {
@@ -155,6 +166,32 @@ const ProductForm: React.FC<ProductFormProps> = ({
           onSubmit={form.handleSubmit(onSubmit)}
           className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
         >
+          <FormField
+            control={form.control}
+            name="images"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Upload Image</FormLabel>
+                <FormControl>
+                  <ImageUpload
+                    value={field.value.map((image) => image.imageUrl)}
+                    disabled={loading}
+                    onChange={(imageUrl) =>
+                      field.onChange([...field.value, { imageUrl }])
+                    }
+                    onRemove={(imageUrl) =>
+                      field.onChange([
+                        ...field.value.filter(
+                          (current) => current.imageUrl !== imageUrl
+                        ),
+                      ])
+                    }
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name="model"
@@ -207,7 +244,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
                   </FormControl>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectLabel>Select Brand</SelectLabel>
                       {brands.map(({ id, brand }) => (
                         <SelectItem key={id} value={id}>
                           <span className="capitalize">{brand}</span>
@@ -233,16 +269,12 @@ const ProductForm: React.FC<ProductFormProps> = ({
                   defaultValue={field.value}
                 >
                   <FormControl>
-                    <SelectTrigger>
-                      <SelectValue
-                        defaultValue={field.value}
-                        placeholder="Select Category"
-                      />
+                    <SelectTrigger className="text-black">
+                      <SelectValue placeholder="Select Category" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectLabel>Select Category</SelectLabel>
                       {categories.map(({ category, id }) => (
                         <SelectItem key={id} value={id}>
                           <span className="capitalize">{category}</span>

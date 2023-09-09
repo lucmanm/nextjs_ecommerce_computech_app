@@ -18,18 +18,23 @@ export const GET = async (req: Request) => {
 };
 
 
-const productFormschema = z.object({
-    model: z.string(),
-    description: z.string(),
-    price: z.number(),
-    salePrice: z.number(),
-    stock: z.number(),
-    brandId: z.string(),
-    categoryId: z.string(),
-})
+
 
 export async function POST(req: Request) {
     try {
+
+        const productFormschema = z.object({
+            model: z.string(),
+            description: z.string(),
+            price: z.number(),
+            salePrice: z.number(),
+            stock: z.number(),
+            brandId: z.string(),
+            categoryId: z.string(),
+            images: z.array(z.object({
+                imageUrl: z.string()
+            }))
+        })
         const body = await req.json();
         const {
             model,
@@ -39,11 +44,13 @@ export async function POST(req: Request) {
             stock,
             brandId,
             categoryId,
+            images,
         } = productFormschema.parse(body);
 
         const checkModel = await prisma.product.findFirst({
             where: { model },
         });
+
         if (checkModel) {
             return NextResponse.json(
                 { message: "this Product Already Created!" },
@@ -60,6 +67,13 @@ export async function POST(req: Request) {
                 stock,
                 brandId,
                 categoryId,
+                images: {
+                    createMany: {
+                        data: [
+                            ...images.map((image: { imageUrl: string }) => image)
+                        ]
+                    }
+                }
             },
         });
 

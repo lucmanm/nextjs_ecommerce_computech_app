@@ -7,7 +7,7 @@ import { z } from "zod";
 export const productColumnSchema = z.object({
   id: z.string(),
   description: z.string(),
-  price: z.number(),
+  price: z.string(),
   model: z.string(),
   stock: z.number(),
   brand: z.string(),

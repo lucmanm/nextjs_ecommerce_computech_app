@@ -12,7 +12,11 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
             stock: z.number(),
             brandId: z.string(),
             categoryId: z.string(),
+            images: z.array(z.object({
+                imageUrl: z.string()
+            }))
         })
+
         // const checkProduct = await prisma.product.findFirst({
         //     where: {
         //         id: params.productID
@@ -23,15 +27,38 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
         // }
 
         const body = await req.json()
-        const { model, description, price, salePrice, stock, brandId, categoryId } = productFormschema.parse(body)
+        const { model, description, price, salePrice, stock, brandId, categoryId, images } = productFormschema.parse(body)
+
+        await prisma.product.update({
+            where: {
+                id: params.productID
+            },
+            data: {
+                model, description, price, salePrice, stock, brandId, categoryId,
+                images: {
+                    deleteMany: {}
+                },
+            }
+        })
+
         const product = await prisma.product.update({
             where: {
                 id: params.productID
             },
             data: {
-                model, description, price, salePrice, stock, brandId, categoryId
+                images: {
+                    createMany: {
+                        data: [
+                            ...images.map((image: { imageUrl: string }) => image),
+                        ]
+                    }
+                },
             }
         })
+
+
+
+
         return NextResponse.json({ message: "Update accepted", product }, { status: 201 })
 
     } catch (error) {

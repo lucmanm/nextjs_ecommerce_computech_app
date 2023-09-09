@@ -19,7 +19,7 @@ model User {
 model Category {
   id        String    @id @default(uuid())
   category  String
-  Product   Product[]
+  product   Product[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
@@ -30,15 +30,15 @@ model Brand {
   imageUrl  String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  Product   Product[]
+  product   Product[]
 }
 
 model Product {
   id          String   @id @default(uuid())
   description String
-  price       Float
+  price       Decimal
   model       String
-  salePrice   Float
+  salePrice   Decimal
   stock       Int
   brandId     String
   categoryId  String
@@ -46,6 +46,16 @@ model Product {
   category    Category @relation(fields: [categoryId], references: [id])
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  images      Image[]
+}
+
+model Image {
+  id        String   @id @default(uuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Slider {

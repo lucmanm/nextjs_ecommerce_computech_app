@@ -15,7 +15,7 @@ const ProductsPage = async () => {
     id: item.id,
     model: item.model,
     description: item.description,
-    price: item.price,
+    price: new Number(item.price).toFixed(2),
     stock: item.stock,
     brand: item.brand.brand,
     category: item.category.category,

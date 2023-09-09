@@ -58,20 +58,24 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
 
 export async function DELETE(req: Request, { params }: { params: { productID: string } }) {
     try {
+        await prisma.image.deleteMany({
+            where: {
+                productId: params.productID
+            }
+        });
 
-        await prisma.product.delete({
+        const deleteProduct = await prisma.product.delete({
             where: {
                 id: params.productID
-            },
-            include:{
-                images:{}
             }
         })
-
-        return NextResponse.json({ message: "Delete Accepted"}, { status: 201 })
+        if (!deleteProduct) {
+            return NextResponse.json({ message: "Product not found" }, { status: 404 });
+        }
+        return NextResponse.json(deleteProduct)
 
     } catch (error) {
-        console.log("ERROR_PRODUCT_UPDATE", error);
-        return NextResponse.json({ message: "[ERROR_PRODUCT_UPDATE], something went wrong" }, { status: 500 })
+        console.log("ERROR_PRODUCT_DELETE", error);
+        return NextResponse.json({ message: "[ERROR_PRODUCT_DELETE], something went wrong" }, { status: 500 })
     }
 }

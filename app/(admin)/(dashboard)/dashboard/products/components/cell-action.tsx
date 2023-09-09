@@ -29,7 +29,14 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
     try {
       setLoading(true);
       await fetch(`/api/product/${data.id}`, {
-        method: "DELETE"});
+        method: "DELETE",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          id: data.id,
+        }),
+      });
 
       toast({
         description: "Slider succefully deleted.",
@@ -41,7 +48,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
         variant: "destructive",
       });
     } finally {
-      router.refresh()
+      router.refresh();
       setLoading(false);
       setOpen(false);
     }

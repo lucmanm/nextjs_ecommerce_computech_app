@@ -1,23 +1,28 @@
-import Container from "@/app/(admin)/components/Container";
-import FlowBiteDataTable from "@/components/block/FlowBiteDataTable";
 import { prisma } from "@/lib/db";
-import React from "react";
 
-async function fetchProducts() {
-  const res = await fetch("http://localhost:3000/api/product");
-  const data = await res.json();
-  return data.products;
-}
+import { ProductColumnProps } from "./components/columns";
+import ClientBrand from "./components/client";
 
-const ProductList = async () => {
-  // const products = await fetchProducts();
-  const products = await prisma.product.findMany();
+const ProductsPage = async () => {
 
-  return (
-    <Container title="Products" description="You can Mage add product here" btntype="create">
-      <FlowBiteDataTable products={products} />
-    </Container>
-  );
+  const products = await prisma.product.findMany({
+    include:{
+      brand: true,
+      category: true
+    }
+  });
+
+  const formattedproducts: ProductColumnProps[] = products.map((item) =>({
+    id: item.id,
+    model: item.model,
+    description: item.description,
+    price: item.price,
+    stock: item.stock,
+    brand: item.brand.brand,
+    category: item.category.category,
+    createdAt: item.createdAt,
+  }));
+  return <ClientBrand data={formattedproducts} />
 };
 
-export default ProductList;
+export default ProductsPage;

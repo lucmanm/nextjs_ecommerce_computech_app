@@ -36,7 +36,7 @@ model Brand {
 }
 
 model Product {
-  id          String   @id @default(uuid())
+  id          String     @id @default(uuid())
   description String
   price       Decimal
   model       String
@@ -45,17 +45,16 @@ model Product {
   brandId     String
   categoryId  String
   taxValueId  String
-  isLive      Boolean  @default(true)
-  isFeatured  Boolean  @default(false)
-  brand       Brand    @relation(fields: [brandId], references: [id])
-  taxValue    TaxValue @relation(fields: [taxValueId], references: [id])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  images   Image[]
-  Category Category   @relation(fields: [categoryId], references: [id])
-  Cart     Cart[]
-  Wishlist Wishlist[]
+  isLive      Boolean    @default(true)
+  isFeatured  Boolean    @default(false)
+  brand       Brand      @relation(fields: [brandId], references: [id])
+  taxValue    TaxValue   @relation(fields: [taxValueId], references: [id])
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  images      Image[]
+  Category    Category   @relation(fields: [categoryId], references: [id])
+  Cart        Cart[]
+  Wishlist    Wishlist[]
 }
 
 model Image {

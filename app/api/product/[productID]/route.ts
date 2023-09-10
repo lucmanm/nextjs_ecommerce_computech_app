@@ -58,20 +58,22 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
 
 export async function DELETE(req: Request, { params }: { params: { productID: string } }) {
     try {
-        await prisma.image.deleteMany({
+
+        const deleteImages = await prisma.image.deleteMany({
             where: {
                 productId: params.productID
             }
         });
-
         const deleteProduct = await prisma.product.delete({
             where: {
                 id: params.productID
             }
         })
-        if (!deleteProduct) {
+
+        if (!deleteProduct || deleteImages) {
             return NextResponse.json({ message: "Product not found" }, { status: 404 });
         }
+
         return NextResponse.json(deleteProduct)
 
     } catch (error) {

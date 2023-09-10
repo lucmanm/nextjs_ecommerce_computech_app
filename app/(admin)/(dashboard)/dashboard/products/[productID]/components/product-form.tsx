@@ -151,8 +151,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
         variant: "destructive",
       });
     } finally {
-      router.refresh()
-      router.push(`/dashboard/products`)
+      router.refresh();
+      router.push(`/dashboard/products`);
       setLoading(false);
     }
   };
@@ -165,7 +165,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
+          className="my-2 flex flex-col space-y-2 rounded-md border-black bg-white p-4 capitalize md:grid md:grid-cols-3 md:gap-4"
         >
           <FormField
             control={form.control}

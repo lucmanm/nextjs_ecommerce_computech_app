@@ -17,20 +17,22 @@ model User {
 }
 
 model Category {
-  id        String    @id @default(uuid())
+  id        String   @id @default(uuid())
   category  String
-  product   Product[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  product Product[]
 }
 
 model Brand {
-  id        String    @id @default(uuid())
-  brand     String    @unique
+  id        String   @id @default(uuid())
+  brand     String   @unique
   imageUrl  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  product   Product[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  product Product[]
 }
 
 model Product {
@@ -42,11 +44,18 @@ model Product {
   stock       Int
   brandId     String
   categoryId  String
+  taxValueId  String
+  isLive      Boolean  @default(false)
+  isFeatured  Boolean  @default(false)
   brand       Brand    @relation(fields: [brandId], references: [id])
-  category    Category @relation(fields: [categoryId], references: [id])
+  taxValue    TaxValue @relation(fields: [taxValueId], references: [id])
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  images      Image[]
+
+  images   Image[]
+  Category Category   @relation(fields: [categoryId], references: [id])
+  Cart     Cart[]
+  Wishlist Wishlist[]
 }
 
 model Image {
@@ -62,6 +71,31 @@ model Slider {
   id        String   @id @default(uuid())
   label     String
   imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TaxValue {
+  id        String    @id @default(uuid())
+  rate      Decimal
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  product   Product[]
+}
+
+model Cart {
+  id         String   @id @default(uuid())
+  quantityId Int
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Wishlist {
+  id        String   @id @default(uuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

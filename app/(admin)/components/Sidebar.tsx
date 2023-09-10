@@ -92,12 +92,12 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`relative min-h-screen overflow-hidden bg-white transition-all duration-500  ease-in-out  ${
+      className={`relative min-h-screen overflow-hidden bg-white transition-all duration-500  ease-in-out w-72${
         isOpen ? "w-14 p-1" : "w-72 p-2 "
       } `}
     >
       {/* SideBar header Menu */}
-      <div className="flex items-center justify-between border-black p-2 w-full">
+      <div className="flex w-full items-center justify-between border-black p-2">
         <Link
           href="http://localhost:3000/dashboard"
           className={`${isOpen && "hidden"}`}
@@ -110,7 +110,9 @@ const Sidebar = () => {
           />
         </Link>
         <Button
-          className={`rounded-full ${isOpen ? "rotate-180 transition-all duration-500" : ""}`}
+          className={`rounded-full ${
+            isOpen ? "rotate-180 transition-all duration-500" : ""
+          }`}
           variant="ghost"
           onClick={clickHandler}
           size="icon"

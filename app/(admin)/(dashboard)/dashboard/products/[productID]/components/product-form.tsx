@@ -171,7 +171,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             control={form.control}
             name="images"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="md:col-span-3">
                 <FormLabel>Upload Image</FormLabel>
                 <FormControl>
                   <ImageUpload
@@ -333,7 +333,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             type="submit"
             size={"sm"}
             variant="default"
-            className="w-full"
+            className="w-full md:col-span-3"
             disabled={loading}
           >
             {loading ? (

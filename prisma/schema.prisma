@@ -45,7 +45,7 @@ model Product {
   brandId     String
   categoryId  String
   taxValueId  String
-  isLive      Boolean  @default(false)
+  isLive      Boolean  @default(true)
   isFeatured  Boolean  @default(false)
   brand       Brand    @relation(fields: [brandId], references: [id])
   taxValue    TaxValue @relation(fields: [taxValueId], references: [id])

@@ -92,8 +92,8 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`relative min-h-screen overflow-hidden bg-white transition-all duration-500  ease-in-out w-72${
-        isOpen ? "w-14 p-1" : "w-72 p-2 "
+      className={`relative min-h-screen overflow-hidden bg-white transition-all duration-500  ease-in-out${
+        isOpen ? "w-12 p-1" : "w-72 shrink-0 p-2"
       } `}
     >
       {/* SideBar header Menu */}

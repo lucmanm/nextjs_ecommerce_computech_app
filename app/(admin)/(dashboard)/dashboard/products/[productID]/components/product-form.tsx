@@ -172,7 +172,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
             name="images"
             render={({ field }) => (
               <FormItem className="md:col-span-3">
-                <FormLabel>Upload Image</FormLabel>
                 <FormControl>
                   <ImageUpload
                     value={field.value.map((image) => image.imageUrl)}

@@ -22,7 +22,7 @@ const Container: React.FC<ContainerProps> = ({
 
   return (
     <div className="space-y-4 px-10 py-6">
-      <div className="flex items-center justify-center rounded-lg bg-white px-4 py-2 text-xl font-bold">
+      <div className="flex items-center justify-center rounded-lg bg-white px-4 py-2 text-xl">
         <div className="grow">
           <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
           <p className="text-sm text-muted-foreground">{description}</p>
@@ -38,9 +38,7 @@ const Container: React.FC<ContainerProps> = ({
         )}
       </div>
 
-      <div className="rounded-lg bg-white px-4 py-2 text-xl font-bold">
-        {children}
-      </div>
+      <div className="rounded-lg bg-white px-4 py-2 text-xl">{children}</div>
     </div>
   );
 };

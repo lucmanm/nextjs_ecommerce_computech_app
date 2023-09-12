@@ -11,6 +11,7 @@ import {
   Clapperboard,
   LayoutDashboard,
   Projector,
+  Settings,
   SquareStack,
   Trello,
 } from "lucide-react";
@@ -68,7 +69,7 @@ const SideBarLabels = [
     ],
   },
   {
-    title: "Banners",
+    title: "Shop Settings",
     links: [
       {
         name: "Slider",
@@ -79,6 +80,12 @@ const SideBarLabels = [
         name: "Banners",
         icon: <Clapperboard />,
         url: "/dashboard/banners",
+      },
+
+      {
+        name: "Settings",
+        icon: <Settings />,
+        url: "/dashboard/settings",
       },
     ],
   },

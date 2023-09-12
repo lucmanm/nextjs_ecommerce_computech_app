@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -18,7 +19,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -29,6 +29,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { Brand, Category, Image, Product } from "@prisma/client";
 import Container from "@/app/(admin)/components/Container";
 import ImageUpload from "@/components/ui/image-upload";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface ProductFormProps {
   productData: (Product & { images: Image[] }) | null;
@@ -61,6 +62,7 @@ const formSchema = z.object({
     .nonnegative({ message: "Negative is  not allowed" }),
   brandId: z.string().min(1),
   categoryId: z.string().min(1),
+  status: z.boolean().default(false).optional(),
   images: z
     .object({
       imageUrl: z.string(),
@@ -91,6 +93,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
       stock: 0,
       brandId: "",
       categoryId: "",
+      status: false,
     },
   });
 
@@ -112,6 +115,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             brandId: values.brandId,
             categoryId: values.categoryId,
             images: values.images,
+            status: values.status,
           }),
         });
         if (response.ok) {
@@ -126,16 +130,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify({
-            model: values.model,
-            description: values.description,
-            price: values.price,
-            salePrice: values.salePrice,
-            stock: values.stock,
-            brandId: values.brandId,
-            categoryId: values.categoryId,
-            images: values.images,
-          }),
+          body: JSON.stringify({ ...values }),
         });
         if (response.ok) {
           toast({
@@ -324,6 +319,26 @@ const ProductForm: React.FC<ProductFormProps> = ({
                   <Input type="number" placeholder="Quantity" {...field} />
                 </FormControl>
                 <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="status"
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <div className="space-y-1 leading-none">
+                  <FormLabel>Publish or Unplublish</FormLabel>
+                  <FormDescription>
+                    Select check if you want to publish uncheck for unpublish{" "}
+                  </FormDescription>
+                </div>
               </FormItem>
             )}
           />

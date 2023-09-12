@@ -52,9 +52,9 @@ model Product {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   images      Image[]
-  Category    Category   @relation(fields: [categoryId], references: [id])
-  Cart        Cart[]
-  Wishlist    Wishlist[]
+  category    Category   @relation(fields: [categoryId], references: [id])
+  cart        Cart[]
+  wishlist    Wishlist[]
 }
 
 model Image {
@@ -79,7 +79,7 @@ model TaxValue {
   rate      Decimal
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
-  product   Product[]
+  croduct   Product[]
 }
 
 model Cart {

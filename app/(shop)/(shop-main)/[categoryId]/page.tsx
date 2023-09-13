@@ -1,5 +1,4 @@
 import Breadcrumb from "@/components/Breadcrumb";
-import Container from "@/app/(admin)/components/Container";
 import ProductCard from "@/components/ProductCard";
 import { getProductCategoryId } from "@/lib/actions/getCategory";
 import React, { Suspense } from "react";
@@ -9,16 +8,18 @@ interface CategoryPageProps {
     categoryId: string;
   };
 }
+export const revalidate = 0;
 
 const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
-  const productByCategory = await getProductCategoryId(categoryId);
+  const products = await getProductCategoryId(categoryId);
+
   return (
-    <Container>
+    <div>
       <Breadcrumb />
       <Suspense fallback={<div>Loading...</div>}>
-        <ProductCard products={productByCategory} />
+        <ProductCard products={products} />
       </Suspense>
-    </Container>
+    </div>
   );
 };
 

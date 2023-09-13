@@ -40,7 +40,7 @@ model Product {
   description String
   price       Decimal
   model       String
-  salePrice   Decimal
+  salePrice   Decimal    @db.Decimal(10, 2)
   stock       Int
   brandId     String
   categoryId  String

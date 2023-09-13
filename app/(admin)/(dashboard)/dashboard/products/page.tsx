@@ -1,7 +1,8 @@
 import { prisma } from "@/lib/db";
 
-import { ProductColumnProps, productColumnSchema } from "./components/columns";
+import { ProductColumnProps } from "./components/columns";
 import ClientBrand from "./components/client";
+import { formatter } from "@/lib/utils";
 
 const ProductsPage = async () => {
   const products = await prisma.product.findMany({
@@ -15,7 +16,7 @@ const ProductsPage = async () => {
     id: item.id,
     model: item.model,
     description: item.description,
-    price: new Number(item.price).toFixed(2),
+    price: item.price.toString(),
     stock: item.stock,
     brand: item.brand.brand,
     category: item.category.category,

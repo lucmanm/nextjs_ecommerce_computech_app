@@ -144,7 +144,6 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
                   <FormLabel>Brand Name</FormLabel>
                   <FormControl>
                     <Input
-                      className="capitalize"
                       disabled={loading}
                       placeholder="Brand Name"
                       {...field}

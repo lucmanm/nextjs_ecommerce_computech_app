@@ -2,16 +2,21 @@ import { prisma } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
+
+
 export async function GET(req: Request) {
     try {
+
+
         const categories = await prisma.category.findMany();
         return NextResponse.json(
-            { message: "success", categories },
+            { message: "Success", categories },
             { status: 200 }
         );
+
     } catch (error) {
         return NextResponse.json(
-            { message: "fetching cetegory Error", error },
+            { message: "fetching category Error", error },
             { status: 500 }
         );
     }

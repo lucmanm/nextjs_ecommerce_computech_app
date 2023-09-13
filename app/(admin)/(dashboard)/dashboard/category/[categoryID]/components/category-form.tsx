@@ -123,7 +123,6 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
                     <Input
                       disabled={loading}
                       placeholder="Please enter category."
-                      className="capitalize"
                       {...field}
                     />
                   </FormControl>

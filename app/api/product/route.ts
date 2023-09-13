@@ -1,8 +1,10 @@
 import { prisma } from "@/lib/db";
+import { Prisma } from "@prisma/client";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
 export const GET = async (req: Request) => {
+
     try {
         const products = await prisma.product.findMany();
         return NextResponse.json(
@@ -17,9 +19,6 @@ export const GET = async (req: Request) => {
     }
 };
 
-
-
-
 export async function POST(req: Request) {
     try {
 
@@ -33,7 +32,10 @@ export async function POST(req: Request) {
             categoryId: z.string(),
             images: z.array(z.object({
                 imageUrl: z.string()
-            }))
+            })),
+            taxValue: z.number().default(15),
+            isLive: z.boolean(),
+            isFeatured: z.boolean(),
         })
         const body = await req.json();
         const {
@@ -45,7 +47,11 @@ export async function POST(req: Request) {
             brandId,
             categoryId,
             images,
+            isLive,
+            isFeatured,
+            taxValue,
         } = productFormschema.parse(body);
+
 
         const checkModel = await prisma.product.findFirst({
             where: { model },
@@ -57,7 +63,6 @@ export async function POST(req: Request) {
                 { status: 409 }
             );
         }
-
         const createProduct = await prisma.product.create({
             data: {
                 model,
@@ -67,6 +72,9 @@ export async function POST(req: Request) {
                 stock,
                 brandId,
                 categoryId,
+                taxValue,
+                isLive,
+                isFeatured,
                 images: {
                     createMany: {
                         data: [
@@ -81,6 +89,9 @@ export async function POST(req: Request) {
             { createProduct, message: "Product Succesfully Created" },
             { status: 200 }
         );
+
+
+
     } catch (error) {
         console.log("PRODUCT_ERROR", error);
 

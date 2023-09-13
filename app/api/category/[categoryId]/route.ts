@@ -35,26 +35,51 @@ export async function PATCH(
 }
 
 export async function DELETE(
-    req: Request,
-    { params }: { params: { categoryID: string } }
-  ) {
-    try {
-      const deleteCategory = await prisma.category.delete({
-        where: { id: params.categoryID }
-      });
-  
-      return NextResponse.json(
-        {
-          deleteCategory,
-          messsage: "Category deleted Successfully",
-        },
-        { status: 202 }
-      );
-    } catch (error) {
-      return NextResponse.json(
-        { message: "Something went wrong" },
-        { status: 500 }
-      );
-    }
+  req: Request,
+  { params }: { params: { categoryID: string } }
+) {
+  try {
+    const deleteCategory = await prisma.category.delete({
+      where: { id: params.categoryID }
+    });
+
+    return NextResponse.json(
+      {
+        deleteCategory,
+        messsage: "Category deleted Successfully",
+      },
+      { status: 202 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Something went wrong" },
+      { status: 500 }
+    );
   }
-  
+}
+
+export async function GET(req: Request, { params }: { params: { categoryID: string } }) {
+  try {
+
+    const categoryId = params.categoryID;
+
+    if (categoryId) {
+      const categoriesById = await prisma.product.findMany({
+        where: {
+          id: categoryId
+        }
+      })
+
+      if (!categoriesById.length) {
+        return new NextResponse("No Available data in category", { status: 500 })
+      }
+
+      return NextResponse.json({ "Success": categoriesById }, { status: 200 });
+    }
+  } catch (error) {
+    return NextResponse.json(
+      { message: "fetching category Error", error },
+      { status: 500 }
+    );
+  }
+};

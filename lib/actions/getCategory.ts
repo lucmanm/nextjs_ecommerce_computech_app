@@ -9,8 +9,8 @@ export async function getProductCategory() {
   return data.categories;
 }
 
-export async function getProductCategoryslug(categoryid: string) {
-  const res = await fetch(`${URL}/${categoryid}`);
+export async function getProductCategoryId(categoryid: string) {
+  const res = await fetch(`${URL}/category/${categoryid}`);
   if (!res.ok) {
     throw new Error("Failed to fetch categoryid");
   }

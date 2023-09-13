@@ -44,11 +44,10 @@ model Product {
   stock       Int
   brandId     String
   categoryId  String
-  taxValueId  String
+  taxValue    Decimal
   isLive      Boolean    @default(true)
   isFeatured  Boolean    @default(false)
   brand       Brand      @relation(fields: [brandId], references: [id])
-  taxValue    TaxValue   @relation(fields: [taxValueId], references: [id])
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   images      Image[]
@@ -72,14 +71,6 @@ model Slider {
   imageUrl  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model TaxValue {
-  id        String    @id @default(uuid())
-  rate      Decimal
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  croduct   Product[]
 }
 
 model Cart {

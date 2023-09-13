@@ -30,6 +30,7 @@ import { Brand, Category, Image, Product } from "@prisma/client";
 import Container from "@/app/(admin)/components/Container";
 import ImageUpload from "@/components/ui/image-upload";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Decimal } from "@prisma/client/runtime/library";
 
 interface ProductFormProps {
   productData: (Product & { images: Image[] }) | null;
@@ -46,7 +47,7 @@ const formSchema = z.object({
       invalid_type_error: "Price must be a number",
     })
     .nonnegative({ message: "Negative is  not allowed" })
-    .min(0),
+    .min(1),
   salePrice: z.coerce
     .number({
       required_error: "Price is required",
@@ -62,12 +63,13 @@ const formSchema = z.object({
     .nonnegative({ message: "Negative is  not allowed" }),
   brandId: z.string().min(1),
   categoryId: z.string().min(1),
-  status: z.boolean().default(false).optional(),
   images: z
     .object({
       imageUrl: z.string(),
     })
     .array(),
+  isLive: z.boolean().default(false).optional(),
+  isFeatured: z.boolean().default(false).optional(),
 });
 
 const ProductForm: React.FC<ProductFormProps> = ({
@@ -84,17 +86,24 @@ const ProductForm: React.FC<ProductFormProps> = ({
   // Issue #2: Type Error
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: productData || {
-      model: "",
-      description: "",
-      images: [],
-      price: 0,
-      salePrice: 0,
-      stock: 0,
-      brandId: "",
-      categoryId: "",
-      status: false,
-    },
+    defaultValues: productData
+      ? {
+          ...productData,
+          price: parseFloat(String(productData?.price)),
+          salePrice: parseFloat(String(productData?.salePrice)),
+        }
+      : {
+          model: "",
+          description: "",
+          images: [],
+          price: 0.0,
+          salePrice: 0.0,
+          stock: 0,
+          brandId: "",
+          categoryId: "",
+          isLive: false,
+          isFeatured: false,
+        },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
@@ -115,7 +124,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             brandId: values.brandId,
             categoryId: values.categoryId,
             images: values.images,
-            status: values.status,
+            isLive: values.isLive,
           }),
         });
         if (response.ok) {
@@ -130,7 +139,18 @@ const ProductForm: React.FC<ProductFormProps> = ({
           headers: {
             "Content-type": "application/json",
           },
-          body: JSON.stringify({ ...values }),
+          body: JSON.stringify({
+            model: values.model,
+            description: values.description,
+            price: values.price,
+            salePrice: values.salePrice,
+            stock: values.stock,
+            brandId: values.brandId,
+            categoryId: values.categoryId,
+            images: values.images,
+            isLive: values.isLive,
+            isFeatured: values.isFeatured,
+          }),
         });
         if (response.ok) {
           toast({
@@ -324,7 +344,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
           />
           <FormField
             control={form.control}
-            name="status"
+            name="isLive"
             render={({ field }) => (
               <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
                 <FormControl>

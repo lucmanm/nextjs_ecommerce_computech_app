@@ -17,6 +17,7 @@ const ProductsPage = async () => {
     model: item.model,
     description: item.description,
     price: item.price.toString(),
+    salePrice: item.salePrice.toString(),
     stock: item.stock,
     brand: item.brand.brand,
     category: item.category.category,

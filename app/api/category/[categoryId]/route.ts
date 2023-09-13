@@ -62,20 +62,18 @@ export async function GET(req: Request, { params }: { params: { categoryID: stri
   try {
 
     const categoryId = params.categoryID;
-
-    if (categoryId) {
-      const categoriesById = await prisma.product.findMany({
-        where: {
-          id: categoryId
-        }
-      })
-
-      if (!categoriesById.length) {
-        return new NextResponse("No Available data in category", { status: 500 })
+    const categoriesById = await prisma.product.findMany({
+      where: {
+        categoryId: categoryId
       }
+    })
 
-      return NextResponse.json({ "Success": categoriesById }, { status: 200 });
+    if (!categoriesById.length) {
+      return new NextResponse("No Available data in category", { status: 500 })
     }
+
+    return NextResponse.json({ "Success": categoriesById }, { status: 200 });
+
   } catch (error) {
     return NextResponse.json(
       { message: "fetching category Error", error },

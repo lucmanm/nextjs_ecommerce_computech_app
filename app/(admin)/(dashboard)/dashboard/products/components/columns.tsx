@@ -8,6 +8,7 @@ export const productColumnSchema = z.object({
   id: z.string(),
   description: z.string(),
   price: z.string(),
+  salePrice: z.string(),
   model: z.string(),
   stock: z.number(),
   brand: z.string(),
@@ -33,6 +34,10 @@ export const columns: ColumnDef<ProductColumnProps>[] = [
   {
     accessorKey: "price",
     header: "Price",
+  },
+  {
+    accessorKey: "salePrice",
+    header: "Sale Price",
   },
   {
     accessorKey: "category",

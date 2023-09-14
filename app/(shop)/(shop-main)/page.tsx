@@ -20,8 +20,8 @@ export default async function ShopPage() {
   ] = categories;
 
   return (
-    <main className="flex flex-col overflow-hidden">
-      <section className="ml-4 mt-8 flex flex-col gap-y-8">
+    <div className="flex flex-col overflow-hidden">
+      <div className="ml-4 mt-8 flex flex-col gap-y-8">
         {/* Main brands of homepage */}
         <CarouselSlider sliderData={slider} />
 
@@ -42,7 +42,7 @@ export default async function ShopPage() {
           sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
           arrow={true}
         />
-      </section>
-    </main>
+      </div>
+    </div>
   );
 }

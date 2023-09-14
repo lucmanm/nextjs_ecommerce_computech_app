@@ -3,17 +3,17 @@ export interface SliderProps {
     imageUrl: string;
 }
 
-export interface ProductProps {
+export interface Product {
     id: string,
     description: string,
     price: string,
     model: string,
     salePrice: string,
     stock: number,
-    brandId: string,
-    categoryId: string,
-    taxValue: string,
-    isLive: boolean,
-    isFeatured: boolean
+    images: Image[]
 }
 
+export interface Image {
+    id: string,
+    imageUrl: string,
+}

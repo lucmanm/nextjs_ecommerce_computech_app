@@ -8,7 +8,7 @@ interface productsListProps {
   description: string;
 }
 
-interface productProps {
+interface Product {
   products: productsListProps[];
 }
 

@@ -1,7 +1,7 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductCard from "@/components/ProductCard";
 import { getProductCategoryId } from "@/lib/actions/getCategory";
-import React, { Suspense } from "react";
+import Container from "../components/Container";
 
 interface CategoryPageProps {
   params: {
@@ -14,12 +14,11 @@ const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
   const products = await getProductCategoryId(categoryId);
 
   return (
-    <div>
+    <Container>
       <Breadcrumb />
-      <Suspense fallback={<div>Loading...</div>}>
-        <ProductCard products={products} />
-      </Suspense>
-    </div>
+      {/* Issue #3 */}
+      <ProductCard products={products} />
+    </Container>
   );
 };
 

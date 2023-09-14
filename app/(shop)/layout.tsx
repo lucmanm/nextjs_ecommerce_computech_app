@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      <main className="md:container">{children}</main>
+      <main className="lg:container">{children}</main>
       <Footer />
       {/* <BottomNavigation /> */}
     </>

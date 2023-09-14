@@ -14,10 +14,7 @@ export default async function ShopPage() {
   const brands = await getBrands();
   // Destrcucturing Product categories & Brand List
 
-  const [
-    { title: productTitle, list: productList },
-    { title: brandTitle, list: brandList },
-  ] = categories;
+  const [{ title: productTitle, list: productList }] = categories;
 
   return (
     <div className="flex flex-col overflow-hidden">

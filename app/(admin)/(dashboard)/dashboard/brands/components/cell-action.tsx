@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { SliderColumnProps } from "./columns";
+import { BrandColumnProps } from "./columns";
 
 import {
   DropdownMenu,
@@ -15,7 +15,7 @@ import { AlertModal } from "@/components/modals/alert-modal";
 import { toast } from "@/components/ui/use-toast";
 
 interface CellActionProps {
-  data: SliderColumnProps;
+  data: BrandColumnProps;
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {

@@ -23,11 +23,12 @@ export default async function ShopPage() {
         <CarouselSlider sliderData={slider} />
 
         {/* all Product Type  Data  - import Slider Components  */}
-        <Slider
+        {/* Disabled / Hidden */}
+        {/* <Slider
           subtitle={true} //Enable and Disable below secription
           list={productList}
           sliderCustomerStyle="rounded-full w-20 h-20 dt:w-28 dt:h-28" //Csutom style for slider
-        />
+        /> */}
 
         {/* Category of products display */}
         <ProductCategory />

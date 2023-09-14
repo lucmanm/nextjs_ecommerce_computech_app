@@ -60,7 +60,6 @@ export async function DELETE(
 
 export async function GET(req: Request, { params }: { params: { categoryID: string } }) {
   try {
-
     const categoryId = params.categoryID;
     const products = await prisma.product.findMany({
       where: {

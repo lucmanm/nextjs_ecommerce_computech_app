@@ -1,6 +1,6 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import ProductCard from "@/components/ProductCard";
-import { getProductCategoryId } from "@/lib/actions/getCategory";
+import { getProductByCategoryId } from "@/lib/actions/getCategory";
 import Container from "../components/Container";
 
 interface CategoryPageProps {
@@ -11,13 +11,16 @@ interface CategoryPageProps {
 export const revalidate = 0;
 
 const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
-  const products = await getProductCategoryId(categoryId);
+  const products = await getProductByCategoryId(categoryId);
 
   return (
     <Container>
       <Breadcrumb />
-      {/* Issue #3 */}
-      <ProductCard products={products} />
+      <div className=" flex flex-wrap gap-2">
+        {products.map((productData) => (
+          <ProductCard key={productData.id} productData={productData} />
+        ))}
+      </div>
     </Container>
   );
 };

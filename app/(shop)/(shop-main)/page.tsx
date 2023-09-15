@@ -17,30 +17,28 @@ export default async function ShopPage() {
   const [{ title: productTitle, list: productList }] = categories;
 
   return (
-    <div className="flex flex-col overflow-hidden">
-      <div className="ml-4 mt-8 flex flex-col gap-y-8">
-        {/* Main brands of homepage */}
-        <CarouselSlider sliderData={slider} />
+    <div className="flex flex-col overflow-hidden md:my-8 md:space-y-8">
+      {/* Main brands of homepage */}
+      <CarouselSlider sliderData={slider} />
 
-        {/* all Product Type  Data  - import Slider Components  */}
-        {/* Disabled / Hidden */}
-        {/* <Slider
+      {/* all Product Type  Data  - import Slider Components  */}
+      {/* Disabled / Hidden */}
+      {/* <Slider
           subtitle={true} //Enable and Disable below secription
           list={productList}
           sliderCustomerStyle="rounded-full w-20 h-20 dt:w-28 dt:h-28" //Csutom style for slider
         /> */}
 
-        {/* Category of products display */}
-        <ProductCategory />
+      {/* Category of products display */}
+      <ProductCategory />
 
-        <BrandSlider
-          subtitle={false}
-          sliderhead="Brand"
-          data={brands}
-          sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
-          arrow={true}
-        />
-      </div>
+      <BrandSlider
+        subtitle={false}
+        sliderhead="Brand"
+        data={brands}
+        sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
+        arrow={true}
+      />
     </div>
   );
 }

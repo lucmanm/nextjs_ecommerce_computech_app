@@ -7,7 +7,7 @@ import Product from "./Product";
 const ProductCategory = () => {
   return (
     <div className="flex flex-col gap-y-2">
-      <span className="tb:py-1 relative max-w-fit rounded-full bg-white px-5 py-2 font-bold text-blue-950 shadow-md">
+      <span className="relative max-w-fit rounded-full bg-white px-5 py-2 text-xs font-bold text-blue-950 shadow-md md:text-sm">
         New Arrival
       </span>
       <Splide

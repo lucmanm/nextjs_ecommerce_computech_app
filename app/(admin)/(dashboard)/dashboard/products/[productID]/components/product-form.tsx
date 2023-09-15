@@ -83,7 +83,6 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  // Issue #2: Type Error
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: productData

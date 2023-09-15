@@ -4,37 +4,40 @@ import Image from "next/image";
 import "@splidejs/react-splide/css";
 import { SliderProps } from "@/types/table-types";
 
-interface CarouselSliderProps{
-    sliderData: SliderProps[]
+interface CarouselSliderProps {
+  sliderData: SliderProps[];
 }
 
-
-const CarouselSlider: React.FC<CarouselSliderProps> = ({sliderData}) => {
-    return (
-        <Splide
-            hasTrack={false}
-            options={{
-                type: "loop",
-                gap: "1rem;",
-                pagination: false,
-                arrows: false,
-                autoplay: true,
-                interval: 5000,
-            }}
-            className="overflow-hidden rounded-md bg-white dt:container tb:rounded-xl"
-            aria-label="slider ">
-            <SplideTrack>
-                {sliderData.map(({  label, imageUrl}) => (
-                    <SplideSlide key={imageUrl}>
-                        <Image
-                            src={imageUrl}
-                            width={1280}
-                            height={100}
-                            alt={label}
-                        />
-                    </SplideSlide>
-                ))}
-                {/* {sliderImages.map(({ title, url }) => (
+const CarouselSlider: React.FC<CarouselSliderProps> = ({ sliderData }) => {
+  return (
+    <Splide
+      hasTrack={false}
+      options={{
+        type: "loop",
+        pagination: false,
+        arrows: false,
+        autoplay: true,
+        interval: 5000,
+      }}
+      aria-label="slider "
+    >
+      <SplideTrack>
+        {sliderData.map(({ label, imageUrl }) => (
+          <SplideSlide key={imageUrl} className="">
+            <Image
+              src={imageUrl}
+              width={1280}
+              height={100}
+              alt={label}
+              sizes="100vw"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </SplideSlide>
+        ))}
+        {/* {sliderImages.map(({ title, url }) => (
                     <SplideSlide key={url}>
                         <Image
                             src={url}
@@ -44,13 +47,13 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({sliderData}) => {
                         />
                     </SplideSlide>
                 ))} */}
-            </SplideTrack>
+      </SplideTrack>
 
-            <div className="splide__progress">
-                <div className="splide__progress__bar"></div>
-            </div>
-        </Splide>
-    );
+      <div className="splide__progress">
+        <div className="splide__progress__bar"></div>
+      </div>
+    </Splide>
+  );
 };
 
 export default CarouselSlider;

@@ -2,6 +2,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import ProductCard from "@/components/ProductCard";
 import { getProductByCategoryId } from "@/lib/actions/getCategory";
 import Container from "../components/Container";
+import NoResults from "../components/no-result";
 
 interface CategoryPageProps {
   params: {
@@ -17,6 +18,7 @@ const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
     <Container>
       <Breadcrumb />
       <div className=" flex flex-wrap gap-2">
+        {products.length === 0 && <NoResults />}
         {products.map((productData) => (
           <ProductCard key={productData.id} productData={productData} />
         ))}

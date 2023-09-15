@@ -2,7 +2,7 @@ import Image from "next/image";
 import { MouseEventHandler } from "react";
 interface CustomButtonProps {
   btnType?: "button" | "submit";
-  clickHandler?: MouseEventHandler<HTMLButtonElement>;
+  clickHandler?: MouseEventHandler<HTMLButtonElement> | undefined;
   icon?: string;
   title?: string;
   customButtonStyle?: string;

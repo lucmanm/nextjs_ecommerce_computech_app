@@ -28,9 +28,9 @@ const Footer = () => {
               <div key={title} className="grow ">
                 <span className="font-semibold">{title}</span>
                 {info.map(({ title, info }: FooterInfoProps) => (
-                  <p key={title} className="leading-7">
+                  <ol key={title} className="leading-7">
                     {title} {info}
-                  </p>
+                  </ol>
                 ))}
               </div>
             ))}

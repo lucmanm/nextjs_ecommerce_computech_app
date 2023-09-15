@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface CategoryProps {
   id: number;
@@ -12,6 +13,7 @@ interface DropdownMenuProps {
 }
 
 const DropdownMenu = ({ title, categories }: DropdownMenuProps) => {
+  const pathname = usePathname();
   return (
     //issue #1: required to get notfound if the folder router is not equal
     <div className="group relative z-20">
@@ -23,7 +25,7 @@ const DropdownMenu = ({ title, categories }: DropdownMenuProps) => {
           {categories?.map(({ id, category }: CategoryProps) => (
             <Link
               key={id}
-              href={`http://localhost:3000/${id}`}
+              href={`${pathname}${id}`}
               className="white w-full whitespace-pre border border-b-gray-300 bg-gray-200 px-2 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black"
             >
               <span className="capitalize">{category}</span>

@@ -26,7 +26,7 @@ const BrandSlider = ({
   return (
     <div className="flex flex-col gap-y-2">
       {sliderhead && (
-        <span className="relative max-w-fit rounded-full bg-white px-5 py-2 text-xs font-bold text-blue-950 shadow-md md:text-sm">
+        <span className="relative max-w-fit rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-950 shadow-md md:text-sm">
           {sliderhead}
         </span>
       )}
@@ -59,7 +59,7 @@ const BrandSlider = ({
                 <Image src={imageUrl} width={100} height={100} alt={brand} />
               </div>
               {subtitle && (
-                <span className="dt:text-sm whitespace-pre text-center text-xs font-medium capitalize">
+                <span className="dt:text-sm whitespace-pre text-center text-sm font-medium capitalize">
                   {brand}
                 </span>
               )}

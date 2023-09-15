@@ -46,7 +46,7 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
         />
       </div>
       <div>
-        <span className="inline-block self-start pb-1 pr-1 text-xs font-bold">
+        <span className="inline-block self-start pb-1 pr-1 text-sm font-bold">
           {productData.model}
         </span>
         <h3 className="line-clamp-2 text-sm lg:text-base">
@@ -55,7 +55,7 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
       </div>
       <div className="flex">
         <div className="flex">
-          <span className="inline-block self-start pb-1 pr-1 text-xs font-medium lg:p-0.5 lg:text-sm">
+          <span className="inline-block self-start pb-1 pr-1 text-sm font-medium lg:p-0.5 lg:text-sm">
             SR
           </span>
           <h2 className="leading-0 self-end p-0  text-xl font-bold text-blue-950">
@@ -63,7 +63,7 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
           </h2>
         </div>
 
-        <p className="inline-block self-end pb-1 pl-1 text-xs font-medium text-red-500 line-through lg:p-0.5 lg:text-lg">
+        <p className="inline-block self-end pb-1 pl-1 text-sm font-medium text-red-500 line-through lg:p-0.5 lg:text-lg">
           {productData.salePrice !== "" && ""}
         </p>
       </div>

@@ -17,7 +17,7 @@ export default async function ShopPage() {
   const [{ title: productTitle, list: productList }] = categories;
 
   return (
-    <div className="flex flex-col overflow-hidden md:my-8 md:space-y-8">
+    <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
       {/* Main brands of homepage */}
       <CarouselSlider sliderData={slider} />
 

@@ -10,7 +10,7 @@ export async function GET(req: Request) {
 
         const categories = await prisma.category.findMany();
         return NextResponse.json(
-            { message: "Success", categories },
+            { categories },
             { status: 200 }
         );
 

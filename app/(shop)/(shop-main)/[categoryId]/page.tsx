@@ -1,9 +1,12 @@
 import Breadcrumb from "@/app/(shop)/(shop-main)/components/Breadcrumb";
-import ProductCard from "@/components/ProductCard";
+// import ProductCard from "@/components/ProductCard";
 import { getProductByCategoryId } from "@/lib/actions/getCategory";
 import NoResults from "../components/no-result";
 import { Product } from "@/types/table-types";
 import Container from "../components/Container";
+import dynamic from "next/dynamic";
+
+const ProductCard = dynamic(() => import("@/components/ProductCard"));
 
 interface CategoryPageProps {
   params: {

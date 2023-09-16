@@ -40,8 +40,8 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
       {/* issue #1: Enable to find image */}
       <Image
         src={productData.images?.[0]?.imageUrl}
-        width={200}
-        height={200}
+        width={500}
+        height={500}
         alt="Image"
       />
       <div>

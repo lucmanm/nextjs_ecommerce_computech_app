@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 interface CategoryProps {
   id: number;
@@ -12,8 +12,8 @@ interface DropdownMenuProps {
   categories: CategoryProps[];
 }
 
-const DropdownMenu = ({ title, categories }: DropdownMenuProps) => {
-  const pathname = usePathname();
+const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, categories }) => {
+  const router = useRouter();
   return (
     //issue #1: required to get notfound if the folder router is not equal
     <div className="group relative z-20">
@@ -22,10 +22,10 @@ const DropdownMenu = ({ title, categories }: DropdownMenuProps) => {
       </div>
       <div className="hidden grow group-hover:block group-focus:visible">
         <div className="absolute top-full flex w-fit grow flex-col overflow-hidden rounded pt-3 shadow-md">
-          {categories?.map(({ id, category }: CategoryProps) => (
+          {categories?.map(({ id, category }) => (
             <Link
               key={id}
-              href={`${pathname}${id}`}
+              href={`/${id}`}
               className="white w-full whitespace-pre border border-b-gray-300 bg-gray-200 px-2 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black"
             >
               <span className="capitalize">{category}</span>

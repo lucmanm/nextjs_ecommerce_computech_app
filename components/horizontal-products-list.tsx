@@ -4,11 +4,16 @@ import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import { sliderImages } from "@/lib/constant";
 import Product from "./Product";
 
-const ProductCategory = () => {
+interface HorizontalProductListProps {
+  title: string;
+}
+const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
+  title,
+}) => {
   return (
     <div className="flex flex-col gap-y-2">
       <span className="relative max-w-fit rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-950 shadow-md md:text-sm">
-        New Arrival
+        {title}
       </span>
       <Splide
         hasTrack={false}
@@ -41,4 +46,4 @@ const ProductCategory = () => {
   );
 };
 
-export default ProductCategory;
+export default HorizontalProductList;

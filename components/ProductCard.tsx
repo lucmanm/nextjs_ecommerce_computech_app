@@ -35,13 +35,13 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
   return (
     <div
       onClick={handleNavigation}
-      className="my-1 flex w-60 flex-col gap-3 overflow-hidden rounded-lg bg-white p-2 shadow-sm hover:cursor-pointer  lg:p-3"
+      className="flex  w-full flex-col gap-3 overflow-hidden rounded-lg border border-gray-200 bg-white p-2 shadow-sm  hover:cursor-pointer  hover:shadow-blue-600 lg:p-3"
     >
       {/* issue #1: Enable to find image */}
       <Image
         src={productData.images?.[0]?.imageUrl}
-        width={500}
-        height={500}
+        width={200}
+        height={200}
         alt="Image"
       />
       <div>

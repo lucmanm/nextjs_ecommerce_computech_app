@@ -63,7 +63,8 @@ export async function GET(req: Request, { params }: { params: { categoryID: stri
     const categoryId = params.categoryID;
     const products = await prisma.product.findMany({
       where: {
-        categoryId: categoryId
+        categoryId: categoryId,
+        isLive: true
       },
       include: {
         images: true

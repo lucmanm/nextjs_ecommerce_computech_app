@@ -1,8 +1,6 @@
 import Slider from "@/components/Slider";
-import ProductCategory from "@/components/ProductCategory";
 import CarouselSlider from "@/components/CarouselSlider";
 import { categories } from "@/lib/constant";
-import React from "react";
 import { getSliders } from "@/lib/actions/getSliders";
 import BrandSlider from "./components/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
@@ -30,7 +28,7 @@ export default async function ShopPage() {
         /> */}
 
       {/* Category of products display */}
-      <ProductCategory />
+      {/* <ProductCategory /> */}
 
       <BrandSlider
         subtitle={false}

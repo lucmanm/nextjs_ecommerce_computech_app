@@ -10,6 +10,7 @@ interface CategoryPageProps {
     categoryId: string;
   };
 }
+
 export const revalidate = 0;
 
 const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {

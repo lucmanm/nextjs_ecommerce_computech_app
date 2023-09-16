@@ -21,27 +21,16 @@ const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
         hasTrack={false}
         options={{
           type: "loop",
-          perPage: 1,
           rewind: true,
           gap: "1.5rem",
           perMove: 1,
           arrows: false,
           pagination: false,
-          breakpoints: {
-            1024: { perPage: 5 },
-            768: { perPage: 4 },
-            640: { perPage: 2 },
-          },
         }}
-        tag="section"
-        aria-label="slider"
       >
-        <SplideTrack className="py-2">
+        <SplideTrack className="grid grid-cols-2 py-2 md:grid-cols-4 lg:grid-cols-5 ">
           {productData.map((productData) => (
-            <SplideSlide
-              key={productData.id}
-              className="flex max-w-fit flex-col gap-y-2"
-            >
+            <SplideSlide key={productData.id}>
               <ProductCard productData={productData} />
             </SplideSlide>
           ))}

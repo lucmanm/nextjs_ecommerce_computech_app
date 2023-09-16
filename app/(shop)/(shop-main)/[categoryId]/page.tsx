@@ -20,7 +20,7 @@ const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
   const products: Product[] = await getProductByCategoryId(categoryId);
 
   return (
-    <Container classname="space-y-4 p-2 lg:p-0">
+    <Container classname="space-y-4">
       <Breadcrumb />
       {products.length === 0 ? (
         <NoResults />

@@ -31,15 +31,17 @@ export default async function ShopPage() {
         /> */}
 
       {/* Category of products display */}
-      <HorizontalProductList title="Featured" productData={products} />
+      <div className="px-3 lg:px-0">
+        <HorizontalProductList title="Featured" productData={products} />
 
-      <BrandSlider
-        subtitle={false}
-        sliderhead="Brand"
-        data={brands}
-        sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
-        arrow={true}
-      />
+        <BrandSlider
+          subtitle={false}
+          sliderhead="Brand"
+          data={brands}
+          sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
+          arrow={true}
+        />
+      </div>
     </div>
   );
 }

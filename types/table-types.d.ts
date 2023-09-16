@@ -11,9 +11,16 @@ export interface Product {
     salePrice: string,
     stock: number,
     images: Image[]
+    brand: Brand
 }
 
 export interface Image {
     id: string,
     imageUrl: string,
+}
+
+export interface Brand {
+    id: string
+    brand: string
+    imageUrl: string
 }

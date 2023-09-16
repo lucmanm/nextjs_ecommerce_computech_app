@@ -8,3 +8,5 @@ export async function getProductById(productID: string): Promise<Product> {
     const data = await res.json();
     return data.product;
 }
+
+

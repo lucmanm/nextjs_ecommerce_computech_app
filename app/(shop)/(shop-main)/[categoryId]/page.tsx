@@ -16,9 +16,9 @@ const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
   const products: Product[] = await getProductByCategoryId(categoryId);
 
   return (
-    <Container>
+    <Container classname="space-y-4">
       <Breadcrumb />
-      <div className=" grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-5">
+      <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-5">
         {products.length === 0 && <NoResults />}
         {products.map((productData) => (
           <ProductCard key={productData.id} productData={productData} />

@@ -3,6 +3,7 @@ import { ShoppingCart } from "lucide-react";
 import { Product } from "@/types/table-types";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface InfoProps {
   data: Product;
@@ -12,6 +13,13 @@ const Info: React.FC<InfoProps> = ({ data }) => {
   return (
     <div className="flex flex-col justify-between md:h-full">
       <div className="">
+        <Image
+          src={data.brand.imageUrl}
+          width={48}
+          height={48}
+          alt={data.brand.brand}
+          className="rounded-md"
+        />
         <h1 className="text-base font-bold text-gray-900 lg:text-3xl">
           {data.description}
         </h1>

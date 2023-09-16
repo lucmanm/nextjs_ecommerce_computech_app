@@ -91,7 +91,8 @@ export async function GET(req: Request, { params }: { params: { productID: strin
                 id: params.productID
             },
             include: {
-                images: true
+                images: true,
+                brand: true
             }
         })
 

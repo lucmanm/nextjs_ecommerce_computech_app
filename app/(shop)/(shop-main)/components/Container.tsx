@@ -1,9 +1,10 @@
 interface ContainerProps {
   children: React.ReactNode;
+  classname: string;
 }
 
-const Container: React.FC<ContainerProps> = ({ children }) => {
-  return <div className="mx-2 my-4 md:container">{children}</div>;
+const Container: React.FC<ContainerProps> = ({ classname, children }) => {
+  return <div className={`my-4 md:container ${classname}`}>{children}</div>;
 };
 
 export default Container;

@@ -105,10 +105,7 @@ const Sidebar = () => {
     >
       {/* SideBar header Menu */}
       <div className="flex w-full items-center justify-between border-black p-2">
-        <Link
-          href="http://localhost:3000/dashboard"
-          className={`${isOpen && "hidden"}`}
-        >
+        <Link href="/dashboard" className={`${isOpen && "hidden"}`}>
           <Image
             src={`/computech-landscape-logo.png`}
             alt="computech logo"

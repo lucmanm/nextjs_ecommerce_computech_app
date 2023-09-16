@@ -3,6 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import { getProductByCategoryId } from "@/lib/actions/getCategory";
 import Container from "../components/Container";
 import NoResults from "../components/no-result";
+import { Product } from "@/types/table-types";
 
 interface CategoryPageProps {
   params: {
@@ -12,7 +13,7 @@ interface CategoryPageProps {
 export const revalidate = 0;
 
 const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
-  const products = await getProductByCategoryId(categoryId);
+  const products: Product[] = await getProductByCategoryId(categoryId);
 
   return (
     <Container>

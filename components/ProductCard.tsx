@@ -1,13 +1,14 @@
 "use client";
 import Image from "next/image";
 import CustomButton from "./CustomButton";
-import { Product } from "@/types/table-types";
-import Link from "next/link";
+import { Image as ImageProps, Product } from "@/types/table-types";
 import { usePathname, useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 
 interface PropductProps {
-  productData: Product;
+  productData: Product & {
+    images: ImageProps[];
+  };
 }
 
 const ProductCard: React.FC<PropductProps> = ({ productData }) => {
@@ -37,14 +38,12 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
       className="my-1 flex w-60 flex-col gap-3 overflow-hidden rounded-lg bg-white p-2 shadow-sm hover:cursor-pointer  lg:p-3"
     >
       {/* issue #1: Enable to find image */}
-      <div className="">
-        <Image
-          src={productData.images?.[0]?.imageUrl}
-          width={500}
-          height={500}
-          alt="Image"
-        />
-      </div>
+      <Image
+        src={productData.images?.[0]?.imageUrl}
+        width={500}
+        height={500}
+        alt="Image"
+      />
       <div>
         <span className="inline-block self-start pb-1 pr-1 text-sm font-bold">
           {productData.model}

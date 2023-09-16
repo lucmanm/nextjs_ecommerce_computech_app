@@ -1,39 +1,38 @@
-"use client"
-import React from 'react'
-import { Settings } from '@/lib/constant';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Container from '../../../(admin)/components/Container';
+"use client";
+import React from "react";
+import { Settings } from "@/lib/constant";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Category = () => {
-    const router = useRouter()
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-    const category = searchParams.get("category")
+  const category = searchParams.get("category");
 
-    const handleTags = (filter: string) => {
-        router.push(`${pathname}?category=${filter}`)
-    }
+  const handleTags = (filter: string) => {
+    router.push(`${pathname}?category=${filter}`);
+  };
+
   return (
     <div>
-
       {Settings.map((filter) => (
-          <button
+        <button
           key={filter}
           type="button"
           onClick={() => handleTags(filter)}
           className={`
           ${
-              category === filter
-              ? "bg-gradient-to-br text-white font-normal from-blue-400 via-blue-500 to-blue-600"
+            category === filter
+              ? "bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 font-normal text-white"
               : "font-normal"
-            } whitespace-nowrap rounded-lg px-4 py-1 capitalize text-sm tb:text-base`}
-            >
+          } tb:text-base whitespace-nowrap rounded-lg px-4 py-1 text-sm capitalize`}
+        >
           {filter}
         </button>
       ))}
     </div>
   );
-}
+};
 
-export default Category
+export default Category;

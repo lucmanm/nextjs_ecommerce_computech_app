@@ -10,7 +10,7 @@ export async function getProductCategory() {
 }
 
 
-export async function getProductByCategoryId(categoryId: string): Promise<Product[]> {
+export async function getProductByCategoryId(categoryId: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category/${categoryId}`);
   if (!res.ok) {
     throw new Error("Failed to fetch categoryid");

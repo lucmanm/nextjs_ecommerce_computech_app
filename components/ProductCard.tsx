@@ -6,9 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 
 interface PropductProps {
-  productData: Product & {
-    images: ImageProps[];
-  };
+  productData: Product;
 }
 
 const ProductCard: React.FC<PropductProps> = ({ productData }) => {

@@ -4,12 +4,15 @@ import { categories } from "@/lib/constant";
 import { getSliders } from "@/lib/actions/getSliders";
 import BrandSlider from "./components/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
+import HorizontalProductList from "@/components/horizontal-products-list";
+import { getProducts } from "@/lib/actions/getProduct";
 
 export const revalidate = 0;
 
 export default async function ShopPage() {
   const slider = await getSliders();
   const brands = await getBrands();
+  const products = await getProducts();
   // Destrcucturing Product categories & Brand List
 
   const [{ title: productTitle, list: productList }] = categories;
@@ -28,7 +31,7 @@ export default async function ShopPage() {
         /> */}
 
       {/* Category of products display */}
-      {/* <ProductCategory /> */}
+      <HorizontalProductList title="Featured" productData={products} />
 
       <BrandSlider
         subtitle={false}

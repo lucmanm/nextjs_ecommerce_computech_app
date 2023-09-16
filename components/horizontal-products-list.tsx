@@ -1,18 +1,20 @@
 "use client";
 import "@splidejs/react-splide/css";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
-import { sliderImages } from "@/lib/constant";
-import Product from "./Product";
+import { Product } from "@/types/table-types";
+import ProductCard from "./ProductCard";
 
 interface HorizontalProductListProps {
   title: string;
+  productData: Product[];
 }
 const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
   title,
+  productData,
 }) => {
   return (
     <div className="flex flex-col gap-y-2">
-      <span className="relative max-w-fit rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-950 shadow-md md:text-sm">
+      <span className="md:px- relative max-w-fit rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-950 shadow-md md:py-1 md:text-lg">
         {title}
       </span>
       <Splide
@@ -26,18 +28,21 @@ const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
           arrows: false,
           pagination: false,
           breakpoints: {
-            1280: { perPage: 4 },
-            1024: { perPage: 3 },
+            1024: { perPage: 5 },
+            768: { perPage: 4 },
             640: { perPage: 2 },
           },
         }}
         tag="section"
         aria-label="slider"
       >
-        <SplideTrack className="">
-          {sliderImages.map(({ url }) => (
-            <SplideSlide key={url} className="flex max-w-fit flex-col gap-y-2">
-              <Product />
+        <SplideTrack className="py-2">
+          {productData.map((productData) => (
+            <SplideSlide
+              key={productData.id}
+              className="flex max-w-fit flex-col gap-y-2"
+            >
+              <ProductCard productData={productData} />
             </SplideSlide>
           ))}
         </SplideTrack>

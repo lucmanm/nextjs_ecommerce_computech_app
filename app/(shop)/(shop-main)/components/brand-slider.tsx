@@ -26,7 +26,7 @@ const BrandSlider = ({
   return (
     <div className="flex flex-col gap-y-2">
       {sliderhead && (
-        <span className="relative max-w-fit rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-950 shadow-md md:text-sm">
+        <span className="relative max-w-fit rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-950 shadow-md md:px-3 md:py-1 md:text-lg">
           {sliderhead}
         </span>
       )}

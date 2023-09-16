@@ -6,9 +6,17 @@ import { z } from "zod";
 export const GET = async (req: Request) => {
 
     try {
-        const products = await prisma.product.findMany();
+        const products = await prisma.product.findMany({
+            where: {
+                isLive: true
+            },
+            include: {
+                images: true,
+                brand: true,
+            }
+        });
         return NextResponse.json(
-            { message: "success", products },
+            { products },
             { status: 200 }
         );
     } catch (error) {

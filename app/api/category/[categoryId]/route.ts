@@ -64,6 +64,9 @@ export async function GET(req: Request, { params }: { params: { categoryID: stri
     const products = await prisma.product.findMany({
       where: {
         categoryId: categoryId
+      },
+      include: {
+        images: true
       }
     })
 

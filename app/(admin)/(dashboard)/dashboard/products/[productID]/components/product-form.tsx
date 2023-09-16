@@ -39,6 +39,7 @@ interface ProductFormProps {
 }
 
 const formSchema = z.object({
+  // issue #3
   model: z.string().min(4, "Model Number required").max(20),
   description: z.string().min(5, "Please Enter Product description"),
   price: z.coerce

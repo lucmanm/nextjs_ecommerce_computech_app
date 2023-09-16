@@ -1,4 +1,4 @@
-import Breadcrumb from "@/components/Breadcrumb";
+import Breadcrumb from "@/app/(shop)/(shop-main)/components/Breadcrumb";
 import ProductCard from "@/components/ProductCard";
 import { getProductByCategoryId } from "@/lib/actions/getCategory";
 import Container from "../components/Container";
@@ -19,7 +19,7 @@ const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
     <Container classname="space-y-4">
       <Breadcrumb />
       <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-5">
-        {products.length === 0 && <NoResults />}
+        {/* {products.length === 0 && <NoResults />} */}
         {products.map((productData) => (
           <ProductCard key={productData.id} productData={productData} />
         ))}

@@ -43,6 +43,7 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
         width={500}
         height={500}
         alt="Image"
+        loading="lazy"
       />
       <div>
         <span className="inline-block self-start pb-1 pr-1 text-sm font-bold">

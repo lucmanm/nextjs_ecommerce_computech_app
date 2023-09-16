@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${cairo.className} bg-slate-100 h-screen`}>
+      <body
+        className={`${cairo.className} flex h-screen min-h-screen flex-col bg-slate-100`}
+      >
         {children}
       </body>
     </html>

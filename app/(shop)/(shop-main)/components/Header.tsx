@@ -7,44 +7,36 @@ import { getProductCategory } from "@/lib/actions/getCategory";
 import DropdownMenu from "./DropdownMenu";
 
 const Header = async () => {
-    const categories = await getProductCategory();
+  const categories = await getProductCategory();
 
-    // Destructuring ArrafetchProductsy of Logo
-    const [, { title, url }] = logoUrl;
+  // Destructuring ArrafetchProductsy of Logo
+  const [, { title, url }] = logoUrl;
 
-    return (
-        <header className="tb:shadow-md border-b bg-slate-100  ">
-            {/* <TopNavigation/> */}
-            <div className="bg-white p-2">
-                <div className="container flex flex-wrap items-center justify-between  gap-4">
-                    <div className="self-center">
-                        <Link href="/">
-                            <Image
-                                src={url}
-                                width={150}
-                                height={0}
-                                alt={title}
-                            />
-                        </Link>
-                    </div>
-                    <div className=" flex-1">
-                        <SearchInput />
-                    </div>
-                    <div className="">
-                        {/* Product Category Menu */}
-                        <DropdownMenu
-                            title="All Category"
-                            categories={categories}
-                        />
-                    </div>
-                    {/* Brands Menu */}
+  return (
+    <header className="border-b bg-slate-100 md:shadow-md  ">
+      {/* <TopNavigation/> */}
+      <div className="bg-white p-2">
+        <div className="container flex flex-wrap items-center justify-between  gap-4">
+          <div className="self-center">
+            <Link href="/">
+              <Image src={url} width={150} height={0} alt={title} />
+            </Link>
+          </div>
+          <div className=" flex-1">
+            <SearchInput />
+          </div>
+          <div className="">
+            {/* Product Category Menu */}
+            <DropdownMenu title="All Category" categories={categories} />
+          </div>
+          {/* Brands Menu */}
 
-                    <div className="">
-                        <CustomButton btnType="button" icon="/heart.svg" />
-                    </div>
-                </div>
-            </div>
-        </header>
-    );
+          <div className="">
+            <CustomButton btnType="button" icon="/heart.svg" />
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 };
 export default Header;

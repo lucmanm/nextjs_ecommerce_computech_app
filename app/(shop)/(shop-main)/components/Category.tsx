@@ -26,7 +26,7 @@ const Category = () => {
             category === filter
               ? "bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 font-normal text-white"
               : "font-normal"
-          } tb:text-base whitespace-nowrap rounded-lg px-4 py-1 text-sm capitalize`}
+          } whitespace-nowrap rounded-lg px-4 py-1 text-sm capitalize md:text-base`}
         >
           {filter}
         </button>

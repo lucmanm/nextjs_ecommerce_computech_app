@@ -8,7 +8,7 @@ const Footer = () => {
   const [{ title }, { paymentCard }] = paymentMethod;
   return (
     // The Entire Footer Container
-    <footer className="bg-gray-200 text-sm md:text-base">
+    <footer className="mt-auto bg-gray-200 text-sm md:text-base">
       {/* Container for the entire div */}
       <div className="container flex flex-wrap px-4">
         <div className="flex w-full py-4 ">

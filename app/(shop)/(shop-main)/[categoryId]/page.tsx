@@ -22,12 +22,15 @@ const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
   return (
     <Container classname="space-y-4 p-2 lg:p-0">
       <Breadcrumb />
-      <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-5">
-        {products.length === 0 && <NoResults />}
-        {products.map((productData) => (
-          <ProductCard key={productData.id} productData={productData} />
-        ))}
-      </div>
+      {products.length === 0 ? (
+        <NoResults />
+      ) : (
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-4 lg:grid-cols-5">
+          {products.map((productData) => (
+            <ProductCard key={productData.id} productData={productData} />
+          ))}
+        </div>
+      )}
     </Container>
   );
 };

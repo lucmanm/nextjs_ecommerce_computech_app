@@ -71,10 +71,6 @@ export async function GET(req: Request, { params }: { params: { categoryID: stri
       }
     })
 
-    if (!products.length) {
-      return new NextResponse("No Available data in category", { status: 500 })
-    }
-
     return NextResponse.json({ products }, { status: 200 });
 
   } catch (error) {

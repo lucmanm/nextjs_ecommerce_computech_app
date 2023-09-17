@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
 import Footer from "@/app/(shop)/(shop-main)/components/Footer";
-import BottomNavigation from "@/components/BottomNavigation";
 import Header from "./(shop-main)/components/Header";
+import ModalProvider from "@/hook/modal-provider";
 
 export const metadata = {
   title: "CompuTech",
@@ -16,10 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <>
+      <ModalProvider />
       <Header />
       <main className="lg:container">{children}</main>
       <Footer />
-      {/* <BottomNavigation /> */}
     </>
   );
 }

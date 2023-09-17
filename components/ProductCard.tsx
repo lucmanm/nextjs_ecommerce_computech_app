@@ -4,19 +4,27 @@ import CustomButton from "./CustomButton";
 import { Image as ImageProps, Product } from "@/types/table-types";
 import { usePathname, useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
+import IconButton from "./ui/custom-icon";
+import { ExpandIcon } from "lucide-react";
+import usePreviewModal from "@/hook/use-preview-modal";
 
 interface PropductProps {
   productData: Product;
 }
 
 const ProductCard: React.FC<PropductProps> = ({ productData }) => {
+  const previewModal = usePreviewModal();
   const pathname = usePathname();
   const router = useRouter();
 
   const handleNavigation = () => {
     router.push(`${pathname}/${productData.id}`);
   };
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
 
+    previewModal.onOpen(productData);
+  };
   const compareHandler: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     console.log("You CLick to compare me");
@@ -67,6 +75,10 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
       </div>
       <div className="">
         <div className="mx-auto flex justify-evenly">
+          <IconButton
+            onClick={onPreview}
+            icon={<ExpandIcon size={24} className="text-blue-950" />}
+          />
           <CustomButton
             clickHandler={compareHandler}
             btnType="button"

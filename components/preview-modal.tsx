@@ -1,6 +1,6 @@
 "use client";
 
-import Gallery from "@/app/(shop)/(shop-main)/[categoryId]/[productId]/components/gallery";
+import Gallery from "@/components/gallery";
 import Info from "@/app/(shop)/(shop-main)/components/info";
 import Modal from "./modals/modal";
 import usePreviewModal from "@/hook/use-preview-modal";

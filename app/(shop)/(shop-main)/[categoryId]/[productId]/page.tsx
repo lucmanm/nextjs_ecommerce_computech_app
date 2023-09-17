@@ -1,6 +1,6 @@
 import { getProductById } from "@/lib/actions/getProduct";
 import Info from "../../components/info";
-import Gallery from "./components/gallery";
+import Gallery from "../../../../../components/gallery";
 
 interface ProductPageProps {
   params: {

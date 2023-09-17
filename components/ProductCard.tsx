@@ -43,7 +43,7 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
         <span className="inline-block self-start pb-1 pr-1 text-sm font-bold">
           {productData.model}
         </span>
-        <h3 className="line-clamp-2 text-sm lg:text-base">
+        <h3 className="line-clamp-2 h-12 text-sm lg:text-base">
           {productData.description}
         </h3>
       </div>
@@ -52,7 +52,7 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
           <span className="inline-block self-start pb-1 pr-1 text-sm font-medium lg:p-0.5 lg:text-sm">
             SR
           </span>
-          <h2 className="leading-0 self-end p-0  text-xl font-bold text-blue-950">
+          <h2 className="leading-0 self-end  p-0 text-xl font-bold text-blue-950">
             {productData.price}
           </h2>
         </div>

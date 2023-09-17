@@ -1,4 +1,3 @@
-import { MouseEventHandler } from "react";
 
 export interface TopNavigationProps {
     title?: string;

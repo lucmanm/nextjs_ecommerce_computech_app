@@ -1,7 +1,7 @@
 import "@/styles/globals.css";
-import Footer from "@/app/(shop)/(shop-main)/components/Footer";
-import Header from "./(shop-main)/components/Header";
 import ModalProvider from "@/hook/modal-provider";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export const metadata = {
   title: "CompuTech",

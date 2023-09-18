@@ -1,7 +1,7 @@
 // import Slider from "@/components/Slider";
-import CarouselSlider from "@/components/CarouselSlider";
-import { getSliders } from "@/lib/actions/getSliders";
-import { SliderProps } from "@/types/table-types";
+// import CarouselSlider from "@/components/CarouselSlider";
+// import { getSliders } from "@/lib/actions/getSliders";
+// import { SliderProps } from "@/types/table-types";
 // import BrandSlider from "./components/brand-slider";
 // import { getBrands } from "@/lib/actions/getBrands";
 // import HorizontalProductList from "@/components/horizontal-products-list";
@@ -17,7 +17,8 @@ export default async function ShopPage() {
   return (
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
       {/* Main slider for homepage */}
-      <CarouselSlider sliderData={slider} />
+      {/* <CarouselSlider sliderData={slider} /> */}
+      Shop Home page
       {/* all Product Type  Data  - import Slider Components  */}
       {/* Disabled / Hidden */}
       {/* <Slider

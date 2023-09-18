@@ -3,11 +3,11 @@ import SearchInput from "@/components/SearchInput";
 import Image from "next/image";
 import { logoUrl } from "@/lib/constant";
 import Link from "next/link";
-import { getProductCategory } from "@/lib/actions/getCategory";
-import DropdownMenu from "./DropdownMenu";
+// import { getProductCategory } from "@/lib/actions/getCategory";
+// import DropdownMenu from "./DropdownMenu";
 
 const Header = async () => {
-  const categories = await getProductCategory();
+  // const categories = await getProductCategory();
 
   // Destructuring ArrafetchProductsy of Logo
   const [, { title, url }] = logoUrl;
@@ -27,7 +27,7 @@ const Header = async () => {
           </div>
           <div className="">
             {/* Product Category Menu */}
-            <DropdownMenu title="All Category" categories={categories} />
+            {/* <DropdownMenu title="All Category" categories={categories} /> */}
           </div>
           {/* Brands Menu */}
 

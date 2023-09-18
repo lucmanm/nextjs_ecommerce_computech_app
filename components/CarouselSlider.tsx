@@ -37,16 +37,6 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({ sliderData }) => {
             />
           </SplideSlide>
         ))}
-        {/* {sliderImages.map(({ title, url }) => (
-                    <SplideSlide key={url}>
-                        <Image
-                            src={url}
-                            width={1280}
-                            height={100}
-                            alt={title}
-                        />
-                    </SplideSlide>
-                ))} */}
       </SplideTrack>
 
       <div className="splide__progress">

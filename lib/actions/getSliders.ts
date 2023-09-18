@@ -5,6 +5,5 @@ export async function getSliders() {
   if (!res.ok) {
     throw new Error("Failed to fetch product categories");
   }
-  const data = await res.json();
-  return data.sliders;
+  return res.json();
 }

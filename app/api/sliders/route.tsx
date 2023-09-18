@@ -5,7 +5,7 @@ import { z } from "zod";
 export async function GET(req: Request) {
   try {
     const sliders = await prisma.slider.findMany();
-    return NextResponse.json({ sliders }, { status: 200 });
+    return NextResponse.json(sliders);
   } catch (error) {
     console.log("ERROR_GET_SLIDER", error);
     return NextResponse.json(

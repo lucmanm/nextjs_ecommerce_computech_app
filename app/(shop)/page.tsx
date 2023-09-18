@@ -18,7 +18,6 @@ export default async function ShopPage() {
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
       {/* Main slider for homepage */}
       <CarouselSlider sliderData={slider} />
-      Shop Home page
       {/* all Product Type  Data  - import Slider Components  */}
       {/* Disabled / Hidden */}
       {/* <Slider

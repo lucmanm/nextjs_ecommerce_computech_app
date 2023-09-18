@@ -4,7 +4,7 @@ import { z } from "zod";
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { categoryID: string } }
+  { params }: { params: { categoryId: string } }
 ) {
   try {
     const categorySchema = z.object({
@@ -13,7 +13,7 @@ export async function PATCH(
     const body = await req.json();
     const { category } = categorySchema.parse(body);
     const UpdateCategory = await prisma.category.update({
-      where: { id: params.categoryID },
+      where: { id: params.categoryId },
       data: {
         category: category
       },
@@ -36,11 +36,11 @@ export async function PATCH(
 
 export async function DELETE(
   req: Request,
-  { params }: { params: { categoryID: string } }
+  { params }: { params: { categoryId: string } }
 ) {
   try {
     const deleteCategory = await prisma.category.delete({
-      where: { id: params.categoryID }
+      where: { id: params.categoryId }
     });
 
     return NextResponse.json(
@@ -58,12 +58,12 @@ export async function DELETE(
   }
 }
 
-export async function GET(req: Request, { params }: { params: { categoryID: string } }) {
+export async function GET(req: Request, { params }: { params: { categoryId: string } }) {
   try {
-    const categoryId = params.categoryID;
+    const categoryId = params.categoryId;
     const products = await prisma.product.findMany({
       where: {
-        categoryId: categoryId,
+        categoryId,
         isLive: true
       },
       include: {

@@ -1,5 +1,9 @@
 import "@/styles/globals.css";
+<<<<<<< HEAD
 import { Cairo } from "next/font/google";
+=======
+// import { Inter } from 'next/font/google'
+>>>>>>> 1c43e693a4cc1c86593aa91c300e4a17150f8a3c
 
 const cairo = Cairo({ subsets: ["latin"] });
 
@@ -14,6 +18,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+<<<<<<< HEAD
   return (
     <html lang="en">
       <body
@@ -23,4 +28,13 @@ export default function RootLayout({
       </body>
     </html>
   );
+=======
+    return (
+        <html lang="en">
+            <body className="tb:text-sm relative bg-slate-100 text-sm  font-normal">
+                {children}
+            </body>
+        </html>
+    );
+>>>>>>> 1c43e693a4cc1c86593aa91c300e4a17150f8a3c
 }

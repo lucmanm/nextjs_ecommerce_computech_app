@@ -2,24 +2,42 @@
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";
 import "@splidejs/react-splide/css";
-import { sliderImages } from "@/lib/constant";
+import { SliderProps } from "@/types/table-types";
 
-const CarouselSlider = () => {
-    return (
-        <Splide
-            hasTrack={false}
-            options={{
-                type: "loop",
-                gap: "1rem;",
-                pagination: false,
-                arrows: false,
-                autoplay: true,
-                interval: 5000,
-            }}
-            className="overflow-hidden rounded-md bg-white dt:container tb:rounded-xl"
-            aria-label="slider ">
-            <SplideTrack>
-                {sliderImages.map(({ title, url }) => (
+interface CarouselSliderProps {
+  sliderData: SliderProps[];
+}
+
+const CarouselSlider: React.FC<CarouselSliderProps> = ({ sliderData }) => {
+  return (
+    <Splide
+      hasTrack={false}
+      options={{
+        type: "loop",
+        pagination: false,
+        arrows: false,
+        autoplay: true,
+        interval: 5000,
+      }}
+      aria-label="slider "
+    >
+      <SplideTrack>
+        {sliderData.map(({ label, imageUrl }) => (
+          <SplideSlide key={imageUrl} className="">
+            <Image
+              src={imageUrl}
+              width={1280}
+              height={100}
+              alt={label}
+              sizes="100vw"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </SplideSlide>
+        ))}
+        {/* {sliderImages.map(({ title, url }) => (
                     <SplideSlide key={url}>
                         <Image
                             src={url}
@@ -28,14 +46,14 @@ const CarouselSlider = () => {
                             alt={title}
                         />
                     </SplideSlide>
-                ))}
-            </SplideTrack>
+                ))} */}
+      </SplideTrack>
 
-            <div className="splide__progress">
-                <div className="splide__progress__bar"></div>
-            </div>
-        </Splide>
-    );
+      <div className="splide__progress">
+        <div className="splide__progress__bar"></div>
+      </div>
+    </Splide>
+  );
 };
 
 export default CarouselSlider;

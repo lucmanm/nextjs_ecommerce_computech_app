@@ -1,25 +1,32 @@
 import "@/styles/globals.css";
-import Sidebar from "@/components/admin/Sidebar";
-import Navigation from "@/components/admin/Navigation";
+import Sidebar from "@/app/(admin)/components/Sidebar";
+import Navigation from "@/app/(admin)/components/Navigation";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
-    title: "Admin Dashboard",
+  title: "Admin Dashboard",
 };
 
-export default function adminDashboardRootL({
-    children,
+export default async function adminDashboardRootL({
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
+  const session = await getServerSession(authOptions);
+  if (session?.user) {
     return (
-        <main className="relative flex flex-wrap">
-            <div className="w-56">
-                <Sidebar />
-            </div>
-            <div className="min-h-screen grow space-y-2">
-                <Navigation />
-                {children}
-            </div>
-        </main>
+      <main className="flex h-screen">
+        <Sidebar />
+        <div className="min-h-screen grow">
+          <Navigation />
+          {children}
+        </div>
+        <Toaster />
+      </main>
     );
+  }
+  return redirect("/sign-in");
 }

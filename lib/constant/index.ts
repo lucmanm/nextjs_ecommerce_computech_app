@@ -87,7 +87,7 @@ export const categories = [
                 imgLink: "/icons/computer.svg",
                 url: "/",
             },
-            { description: "monitor", imgLink: "/icons/monitor.svg", url: "/" },
+            { description: "monitor", imgLink: "/icons/monitor.svg", url: "/monitor" },
             { description: "Laptop", imgLink: "/icons/laptop.svg", url: "/" },
             {
                 description: "Ink & Toner",
@@ -185,26 +185,24 @@ export const dashboardSidebar = [
             },
         ],
     },
+    {
+        title: "Banners",
+        links: [
+            {
+                name: "Slider",
+                icon: "/default/brand.svg",
+                url: "/dashboard/sliders",
+            },
+            {
+                name: "Banners",
+                icon: "/default/brand.svg",
+                url: "/dashboard/banner",
+            },
+
+        ],
+    },
 ];
 
 // Settings
 export const Settings = ["general", "top Bar", "slider", "shipping and Tax"];
 
-export const shopSettings = [
-    {
-        name: "general",
-        slug: "settings",
-    },
-    {
-        name: "Top Navigation",
-        slug: "Top-Navigation",
-    },
-    {
-        name: "slider",
-        slug: "slider",
-    },
-    {
-        name: "shipping and Tax",
-        slug: "shipping-and-tax",
-    },
-];

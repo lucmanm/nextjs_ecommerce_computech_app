@@ -1,17 +1,5 @@
 import { MouseEventHandler } from "react";
-type Products = {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-    discountPercentage: number;
-    rating: number;
-    stock: number;
-    brand: string;
-    category: string;
-    thumbnail: string;
-    images: [];
-};
+
 
 // export interface TopNavigationProps {
 //     title?: string;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { MouseEventHandler } from "react";
 
 // export interface TopNavigationProps {
@@ -34,3 +35,5 @@ export interface paymentMethodProps {
 //     sliderCustomerStyle?: string;
 //     arrow?: boolean;
 // }
+=======
+>>>>>>> 7bb08715ed0f3a8b6e8e593f27928d0e87aac3ac

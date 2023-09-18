@@ -2,8 +2,8 @@
 // import CarouselSlider from "@/components/CarouselSlider";
 // import { getSliders } from "@/lib/actions/getSliders";
 // import { SliderProps } from "@/types/table-types";
-// import BrandSlider from "./components/brand-slider";
-// import { getBrands } from "@/lib/actions/getBrands";
+import BrandSlider from "./components/brand-slider";
+import { getBrands } from "@/lib/actions/getBrands";
 import HorizontalProductList from "@/components/horizontal-products-list";
 import { getProducts } from "@/lib/actions/getProduct";
 
@@ -11,7 +11,7 @@ export const revalidate = 0;
 
 export default async function ShopPage() {
   // const slider: SliderProps[] = await getSliders();
-  // const brands = await getBrands();
+  const brands = await getBrands();
   const products = await getProducts();
 
   return (
@@ -30,13 +30,13 @@ export default async function ShopPage() {
       <div className="px-3 lg:px-0">
         <HorizontalProductList title="Featured" productData={products} />
 
-        {/* <BrandSlider
+        <BrandSlider
           subtitle={false}
           sliderhead="Brand"
           data={brands}
           sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
           arrow={true}
-        /> */}
+        />
       </div>
     </div>
   );

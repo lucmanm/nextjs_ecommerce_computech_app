@@ -3,6 +3,7 @@ import "@splidejs/react-splide/css";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import { Product } from "@/types/table-types";
 import ProductCard from "./ProductCard";
+import Title from "./ui/Title";
 
 interface HorizontalProductListProps {
   title: string;
@@ -14,9 +15,7 @@ const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
 }) => {
   return (
     <div className="flex flex-col gap-y-2">
-      <span className="md:px- relative max-w-fit rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-950 shadow-md md:py-1 md:text-lg">
-        {title}
-      </span>
+      <Title>{title}</Title>
       <Splide
         hasTrack={false}
         options={{
@@ -28,7 +27,7 @@ const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
           pagination: false,
         }}
       >
-        <SplideTrack className="grid grid-cols-2 py-2 md:grid-cols-4 lg:grid-cols-5  lg:py-8">
+        <SplideTrack className="grid grid-cols-2 py-4 md:grid-cols-4 lg:grid-cols-5  lg:py-8">
           {productData.map((productData) => (
             <SplideSlide key={productData.id}>
               <ProductCard productData={productData} />

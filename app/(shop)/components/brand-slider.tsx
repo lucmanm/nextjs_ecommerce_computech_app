@@ -1,4 +1,5 @@
 "use client";
+import Title from "@/components/ui/Title";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";
 
@@ -25,11 +26,7 @@ const BrandSlider = ({
 }: SliderProps) => {
   return (
     <div className="flex flex-col gap-y-2">
-      {sliderhead && (
-        <span className="relative max-w-fit rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-950 shadow-md md:px-3 md:py-1 md:text-lg">
-          {sliderhead}
-        </span>
-      )}
+      <Title>{sliderhead}</Title>
 
       <Splide
         hasTrack={false}
@@ -37,7 +34,7 @@ const BrandSlider = ({
           type: "loop",
           perPage: 7,
           gap: "2rem",
-          arrows: false,
+          arrows: arrow,
           pagination: false,
           breakpoints: {
             1024: { perPage: 5 },

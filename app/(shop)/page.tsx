@@ -31,7 +31,7 @@ export default async function ShopPage() {
 
         <BrandSlider
           subtitle={false}
-          sliderhead="Brand"
+          sliderhead="Shop By Brand"
           data={brands}
           sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
           arrow={true}

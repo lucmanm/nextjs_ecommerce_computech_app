@@ -1,6 +1,5 @@
 import Slider from "@/components/Slider";
 import CarouselSlider from "@/components/CarouselSlider";
-import { categories } from "@/lib/constant";
 import { getSliders } from "@/lib/actions/getSliders";
 import BrandSlider from "./components/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
@@ -13,13 +12,10 @@ export default async function ShopPage() {
   const slider = await getSliders();
   const brands = await getBrands();
   const products = await getProducts();
-  // Destrcucturing Product categories & Brand List
-
-  const [{ title: productTitle, list: productList }] = categories;
 
   return (
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
-      {/* Main brands of homepage */}
+      {/* Main slider for homepage */}
       <CarouselSlider sliderData={slider} />
 
       {/* all Product Type  Data  - import Slider Components  */}

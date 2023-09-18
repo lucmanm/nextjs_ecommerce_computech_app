@@ -6,7 +6,7 @@ import { z } from "zod";
 export const GET = async (req: Request) => {
   try {
     const brands = await prisma.brand.findMany();
-    return NextResponse.json({ message: "success", brands }, { status: 200 });
+    return NextResponse.json({ brands }, { status: 200 });
   } catch (error) {
     console.log("ERROR_BRAND", error);
     return NextResponse.json(
@@ -24,9 +24,9 @@ export async function POST(req: Request) {
       brand: z.string(),
       imageUrl: z.string()
     });
-    
+
     const body = await req.json();
-    
+
     const { brand, imageUrl } = brandSchema.parse(body);
 
     const checkbBrandName = await prisma.brand.findFirst({
@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     });
 
     if (checkbBrandName) {
-      return new NextResponse("Brand name Exist", { status:500 });
+      return new NextResponse("Brand name Exist", { status: 500 });
     }
 
     const brandData = await prisma.brand.create({

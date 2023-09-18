@@ -10,7 +10,7 @@
 export const revalidate = 0;
 
 export default async function ShopPage() {
-  const slider: SliderProps[] = await getSliders();
+  // const slider: SliderProps[] = await getSliders();
   // const brands = await getBrands();
   // const products = await getProducts();
 

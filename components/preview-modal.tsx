@@ -7,7 +7,7 @@ import Info from "@/app/(shop)/components/info";
 
 const PreviewModal = () => {
   const previewModal = usePreviewModal();
-  const product = usePreviewModal((state) => state.data);
+  const product = usePreviewModal((state) => state.productData);
 
   if (!product) {
     return null;

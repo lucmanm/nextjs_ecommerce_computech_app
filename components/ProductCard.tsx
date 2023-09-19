@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import { Image as ImageProps, Product } from "@/types/table-types";
-import { usePathname, useRouter } from "next/navigation";
+import { Product } from "@/types/table-types";
+import { useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 import IconButton from "./ui/custom-icon";
 import { ExpandIcon } from "lucide-react";

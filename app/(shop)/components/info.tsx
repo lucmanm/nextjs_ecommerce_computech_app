@@ -1,4 +1,4 @@
-import { ShoppingCart } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 import { Product } from "@/types/table-types";
 import { Button } from "@/components/ui/button";
@@ -32,8 +32,8 @@ const Info: React.FC<InfoProps> = ({ data }) => {
         <Button
           className={cn(`w-full items-center gap-2 rounded-full py-6 text-lg`)}
         >
-          Add To Cart
-          <ShoppingCart size={20} />
+          <MessageCircle size={20} />
+          Contact #: 056 261 7554
         </Button>
       </div>
     </div>

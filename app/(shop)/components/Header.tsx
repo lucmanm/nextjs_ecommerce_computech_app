@@ -5,6 +5,7 @@ import { logoUrl } from "@/lib/constant";
 import Link from "next/link";
 import { getProductCategory } from "@/lib/actions/getCategory";
 import DropdownMenu from "./DropdownMenu";
+import SideBarModal from "./sidebar-modal";
 
 const Header = async () => {
   const categories = await getProductCategory();
@@ -22,16 +23,17 @@ const Header = async () => {
               <Image src={url} width={150} height={0} alt={title} />
             </Link>
           </div>
-          <div className=" flex-1">
+          <div className="hidden flex-1">
             <SearchInput />
           </div>
-          <div className="">
+          <div className="flex items-center justify-center gap-x-2">
             {/* Product Category Menu */}
             <DropdownMenu title="All Category" categories={categories} />
+            <SideBarModal />
           </div>
           {/* Brands Menu */}
 
-          <div className="">
+          <div className="hidden">
             <CustomButton btnType="button" icon="/heart.svg" />
           </div>
         </div>

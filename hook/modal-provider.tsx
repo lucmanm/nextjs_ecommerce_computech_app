@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import PreviewModal from "@/components/preview-modal";
+import PreviewModal from "@/app/(shop)/components/preview-modal";
 
 const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);

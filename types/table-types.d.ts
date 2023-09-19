@@ -12,6 +12,7 @@ export interface Product {
     stock: number,
     images: Image[]
     brand: Brand
+    categoryId: string
 }
 
 export interface Image {

@@ -67,7 +67,8 @@ export async function GET(req: Request, { params }: { params: { categoryId: stri
         isLive: true
       },
       include: {
-        images: true
+        images: true,
+        brand: true
       }
     })
 

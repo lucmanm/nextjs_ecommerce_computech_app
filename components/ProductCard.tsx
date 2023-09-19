@@ -13,11 +13,13 @@ interface PropductProps {
 
 const ProductCard: React.FC<PropductProps> = ({ productData }) => {
   const previewModal = usePreviewModal();
-  const pathname = usePathname();
   const router = useRouter();
 
   const handleNavigation = () => {
-    router.push(`${pathname}/${productData.id}`);
+    const productId = productData.id;
+    const categoryId = productData.categoryId;
+    //issue #2 Undefind in first params with any dummy string
+    router.push(`/${categoryId}/${productId}`);
   };
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();

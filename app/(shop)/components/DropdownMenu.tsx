@@ -1,6 +1,4 @@
-"use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 interface CategoryProps {
   id: number;
@@ -13,7 +11,6 @@ interface DropdownMenuProps {
 }
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, categories }) => {
-  const router = useRouter();
   return (
     <div className="group relative z-20">
       <div className="grow rounded-full bg-gray-100 px-4 py-1.5 text-center font-bold uppercase text-blue-950 shadow hover:cursor-pointer hover:bg-blue-950 hover:text-white">

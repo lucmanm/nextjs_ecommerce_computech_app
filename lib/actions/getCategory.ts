@@ -1,3 +1,4 @@
+import { Product } from "@/types/table-types";
 
 export async function getProductCategory() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category`);

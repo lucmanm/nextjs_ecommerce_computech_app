@@ -18,17 +18,11 @@ export default async function ShopPage() {
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
       {/* Main slider for homepage */}
       <CarouselSlider sliderData={slider} />
-      {/* all Product Type  Data  - import Slider Components  */}
-      {/* Disabled / Hidden */}
-      {/* <Slider
-          subtitle={true} //Enable and Disable below secription
-          list={productList}
-          sliderCustomerStyle="rounded-full w-20 h-20 dt:w-28 dt:h-28" //Csutom style for slider
-        /> */}
-      {/* Category of products display */}
-      <div className="px-3 lg:px-0">
-        <HorizontalProductList title="Featured" productData={products} />
 
+      <div className="px-3 lg:px-0">
+        {/* Product Listing slider */}
+        <HorizontalProductList title="Featured" productData={products} />
+        {/* Brand Slider */}
         <BrandSlider
           subtitle={false}
           sliderhead="Shop By Brand"

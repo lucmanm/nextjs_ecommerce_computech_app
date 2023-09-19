@@ -1,12 +1,14 @@
 import { MessageCircle } from "lucide-react";
 
-import { Product } from "@/types/table-types";
+import { Brand, Product } from "@/types/table-types";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 interface InfoProps {
-  data: Product;
+  data: Product & {
+    brand: Brand;
+  };
 }
 
 const Info: React.FC<InfoProps> = ({ data }) => {

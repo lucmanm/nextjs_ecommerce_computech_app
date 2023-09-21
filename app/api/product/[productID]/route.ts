@@ -82,24 +82,4 @@ export async function DELETE(req: Request, { params }: { params: { productID: st
     }
 }
 
-export async function GET(req: Request, { params }: { params: { productID: string } }) {
 
-    try {
-
-        const product = await prisma.product.findUnique({
-            where: {
-                id: params.productID
-            },
-            include: {
-                images: true,
-                brand: true
-            }
-        })
-
-        return NextResponse.json({ product }, { status: 200 })
-
-    } catch (error) {
-        console.log("ERROR_PRODUCT_GET_ID", error);
-        return NextResponse.json({ message: "[ERROR_PRODUCT_GET_ID], something went wrong" }, { status: 500 })
-    }
-}

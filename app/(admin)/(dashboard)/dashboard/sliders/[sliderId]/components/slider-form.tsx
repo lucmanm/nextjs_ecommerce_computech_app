@@ -36,7 +36,6 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
 
   const { toast } = useToast();
 
-
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? "Edit Slider" : "Create Slider";

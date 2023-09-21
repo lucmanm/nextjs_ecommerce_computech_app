@@ -1,18 +1,29 @@
 import { getProductById } from "@/lib/actions/getProduct";
 import Info from "../../components/info";
 import Gallery from "@/components/gallery";
+import { Product } from "@/types/table-types";
 
 interface ProductPageProps {
   params: {
     productId: string;
+    categoryId: string;
   };
 }
-export const revalidate = 0;
+
+// export async function generateStaticParams({
+//   params: { productId },
+// }: ProductPageProps) {
+//   const product: Product[] = await getProductById(productId);
+
+//   return product.map((prod) => ({
+//     productId: prod.id,
+//   }));
+// }
 
 const ProductPage: React.FC<ProductPageProps> = async ({
-  params: { productId },
+  params: { productId, categoryId },
 }) => {
-  const product = await getProductById(productId);
+  const product = await getProductById(productId, categoryId);
 
   return (
     <div>

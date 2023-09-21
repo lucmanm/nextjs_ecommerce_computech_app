@@ -11,7 +11,7 @@ export async function getProductCategory() {
 
 
 export async function getProductByCategoryId(categoryId: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category/${categoryId}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category/${categoryId}`, { next: { revalidate: 60 } });
   const data = await res.json();
   return data.products;
 }

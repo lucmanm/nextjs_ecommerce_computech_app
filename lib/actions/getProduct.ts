@@ -9,8 +9,8 @@ export async function getProducts(): Promise<Product[]> {
     return data.products;
 }
 
-export async function getProductById(productID: string): Promise<Product> {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/${productID}`);
+export async function getProductById(productId: string, categoryId: string) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category/${categoryId}/${productId}`, { next: { revalidate: 60 } });
     if (!res.ok) {
         throw new Error("Failed to fetch categoryid");
     }

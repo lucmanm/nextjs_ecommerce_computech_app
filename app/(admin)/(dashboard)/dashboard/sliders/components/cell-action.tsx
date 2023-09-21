@@ -11,7 +11,7 @@ import {
 import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
-import { AlertModal } from "@/components/modals/alert-modal";
+import { AlertModal } from "@/components/modals/alert/alert-modal";
 import { toast } from "@/components/ui/use-toast";
 
 interface CellActionProps {

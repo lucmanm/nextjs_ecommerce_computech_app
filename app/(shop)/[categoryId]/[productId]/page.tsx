@@ -2,6 +2,7 @@ import { getProductById } from "@/lib/actions/getProduct";
 import Info from "../../components/info";
 import Gallery from "@/components/gallery";
 import { Product } from "@/types/table-types";
+import { notFound } from "next/navigation";
 
 interface ProductPageProps {
   params: {
@@ -24,6 +25,8 @@ const ProductPage: React.FC<ProductPageProps> = async ({
   params: { productId, categoryId },
 }) => {
   const product = await getProductById(productId, categoryId);
+
+  if (!product) notFound();
 
   return (
     <div>

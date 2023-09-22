@@ -8,20 +8,10 @@ import Breadcrumb from "../components/Breadcrumb";
 
 const ProductCard = dynamic(() => import("@/components/ProductCard"));
 
-interface CategoryPageProps {
-  params: {
-    categoryId: string;
-  };
-}
-export async function generateStaticParams({params: { categoryId }}: CategoryPageProps) {
-  const productByCategories: Product[] = await getProductByCategoryId(categoryId);
 
-  return productByCategories.map((products) => ({
-    categoryId: products.categoryId.toString(),
-  }));
-}
 
-const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
+const CategoryPage = async ({ params}: { params: { categoryId: string } }) => {
+  const {categoryId} = params
   const productByCategories: Product[] = await getProductByCategoryId(categoryId);
 
   return (
@@ -41,3 +31,12 @@ const CategoryPage = async ({ params: { categoryId } }: CategoryPageProps) => {
 };
 
 export default CategoryPage;
+
+// export async function generateStaticParams({params}: {params: {categoryId: string}}) {
+//   const { categoryId } = params
+//   const productByCategories: Product[]  = await getProductByCategoryId(categoryId);
+
+//   return productByCategories.map(products => ({
+//     categoryId: products.categoryId
+//   }));
+// }

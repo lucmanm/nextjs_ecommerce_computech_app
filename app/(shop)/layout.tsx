@@ -2,6 +2,9 @@ import "@/styles/globals.css";
 import ModalProvider from "@/hook/modal-provider";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Cairo } from "next/font/google";
+
+const cairo = Cairo({ subsets: ["latin"] });
 
 export const metadata = {
   title: "CompuTech",
@@ -15,11 +18,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <html lang="en">
+      <body
+        className={`${cairo.className} flex h-screen min-h-screen flex-col bg-slate-100`}
+      >
       <ModalProvider />
       <Header />
       <main className="lg:container">{children}</main>
       <Footer />
-    </>
+      </body>
+    </html>
   );
 }

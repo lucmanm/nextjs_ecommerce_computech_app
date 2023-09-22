@@ -21,8 +21,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, categories }) => {
           {categories?.map(({ id, category }) => (
             <Link
               key={id}
-              href={`/${id}`}
+              href={`${id}`}
               className="w-full whitespace-pre border border-b-gray-300 bg-gray-200 px-2 py-2 font-medium text-gray-600 hover:bg-gray-100 hover:text-black"
+              prefetch={false}
             >
               <span className="capitalize">{category}</span>
             </Link>

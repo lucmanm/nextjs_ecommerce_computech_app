@@ -60,8 +60,9 @@ export async function DELETE(
 
 export async function GET(req: Request, { params }: { params: { categoryId: string } }) {
   try {
-    const categoryId = params.categoryId;
-    const products = await prisma.product.findMany({
+    const { categoryId } = params;
+    
+    const productsByCategoryId = await prisma.product.findMany({
       where: {
         categoryId,
         isLive: true
@@ -72,7 +73,7 @@ export async function GET(req: Request, { params }: { params: { categoryId: stri
       }
     })
 
-    return NextResponse.json({ products }, { status: 200 });
+    return NextResponse.json(productsByCategoryId, {status: 200});
 
   } catch (error) {
     return NextResponse.json(

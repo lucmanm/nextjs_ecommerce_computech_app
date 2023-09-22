@@ -18,10 +18,11 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({ sliderData }) => {
         arrows: false,
         autoplay: true,
         interval: 5000,
+        gap: "2rem"
       }}
-      aria-label="slider "
+      aria-label="slider"
     >
-      <SplideTrack>
+      <SplideTrack className="gap-x-2">
         {sliderData.map(({ label, imageUrl }) => (
           <SplideSlide key={imageUrl} className="">
             <Image
@@ -34,14 +35,16 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({ sliderData }) => {
                 width: "100%",
                 height: "auto",
               }}
+              className="rounded-md"
             />
           </SplideSlide>
         ))}
       </SplideTrack>
 
-      <div className="splide__progress">
+        {/* Progress Bar Disabled */}
+      {/* <div className="splide__progress">
         <div className="splide__progress__bar"></div>
-      </div>
+      </div> */}
     </Splide>
   );
 };

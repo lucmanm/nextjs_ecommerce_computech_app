@@ -11,15 +11,15 @@ interface ProductPageProps {
   };
 }
 
-// export async function generateStaticParams({
-//   params: { productId },
-// }: ProductPageProps) {
-//   const product: Product[] = await getProductById(productId);
+export async function generateMetadata({params: { productId ,categoryId }}: ProductPageProps) {
+  const product: Promise<Product> = await  getProductById(productId, categoryId);
+  const productData = await product
 
-//   return product.map((prod) => ({
-//     productId: prod.id,
-//   }));
-// }
+  return {
+    title: productData.model.toUpperCase(),
+    description: productData.description
+  }
+}
 
 const ProductPage: React.FC<ProductPageProps> = async ({
   params: { productId, categoryId },
@@ -46,3 +46,26 @@ const ProductPage: React.FC<ProductPageProps> = async ({
 };
 
 export default ProductPage;
+
+// export async function generateStaticParams({params: { productId ,categoryId }}: ProductPageProps) {
+//   const product: Promise<Product[]> =   getProductById(productId, categoryId);
+//   const productData = await product
+
+//     return productData.map(product => ({
+//     categoryId: product.categoryId.toString()
+//   }));
+// }
+
+
+// export async function generateStaticParams({params}: { params:{ productId: string; categoryId: string}}) {
+//   const {categoryId, productId} =  params
+//   const product: Promise<Product[]> = await  getProductById(productId, categoryId);
+//   const productData = await product
+  
+//   if(!productData || productData === null) notFound()
+
+//   return productData.map(product => ({
+//     productId: product.id,
+//     categoryId: product.categoryId
+//   }));
+// }

@@ -16,7 +16,7 @@ export async function generateMetadata({params: { productId ,categoryId }}: Prod
   const productData = await product
 
   return {
-    title: productData.model.toUpperCase(),
+    title: productData.model,
     description: productData.description
   }
 }
@@ -24,8 +24,8 @@ export async function generateMetadata({params: { productId ,categoryId }}: Prod
 const ProductPage: React.FC<ProductPageProps> = async ({
   params: { productId, categoryId },
 }) => {
-  const product = await getProductById(productId, categoryId);
-
+  const products: Promise<Product> =  getProductById(productId, categoryId);
+  const product = await products
   if (!product) notFound();
 
   return (
@@ -46,16 +46,6 @@ const ProductPage: React.FC<ProductPageProps> = async ({
 };
 
 export default ProductPage;
-
-// export async function generateStaticParams({params: { productId ,categoryId }}: ProductPageProps) {
-//   const product: Promise<Product[]> =   getProductById(productId, categoryId);
-//   const productData = await product
-
-//     return productData.map(product => ({
-//     categoryId: product.categoryId.toString()
-//   }));
-// }
-
 
 // export async function generateStaticParams({params}: { params:{ productId: string; categoryId: string}}) {
 //   const {categoryId, productId} =  params

@@ -2,20 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import CellAction from "./cell-action";
-import { z } from "zod";
-
-export const productColumnSchema = z.object({
-  id: z.string(),
-  description: z.string(),
-  price: z.string(),
-  salePrice: z.string(),
-  model: z.string(),
-  stock: z.number(),
-  brand: z.string(),
-  category: z.string(),
-  createdAt: z.string(),
-});
-export type ProductColumnProps = z.infer<typeof productColumnSchema>;
+import { ProductColumnProps } from "@/types";
 
 export const columns: ColumnDef<ProductColumnProps>[] = [
   {

@@ -2,12 +2,9 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import CellAction from "./cell-action";
+import { CategoryColumnProps } from "@/types";
 
-export type CategoryColumnProps = {
-  id: string;
-  category: string;
-  createdAt: string;
-};
+
 
 export const columns: ColumnDef<CategoryColumnProps>[] = [
   {

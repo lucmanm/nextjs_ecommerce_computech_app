@@ -1,15 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { ColumnDef } from "@tanstack/react-table";
 import CellAction from "./cell-action";
-import Image from "next/image";
+import { BrandColumnProps } from "@/types";
 
-export type BrandColumnProps = {
-  id: string;
-  brand: string;
-  imageUrl: string;
-  createdAt: string;
-};
 
 export const columns: ColumnDef<BrandColumnProps>[] = [
   {

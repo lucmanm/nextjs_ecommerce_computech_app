@@ -1,9 +1,9 @@
 import { prisma } from "@/lib/db";
 
-import { ProductColumnProps } from "./components/columns";
 import ClientBrand from "./components/client";
 import { formatter } from "@/lib/utils";
-
+import { ProductColumnProps } from "@/types";
+export const revalidate = 0;
 const ProductsPage = async () => {
   const products = await prisma.product.findMany({
     include: {

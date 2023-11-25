@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import CustomButton from "../../../components/CustomButton";
 import { usePathname } from "next/navigation";
 import {
   BadgePlus,

@@ -2,9 +2,10 @@
 
 import Container from "@/app/(admin)/components/Container";
 import { DataTable } from "@/components/ui/data-table";
-import { BrandColumnProps, columns } from "./columns";
+import { columns } from "./columns";
+import { BrandColumnProps } from "@/types";
 
-interface SliderPageProps {
+type SliderPageProps = {
   data: BrandColumnProps[];
 }
 

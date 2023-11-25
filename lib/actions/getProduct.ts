@@ -15,5 +15,11 @@ export async function getProductById(productId: string, categoryId: string) {
     const data = await res.json();
     return data.product;
 }
+export async function getProductList() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category/${categoryId}/${productId}`, { next: { revalidate: 60 } });
+    if (!res.ok) return undefined
+    const data = await res.json();
+    return data.product;
+}
 
 

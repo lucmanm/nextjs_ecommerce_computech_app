@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { BrandColumnProps } from "./columns";
 
 import {
   DropdownMenu,
@@ -13,6 +12,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert/alert-modal";
 import { toast } from "@/components/ui/use-toast";
+import { BrandColumnProps } from "@/types";
 
 interface CellActionProps {
   data: BrandColumnProps;

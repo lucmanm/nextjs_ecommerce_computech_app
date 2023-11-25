@@ -9,7 +9,6 @@ import SideBarModal from "./sidebar-modal";
 
 const Header = async () => {
   const categories = await getProductCategory();
-
   // Destructuring ArrafetchProductsy of Logo
   const [, { title, url }] = logoUrl;
 

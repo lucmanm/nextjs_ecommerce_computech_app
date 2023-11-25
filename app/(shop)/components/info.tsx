@@ -22,7 +22,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
           alt={data.brand.brand}
           className="rounded-md"
         />
-        <h1 className="text-base font-bold text-gray-900 lg:text-3xl">
+        <h1 className="h1 text-base font-bold text-gray-900">
           {data.description}
         </h1>
         <h2 className="text-sm text-gray-900 lg:text-xl">

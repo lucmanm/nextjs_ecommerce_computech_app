@@ -23,9 +23,6 @@ export default async function ShopPage() {
 
       <div className="px-3 lg:px-0">
         {/* Product Listing slider */}
-        <HorizontalProductList title="Featured" productData={products} />
-        <ProductListSlider title="Printers" productData={products}/>
-        {/* Brand Slider */}
         <BrandSlider
           subtitle={false}
           sliderhead="Shop By Brand"
@@ -33,6 +30,9 @@ export default async function ShopPage() {
           sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
           arrow={true}
         />
+        <HorizontalProductList title="Featured" productData={products} />
+        <ProductListSlider title="Printers" productData={products}/>
+        {/* Brand Slider */}
       </div>
     </div>
   );

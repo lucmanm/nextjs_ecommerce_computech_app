@@ -1,8 +1,8 @@
 import { prisma } from "@/lib/db";
 
-import { CategoryColumnProps } from "./components/columns";
 import ClientBrand from "./components/client";
 import { z } from "zod";
+import { CategoryColumnProps } from "@/types";
 
 const CategoryPage = async () => {
 

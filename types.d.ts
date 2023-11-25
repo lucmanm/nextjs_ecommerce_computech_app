@@ -79,4 +79,4 @@ export const sliderProps = z.object({
     createdAt: z.string(),
 })
 
-export type SliderProps = z.infer<typeof sliderProps>;
+export type SliderColumnProps = z.infer<typeof sliderProps>;

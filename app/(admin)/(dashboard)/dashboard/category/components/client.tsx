@@ -2,7 +2,8 @@
 
 import Container from "@/app/(admin)/components/Container";
 import { DataTable } from "@/components/ui/data-table";
-import { CategoryColumnProps, columns } from "./columns";
+import {  columns } from "./columns";
+import { CategoryColumnProps } from "@/types";
 
 interface SliderPageProps {
   data: CategoryColumnProps[];

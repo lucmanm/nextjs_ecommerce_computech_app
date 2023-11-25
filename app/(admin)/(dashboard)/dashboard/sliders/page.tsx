@@ -1,8 +1,8 @@
 import { prisma } from "@/lib/db";
 
 import ClientSliderTable from "./components/client";
-import { SliderColumnProps } from "./components/columns";
 import { z } from "zod";
+import { SliderColumnProps } from "@/types";
 
 const SliderPage = async () => {
   const sliders = await prisma.slider.findMany();

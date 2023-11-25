@@ -2,9 +2,9 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import CellAction from "./cell-action";
-import { SliderProps } from "@/types";
+import { SliderColumnProps } from "@/types";
 
-export const columns: ColumnDef<SliderProps>[] = [
+export const columns: ColumnDef<SliderColumnProps>[] = [
   {
     accessorKey: "label",
     header: "Label",

@@ -16,8 +16,8 @@ export default async function adminDashboardRootL({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
-  if (session?.user) {
+  // const session = await getServerSession(authOptions);
+  // if (session?.user) {
     return (
       <html lang="en">
       <body
@@ -34,6 +34,6 @@ export default async function adminDashboardRootL({
       </body>
     </html>
     );
-  }
+  // }
   return redirect("/sign-in");
 }

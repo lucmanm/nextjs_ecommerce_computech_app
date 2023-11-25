@@ -1,7 +1,9 @@
 "use client";
 import Title from "@/components/ui/Title";
+import { Brand } from "@prisma/client";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ListProps {
   brand: string;
@@ -10,7 +12,7 @@ interface ListProps {
 
 interface SliderProps {
   sliderhead?: string;
-  data: ListProps[];
+  data: Brand[];
   subtitle?: boolean;
   sliderSlide?: string;
   sliderCustomerStyle?: string;
@@ -27,7 +29,6 @@ const BrandSlider = ({
   return (
     <div className="flex flex-col gap-y-2">
       <Title>{sliderhead}</Title>
-
       <Splide
         hasTrack={false}
         options={{
@@ -47,12 +48,13 @@ const BrandSlider = ({
         <SplideTrack className="py-4">
           {data.map(({ brand, imageUrl }) => (
             <SplideSlide
-              key={imageUrl}
-              className="flex max-w-fit flex-col gap-y-2 "
+            key={imageUrl}
+            className="flex max-w-fit flex-col gap-y-2 "
             >
+                <Link href={brand}>
               <div
                 className={`flex  flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md active:shadow-inner ${sliderCustomerStyle}`}
-              >
+                >
                 <Image src={imageUrl} width={100} height={100} alt={brand} />
               </div>
               {subtitle && (
@@ -60,6 +62,7 @@ const BrandSlider = ({
                   {brand}
                 </span>
               )}
+              </Link>
             </SplideSlide>
           ))}
         </SplideTrack>

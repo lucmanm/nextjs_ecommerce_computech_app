@@ -30,6 +30,7 @@ export default async function ShopPage() {
           sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
           arrow={true}
         />
+        
         <HorizontalProductList title="Featured" productData={products} />
         <ProductListSlider title="Printers" productData={products}/>
         {/* Brand Slider */}

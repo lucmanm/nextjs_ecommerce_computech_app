@@ -23,7 +23,7 @@ const Header = async () => {
               <Image src={url} width={150} height={0} alt={title} />
             </Link>
           </div>
-          <div className="hidden flex-1">
+          <div className="flex-1">
             <SearchInput />
           </div>
           <div className="flex items-center justify-center gap-x-2">

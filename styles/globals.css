@@ -58,17 +58,6 @@
 }
 
 @layer base {
-<<<<<<< HEAD
-    * {
-        @apply border-border;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
-    .h1{
-        @apply text-sm xl:text-2xl
-    }
-=======
   * {
     @apply border-border;
   }
@@ -87,5 +76,4 @@
   .h3 {
     @apply text-xs lg:text-lg;
   }
->>>>>>> d3399913d8dac7dd6cf6267c61f57cacf3291fbf
 }

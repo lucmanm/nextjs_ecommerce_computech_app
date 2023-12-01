@@ -13,7 +13,6 @@ const ProductCard = dynamic(() => import("@/components/ProductCard"));
 const CategoryPage = async ({ params}: { params: { categoryId: string } }) => {
   const {categoryId} = params
   const productByCategories: Product[] = await getProductByCategoryId(categoryId);
-console.log(categoryId);
 
   return (
     <Container classname="space-y-4">

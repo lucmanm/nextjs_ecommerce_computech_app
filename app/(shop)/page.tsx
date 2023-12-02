@@ -13,27 +13,34 @@ export const revalidate = 0;
 
 export default async function ShopPage() {
   const slider: SliderProps[] = await getSliders();
+
   const brands = await getBrands();
+
   const products = await getProducts();
-  const productList: Product[]  = await getProductList();
+  
+  const productList: Product[] = await getProductList();
 
   return (
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
+
       {/* Main slider for homepage */}
+
       <CarouselSlider sliderData={slider} />
 
       <div className="px-3 lg:px-0">
+
         {/* Product Listing slider */}
+
         <BrandSlider
           subtitle={false}
-          sliderhead="Shop By Brand"
+          title="Shop By Brand"
           data={brands}
-          sliderCustomerStyle="rounded-lg w-24 h-24 dt:w-28 dt:h-28"
+          className="dt:w-28 dt:h-28 h-24 w-24 rounded-lg"
           arrow={true}
         />
-        
+
         <HorizontalProductList title="Featured" productData={products} />
-        <ProductListSlider title="Printers" productData={products}/>
+        <ProductListSlider title="Printers" productData={products} />
         {/* Brand Slider */}
       </div>
     </div>

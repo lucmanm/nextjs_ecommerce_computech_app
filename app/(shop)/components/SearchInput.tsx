@@ -1,7 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import React, { FormEvent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -12,25 +11,23 @@ const searchSchema = z.object({
 type TSearch = z.infer<typeof searchSchema>;
 
 const SearchInput = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
 
   const {
     handleSubmit,
     register,
-    formState: { isSubmitting },
-    reset
-  } = useForm({
+    formState: { isLoading },
+    reset,
+  } = useForm<TSearch>({
     resolver: zodResolver(searchSchema),
     defaultValues: {
       search: "",
     },
   });
 
-  const onSubmit = async (data: TSearch) => {
-    const encodeedSearchQuery = encodeURI(searchQuery);
-    router.push(`/search?q=${encodeedSearchQuery}`);
-    reset()
+  const onSubmit = async (values: TSearch) => {
+    router.push(`/search?q=${values.search}`);
+    reset();
   };
 
   return (
@@ -39,10 +36,10 @@ const SearchInput = () => {
         Search
       </label>
       <div className="relative flex-1">
-        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"/>
         <input
           {...register("search")}
-          disabled={isSubmitting}
+          disabled={isLoading}
           type="search"
           className="block w-full rounded-full border-gray-500 bg-slate-100 py-2 pl-10 text-gray-950 focus:border-blue-950"
           placeholder="Search Model, Product, etc..."

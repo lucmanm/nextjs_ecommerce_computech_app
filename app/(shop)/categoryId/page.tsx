@@ -9,7 +9,6 @@ import Breadcrumb from "../components/Breadcrumb";
 const ProductCard = dynamic(() => import("@/components/ProductCard"));
 
 
-
 const CategoryPage = async ({ params}: { params: { categoryId: string } }) => {
   const {categoryId} = params
   const productByCategories: Product[] = await getProductByCategoryId(categoryId);

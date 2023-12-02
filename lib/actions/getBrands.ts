@@ -10,14 +10,3 @@ export async function getBrands() {
   return data.brands;
 }
 
-export async function getBrandsId(id: string) {
-
-  const res = await fetch(`${URL}/${id}`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch product categories");
-  }
-
-  const data = await res.json();
-  return data.brands;
-
-}

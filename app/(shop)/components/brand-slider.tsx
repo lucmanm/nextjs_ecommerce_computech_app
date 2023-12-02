@@ -1,5 +1,6 @@
 "use client";
 import Title from "@/components/ui/Title";
+import { cn } from "@/lib/utils";
 import { Brand } from "@prisma/client";
 import { Splide, SplideSlide, SplideTrack } from "@splidejs/react-splide";
 import Image from "next/image";
@@ -11,24 +12,24 @@ interface ListProps {
 }
 
 interface SliderProps {
-  sliderhead?: string;
+  title?: string;
   data: Brand[];
   subtitle?: boolean;
   sliderSlide?: string;
-  sliderCustomerStyle?: string;
+  className?: string | undefined;
   arrow?: boolean;
 }
 
 const BrandSlider = ({
-  sliderhead,
+  title,
   data,
   subtitle,
-  sliderCustomerStyle,
+  className,
   arrow,
 }: SliderProps) => {
   return (
     <div className="flex flex-col gap-y-2">
-      <Title>{sliderhead}</Title>
+      <Title>{title}</Title>
       <Splide
         hasTrack={false}
         options={{
@@ -48,20 +49,23 @@ const BrandSlider = ({
         <SplideTrack className="py-4">
           {data.map(({ brand, imageUrl }) => (
             <SplideSlide
-            key={imageUrl}
-            className="flex max-w-fit flex-col gap-y-2 "
+              key={imageUrl}
+              className="flex max-w-fit flex-col gap-y-2 "
             >
-                <Link href={brand}>
-              <div
-                className={`flex  flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md active:shadow-inner ${sliderCustomerStyle}`}
+              <Link href={brand}>
+                <div
+                  className={cn(
+                    "active:shadow-inner,  $ flex flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md",
+                    className
+                  )}
                 >
-                <Image src={imageUrl} width={100} height={100} alt={brand} />
-              </div>
-              {subtitle && (
-                <span className="dt:text-sm whitespace-pre text-center text-sm font-medium capitalize">
-                  {brand}
-                </span>
-              )}
+                  <Image src={imageUrl} width={100} height={100} alt={brand} />
+                </div>
+                {subtitle && (
+                  <span className="dt:text-sm whitespace-pre text-center text-sm font-medium capitalize">
+                    {brand}
+                  </span>
+                )}
               </Link>
             </SplideSlide>
           ))}

@@ -21,5 +21,3 @@ export async function getProductList() {
     const data = await res.json();
     return data.product;
 }
-
-

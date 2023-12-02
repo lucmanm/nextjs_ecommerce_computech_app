@@ -29,7 +29,10 @@ const BrandSlider = ({
 }: SliderProps) => {
   return (
     <div className="flex flex-col gap-y-2">
-      <Title>{title}</Title>
+
+      {
+        title && <Title>{title}</Title>
+      }
       <Splide
         hasTrack={false}
         options={{
@@ -55,7 +58,7 @@ const BrandSlider = ({
               <Link href={brand}>
                 <div
                   className={cn(
-                    "active:shadow-inner,  $ flex flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md",
+                    "flex flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md active:shadow-inner dt:w-28 dt:h-28 h-24 w-24 rounded-lg",
                     className
                   )}
                 >

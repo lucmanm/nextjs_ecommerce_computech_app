@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db"
 import { NextResponse } from "next/server"
 
-export async function GET(res: NextResponse, { params }: { params: { productType: string } }) {
+export async function GET(req: Request, { params }: { params: { productType: string } }) {
   try {
 
 
@@ -10,7 +10,11 @@ export async function GET(res: NextResponse, { params }: { params: { productType
         brand: {
           brand: params.productType
         }
-      }
+      },
+      include: {
+        images: true,
+        brand: true,
+    }
     })
 
 

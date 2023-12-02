@@ -16,7 +16,7 @@ const SearchInput = () => {
   const {
     handleSubmit,
     register,
-    formState: { isLoading },
+    formState: { isSubmitting },
     reset,
   } = useForm<TSearch>({
     resolver: zodResolver(searchSchema),
@@ -39,7 +39,7 @@ const SearchInput = () => {
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"/>
         <input
           {...register("search")}
-          disabled={isLoading}
+          disabled={isSubmitting}
           type="search"
           className="block w-full rounded-full border-gray-500 bg-slate-100 py-2 pl-10 text-gray-950 focus:border-blue-950"
           placeholder="Search Model, Product, etc..."

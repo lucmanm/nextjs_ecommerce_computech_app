@@ -10,7 +10,7 @@ const Title = ({
   return (
     <section
       className={cn(
-        "relative w-40 min-w-fit rounded-full bg-white px-5 py-1  font-bold text-blue-950 shadow-md  lg:py-2 lg:text-lg",
+        "relative w-40 min-w-fit rounded-full bg-white px-5 py-1  font-bold text-blue-950 shadow-sm  lg:py-2 lg:text-lg",
         className
       )}
     >

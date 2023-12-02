@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { productFormSchema } from "@/types/validation";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -29,21 +30,11 @@ export const GET = async (req: Request) => {
 export async function POST(req: Request) {
     try {
 
-        const productFormschema = z.object({
-            model: z.string(),
-            description: z.string(),
-            price: z.number(),
-            salePrice: z.number(),
-            stock: z.number(),
-            brandId: z.string(),
-            categoryId: z.string(),
-            images: z.array(z.object({
-                imageUrl: z.string()
-            })),
+        const productFormSchemaExt = productFormSchema.extend({
             taxValue: z.number().default(15),
-            isLive: z.boolean(),
-            isFeatured: z.boolean(),
         })
+
+
         const body = await req.json();
         const {
             model,
@@ -57,7 +48,7 @@ export async function POST(req: Request) {
             isLive,
             isFeatured,
             taxValue,
-        } = productFormschema.parse(body);
+        } = productFormSchemaExt.parse(body);
 
 
         const checkModel = await prisma.product.findFirst({
@@ -70,6 +61,7 @@ export async function POST(req: Request) {
                 { status: 409 }
             );
         }
+
         const createProduct = await prisma.product.create({
             data: {
                 model,

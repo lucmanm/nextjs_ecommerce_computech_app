@@ -1,6 +1,5 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -31,6 +30,8 @@ import Container from "@/app/(admin)/components/Container";
 import ImageUpload from "@/components/ui/image-upload";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Decimal } from "@prisma/client/runtime/library";
+import { TProductForm } from "@/types/type";
+import { productFormSchema } from "@/types/validation";
 
 interface ProductFormProps {
   productData: (Product & { images: Image[] }) | null;
@@ -38,54 +39,21 @@ interface ProductFormProps {
   brands: Brand[];
 }
 
-const formSchema = z.object({
-  // issue #3
-  model: z.string().min(4, "Model Number required").max(20),
-  description: z.string().min(5, "Please Enter Product description"),
-  price: z.coerce
-    .number({
-      required_error: "Price is required",
-      invalid_type_error: "Price must be a number",
-    })
-    .nonnegative({ message: "Negative is  not allowed" })
-    .min(1),
-  salePrice: z.coerce
-    .number({
-      required_error: "Price is required",
-      invalid_type_error: "Price must be a number",
-    })
-    .nonnegative({ message: "Negative is  not allowed" })
-    .min(0),
-  stock: z.coerce
-    .number({
-      required_error: "Price is required",
-      invalid_type_error: "Price must be a number",
-    })
-    .nonnegative({ message: "Negative is  not allowed" }),
-  brandId: z.string().min(1),
-  categoryId: z.string().min(1),
-  images: z
-    .object({
-      imageUrl: z.string(),
-    })
-    .array(),
-  isLive: z.boolean().default(false).optional(),
-  isFeatured: z.boolean().default(false).optional(),
-});
 
 const ProductForm: React.FC<ProductFormProps> = ({
   productData,
   categories,
   brands,
 }) => {
+
   const params = useParams();
   const router = useRouter();
 
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<TProductForm>({
+    resolver: zodResolver(productFormSchema),
     defaultValues: productData
       ? {
           ...productData,
@@ -106,7 +74,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: TProductForm) => {
     try {
       setLoading(true);
       if (productData) {

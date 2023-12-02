@@ -36,7 +36,7 @@ export default async function ShopPage() {
           title="Shop By Brand"
           data={brands}
           className="dt:w-28 dt:h-28 h-24 w-24 rounded-lg"
-          arrow={true}
+          arrow={false}
         />
 
         <HorizontalProductList title="Featured" productData={products} />

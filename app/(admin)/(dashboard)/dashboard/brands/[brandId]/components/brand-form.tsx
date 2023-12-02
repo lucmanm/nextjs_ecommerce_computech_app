@@ -20,11 +20,9 @@ import { useToast } from "@/components/ui/use-toast";
 import { Brand } from "@prisma/client";
 import ImageUpload from "@/components/ui/image-upload";
 import Container from "@/app/(admin)/components/Container";
+import { brandFormSchema } from "@/types/validation";
+import { TBrand } from "@/types/type";
 
-const formSchema = z.object({
-  brand: z.string().min(1, "Please enter brand name."),
-  imageUrl: z.string().min(1, "Please upload image"),
-});
 
 interface SliderFormProps {
   initialData: Brand | null;
@@ -45,15 +43,15 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
     : "Created successfully Brand";
   const action = initialData ? "Save Changes" : "Create";
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<TBrand>({
+    resolver: zodResolver(brandFormSchema),
     defaultValues: initialData || {
       brand: "",
       imageUrl: "",
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: TBrand) => {
     try {
       setLoading(true);
       if (initialData) {

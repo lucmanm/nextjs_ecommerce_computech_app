@@ -19,10 +19,8 @@ import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Category } from "@prisma/client";
 import Container from "@/app/(admin)/components/Container";
-
-const formSchema = z.object({
-  category: z.string().min(1, "Please enter brand name."),
-});
+import { categoryFormSchema } from "@/types/validation";
+import { TCategory } from "@/types/type";
 
 interface SliderFormProps {
   initialData: Category | null;
@@ -43,14 +41,14 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
     : "Created successfully Category";
   const action = initialData ? "Save Changes" : "Create";
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<TCategory>({
+    resolver: zodResolver(categoryFormSchema),
     defaultValues: initialData || {
       category: "",
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: TCategory) => {
     try {
       setLoading(true);
       if (initialData) {

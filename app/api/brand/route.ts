@@ -18,7 +18,6 @@ export const GET = async (req: Request) => {
 
 
 export async function POST(req: Request) {
-
   try {
     const brandSchema = z.object({
       brand: z.string(),

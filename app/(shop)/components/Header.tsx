@@ -1,11 +1,11 @@
 import CustomButton from "@/components/CustomButton";
-import SearchInput from "@/components/SearchInput";
 import Image from "next/image";
 import { logoUrl } from "@/lib/constant";
 import Link from "next/link";
 import { getProductCategory } from "@/lib/actions/getCategory";
 import DropdownMenu from "./DropdownMenu";
 import SideBarModal from "./sidebar-modal";
+import SearchInput from "./SearchInput";
 
 const Header = async () => {
   const categories = await getProductCategory();

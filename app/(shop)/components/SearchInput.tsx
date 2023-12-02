@@ -1,35 +1,51 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+const searchSchema = z.object({
+  search: z.string().min(1),
+});
+
+type TSearch = z.infer<typeof searchSchema>;
 
 const SearchInput = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const router = useRouter()
+  const router = useRouter();
 
-  const onSearch = (event: FormEvent) => {
-    event.preventDefault();
+  const {
+    handleSubmit,
+    register,
+    formState: { isSubmitting },
+    reset
+  } = useForm({
+    resolver: zodResolver(searchSchema),
+    defaultValues: {
+      search: "",
+    },
+  });
 
+  const onSubmit = async (data: TSearch) => {
     const encodeedSearchQuery = encodeURI(searchQuery);
-    router.push(`/search?q=${encodeedSearchQuery}`)
-    
-    console.log("Query", );
+    router.push(`/search?q=${encodeedSearchQuery}`);
+    reset()
   };
 
   return (
-    <form onSubmit={onSearch}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <label className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white">
         Search
       </label>
       <div className="relative flex-1">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"></div>
         <input
-          value={searchQuery}
-          onChange={(event) => setSearchQuery(event.target.value)}
+          {...register("search")}
+          disabled={isSubmitting}
           type="search"
-          id="default-search"
           className="block w-full rounded-full border-gray-500 bg-slate-100 py-2 pl-10 text-gray-950 focus:border-blue-950"
           placeholder="Search Model, Product, etc..."
-          required
         />
         <button
           type="submit"

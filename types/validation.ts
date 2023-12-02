@@ -1,5 +1,15 @@
 import { z } from "zod";
 
+export const brandFormSchema = z.object({
+    brand: z.string().min(1, "Please enter brand name."),
+    imageUrl: z.string().min(1, "Please upload image"),
+});
+
+export const categoryFormSchema = z.object({
+    category: z.string().min(1, "Please enter brand name."),
+});
+
+// Product Schema
 export const productFormSchema = z.object({
     model: z.string().min(4, "Model Number required").max(20),
     description: z.string().min(5, "Please Enter Product description"),

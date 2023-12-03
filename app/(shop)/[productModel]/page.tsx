@@ -11,7 +11,7 @@ import { Product } from "@/types/table-types";
 
 const ProductPage = async ({ params }: { params: { productModel: string }}) => {
 
-  const productData = await getProduct(params.productModel);
+  const productData: TProduct = await getProduct(params.productModel);
   
   if (!productData) notFound();
   
@@ -19,6 +19,7 @@ const ProductPage = async ({ params }: { params: { productModel: string }}) => {
 
   return (
     <div>
+      {productData.description}
       <div className="px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col md:grid md:grid-cols-3">
           {/* <Gallery images={productData.images} /> */}

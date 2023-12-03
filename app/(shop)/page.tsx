@@ -4,8 +4,8 @@ import { getSliders } from "@/lib/actions/getSliders";
 import BrandSlider from "./components/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
 import HorizontalProductList from "@/components/horizontal-products-list";
-import { getProductListH, getProducts } from "@/lib/actions/getProduct";
 import { Product } from "@/types/table-types";
+import { getProductListH, getProducts } from "@/lib/actions/getProduct";
 
 export const revalidate = 0;
 

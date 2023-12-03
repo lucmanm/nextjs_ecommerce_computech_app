@@ -5,10 +5,10 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
   try {
 
 
-    const brandProductData = await prisma.product.findMany({
+    const productByCategoryData = await prisma.product.findMany({
       where: {
-        brand: {
-          brand: params.productSlug
+        category:{
+          category: params.productSlug
         }
       },
       include: {
@@ -16,15 +16,14 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
         brand: true,
       }
     })
-    if (!brandProductData) {
+    if (!productByCategoryData) {
       return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE"}, { status: 500 })
+    }else{
+
+      return NextResponse.json({ productByCategoryData }, { status: 200 })
     }
-    else {
-      return NextResponse.json({ brandProductData }, { status: 200 })
 
-    }
-
-
+  
   } catch (error) {
     return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE", error }, { status: 500 })
   }

@@ -1,8 +1,8 @@
-import { getProductType } from "@/lib/actions/getProductSlug";
+import { getProductType } from "@/lib/actions/getProduct";
 import { Product } from "@/types/table-types";
-import Container from "../components/Container";
-import Breadcrumb from "../components/Breadcrumb";
-import NoResults from "../components/no-result";
+import Container from "../../components/Container";
+import Breadcrumb from "../../components/Breadcrumb";
+import NoResults from "../../components/no-result";
 import ProductCard from "@/components/ProductCard";
 
 export const revalidate = 0;

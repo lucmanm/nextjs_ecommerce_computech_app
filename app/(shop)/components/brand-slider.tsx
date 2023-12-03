@@ -58,14 +58,14 @@ const BrandSlider = ({
               <Link href={brand}>
                 <div
                   className={cn(
-                    "flex flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md active:shadow-inner dt:w-28 dt:h-28 h-24 w-24 rounded-lg",
+                    "flex flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md active:shadow-inner lg:w-28 lg:h-28 h-24 w-24 rounded-lg",
                     className
                   )}
                 >
                   <Image src={imageUrl} width={100} height={100} alt={brand} />
                 </div>
                 {subtitle && (
-                  <span className="dt:text-sm whitespace-pre text-center text-sm font-medium capitalize">
+                  <span className="lg:text-sm whitespace-pre text-center text-sm font-medium capitalize">
                     {brand}
                   </span>
                 )}

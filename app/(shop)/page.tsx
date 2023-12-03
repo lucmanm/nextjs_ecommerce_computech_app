@@ -1,11 +1,11 @@
 // import Slider from "@/components/Slider";
 import CarouselSlider from "@/components/CarouselSlider";
 import { getSliders } from "@/lib/actions/getSliders";
-import { Product, SliderProps } from "@/types/table-types";
 import BrandSlider from "./components/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
 import HorizontalProductList from "@/components/horizontal-products-list";
 import { getProductListH, getProducts } from "@/lib/actions/getProduct";
+import { Product } from "@/types/table-types";
 
 export const revalidate = 0;
 
@@ -14,9 +14,10 @@ export default async function ShopPage() {
 
   const brands = await getBrands();
 
-  const products = await getProducts();
-  const printersData = await getProductListH("printer");
-  const computersData = await getProductListH("desktop");
+  const products: Product[] = await getProducts();
+  const printersData: Product[] = await getProductListH("printer");
+  const computersData: Product[] = await getProductListH("desktop");
+  const MonitorsData: Product[] = await getProductListH("monitor");
     
   return (
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
@@ -34,12 +35,11 @@ export default async function ShopPage() {
           arrow={false}
         />
 
-
+      {/* Slider for front page */}
         <HorizontalProductList title="Featured" productData={products} />
         <HorizontalProductList title="Computers" productData={computersData} />
+        <HorizontalProductList title="Monitors" productData={MonitorsData} />
         <HorizontalProductList title="Printers" productData={printersData} />
-
-        {/* Brand Slider */}
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ const Slider = ({
                 />
               </div>
               {subtitle && (
-                <span className="dt:text-sm whitespace-pre text-center text-xs font-medium capitalize">
+                <span className="lg:text-sm whitespace-pre text-center text-xs font-medium capitalize">
                   {description}
                 </span>
               )}

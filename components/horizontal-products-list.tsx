@@ -9,6 +9,8 @@ interface HorizontalProductListProps {
   title: string;
   productData: Product[];
 }
+
+// FIXME  Cards output showing extra CARD
 const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
   title,
   productData,
@@ -21,7 +23,7 @@ const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
         options={{
           type: "loop",
           rewind: true,
-          gap: "1.5rem",
+          gap: "2rem",
           perMove: 1,
           arrows: false,
           pagination: false,

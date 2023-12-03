@@ -16,7 +16,7 @@ export async function GET(req: Request) {
 
     } catch (error) {
         return NextResponse.json(
-            { message: "fetching category Error", error },
+            { message: "FETCH_ERROR_CATEGORY", error },
             { status: 500 }
         );
     }

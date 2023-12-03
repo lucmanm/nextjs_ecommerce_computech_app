@@ -1,4 +1,4 @@
-import { getProductType } from "@/lib/actions/getProductType";
+import { getProductType } from "@/lib/actions/getProductSlug";
 import { Product } from "@/types/table-types";
 import Container from "../components/Container";
 import Breadcrumb from "../components/Breadcrumb";
@@ -7,9 +7,9 @@ import ProductCard from "@/components/ProductCard";
 
 export const revalidate = 0;
 
-const ProductTypePage = async ({params}: {params: { productType: string }}) => {
+const ProductTypePage = async ({params}: {params: { productSlug: string }}) => {
 
-  const productByBrand: Product[] = await getProductType(params.productType);
+  const productByBrand: Product[] = await getProductType(params.productSlug);
 
   return (
     <Container classname="space-y-4">

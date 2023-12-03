@@ -51,7 +51,7 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
         return NextResponse.json({ message: "Update accepted", product }, { status: 201 })
 
     } catch (error) {
-        return NextResponse.json({ message: "[ERROR_PRODUCT_UPDATE"}, { status: 500 })
+        return NextResponse.json({ message: "[ERROR_PRODUCT_UPDATE" }, { status: 500 })
     }
 }
 
@@ -81,18 +81,19 @@ export async function DELETE(req: Request, { params }: { params: { productID: st
     }
 }
 
-export async function GET(req: Request, { params }: { params: { product: string } }) {
+export async function GET(req: Request, { params }: { params: { productModel: string } }) {
     try {
 
-        const productData= await prisma.product.findMany({
+        const productData = await prisma.product.findFirst({
             where: {
-                model: params.product
+                model: params.productModel
             },
             include: {
                 images: true,
                 brand: true
             }
         })
+
         return NextResponse.json({ productData }, { status: 200 })
 
 

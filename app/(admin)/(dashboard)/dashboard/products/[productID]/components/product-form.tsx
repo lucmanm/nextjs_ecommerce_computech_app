@@ -30,7 +30,7 @@ import Container from "@/app/(admin)/components/Container";
 import ImageUpload from "@/components/ui/image-upload";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Decimal } from "@prisma/client/runtime/library";
-import { TProductForm } from "@/types/type";
+import { TProduct } from "@/types/type";
 import { productFormSchema } from "@/types/validation";
 
 interface ProductFormProps {
@@ -52,7 +52,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
-  const form = useForm<TProductForm>({
+  const form = useForm<TProduct>({
     resolver: zodResolver(productFormSchema),
     defaultValues: productData
       ? {
@@ -74,7 +74,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
         },
   });
 
-  const onSubmit = async (values: TProductForm) => {
+  const onSubmit = async (values: TProduct) => {
     try {
       setLoading(true);
       if (productData) {

@@ -5,28 +5,27 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
-interface InfoProps {
-  data: Product & {
+type InfoProps = Product & {
     brand: Brand;
   };
-}
 
-const Info: React.FC<InfoProps> = ({ data }) => {
+
+const Info: React.FC<InfoProps> = ({brand, description, model}) => {
   return (
     <div className="flex flex-col justify-between md:h-full">
       <div className="">
         <Image
-          src={data.brand.imageUrl}
+          src={brand.imageUrl}
           width={48}
           height={48}
-          alt={data.brand.brand}
+          alt={brand.brand}
           className="rounded-md"
         />
         <h1 className="h1 text-base font-bold text-gray-900">
-          {data.description}
+          {description}
         </h1>
         <h2 className="text-sm text-gray-900 lg:text-xl">
-          Model No: {data.model}
+          Model No: {model}
         </h2>
       </div>
       <div className="w-full">

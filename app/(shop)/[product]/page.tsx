@@ -1,31 +1,25 @@
-import { getProductById } from "@/lib/actions/getProduct";
-import Info from "../../components/info";
+import Info from "../components/info";
 import Gallery from "@/components/gallery";
 import { Product } from "@/types/table-types";
 import { notFound } from "next/navigation";
 
-interface ProductPageProps {
-  params: {
-    productId: string;
-    categoryId: string;
-  };
-}
+// Actions
+import { getProduct } from "@/lib/actions/getProduct";
 
-export async function generateMetadata({params: { productId ,categoryId }}: ProductPageProps) {
-  const product: Promise<Product> = await  getProductById(productId, categoryId);
-  const productData = await product
 
-  return {
-    title: productData.model,
-    description: productData.description
-  }
-}
+// export async function generateMetadata({params: { product}}: ProductPageProps) {
+//   const product: Promise<Product> = await  getProductById(productId, categoryId);
+//   const productData = await product
 
-const ProductPage: React.FC<ProductPageProps> = async ({
-  params: { productId, categoryId },
-}) => {
-  const products: Promise<Product> =  getProductById(productId, categoryId);
-  const product = await products
+//   return {
+//     title: productData.model,
+//     description: productData.description
+//   }
+// }
+
+const ProductPage = async ({ params }: { params: { product: string } }) => {
+  const products: Promise<Product> = getProduct(params.product);
+  const product = await products;
   if (!product) notFound();
 
   return (
@@ -51,7 +45,7 @@ export default ProductPage;
 //   const {categoryId, productId} =  params
 //   const product: Promise<Product[]> = await  getProductById(productId, categoryId);
 //   const productData = await product
-  
+
 //   if(!productData || productData === null) notFound()
 
 //   return productData.map(product => ({

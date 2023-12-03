@@ -8,12 +8,12 @@ export async function getProducts(): Promise<Product[]> {
     const data = await res.json();
     return data.products;
 }
-// Product function for getting products
-export async function getProductById(productId: string, categoryId: string) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category/${categoryId}/${productId}`);
+// Display single products
+export async function getProduct(product: string) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${product}`);
     if (!res.ok) return undefined
     const data = await res.json();
-    return data.product;
+    return data.productData;
 }
 // product function getting product by Category
 export async function getProductListH(productCategory: string) {

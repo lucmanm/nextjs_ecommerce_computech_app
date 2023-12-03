@@ -17,10 +17,8 @@ const ProductCard: React.FC<PropductProps> = ({ productData }) => {
   const router = useRouter();
 
   const handleNavigation = () => {
-    const productId = productData.id;
-    const categoryId = productData.categoryId;
-    //issue #2 Undefind in first params with any dummy string
-    router.push(`/${categoryId}/${productId}`);
+    const productModel= productData.model;
+    router.push(`/${productModel}`);
   };
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();

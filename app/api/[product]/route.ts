@@ -81,20 +81,19 @@ export async function DELETE(req: Request, { params }: { params: { productID: st
     }
 }
 
-export async function GET(req: Request, { params }: { params: { productID: string } }) {
+export async function GET(req: Request, { params }: { params: { product: string } }) {
     try {
-        const productCategory = await prisma.product.findMany({
+
+        const productData= await prisma.product.findMany({
             where: {
-                category: {
-                    category: params.productID
-                }
+                model: params.product
             },
             include: {
                 images: true,
                 brand: true
             }
         })
-        return NextResponse.json({ productCategory }, { status: 200 })
+        return NextResponse.json({ productData }, { status: 200 })
 
 
     } catch (error) {

@@ -18,17 +18,16 @@ import { getProduct } from "@/lib/actions/getProduct";
 // }
 
 const ProductPage = async ({ params }: { params: { product: string } }) => {
-  const products: Promise<Product> = getProduct(params.product);
-  const product = await products;
-  if (!product) notFound();
+  const productData: Product = await getProduct(params.product);
+  if (!productData) notFound();
 
   return (
     <div>
       <div className="px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col md:grid md:grid-cols-3">
-          <Gallery images={product.images} />
+          <Gallery images={productData.images} />
           <div className="col-span-2 mt-10 sm:mt-16 md:mt-0 md:px-4">
-            <Info data={product} />
+            <Info data={productData} />
           </div>
         </div>
         <hr className="my-10" />

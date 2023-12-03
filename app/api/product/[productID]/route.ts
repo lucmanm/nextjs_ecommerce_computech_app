@@ -51,8 +51,7 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
         return NextResponse.json({ message: "Update accepted", product }, { status: 201 })
 
     } catch (error) {
-        console.log("ERROR_PRODUCT_UPDATE", error);
-        return NextResponse.json({ message: "[ERROR_PRODUCT_UPDATE], something went wrong" }, { status: 500 })
+        return NextResponse.json({ message: "[ERROR_PRODUCT_UPDATE"}, { status: 500 })
     }
 }
 
@@ -78,8 +77,28 @@ export async function DELETE(req: Request, { params }: { params: { productID: st
 
     } catch (error) {
         console.log("ERROR_PRODUCT_DELETE", error);
-        return NextResponse.json({ message: "[ERROR_PRODUCT_DELETE], something went wrong" }, { status: 500 })
+        return NextResponse.json({ message: "[ERROR_PRODUCT_DELETE]" }, { status: 500 })
     }
 }
 
+export async function GET(req: Request, { params }: { params: { productID: string } }) {
+    try {
+        const productCategory = await prisma.product.findMany({
+            where: {
+                category: {
+                    category: params.productID
+                }
+            },
+            include: {
+                images: true,
+                brand: true
+            }
+        })
+        return NextResponse.json({ productCategory }, { status: 200 })
 
+
+    } catch (error) {
+        console.log("[ERROR_GET_PRODUCT]", error);
+        return NextResponse.json({ message: "[ERROR_GET_PRODUCT]" }, { status: 500 })
+    }
+}

@@ -28,9 +28,9 @@ const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
         }}
       >
         <SplideTrack className="grid grid-cols-2 py-4 md:grid-cols-4 lg:grid-cols-5  lg:py-8">
-          {productData.map((productData) => (
-            <SplideSlide key={productData.id}>
-              <ProductCard productData={productData} />
+          {productData?.map((data, index) => (
+            <SplideSlide key={index}>
+              <ProductCard productData={data} />
             </SplideSlide>
           ))}
         </SplideTrack>

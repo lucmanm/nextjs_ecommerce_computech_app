@@ -8,13 +8,14 @@ export async function getProduct(productModel: string)  {
     return data.productData;
 }
 
-export async function getProductType(productSlug: string) {
-    const res = await fetch(`http://localhost:3000/api/${productSlug}`);
+// Display Product By Brand
+export async function getProductType(productBrand: string) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/${productBrand}`);
     if (!res.ok) {
-        throw new Error("FAILED_FETCH_PRODUCT_TYPE");
+        throw new Error("FAILED_FETCH_PRODUCT_BRAND");
     }
     const data = await res.json();
-    return data.brandProductData
+    return data.productData
 }
 
 // product function getting All products

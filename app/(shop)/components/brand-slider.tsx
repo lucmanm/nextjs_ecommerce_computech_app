@@ -63,7 +63,7 @@ const BrandSlider = ({
                   )}
                 >
                   <Image src={imageUrl} width={100} height={100} alt={brand} />
-                </div>
+                </div> 
                 {subtitle && (
                   <span className="lg:text-sm whitespace-pre text-center text-sm font-medium capitalize">
                     {brand}

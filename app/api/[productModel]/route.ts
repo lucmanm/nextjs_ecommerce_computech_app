@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { TProduct } from "@/types/type";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -84,9 +85,10 @@ export async function DELETE(req: Request, { params }: { params: { productID: st
 export async function GET(req: Request, { params }: { params: { productModel: string } }) {
     try {
 
-        const productData = await prisma.product.findFirst({
+        const productData= await prisma.product.findFirst({
             where: {
-                model: params.productModel
+                model: params.productModel,
+                isLive: true
             },
             include: {
                 images: true,

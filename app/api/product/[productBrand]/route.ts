@@ -1,26 +1,27 @@
 import { prisma } from "@/lib/db"
 import { NextResponse } from "next/server"
 
-export async function GET(req: Request, { params }: { params: { productSlug: string } }) {
+export async function GET(req: Request, { params }: { params: { productBrand: string } }) {
   try {
 
-
-    const productByCategoryData = await prisma.product.findMany({
+    const productData = await prisma.product.findMany({
       where: {
-        category:{
-          category: params.productSlug
-        }
+        brand:{
+          brand: params.productBrand
+        },
+        isLive: true
       },
       include: {
         images: true,
         brand: true,
       }
     })
-    if (!productByCategoryData) {
+
+    if (!productData) {
       return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE"}, { status: 500 })
     }else{
 
-      return NextResponse.json({ productByCategoryData }, { status: 200 })
+      return NextResponse.json({ productData }, { status: 200 })
     }
 
   

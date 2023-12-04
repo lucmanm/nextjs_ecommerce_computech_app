@@ -8,7 +8,7 @@ export const GET = async (req: Request) => {
     try {
         const products = await prisma.product.findMany({
             where: {
-                isLive: true
+                isFeatured: true
             },
             include: {
                 images: true,

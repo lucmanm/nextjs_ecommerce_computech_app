@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db"
 import { NextResponse } from "next/server"
 
+// FIXME Product Update on Category not working
 export async function GET(req: Request, { params }: { params: { productSlug: string } }) {
   try {
 

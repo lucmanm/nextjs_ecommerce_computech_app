@@ -16,20 +16,20 @@ const HorizontalProductList: React.FC<HorizontalProductListProps> = ({
   productData,
 }) => {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col my-4">
       <Title>{title}</Title>
       <Splide
         hasTrack={false}
         options={{
           type: "loop",
           rewind: true,
-          gap: "2rem",
+          gap: "1.5rem",
           perMove: 1,
           arrows: false,
           pagination: false,
         }}
       >
-        <SplideTrack className="grid grid-cols-2 py-4 md:grid-cols-4 lg:grid-cols-5  lg:py-8">
+        <SplideTrack className="grid grid-cols-2 py-4 md:grid-cols-4 lg:grid-cols-5  lg:py-4">
           {productData?.map((data, index) => (
             <SplideSlide key={index}>
               <ProductCard productData={data} />

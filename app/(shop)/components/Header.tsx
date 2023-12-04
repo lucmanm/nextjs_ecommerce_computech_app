@@ -18,9 +18,9 @@ const Header = async () => {
       <div className="bg-white p-2">
         <div className="container flex flex-wrap items-center justify-between  gap-4">
           <div className="self-center">
-            <Link href="/">
+            <a href="/">
               <Image src={url} width={150} height={0} alt={title} />
-            </Link>
+            </a>
           </div>
           <div className="flex-1">
             <SearchInput />

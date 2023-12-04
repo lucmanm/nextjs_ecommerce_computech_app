@@ -6,8 +6,6 @@ import { z } from "zod";
 
 export async function GET(req: Request) {
     try {
-
-
         const categories = await prisma.category.findMany();
         return NextResponse.json(
             { categories },

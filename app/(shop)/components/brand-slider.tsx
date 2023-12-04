@@ -55,7 +55,7 @@ const BrandSlider = ({
               key={imageUrl}
               className="flex max-w-fit flex-col gap-y-2 "
             >
-              <Link href={brand}>
+              <Link href={`product/${brand}`}>
                 <div
                   className={cn(
                     "flex flex-wrap items-center justify-center overflow-hidden bg-white p-4 hover:cursor-pointer hover:shadow-md active:shadow-inner lg:w-28 lg:h-28 h-24 w-24 rounded-lg",

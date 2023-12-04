@@ -19,13 +19,13 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ title, categories }) => {
       </div>
       <div className="hidden grow group-hover:block group-focus:visible">
         <div className="absolute top-full flex w-fit grow flex-col overflow-hidden rounded pt-3 shadow-md">
-          {categories?.map(({ id, category }) => (
+          {categories?.map((data, index) => (
             <a
-              key={id}
-              href={`/${id}`}
+              key={index}
+              href={`product/${data.category}`}
               className="w-full whitespace-pre border border-b-gray-300 bg-gray-200 px-2 py-2 font-medium capitalize text-gray-600 hover:bg-gray-100 hover:text-black"
             >
-              {category}
+              {data.category}
             </a>
           ))}
         </div>

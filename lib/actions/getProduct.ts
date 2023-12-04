@@ -35,5 +35,5 @@ export async function getProductListH(productByCategory: string) {
         throw new Error("FAILED_TO_FETCH_PRODUCTS_BY_CATEGORY");
     }
     const data = await res.json();
-    return data.productByCategoryData;
+    return data.productData;
 }

@@ -1,17 +1,13 @@
 import { prisma } from "@/lib/db";
+import { categorySchema } from "@/types/validation";
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
-export async function PATCH(
-  req: Request,
-  { params }: { params: { categoryId: string } }
-) {
+export async function PATCH(req: Request, { params }: { params: { categoryId: string } }) {
   try {
-    const categorySchema = z.object({
-      category: z.string().toLowerCase(),
-    });
+    
     const body = await req.json();
     const { category } = categorySchema.parse(body);
+    
     const UpdateCategory = await prisma.category.update({
       where: { id: params.categoryId },
       data: {
@@ -19,24 +15,18 @@ export async function PATCH(
       },
     });
 
-    return NextResponse.json(
-      {
-        UpdateCategory,
-        messsage: "Category Updated Successfully",
-      },
-      { status: 202 }
-    );
+    return NextResponse.json({ UpdateCategory, messsage: "Category Updated Successfully",},{ status: 202 });
+
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
-      { message: "Something went wrong" },
-      { status: 500 }
+      { message: "ERROR_PATCH_CATEGORY", error },
+      { status: 501 }
     );
   }
 }
 
-export async function DELETE(
-  req: Request,
-  { params }: { params: { categoryId: string } }
+export async function DELETE(req: Request, { params }: { params: { categoryId: string } }
 ) {
   try {
     const deleteCategory = await prisma.category.delete({
@@ -58,27 +48,27 @@ export async function DELETE(
   }
 }
 
-export async function GET(req: Request, { params }: { params: { categoryId: string } }) {
-  try {
-    const { categoryId } = params;
-    
-    const productsByCategoryId = await prisma.product.findMany({
-      where: {
-        categoryId,
-        isLive: true
-      },
-      include: {
-        images: true,
-        brand: true
-      }
-    })
+// export async function GET(req: Request, { params }: { params: { categoryId: string } }) {
+//   try {
+//     const { categoryId } = params;
 
-    return NextResponse.json(productsByCategoryId, {status: 200});
+//     const productsByCategoryId = await prisma.product.findMany({
+//       where: {
+//         categoryId,
+//         isLive: true
+//       },
+//       include: {
+//         images: true,
+//         brand: true
+//       }
+//     })
 
-  } catch (error) {
-    return NextResponse.json(
-      { message: "fetching category Error", error },
-      { status: 500 }
-    );
-  }
-};
+//     return NextResponse.json(productsByCategoryId, { status: 200 });
+
+//   } catch (error) {
+//     return NextResponse.json(
+//       { message: "fetching category Error", error },
+//       { status: 500 }
+//     );
+//   }
+// };

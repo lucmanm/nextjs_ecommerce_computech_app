@@ -13,12 +13,7 @@ import ProductCard from "@/components/ProductCard";
 // Types
 
 // FIXME no not found page
-const ProductPage = async ({
-  params,
-}: {
-  params: { productModel: string };
-}) => {
-
+const ProductPage = async ({params,}: {params: { productModel: string }}) => {
 
   const productData: TProduct = await getProduct(params.productModel);
 

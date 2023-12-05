@@ -1,8 +1,11 @@
 "use client";
+// Hooks
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+
+// Components
 import {
   Form,
   FormControl,
@@ -12,19 +15,23 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
-import { Loader } from "lucide-react";
-import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import ImageUpload from "@/components/ui/image-upload";
 import Container from "@/app/(admin)/components/Container";
-import { brandFormSchema } from "@/types/validation";
+// Icons
+import { Loader } from "lucide-react";
+
+// type &  Schema
 import { TBrand } from "@/types/type";
+import { brandSchema } from "@/types/validation";
 
-
-interface BrandProps {
-  initialData: TBrand | null;
+type BrandProps = {
+  initialData: {
+    brand: string,
+    imageUrl: string,
+  }  | null;
 }
 
 export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
@@ -43,7 +50,7 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
   const action = initialData ? "Save Changes" : "Create";
 
   const form = useForm<TBrand>({
-    resolver: zodResolver(brandFormSchema),
+    resolver: zodResolver(brandSchema),
     defaultValues: initialData || {
       brand: "",
       imageUrl: "",

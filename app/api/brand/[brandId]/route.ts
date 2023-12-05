@@ -1,16 +1,11 @@
 import { prisma } from "@/lib/db";
+import { brandSchema } from "@/types/validation";
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
-export async function PATCH(
-  req: Request,
-  { params }: { params: { brandId: string } }
+// Update Function
+export async function PATCH(req: Request, { params }: { params: { brandId: string } }
 ) {
   try {
-    const brandSchema = z.object({
-      brand: z.string().toLowerCase(),
-      imageUrl: z.string().toLowerCase(),
-    });
 
     const body = await req.json();
     const { brand, imageUrl } = brandSchema.parse(body);
@@ -37,10 +32,9 @@ export async function PATCH(
     return NextResponse.json({ message: "ERROR_BRAND_PATCH" }, { status: 500 });
   }
 }
-export async function DELETE(
-  req: Request,
-  { params }: { params: { brandId: string } }
-) {
+
+// Delete function
+export async function DELETE(req: Request, { params }: { params: { brandId: string } }) {
   try {
     const brandData = await prisma.brand.delete({
       where: {

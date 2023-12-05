@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { categorySchema } from "@/types/validation";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -23,9 +24,7 @@ export async function GET(req: Request) {
 
 
 export async function POST(req: Request) {
-    const categorySchema = z.object({
-        category: z.string().toLowerCase()
-    })
+
     try {
         const body = await req.json();
         const { category } = categorySchema.parse(body);

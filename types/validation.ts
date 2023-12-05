@@ -40,17 +40,17 @@ export const productFormSchema = z.object({
 });
 
 // Brand Schema
-export const brandFormSchema = z.object({
+export const brandSchema = z.object({
     id: z.string(),
     brand: z.string().min(1, "Please enter brand name."),
     imageUrl: z.string().min(1, "Please upload image"),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()),
+    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional(),
 })
 
 // Category Schema
 export const categorySchema = z.object({
-    id: z.string(),
+    id: z.string().optional(),
     category: z.string().min(1, "Please Enter Category."),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()),
+    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional()
 });
 

@@ -15,7 +15,7 @@ import { toast } from "@/components/ui/use-toast";
 import { TCategory } from "@/types/type";
 
 interface CellActionProps {
-  data: TCategory;
+  data: TCategory
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {

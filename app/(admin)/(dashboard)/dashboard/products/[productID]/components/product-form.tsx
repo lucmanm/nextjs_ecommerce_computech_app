@@ -34,7 +34,8 @@ import { TProduct } from "@/types/type";
 import { productFormSchema } from "@/types/validation";
 
 interface ProductFormProps {
-  productData: (Product & { images: Image[] }) | null;
+  // productData: (Product & { images: Image[] }) | null;
+  productData: TProduct | null;
   categories: Category[];
   brands: Brand[];
 }

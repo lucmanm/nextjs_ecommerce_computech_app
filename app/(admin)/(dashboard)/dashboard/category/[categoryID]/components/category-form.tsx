@@ -1,7 +1,14 @@
 "use client";
+// Hooks
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
+
+//Icons
+import { Loader } from "lucide-react";
+
+// Components
 import {
   Form,
   FormControl,
@@ -11,17 +18,19 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useParams, useRouter } from "next/navigation";
-
-import { Loader } from "lucide-react";
-import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import Container from "@/app/(admin)/components/Container";
+
+// Type & Schema
 import { TCategory } from "@/types/type";
 import { categorySchema } from "@/types/validation";
 
+
 type CategoryProps = {
-  initialData: TCategory & { createdAt: Date } | null;
+  initialData: {
+    category: string
+  } | null;
 }
 
 export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
@@ -50,48 +59,49 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
     try {
       setLoading(true);
       
-      // if (initialData) {
-      //   const response = await fetch(`/api/category/${params.categoryID}`, {
-      //     method: "PATCH",
-      //     headers: {
-      //       "Content-type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       category: values.category,
-      //     }),
-      //   });
-      //   if (response.ok) {
-      //     toast({
-      //       description: toastMessage,
-      //       variant: "success",
-      //     });
-      //     router.refresh();
-      //     router.push("/dashboard/category");
-      //   }
-      // } else {
-      //   const response = await fetch(`/api/category`, {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-type": "application/json",
-      //     },
-      //     body: JSON.stringify({
-      //       category: values.category,
-      //     }),
-      //   });
-      //   if (response.ok) {
-      //     toast({
-      //       description: toastMessage,
-      //       variant: "success",
-      //     });
-      //     router.refresh();
-      //     router.push("/dashboard/category");
-      //   } else {
-      //     toast({
-      //       description: "Category exist",
-      //       variant: "destructive",
-      //     });
-      //   }
-      // }
+      if (initialData) {
+        const response = await fetch(`/api/category/${params.categoryId}`, {
+          method: "PATCH",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            category: values.category,
+          }),
+        });
+        if (response.ok) {
+          toast({
+            description: toastMessage,
+            variant: "success",
+          });
+          router.refresh();
+          router.push("/dashboard/category");
+        }
+      } else {
+        const response = await fetch(`/api/category`, {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            category: values.category,
+          }),
+        });
+        if (response.ok) {
+          toast({
+            description: toastMessage,
+            variant: "success",
+          });
+          router.refresh();
+          router.push("/dashboard/category");
+        } else {
+          toast({
+            description: "Category exist",
+            variant: "destructive",
+          });
+        }
+      }
+
     } catch (error) {
       toast({
         description: `[ERROR_CATEGORY], Something Went Wong: ${error}`,
@@ -108,7 +118,7 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
+            className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize"
           >
             <FormField
               control={form.control}

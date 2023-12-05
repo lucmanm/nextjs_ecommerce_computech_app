@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { brandFormSchema, categorySchema, productFormSchema } from "./validation";
+import { brandSchema, categorySchema, productFormSchema } from "./validation";
 
 type TProduct = z.infer<typeof productFormSchema>
 
-type TBrand = z.infer<typeof brandFormSchema>
+type TBrand = z.infer<typeof brandSchema>
 
 type TCategory = z.infer<typeof categorySchema>

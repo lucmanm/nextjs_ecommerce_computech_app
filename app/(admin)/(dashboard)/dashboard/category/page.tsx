@@ -10,8 +10,9 @@ const CategoryPage = async () => {
 
   const categories = await prisma.category.findMany();
 
-  const formattedcategories: TCategory[] = categories.map((item) =>
+  const formattedcategories: TCategory[] = categories.map((item) => (
     categorySchema.parse(item)
+  )
   );
 
   return <ClientBrand data={formattedcategories} />

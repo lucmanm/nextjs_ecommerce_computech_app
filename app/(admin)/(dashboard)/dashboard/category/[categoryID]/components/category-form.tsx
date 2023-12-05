@@ -49,48 +49,49 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
   const onSubmit = async (values: TCategory) => {
     try {
       setLoading(true);
-      if (initialData) {
-        const response = await fetch(`/api/category/${params.categoryID}`, {
-          method: "PATCH",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            category: values.category,
-          }),
-        });
-        if (response.ok) {
-          toast({
-            description: toastMessage,
-            variant: "success",
-          });
-          router.refresh();
-          router.push("/dashboard/category");
-        }
-      } else {
-        const response = await fetch(`/api/category`, {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({
-            category: values.category,
-          }),
-        });
-        if (response.ok) {
-          toast({
-            description: toastMessage,
-            variant: "success",
-          });
-          router.refresh();
-          router.push("/dashboard/category");
-        } else {
-          toast({
-            description: "Category exist",
-            variant: "destructive",
-          });
-        }
-      }
+      
+      // if (initialData) {
+      //   const response = await fetch(`/api/category/${params.categoryID}`, {
+      //     method: "PATCH",
+      //     headers: {
+      //       "Content-type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       category: values.category,
+      //     }),
+      //   });
+      //   if (response.ok) {
+      //     toast({
+      //       description: toastMessage,
+      //       variant: "success",
+      //     });
+      //     router.refresh();
+      //     router.push("/dashboard/category");
+      //   }
+      // } else {
+      //   const response = await fetch(`/api/category`, {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-type": "application/json",
+      //     },
+      //     body: JSON.stringify({
+      //       category: values.category,
+      //     }),
+      //   });
+      //   if (response.ok) {
+      //     toast({
+      //       description: toastMessage,
+      //       variant: "success",
+      //     });
+      //     router.refresh();
+      //     router.push("/dashboard/category");
+      //   } else {
+      //     toast({
+      //       description: "Category exist",
+      //       variant: "destructive",
+      //     });
+      //   }
+      // }
     } catch (error) {
       toast({
         description: `[ERROR_CATEGORY], Something Went Wong: ${error}`,

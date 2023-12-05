@@ -53,23 +53,17 @@ export const productColumnSchema = z.object({
 export type ProductColumnProps = z.infer<typeof productColumnSchema>;
 
 // Products Typescript
-export const brandColumnProps = z.object({
-    id: z.string(),
-    brand: z.string(),
-    imageUrl: z.string(),
-    createdAt: z.string()
-})
+// export const brandColumnProps = z.object({
+//     id: z.string(),
+//     brand: z.string(),
+//     imageUrl: z.string(),
+//     createdAt: z.string()
+// })
 
-export type BrandColumnProps = z.infer<typeof brandColumnProps>;
+// export type BrandColumnProps = z.infer<typeof brandColumnProps>;
 
 // Category Typescript
-export const categoryColumnProps = z.object({
-    id: z.string(),
-    category: z.string(),
-    createdAt: z.string()
-})
-
-export type CategoryColumnProps = z.infer<typeof categoryColumnProps>;
+// w
 
 // Slider Types
 export const sliderProps = z.object({

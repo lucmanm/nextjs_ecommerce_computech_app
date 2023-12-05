@@ -4,14 +4,14 @@ import ProductForm from "./components/product-form";
 import { notFound } from "next/navigation";
 interface CreateProductProps {
   params: {
-    productID: string;
+    productId: string;
   };
 }
 const CreateProduct: React.FC<CreateProductProps> = async ({ params }) => {
   const categories = await prisma.category.findMany();
   const brands = await prisma.brand.findMany();
 
-  if (params.productID === "create") {
+  if (params.productId === "create") {
     return (
       <ProductForm productData={null} categories={categories} brands={brands} />
     );
@@ -19,7 +19,7 @@ const CreateProduct: React.FC<CreateProductProps> = async ({ params }) => {
 
   const product = await prisma.product.findUnique({
     where: {
-      id: params.productID,
+      id: params.productId,
     },
     include: {
       images: true,

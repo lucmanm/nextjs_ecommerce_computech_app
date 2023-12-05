@@ -12,10 +12,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert/alert-modal";
 import { toast } from "@/components/ui/use-toast";
-import { BrandColumnProps } from "@/types";
+import { TBrand } from "@/types/type";
 
-interface CellActionProps {
-  data: BrandColumnProps;
+type CellActionProps = {
+  data: TBrand;
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {

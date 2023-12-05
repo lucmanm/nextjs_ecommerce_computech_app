@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/db";
+import { brandFormSchema } from "@/types/validation";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -19,14 +20,11 @@ export const GET = async (req: Request) => {
 
 export async function POST(req: Request) {
   try {
-    const brandSchema = z.object({
-      brand: z.string(),
-      imageUrl: z.string()
-    });
+
 
     const body = await req.json();
 
-    const { brand, imageUrl } = brandSchema.parse(body);
+    const { brand, imageUrl } = brandFormSchema.parse(body);
 
     const checkbBrandName = await prisma.brand.findFirst({
       where: { brand },

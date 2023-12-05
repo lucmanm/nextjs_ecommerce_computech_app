@@ -33,7 +33,7 @@ const ProductPage = async ({
             </div>
           </div>
           <hr className="my-10" />
-          Product List Ralated Featuered
+          {productData.description}
           {/* <ProductList title="Related Items" items={suggestedProducts} /> */}
         </div>
       </div>

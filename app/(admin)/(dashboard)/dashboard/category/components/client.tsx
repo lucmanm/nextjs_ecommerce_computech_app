@@ -3,10 +3,10 @@
 import Container from "@/app/(admin)/components/Container";
 import { DataTable } from "@/components/ui/data-table";
 import {  columns } from "./columns";
-import { CategoryColumnProps } from "@/types";
+import { TCategory } from "@/types/type";
 
 interface SliderPageProps {
-  data: CategoryColumnProps[];
+  data: TCategory[];
 }
 
 const ClientBrand: React.FC<SliderPageProps> = ({ data }) => {

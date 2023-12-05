@@ -1,6 +1,5 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -17,16 +16,15 @@ import { useParams, useRouter } from "next/navigation";
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { Category } from "@prisma/client";
 import Container from "@/app/(admin)/components/Container";
-import { categoryFormSchema } from "@/types/validation";
 import { TCategory } from "@/types/type";
+import { categorySchema } from "@/types/validation";
 
-interface SliderFormProps {
-  initialData: Category | null;
+type CategoryProps = {
+  initialData: TCategory & { createdAt: Date } | null;
 }
 
-export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
+export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
 
@@ -42,7 +40,7 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
   const action = initialData ? "Save Changes" : "Create";
 
   const form = useForm<TCategory>({
-    resolver: zodResolver(categoryFormSchema),
+    resolver: zodResolver(categorySchema),
     defaultValues: initialData || {
       category: "",
     },

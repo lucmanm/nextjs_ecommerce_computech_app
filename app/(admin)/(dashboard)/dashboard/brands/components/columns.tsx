@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { ColumnDef } from "@tanstack/react-table";
 import CellAction from "./cell-action";
-import { BrandColumnProps } from "@/types";
+import { TBrand } from "@/types/type";
 
 
-export const columns: ColumnDef<BrandColumnProps>[] = [
+export const columns: ColumnDef<TBrand>[] = [
   {
     accessorKey: "brand",
     header: "Brand",

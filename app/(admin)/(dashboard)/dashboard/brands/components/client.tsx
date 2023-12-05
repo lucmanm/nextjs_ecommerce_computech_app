@@ -3,13 +3,13 @@
 import Container from "@/app/(admin)/components/Container";
 import { DataTable } from "@/components/ui/data-table";
 import { columns } from "./columns";
-import { BrandColumnProps } from "@/types";
+import { TBrand } from "@/types/type";
 
-type SliderPageProps = {
-  data: BrandColumnProps[];
+type BrandProps = {
+  data: TBrand[];
 }
 
-const ClientBrand: React.FC<SliderPageProps> = ({ data }) => {
+const ClientBrand: React.FC<BrandProps> = ({ data }) => {
   return (
     <Container
       title={`Brands (${data.length})`}

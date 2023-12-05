@@ -1,21 +1,17 @@
 import { prisma } from "@/lib/db";
 
 import ClientBrand from "./components/client";
-import { z } from "zod";
-import { CategoryColumnProps } from "@/types";
+
+// Type & Schema
+import { categorySchema } from "@/types/validation";
+import { TCategory } from "@/types/type";
 
 const CategoryPage = async () => {
 
   const categories = await prisma.category.findMany();
 
-  const sliderSchema = z.object({
-    id: z.string(),
-    category: z.string(),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()),
-  });
-
-  const formattedcategories: CategoryColumnProps[] = categories.map((item) =>
-    sliderSchema.parse(item)
+  const formattedcategories: TCategory[] = categories.map((item) =>
+    categorySchema.parse(item)
   );
 
   return <ClientBrand data={formattedcategories} />

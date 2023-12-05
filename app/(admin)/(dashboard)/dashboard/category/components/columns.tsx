@@ -2,11 +2,11 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import CellAction from "./cell-action";
-import { CategoryColumnProps } from "@/types";
+import { TCategory } from "@/types/type";
 
 
 
-export const columns: ColumnDef<CategoryColumnProps>[] = [
+export const columns: ColumnDef<TCategory>[] = [
   {
     accessorKey: "category",
     header: "Category",

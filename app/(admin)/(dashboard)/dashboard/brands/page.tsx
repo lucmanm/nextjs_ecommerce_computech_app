@@ -1,22 +1,17 @@
 import { prisma } from "@/lib/db";
-
+// Components
 import ClientBrand from "./components/client";
-import { z } from "zod";
-import { BrandColumnProps } from "@/types";
+
+// Schema & Type
+import { TBrand } from "@/types/type";
+import { brandFormSchema } from "@/types/validation";
 
 const BrandsPage = async () => {
 
   const brands = await prisma.brand.findMany();
 
-  const sliderSchema = z.object({
-    id: z.string(),
-    brand: z.string(),
-    imageUrl: z.string(),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()),
-  });
-
-  const formattedbrands: BrandColumnProps[] = brands.map((item) =>
-    sliderSchema.parse(item)
+   const formattedbrands: TBrand[] = brands.map((item) =>
+    brandFormSchema.parse(item)
   );
 
   return (

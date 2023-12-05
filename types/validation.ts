@@ -1,13 +1,8 @@
 import { z } from "zod";
 
-export const brandFormSchema = z.object({
-    brand: z.string().min(1, "Please enter brand name."),
-    imageUrl: z.string().min(1, "Please upload image"),
-});
 
-export const categoryFormSchema = z.object({
-    category: z.string().min(1, "Please enter brand name."),
-});
+
+
 
 // Product Schema
 export const productFormSchema = z.object({
@@ -43,3 +38,19 @@ export const productFormSchema = z.object({
     isLive: z.boolean().default(false).optional(),
     isFeatured: z.boolean().default(false).optional(),
 });
+
+// Brand Schema
+export const brandFormSchema = z.object({
+    id: z.string(),
+    brand: z.string().min(1, "Please enter brand name."),
+    imageUrl: z.string().min(1, "Please upload image"),
+    createdAt: z.date().transform((date) => date.toLocaleDateString()),
+})
+
+// Category Schema
+export const categorySchema = z.object({
+    id: z.string(),
+    category: z.string().min(1, "Please Enter Category."),
+    createdAt: z.date().transform((date) => date.toLocaleDateString()),
+});
+

@@ -17,18 +17,17 @@ import { useParams, useRouter } from "next/navigation";
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { Brand } from "@prisma/client";
 import ImageUpload from "@/components/ui/image-upload";
 import Container from "@/app/(admin)/components/Container";
 import { brandFormSchema } from "@/types/validation";
 import { TBrand } from "@/types/type";
 
 
-interface SliderFormProps {
-  initialData: Brand | null;
+interface BrandProps {
+  initialData: TBrand | null;
 }
 
-export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
+export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
 
@@ -100,7 +99,7 @@ export const BrandForm: React.FC<SliderFormProps> = ({ initialData }) => {
       }
     } catch (error) {
       toast({
-        description: `[ERROR_SLIDER], Something Went Wong: ${error}`,
+        description: `[ERROR_POST_PATCH_BRAND]: ${error}`,
         variant: "destructive",
       });
     } finally {

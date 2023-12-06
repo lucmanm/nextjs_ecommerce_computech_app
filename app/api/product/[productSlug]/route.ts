@@ -51,24 +51,34 @@ export async function PATCH(req: Response, { params }: { params: { productSlug: 
     const body = await req.json()
     const productData = productFormSchema.parse(body)
     const productId = params.productSlug
-
-     await prisma.product.update({
-      where:{
-        id: productId
-      },
-      data: {
-        images: {
-          createMany: {
-            data: [
-              ...images.map((image: { url: string }) => image),
-            ],
-          },
-        },
-      },
-    })
     if (!productId) {
       return new NextResponse("PORODUCT_ID_EMPTY", { status: 400 })
     }
+    
+    await prisma.product.update({
+      where: {
+        id: productId
+      },
+      data: {
+        model: productData.model,
+        description: productData.description,
+        price: productData.price,
+        salePrice: productData.salePrice,
+        stock: productData.stock,
+        brandId: productData.brandId,
+        categoryId: productData.categoryId,
+        isLive: productData.isLive,
+        isFeatured: productData.isFeatured,
+        // images: {
+        //   createMany: {
+        //     data: [
+        //       ...imageUrl.map((image: { url: string }) => image),
+        //     ],
+        //   },
+        // },
+      },
+    })
+
 
   } catch (error) {
     console.log("ERROR_PATCH_PRODUCT", error);

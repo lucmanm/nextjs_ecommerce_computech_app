@@ -34,8 +34,7 @@ import { TProduct } from "@/types/type";
 import { productFormSchema } from "@/types/validation";
 
 interface ProductFormProps {
-  // productData: (Product & { images: Image[] }) | null;
-  productData: TProduct | null;
+  productData: (Product & { images: Image[] }) | null;
   categories: Category[];
   brands: Brand[];
 }
@@ -79,7 +78,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
     try {
       setLoading(true);
       if (productData) {
-        const response = await fetch(`/api/product/${params.productID}`, {
+        const response = await fetch(`/api/product/${params.productId}`, {
           method: "PATCH",
           headers: {
             "Content-type": "application/json",

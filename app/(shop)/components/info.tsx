@@ -14,7 +14,6 @@ const Info: React.FC<InfoProps> = ({ prodoctData }) => {
   return (
     <div className="flex flex-col justify-between md:h-full">
       <div className="">
-        {/* LogoBrand Display */}
         {/* <Image
           src={brand.imageUrl}
           width={48}

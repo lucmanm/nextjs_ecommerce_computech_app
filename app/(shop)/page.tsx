@@ -15,7 +15,7 @@ export default async function ShopPage() {
   const brands = await getBrands();
 
   const products: Product[] = await getProducts();
-  const printersData: Product[] = await getProductListH("printer");
+  const printersData: Product[] = await getProductListH("printers");
   const computersData: Product[] = await getProductListH("desktop");
   const MonitorsData: Product[] = await getProductListH("monitor");
     

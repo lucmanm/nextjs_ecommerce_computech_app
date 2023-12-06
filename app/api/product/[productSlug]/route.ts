@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/db"
 import { productFormSchema } from "@/types/validation"
+import { Image, Product } from "@prisma/client"
 import { NextResponse } from "next/server"
 
 export async function GET(req: Request, { params }: { params: { productSlug: string } }) {
@@ -49,37 +50,40 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
 export async function PATCH(req: Response, { params }: { params: { productSlug: string } }) {
   try {
     const body = await req.json()
-    const productData = productFormSchema.parse(body)
+    const product = productFormSchema.parse(body)
     const productId = params.productSlug
     if (!productId) {
       return new NextResponse("PORODUCT_ID_EMPTY", { status: 400 })
     }
-    
-    await prisma.product.update({
+
+    const productData = await prisma.product.update({
       where: {
         id: productId
       },
       data: {
-        model: productData.model,
-        description: productData.description,
-        price: productData.price,
-        salePrice: productData.salePrice,
-        stock: productData.stock,
-        brandId: productData.brandId,
-        categoryId: productData.categoryId,
-        isLive: productData.isLive,
-        isFeatured: productData.isFeatured,
-        // images: {
-        //   createMany: {
-        //     data: [
-        //       ...imageUrl.map((image: { url: string }) => image),
-        //     ],
-        //   },
-        // },
+        model: product.model,
+        description: product.description,
+        price: product.price,
+        salePrice: product.salePrice,
+        stock: product.stock,
+        brandId: product.brandId,
+        categoryId: product.categoryId,
+        isLive: product.isLive,
+        isFeatured: product.isFeatured,
+        images: {
+          deleteMany:{},
+          updateMany: {
+            where: {
+              productId: productId
+            },
+            data: [
+              ...images.map((image: { imageUrl: string }) => image)
+            ]
+          },
+        },
       },
     })
-
-
+    return NextResponse.json(productData, { status: 201 })
   } catch (error) {
     console.log("ERROR_PATCH_PRODUCT", error);
     return NextResponse.json({ message: "ERROR_PATCH_PRODUCT", error }, { status: 501 })

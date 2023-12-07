@@ -5,12 +5,6 @@ import Gallery from "@/components/gallery";
 // Actions
 import { getProduct, getProductType } from "@/lib/actions/getProduct";
 import { TProduct } from "@/types/type";
-import { Product } from "@/types/table-types";
-import Container from "../components/Container";
-import Breadcrumb from "../components/Breadcrumb";
-import NoResults from "../components/no-result";
-import ProductCard from "@/components/ProductCard";
-import SwiperProductSlider from "../components/swiper-prododucts-slider";
 // Types
 
 // FIXME no not found page

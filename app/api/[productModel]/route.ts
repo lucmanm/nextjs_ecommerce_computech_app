@@ -1,34 +1,12 @@
 import { prisma } from "@/lib/db";
-import { TProduct } from "@/types/type";
+import { productFormSchema } from "@/types/validation";
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
 export async function PATCH(req: Request, { params }: { params: { productModel: string } }) {
     try {
-        const productFormschema = z.object({
-            model: z.string(),
-            description: z.string(),
-            price: z.number(),
-            salePrice: z.number(),
-            stock: z.number(),
-            brandId: z.string(),
-            categoryId: z.string(),
-            images: z.array(z.object({
-                imageUrl: z.string()
-            }))
-        })
-
-        // const checkProduct = await prisma.product.findFirst({
-        //     where: {
-        //         id: params.productModel
-        //     }
-        // })
-        // if (!checkProduct) {
-        //     return NextResponse.json({ message: "Request not exist" }, { status: 500 })
-        // }
 
         const body = await req.json()
-        const { model, description, price, salePrice, stock, brandId, categoryId, images } = productFormschema.parse(body)
+        const { model, description, price, salePrice, stock, brandId, categoryId, images } = productFormSchema.parse(body)
 
 
         const product = await prisma.product.update({

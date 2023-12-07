@@ -4,10 +4,8 @@ import { getSliders } from "@/lib/actions/getSliders";
 import BrandSlider from "./components/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
 import { getProductListH, getProducts } from "@/lib/actions/getProduct";
-import HorizontalProductList from "./components/horizontal-products-list";
-import SplideProductsSlider from "./components/splide-products-slider";
+import { SplideProductsSlider } from "./components/splide-products-slider";
 import { TProduct } from "@/types/type";
-import SwiperProductSlider from "./components/swiper-prododucts-slider";
 
 export const revalidate = 0;
 
@@ -20,7 +18,7 @@ export default async function ShopPage() {
   const printersData: TProduct[] = await getProductListH("printers");
   const computersData: TProduct[] = await getProductListH("desktop");
   const MonitorsData: TProduct[] = await getProductListH("monitor");
-    
+
   return (
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
       {/* Main slider for homepage */}
@@ -37,11 +35,11 @@ export default async function ShopPage() {
           arrow={false}
         />
 
-      {/* Slider for front page */}
-        <SplideProductsSlider productsData={products} title="Featured"/>
-        <SplideProductsSlider productsData={computersData} title="Computers"/>
-        <SplideProductsSlider productsData={MonitorsData} title="Monitors"/>
-        <SplideProductsSlider productsData={printersData} title="Printers"/>
+        {/* Slider for front page */}
+        <SplideProductsSlider productsData={products} title="Featured" />
+        <SplideProductsSlider productsData={computersData} title="Computers" />
+        <SplideProductsSlider productsData={MonitorsData} title="Monitors" />
+        <SplideProductsSlider productsData={printersData} title="Printers" />
       </div>
     </div>
   );

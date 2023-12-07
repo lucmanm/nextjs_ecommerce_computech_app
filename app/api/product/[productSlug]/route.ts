@@ -47,7 +47,7 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
 
 // FIXME Product Update on Category not working
 // Continue Here
-export async function PATCH(req: Response, { params }: { params: { productSlug: string } }) {
+export async function PATCH(req: Request, { params }: { params: { productSlug: string } }) {
   try {
     const body = await req.json()
     const product = productFormSchema.parse(body)

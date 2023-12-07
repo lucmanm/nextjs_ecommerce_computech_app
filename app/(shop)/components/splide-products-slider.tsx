@@ -10,7 +10,7 @@ type SplideProductsSliderProps = {
   productsData: TProduct[];
   title: string;
 };
-const SplideProductsSlider: React.FC<SplideProductsSliderProps> = ({
+export const SplideProductsSlider: React.FC<SplideProductsSliderProps> = ({
   productsData,
   title,
 }) => {
@@ -44,4 +44,5 @@ const SplideProductsSlider: React.FC<SplideProductsSliderProps> = ({
   );
 };
 
-export default SplideProductsSlider;
+
+

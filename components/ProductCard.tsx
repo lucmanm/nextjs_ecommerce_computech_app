@@ -7,7 +7,7 @@ import { ExpandIcon } from "lucide-react";
 import usePreviewModal from "@/hook/use-preview-modal";
 import { TProduct } from "@/types/type";
 
-interface PropductProps {
+type PropductProps = {
   productData: TProduct;
 }
 

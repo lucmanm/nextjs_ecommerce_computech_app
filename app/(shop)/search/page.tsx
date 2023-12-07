@@ -11,7 +11,6 @@ import { TProduct } from "@/types/type";
 
 const SearchPage = async () => {
   const search = useSearchParams();
-  // const searchQuery  = search?.get("q") or below
   const searchQuery = search ? search.get("q") : null;
 
   const encodedSearchQuery = encodeURI(searchQuery || "");

@@ -25,6 +25,7 @@ export const SplideProductsSlider: React.FC<SplideProductsSliderProps> = ({
           perPage: 5,
           gap: "2rem",
           perMove: 1,
+          lazyLoad: true,
           breakpoints: {
             1024: { perPage: 4, gap: "2rem", perMove: 4 },
             640: { perPage: 2, gap: "1rem", perMove: 2 },

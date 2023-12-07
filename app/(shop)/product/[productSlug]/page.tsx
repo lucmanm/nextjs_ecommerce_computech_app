@@ -1,11 +1,11 @@
 import { getProductType } from "@/lib/actions/getProduct";
-import { Product } from "@/types/table-types";
 import Container from "../../components/Container";
 import Breadcrumb from "../../components/Breadcrumb";
 import NoResults from "../../components/no-result";
 import ProductCard from "@/components/ProductCard";
 import { Suspense } from "react";
 import Loading from "./components/loading";
+import { TProduct } from "@/types/type";
 
 export const revalidate = 0;
 
@@ -14,7 +14,7 @@ const ProductTypePage = async ({
 }: {
   params: { productSlug: string };
 }) => {
-  const productByBrand: Product[] = await getProductType(params.productSlug);
+  const productByBrand: TProduct[] = await getProductType(params.productSlug);
 
   return (
     <Container classname="space-y-4">

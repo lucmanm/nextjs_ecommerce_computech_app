@@ -6,7 +6,7 @@ import Container from "../components/Container";
 import Breadcrumb from "../components/Breadcrumb";
 import NoResults from "../components/no-result";
 import ProductCard from "@/components/ProductCard";
-import { Product } from "@/types/table-types";
+import { TProduct } from "@/types/type";
 
 
 const SearchPage = async () => {
@@ -15,7 +15,7 @@ const SearchPage = async () => {
   const searchQuery = search ? search.get("q") : null;
 
   const encodedSearchQuery = encodeURI(searchQuery || "");
-  const searchedProducts: Product[] = await getSearchProducts(encodedSearchQuery);
+  const searchedProducts: TProduct[] = await getSearchProducts(encodedSearchQuery);
 
   return (
     <Container classname="space-y-4">

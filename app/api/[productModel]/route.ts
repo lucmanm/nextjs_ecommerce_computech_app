@@ -3,7 +3,7 @@ import { TProduct } from "@/types/type";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-export async function PATCH(req: Request, { params }: { params: { productID: string } }) {
+export async function PATCH(req: Request, { params }: { params: { productModel: string } }) {
     try {
         const productFormschema = z.object({
             model: z.string(),
@@ -20,7 +20,7 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
 
         // const checkProduct = await prisma.product.findFirst({
         //     where: {
-        //         id: params.productID
+        //         id: params.productModel
         //     }
         // })
         // if (!checkProduct) {
@@ -33,7 +33,7 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
 
         const product = await prisma.product.update({
             where: {
-                id: params.productID
+                id: params.productModel
             },
             data: {
                 model, description, price, salePrice, stock, brandId, categoryId,
@@ -56,17 +56,17 @@ export async function PATCH(req: Request, { params }: { params: { productID: str
     }
 }
 
-export async function DELETE(req: Request, { params }: { params: { productID: string } }) {
+export async function DELETE(req: Request, { params }: { params: { productModel: string } }) {
     try {
 
         const deleteImages = await prisma.image.deleteMany({
             where: {
-                productId: params.productID
+               productId : params.productModel
             }
         });
         const deleteProduct = await prisma.product.delete({
             where: {
-                id: params.productID
+                id: params.productModel
             }
         })
 

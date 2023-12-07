@@ -1,17 +1,17 @@
 "use client";
 import Image from "next/image";
-import { Product } from "@/types/table-types";
 import { useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
 import IconButton from "./ui/custom-icon";
 import { ExpandIcon } from "lucide-react";
 import usePreviewModal from "@/hook/use-preview-modal";
+import { TProduct } from "@/types/type";
 
 interface PropductProps {
-  productData: Product;
+  productData: TProduct;
 }
 
-const ProductCard: React.FC<PropductProps> = async ({ productData }) => {
+const ProductCard: React.FC<PropductProps> =  ({ productData }) => {
   const previewModal = usePreviewModal();
   const router = useRouter();
 
@@ -58,7 +58,7 @@ const ProductCard: React.FC<PropductProps> = async ({ productData }) => {
         </div>
 
         <p className="inline-block self-end pb-1 pl-1 text-sm font-medium text-red-500 line-through lg:p-0.5 lg:text-lg">
-          {productData.salePrice !== "" && ""}
+          {/* {productData.salePrice !== "" && ""} */}
         </p>
       </div>
       <div className="">

@@ -3,9 +3,11 @@ import CarouselSlider from "@/components/CarouselSlider";
 import { getSliders } from "@/lib/actions/getSliders";
 import BrandSlider from "./components/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
-import { Product } from "@/types/table-types";
 import { getProductListH, getProducts } from "@/lib/actions/getProduct";
 import HorizontalProductList from "./components/horizontal-products-list";
+import SplideProductsSlider from "./components/splide-products-slider";
+import { TProduct } from "@/types/type";
+import SwiperProductSlider from "./components/swiper-prododucts-slider";
 
 export const revalidate = 0;
 
@@ -14,10 +16,10 @@ export default async function ShopPage() {
 
   const brands = await getBrands();
 
-  const products: Product[] = await getProducts();
-  const printersData: Product[] = await getProductListH("printers");
-  const computersData: Product[] = await getProductListH("desktop");
-  const MonitorsData: Product[] = await getProductListH("monitor");
+  const products: TProduct[] = await getProducts();
+  const printersData: TProduct[] = await getProductListH("printers");
+  const computersData: TProduct[] = await getProductListH("desktop");
+  const MonitorsData: TProduct[] = await getProductListH("monitor");
     
   return (
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">
@@ -36,10 +38,10 @@ export default async function ShopPage() {
         />
 
       {/* Slider for front page */}
-        <HorizontalProductList title="Featured" productData={products} />
-        <HorizontalProductList title="Computers" productData={computersData} />
-        <HorizontalProductList title="Monitors" productData={MonitorsData} />
-        <HorizontalProductList title="Printers" productData={printersData} />
+        <SplideProductsSlider productsData={products} title="Featured"/>
+        <SplideProductsSlider productsData={computersData} title="Computers"/>
+        <SplideProductsSlider productsData={MonitorsData} title="Monitors"/>
+        <SplideProductsSlider productsData={printersData} title="Printers"/>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import Container from "../components/Container";
 import Breadcrumb from "../components/Breadcrumb";
 import NoResults from "../components/no-result";
 import ProductCard from "@/components/ProductCard";
+import SwiperProductSlider from "../components/swiper-prododucts-slider";
 // Types
 
 // FIXME no not found page

@@ -6,13 +6,12 @@ import { MouseEventHandler } from "react";
 import IconButton from "./ui/custom-icon";
 import { ExpandIcon } from "lucide-react";
 import usePreviewModal from "@/hook/use-preview-modal";
-import { Skeleton } from "./ui/skeleton";
 
 interface PropductProps {
   productData: Product;
 }
 
-const ProductCard: React.FC<PropductProps> = ({ productData }) => {
+const ProductCard: React.FC<PropductProps> = async ({ productData }) => {
   const previewModal = usePreviewModal();
   const router = useRouter();
 

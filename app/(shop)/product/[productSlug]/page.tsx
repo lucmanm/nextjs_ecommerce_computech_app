@@ -4,6 +4,8 @@ import Container from "../../components/Container";
 import Breadcrumb from "../../components/Breadcrumb";
 import NoResults from "../../components/no-result";
 import ProductCard from "@/components/ProductCard";
+import { Suspense } from "react";
+import Loading from "./components/loading";
 
 export const revalidate = 0;
 
@@ -20,8 +22,10 @@ const ProductTypePage = async ({params}: {params: { productSlug: string }}) => {
       ) : (
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
           {productByBrand.map((productData) => (
-            <ProductCard key={productData.id} productData={productData} />
-          ))}
+          <Suspense key={productData.id} fallback={<Loading/>}>
+            <ProductCard productData={productData} />
+            </Suspense>
+            ))}
         </div>
       )}
     </Container>

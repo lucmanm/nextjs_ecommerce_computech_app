@@ -3,9 +3,9 @@ import CarouselSlider from "@/components/CarouselSlider";
 import { getSliders } from "@/lib/actions/getSliders";
 import BrandSlider from "./components/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
-import HorizontalProductList from "@/components/horizontal-products-list";
 import { Product } from "@/types/table-types";
 import { getProductListH, getProducts } from "@/lib/actions/getProduct";
+import HorizontalProductList from "./components/horizontal-products-list";
 
 export const revalidate = 0;
 

@@ -28,10 +28,7 @@ import { TBrand } from "@/types/type";
 import { brandSchema } from "@/types/validation";
 
 type BrandProps = {
-  initialData: {
-    brand: string,
-    imageUrl: string,
-  }  | null;
+  initialData: TBrand  | null;
 }
 
 export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {

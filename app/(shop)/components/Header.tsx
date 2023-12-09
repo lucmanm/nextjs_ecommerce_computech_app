@@ -6,14 +6,20 @@ import { getProductCategory } from "@/lib/actions/getCategory";
 import DropdownMenu from "./DropdownMenu";
 import SideBarModal from "./sidebar-modal";
 import SearchInput from "./SearchInput";
+import { cn } from "@/lib/utils";
 
-const Header = async () => {
+type HeaderProps = {
+  className?: string;
+};
+const Header: React.FC<HeaderProps> = async ({ className }) => {
   const categories = await getProductCategory();
   // Destructuring ArrafetchProductsy of Logo
   const [, { title, url }] = logoUrl;
 
   return (
-    <header className="border-b bg-slate-100 md:shadow-md  ">
+    <header
+      className={cn("sticky border-b bg-slate-100 md:shadow-md", className)}
+    >
       {/* <TopNavigation/> */}
       <div className="bg-white p-2">
         <div className="container flex flex-wrap items-center justify-between  gap-4">
@@ -31,7 +37,6 @@ const Header = async () => {
             <SideBarModal />
           </div>
           {/* Brands Menu */}
-
           <div className="hidden">
             <CustomButton btnType="button" icon="/heart.svg" />
           </div>

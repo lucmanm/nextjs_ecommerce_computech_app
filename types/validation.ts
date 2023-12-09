@@ -48,3 +48,10 @@ export const categorySchema = z.object({
     createdAt: z.date().transform((date) => date.toLocaleDateString()).optional()
 });
 
+// Slider Home Props 
+export const sliderSchema = z.object({
+    id: z.string(),
+    label: z.string(),
+    imageUrl: z.string(),
+    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional(),
+  });

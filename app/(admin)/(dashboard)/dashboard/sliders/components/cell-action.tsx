@@ -12,10 +12,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert/alert-modal";
 import { toast } from "@/components/ui/use-toast";
-import { SliderColumnProps } from "@/types";
+import { TSlider } from "@/types/type";
 
 interface CellActionProps {
-  data: SliderColumnProps;
+  data: TSlider;
 }
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {

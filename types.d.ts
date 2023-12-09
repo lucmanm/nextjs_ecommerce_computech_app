@@ -66,11 +66,11 @@ export type ProductColumnProps = z.infer<typeof productColumnSchema>;
 // w
 
 // Slider Types
-export const sliderProps = z.object({
-    id: z.string(),
-    label: z.string(),
-    imageUrl: z.string(),
-    createdAt: z.string(),
-})
+// export const sliderProps = z.object({
+//     id: z.string(),
+//     label: z.string(),
+//     imageUrl: z.string(),
+//     createdAt: z.string(),
+// })
 
-export type SliderColumnProps = z.infer<typeof sliderProps>;
+// export type SliderColumnProps = z.infer<typeof sliderProps>;

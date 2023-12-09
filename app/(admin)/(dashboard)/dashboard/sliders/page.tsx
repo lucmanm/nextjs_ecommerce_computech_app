@@ -2,19 +2,15 @@ import { prisma } from "@/lib/db";
 
 import ClientSliderTable from "./components/client";
 import { z } from "zod";
-import { SliderColumnProps } from "@/types";
+import { sliderSchema } from "@/types/validation";
+import { TSlider } from "@/types/type";
 
 const SliderPage = async () => {
+
   const sliders = await prisma.slider.findMany();
 
-  const sliderSchema = z.object({
-    id: z.string(),
-    label: z.string(),
-    imageUrl: z.string(),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()),
-  });
 
-  const formattedSlider: SliderColumnProps[] = sliders.map((item) =>
+  const formattedSlider: TSlider[] = sliders.map((item) =>
     sliderSchema.parse(item)
   );
 

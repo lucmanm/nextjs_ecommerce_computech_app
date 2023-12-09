@@ -3,10 +3,10 @@
 import Container from "@/app/(admin)/components/Container";
 import { DataTable } from "@/components/ui/data-table";
 import { columns } from "./columns";
-import { SliderColumnProps } from "@/types";
+import { TSlider } from "@/types/type";
 
 interface SliderPageProps {
-  data: SliderColumnProps[];
+  data: TSlider[];
 }
 
 const ClientSliderTable: React.FC<SliderPageProps> = ({ data }) => {

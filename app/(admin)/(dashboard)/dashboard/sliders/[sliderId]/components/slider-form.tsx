@@ -17,17 +17,14 @@ import { useParams, useRouter } from "next/navigation";
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import { Slider } from "@prisma/client";
 import ImageUpload from "@/components/ui/image-upload";
 import Container from "@/app/(admin)/components/Container";
+import { sliderSchema } from "@/types/validation";
+import { TSlider } from "@/types/type";
 
-const formSchema = z.object({
-  label: z.string().min(1, "Please enter label"),
-  imageUrl: z.string().min(1, "Pleast upload image"),
-});
 
 interface SliderFormProps {
-  initialData: Slider | null;
+  initialData: TSlider | null;
 }
 
 export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
@@ -38,22 +35,22 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit Slider" : "Create Slider";
+  const title = initialData ? "Edit TSlider" : "Create Slider";
   const description = initialData ? "Edit a Slider" : "Create a new Slider";
   const toastMessage = initialData
     ? "Slider updated successfully?"
     : "Created successfully Slider";
   const action = initialData ? "Save Changes" : "Create";
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<TSlider>({
+    resolver: zodResolver(sliderSchema),
     defaultValues: initialData || {
       label: "",
       imageUrl: "",
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: TSlider) => {
     try {
       setLoading(true);
       if (initialData) {

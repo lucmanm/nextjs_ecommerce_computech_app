@@ -17,7 +17,7 @@ export default async function ShopPage() {
   const products: TProduct[] = await getProducts();
   const printersData: TProduct[] = await getProductListH("printers");
   const computersData: TProduct[] = await getProductListH("desktop");
-  const MonitorsData: TProduct[] = await getProductListH("monitor");
+  const MonitorsData: TProduct[] = await getProductListH("monitors");
 
   return (
     <div className="my-4 flex flex-col space-y-4 overflow-hidden md:my-8 md:space-y-8">

@@ -8,10 +8,14 @@ import SideBarModal from "./sidebar-modal";
 import SearchInput from "./SearchInput";
 import { cn } from "@/lib/utils";
 import SheetSide from "./sheet-side";
+import { Suspense } from "react";
 
 type HeaderProps = {
   className?: string;
 };
+function SearchBarFallback(){
+  return <>placeholder</>
+}
 const Header: React.FC<HeaderProps> = async ({ className }) => {
   const categories = await getProductCategory();
   // Destructuring ArrafetchProductsy of Logo
@@ -31,7 +35,10 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
             </Link>
           </div>
           <div className="flex-1">
+          <Suspense fallback={<SearchBarFallback/>}>
+
             <SearchInput />
+          </Suspense>
           </div>
           <div className="flex items-center justify-center gap-x-2">
             {/* Product Category Menu */}

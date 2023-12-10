@@ -38,7 +38,6 @@ export const brandSchema = z.object({
     id: z.string().optional(),
     brand: z.string().min(1, "Please enter brand name."),
     imageUrl: z.string().min(1, "Please upload image"),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional(),
 })
 
 // Category Schema
@@ -53,5 +52,4 @@ export const sliderSchema = z.object({
     id: z.string(),
     label: z.string(),
     imageUrl: z.string(),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional(),
   });

@@ -17,9 +17,10 @@ const SideBarModal = () => {
     <>
       <Button
         onClick={onOpen}
-        className="z-30 flex items-center gap-x-2 lg:hidden"
+        className="z-30 flex items-center gap-x-2 lg:hidden rounded-full hover:bg-blue-950 hover:text-white"
+        variant={"ghost"}
       >
-        <Menu size={20} />
+        <Menu size={24} />
       </Button>
 
       <Dialog

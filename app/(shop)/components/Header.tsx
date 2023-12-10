@@ -22,10 +22,11 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
     >
       {/* <TopNavigation/> */}
       <div className="bg-white p-2">
-        <div className="container flex flex-wrap items-center justify-between  gap-4">
+        <div className="container flex flex-wrap items-center justify-between  gap-2">
           <div className="self-center">
             <Link href="/">
-              <Image src={url} width={150} height={0} alt={title} />
+              <Image src={url} width={150} height={0} alt={title}  className="hidden lg:block"/>
+              <Image src="/logo-2x2.png" width={42} height={0} alt={title}  className="lg:hidden"/>
             </Link>
           </div>
           <div className="flex-1">

@@ -1,9 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import IconButton from "@/components/ui/custom-icon";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Ghost, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";

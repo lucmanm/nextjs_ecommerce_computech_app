@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { CategoryForm } from "./components/category-form";
 
 const CategoryPage = async ({ params }: {params: {categoryId: string}}) => {
-debugger
+  
   if (params.categoryId === "create") {
     return <CategoryForm initialData={null} />;
   }

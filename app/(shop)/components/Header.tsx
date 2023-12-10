@@ -36,7 +36,6 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
           </div>
           <div className="flex-1">
           <Suspense fallback={<SearchBarFallback/>}>
-
             <SearchInput />
           </Suspense>
           </div>

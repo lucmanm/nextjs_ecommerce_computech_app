@@ -21,6 +21,7 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({ sliderData }) => {
         gap: "2rem"
       }}
       aria-label="slider"
+      className="z-0"
     >
       <SplideTrack className="gap-x-2">
         {sliderData.map(({ label, imageUrl }) => (
@@ -40,11 +41,6 @@ const CarouselSlider: React.FC<CarouselSliderProps> = ({ sliderData }) => {
           </SplideSlide>
         ))}
       </SplideTrack>
-
-        {/* Progress Bar Disabled */}
-      {/* <div className="splide__progress">
-        <div className="splide__progress__bar"></div>
-      </div> */}
     </Splide>
   );
 };

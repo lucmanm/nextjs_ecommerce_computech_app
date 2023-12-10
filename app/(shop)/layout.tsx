@@ -18,7 +18,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body
         className={`${cairo.className} flex h-screen min-h-screen flex-col bg-slate-100`}
       >
-      <Header className="sticky"/>
+      <Header className="z-30"/>
       <ModalProvider />
       <main className="lg:container">{children}</main>
       <Footer />

@@ -4,7 +4,7 @@ import ProductCard from "@/components/ProductCard";
 import { TProduct } from "@/types/type";
 import Title from "@/components/ui/Title";
 import { Suspense } from "react";
-import Loading from "./loading";
+import Loading from "../loading";
 
 type SplideProductsSliderProps = {
   productsData: TProduct[];

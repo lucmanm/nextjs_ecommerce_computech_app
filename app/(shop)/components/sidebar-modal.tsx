@@ -25,7 +25,7 @@ const SideBarModal = () => {
       <Dialog
         open={open}
         as="div"
-        className="relative z-40 bg-blue-400"
+        className="relative z-40"
         onClose={onClose}
       >
         {/* Background color and opacity */}

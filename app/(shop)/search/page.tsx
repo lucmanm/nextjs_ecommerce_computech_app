@@ -8,6 +8,7 @@ import NoResults from "../components/no-result";
 import ProductCard from "@/components/ProductCard";
 import { TProduct } from "@/types/type";
 
+export const dynamic = 'force-dynamic'
 
 const SearchPage = async () => {
   const search = useSearchParams();

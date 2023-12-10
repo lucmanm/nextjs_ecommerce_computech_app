@@ -21,7 +21,6 @@ const SearchInput = () => {
     handleSubmit,
     register,
     formState: { isSubmitting },
-    reset,
   } = useForm<TSearch>({
     resolver: zodResolver(searchSchema),
     defaultValues: {
@@ -31,7 +30,6 @@ const SearchInput = () => {
 
   const onSubmit = async (values: TSearch) => {
     router.push(`/search?q=${values.search}`);
-    reset();
   };
 
   return (

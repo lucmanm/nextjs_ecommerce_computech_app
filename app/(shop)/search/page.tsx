@@ -1,4 +1,3 @@
-"use client";
 
 import { getSearchProducts } from "@/lib/actions/getSearch";
 import { useSearchParams } from "next/navigation";
@@ -10,12 +9,14 @@ import { TProduct } from "@/types/type";
 
 export const dynamic = 'force-dynamic'
 
-const SearchPage = async () => {
-  const search = useSearchParams();
-  const searchQuery = search ? search.get("q") : null;
+const SearchPage = async ({searchParams} :{searchParams: { q: string | undefined }}) => {
+  const searchQuery = searchParams.q
+  
+  // const search = useSearchParams();
+  // const searchQuery = search ? search.get("q") : null;
 
-  const encodedSearchQuery = encodeURI(searchQuery || "");
-  const searchedProducts: TProduct[] = await getSearchProducts(encodedSearchQuery);
+  // const encodedSearchQuery = encodeURI(searchQuery || "");
+  const searchedProducts: TProduct[] = await getSearchProducts(searchQuery);
 
   return (
     <Container classname="space-y-4">

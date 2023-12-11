@@ -1,7 +1,7 @@
 import { Product } from "@prisma/client";
 
 
-export async function getSearchProducts(encodedSearchQuery: string) {
+export async function getSearchProducts(encodedSearchQuery: string | undefined) {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search?q=${encodedSearchQuery}`);
     
     if (!res.ok) {

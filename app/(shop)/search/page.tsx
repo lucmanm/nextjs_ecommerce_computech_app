@@ -1,26 +1,19 @@
 
 import { getSearchProducts } from "@/lib/actions/getSearch";
-import { useSearchParams } from "next/navigation";
 import Container from "../components/Container";
-import Breadcrumb from "../components/Breadcrumb";
-import NoResults from "../components/no-result";
 import ProductCard from "@/components/ProductCard";
 import { TProduct } from "@/types/type";
+import NoResults from "../components/no-result";
 
 export const dynamic = 'force-dynamic'
 
 const SearchPage = async ({searchParams} :{searchParams: { q: string | undefined }}) => {
   const searchQuery = searchParams.q
   
-  // const search = useSearchParams();
-  // const searchQuery = search ? search.get("q") : null;
-
-  // const encodedSearchQuery = encodeURI(searchQuery || "");
   const searchedProducts: TProduct[] = await getSearchProducts(searchQuery);
 
   return (
     <Container classname="space-y-4">
-      <Breadcrumb />
       {searchedProducts.length === 0 ? (
         <NoResults />
       ) : (

@@ -43,7 +43,9 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
             {/* Product Category Menu */}
             <DropdownMenu title="All Category" categories={categories} />
             {/* <SideBarModal /> */}
-            <SheetSide categoryData={categories}/>
+
+            {/* Side menu */}
+            <SheetSide />
           </div>
           {/* Brands Menu */}
           <div className="hidden">

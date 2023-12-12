@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
                 email: {
                     label: "email",
                     type: "text",
-                    placeholder: "email@domain.com",
+                    placeholder: "email@domain.com or username",
                 },
                 password: { label: "Password", type: "password" },
             },
@@ -43,6 +43,7 @@ export const authOptions: NextAuthOptions = {
                     credentials.password,
                     existingUser.password
                 );
+                
                 if (!passwordMatch) {
                     return null;
                 }
@@ -72,7 +73,6 @@ export const authOptions: NextAuthOptions = {
                     username: token.username,
                 },
             };
-            return session;
         },
     },
 };

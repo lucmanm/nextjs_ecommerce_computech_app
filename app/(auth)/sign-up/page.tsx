@@ -1,5 +1,8 @@
 import SignUpForm from "@/components/block/SignUpForm";
-import React from "react";
+
+export const metadata = {
+    title: "Log Up",
+  };
 
 const SignUp = () => {
     return <div><SignUpForm/></div>;

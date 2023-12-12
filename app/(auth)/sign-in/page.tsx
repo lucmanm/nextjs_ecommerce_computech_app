@@ -1,6 +1,7 @@
 import SignInForm from "@/components/block/SignInForm";
-import React from "react";
-
+export const metadata = {
+  title: "Sign Up",
+};
 const SignIn = () => {
   return (
     <div className="m-4">

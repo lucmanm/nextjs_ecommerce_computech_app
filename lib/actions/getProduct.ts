@@ -9,8 +9,8 @@ export async function getProduct(productModel: string)  {
 }
 
 // Display Product By Brand
-export async function getProductType(productBrand: string) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/${productBrand}`);
+export async function getProductType(productBySlug: string) {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/${productBySlug}`);
     if (!res.ok) {
         throw new Error("FAILED_FETCH_PRODUCT_BRAND");
     }

@@ -2,6 +2,7 @@ import React from "react";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import Container from "@/app/(admin)/components/Container";
+import { redirect } from "next/navigation";
 
 const adminDashboard = async () => {
   const session = await getServerSession(authOptions);
@@ -11,6 +12,9 @@ const adminDashboard = async () => {
         <h2> Welcome:{session?.user.username}</h2>
       </Container>
     );
+  }
+  else{
+    redirect("/sign-in")
   }
 };
 

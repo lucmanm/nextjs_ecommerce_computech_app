@@ -6,7 +6,6 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { Toaster } from "@/components/ui/toaster";
 
-
 export const metadata = {
   title: "Admin Dashboard",
 };
@@ -16,24 +15,23 @@ export default async function adminDashboardRootL({
 }: {
   children: React.ReactNode;
 }) {
-  // const session = await getServerSession(authOptions);
-  // if (session?.user) {
+  const session = await getServerSession(authOptions);
+
+  if (session?.user) {
     return (
       <html lang="en">
-      <body
-        className={`flex h-screen min-h-screen flex-col bg-slate-100`}
-      >
-      <main className="flex h-screen">
-        <Sidebar />
-        <div className="min-h-screen grow">
-          <Navigation />
-          {children}
-        </div>
-        <Toaster />
-      </main>
-      </body>
-    </html>
+        <body className={`flex h-screen min-h-screen flex-col bg-slate-100`}>
+          <main className="flex h-screen">
+            <Sidebar />
+            <div className="min-h-screen grow">
+              <Navigation />
+              {children}
+            </div>
+            <Toaster />
+          </main>
+        </body>
+      </html>
     );
-  // }
+  }
   return redirect("/sign-in");
 }

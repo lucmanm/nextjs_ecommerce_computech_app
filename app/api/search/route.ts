@@ -12,10 +12,19 @@ export const GET = async (req: Request) => {
 
     const products = await prisma.product.findMany({
       where: {
-        description: {
-          contains: searchOutput,
-          mode: "insensitive"
+        OR: [{
+          description: {
+            contains: searchOutput,
+            mode: "insensitive"
+          }
+        },
+        {
+          model: {
+            contains: searchOutput,
+            mode: "insensitive"
+          }
         }
+        ]
       },
       include: {
         images: true,

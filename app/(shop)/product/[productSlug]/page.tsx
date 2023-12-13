@@ -1,12 +1,10 @@
 import { getProductType } from "@/lib/actions/getProduct";
 import Container from "../../components/Container";
-import Breadcrumb from "../../components/Breadcrumb";
 import NoResults from "../../components/no-result";
 import ProductCard from "@/components/ProductCard";
 import { Suspense } from "react";
 import Loading from "./components/loading";
 import { TProduct } from "@/types/type";
-import BrandFilter from "./components/fitlers/brand";
 
 export const revalidate = 0;
 
@@ -19,14 +17,10 @@ const ProductTypePage = async ({
 
   return (
     <Container classname="space-y-4">
-      <Breadcrumb />
       {productBySlug.length === 0 ? (
         <NoResults />
       ) : (
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
-          <div>
-            <BrandFilter/>
-          </div>
           {productBySlug.map((data, index) => (
             <Suspense key={index} fallback={<Loading />}>
               <ProductCard productData={data} />

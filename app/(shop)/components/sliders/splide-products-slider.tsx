@@ -1,6 +1,6 @@
 "use client";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/app/(shop)/components/ProductCard";
 import { TProduct } from "@/types/type";
 import Title from "@/components/ui/Title";
 import { Suspense } from "react";

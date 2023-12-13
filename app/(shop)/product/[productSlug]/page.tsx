@@ -1,7 +1,7 @@
 import { getProductType } from "@/lib/actions/getProduct";
 import Container from "../../components/Container";
 import NoResults from "../../components/no-result";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/app/(shop)/components/ProductCard";
 import { Suspense } from "react";
 import Loading from "./components/loading";
 import { TProduct } from "@/types/type";

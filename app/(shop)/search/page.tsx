@@ -1,7 +1,7 @@
 
 import { getSearchProducts } from "@/lib/actions/getSearch";
 import Container from "../components/Container";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/app/(shop)/components/ProductCard";
 import { TProduct } from "@/types/type";
 import NoResults from "../components/no-result";
 

@@ -1,6 +1,6 @@
 const MyAccountDashbaord = () => {
     return ( 
-        <section className="border-2 w-full">
+        <section className="border">
             My Account Dashboard
         </section>
      );

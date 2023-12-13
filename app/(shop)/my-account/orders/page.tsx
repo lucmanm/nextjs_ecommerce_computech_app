@@ -1,8 +1,10 @@
+import Container from "../components/container"
+
 const MyOrders = () => {
     return ( 
-        <div>
-            My Orders
-        </div>
+        <Container>
+             My Orders: This is page still under maintinance
+        </Container>
      );
 }
  

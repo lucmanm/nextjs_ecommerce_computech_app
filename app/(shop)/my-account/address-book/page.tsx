@@ -1,8 +1,10 @@
+import Container from "../components/container"
+
 const MyAddressBook = () => {
     return ( 
-        <div>
-            My Addres Book
-        </div>
+        <Container>
+            My Address
+        </Container>
      );
 }
  

@@ -4,11 +4,11 @@ import { logoUrl } from "@/lib/constant";
 import Link from "next/link";
 import { getProductCategory } from "@/lib/actions/getCategory";
 import DropdownMenu from "./DropdownMenu";
-import SideBarModal from "./sidebar-modal";
 import SearchInput from "./SearchInput";
 import { cn } from "@/lib/utils";
-import SheetSide from "./sheet-side";
+import SheetSide from "./sheets/menu-sheet";
 import { Suspense } from "react";
+import { UserCircle2 } from "lucide-react";
 
 type HeaderProps = {
   className?: string;
@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
       <div className="bg-white py-2">
         <div className="flex flex-wrap items-center justify-between space-x-4 px-3 lg:container lg:px-0">
           {/* Side menu */}
-          <SheetSide />
+          <SheetSide className="rounded-full p-2 hover:bg-blue-950 hover:text-white" />
           <div className="self-center">
             <Link href="/">
               <Image
@@ -59,9 +59,12 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
             {/* <SideBarModal /> */}
           </div>
           {/* Brands Menu */}
-          <div className="hidden">
+          <Link href="/my-account/wishlist">
             <CustomButton btnType="button" icon="/heart.svg" />
-          </div>
+          </Link>
+          <Link href="/sign-in">
+            <UserCircle2 size={32} className="hover:text-white hover:bg-blue-950 hover:cursor-pointer rounded-full"/>
+          </Link>
         </div>
       </div>
     </header>

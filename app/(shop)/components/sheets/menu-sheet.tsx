@@ -7,17 +7,20 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { getProductCategory } from "@/lib/actions/getCategory";
+import { cn } from "@/lib/utils";
 import { TCategory } from "@/types/type";
 import { Menu } from "lucide-react";
 
-
-const SheetSide = async () => {
+type MenuSheetProps ={
+  className?: string
+}
+const MenuSheet: React.FC<MenuSheetProps> = async ({className}) => {
 
   const categoryData:  TCategory[]= await getProductCategory()
   
   return (
     <Sheet>
-      <SheetTrigger className="lg:hidden rounded-full p-2 hover:bg-blue-950 hover:text-white">
+      <SheetTrigger className={cn("lg:hidden", className)}>
         <Menu />
       </SheetTrigger>
       <SheetContent className="max-w-xs">
@@ -34,4 +37,4 @@ const SheetSide = async () => {
   );
 };
 
-export default SheetSide;
+export default MenuSheet;

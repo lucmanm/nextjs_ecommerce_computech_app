@@ -1,8 +1,10 @@
+import Container from "./components/container"
+
 const MyAccountDashbaord = () => {
     return ( 
-        <section className="border">
-            My Account Dashboard
-        </section>
+        <Container>
+            My Account 
+        </Container>
      );
 }
  

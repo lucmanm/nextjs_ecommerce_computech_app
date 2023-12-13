@@ -3,7 +3,7 @@ import { UserCircle } from "lucide-react";
 
 const ProfileCard = () => {
   return (
-    <div className="rounded-md border border-blue-950">
+    <div className="rounded-md  shadow-md bg-white border-y-2 border-y-blue-950">
       <div className="flex flex-col content-center items-center justify-center  p-2 text-center">
         <span className="text-blue-900">
           <UserCircle size={72} />

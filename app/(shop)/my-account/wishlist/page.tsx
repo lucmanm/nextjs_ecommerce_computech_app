@@ -1,8 +1,10 @@
+import Container from "../components/container";
+
 const MyWishlist = () => {
     return ( 
-        <div>
-            Wishlisht
-        </div>
+        <Container>
+            Wish list
+        </Container>
      );
 }
  

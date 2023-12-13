@@ -1,48 +1,38 @@
-import { Boxes, Home, HomeIcon, Menu, ShoppingCart } from "lucide-react";
-import React from "react";
-import SheetSide from "./sheet-side";
+import { Home } from "lucide-react";
+import SheetSide from "./sheets/menu-sheet";
 import Link from "next/link";
 import ShopSheet from "./sheets/shop-sheet";
 import CartSheet from "./sheets/cart-sheet";
-
+const menuData = [
+  {
+    name: "home",
+    icon: <Link href="/"><Home className="inline-flex" /></Link>,
+  },
+  {
+    name: "shop",
+    icon: <ShopSheet />,
+  },
+  {
+    name: "Cart",
+    icon: <CartSheet />,
+  },
+  {
+    name: "Menu",
+    icon: <SheetSide />,
+  },
+];
 export const MobileButtomMenu = () => {
   return (
-    <div className="fixed bottom-4 left-0 z-20 h-16 w-full rounded-full border-t px-4 hover:rounded-full  2xl:hidden">
-      <div className="mx-auto grid h-full max-w-lg grid-cols-4 overflow-hidden rounded-full  bg-white font-medium ">
-        <div className="group inline-flex flex-col items-center justify-center border-x border-gray-200 px-5 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800">
-          <Link href="/" className="hover:bg-blue-950 hover:text-white rounded-full p-2">
-          <Home />
-          </Link>
-          <span className="text-sm text-blue-950 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-950">
-            Home
-          </span>
-        </div>
-
+    <div className="fixed bottom-2 left-0 flex h-16 w-full flex-nowrap items-center  overflow-hidden  rounded-full bg-blue-950 text-white xl:hidden z-10">
+      {menuData.map((data, index) => (
         <div
-          className="group inline-flex flex-col items-center justify-center border-r border-gray-200 px-5 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800"
+          key={index}
+          className="basis-1/4 p-2 text-center hover:bg-blue-500 hover:text-blue-950"
         >
-          <ShopSheet />
-          <span className="text-sm text-blue-950 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-950">
-            Shop
-          </span>
+          {data.icon}
+          <p className="text-sm font-medium">{data.name}</p>
         </div>
-        <div
-          className="group inline-flex flex-col items-center justify-center px-5 hover:bg-gray-50 dark:hover:bg-gray-800"
-        >
-          <CartSheet />
-          <span className="text-sm text-blue-950 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-950">
-            Cart
-          </span>
-        </div>
-        <div
-          className="group inline-flex flex-col items-center justify-center  border-x border-gray-200 px-5 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800"
-        >
-          <SheetSide />
-          <span className="text-sm text-blue-950 group-hover:text-blue-600 dark:text-gray-400 dark:group-hover:text-blue-950">
-            Menu
-          </span>
-        </div>
-      </div>
+      ))}
     </div>
   );
 };

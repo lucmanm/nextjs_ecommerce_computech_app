@@ -1,10 +1,13 @@
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
 import {  ShoppingBag } from "lucide-react";
-
-const ShopSheet = () => {
+type ShopSheetProps ={
+  className?: string
+}
+const ShopSheet: React.FC<ShopSheetProps> = ({className}) => {
     return ( 
         <Sheet>
-        <SheetTrigger className="lg:hidden rounded-full p-2 hover:bg-blue-950 hover:text-white">
+        <SheetTrigger className={cn("lg:hidden", className)}>
           <ShoppingBag />
         </SheetTrigger>
         <SheetContent className="max-w-full max-h-full" side="top">

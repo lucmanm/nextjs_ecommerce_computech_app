@@ -2,7 +2,7 @@ import Container from "../components/container";
 
 const MyWishlist = () => {
     return ( 
-        <Container>
+        <Container title="Wishlist">
             Wish list
         </Container>
      );

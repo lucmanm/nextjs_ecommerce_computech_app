@@ -1,5 +1,4 @@
 import { getProductType } from "@/lib/actions/getProduct";
-import Container from "../../components/Container";
 import NoResults from "../../components/no-result";
 import ProductCard from "@/app/(shop)/components/ProductCard";
 import { Suspense } from "react";
@@ -16,11 +15,11 @@ const ProductTypePage = async ({
   const productBySlug: TProduct[] = await getProductType(params.productSlug);
 
   return (
-    <Container classname="space-y-4">
+    <>
       {productBySlug.length === 0 ? (
         <NoResults />
       ) : (
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-4">
           {productBySlug.map((data, index) => (
             <Suspense key={index} fallback={<Loading />}>
               <ProductCard productData={data} />
@@ -28,7 +27,7 @@ const ProductTypePage = async ({
           ))}
         </div>
       )}
-    </Container>
+    </>
   );
 };
 

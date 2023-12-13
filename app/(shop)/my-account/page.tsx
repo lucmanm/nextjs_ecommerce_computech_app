@@ -2,7 +2,7 @@ import Container from "./components/container"
 
 const MyAccountDashbaord = () => {
     return ( 
-        <Container>
+        <Container title="Dashboard">
             My Account 
         </Container>
      );

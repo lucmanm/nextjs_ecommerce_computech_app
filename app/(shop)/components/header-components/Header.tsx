@@ -6,9 +6,14 @@ import { getProductCategory } from "@/lib/actions/getCategory";
 import DropdownMenu from "./DropdownMenu";
 import SearchInput from "./SearchInput";
 import { cn } from "@/lib/utils";
-import SheetSide from "./sheets/menu-sheet";
+import SheetSide from "../sheets/menu-sheet";
 import { Suspense } from "react";
-import { UserCircle2 } from "lucide-react";
+import {
+  Heart,
+  ShoppingBagIcon,
+  ShoppingCart,
+  UserCircle2,
+} from "lucide-react";
 
 type HeaderProps = {
   className?: string;
@@ -22,9 +27,7 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
   const [, { title, url }] = logoUrl;
 
   return (
-    <header
-      className={cn("sticky border-b bg-slate-100 md:shadow-md", className)}
-    >
+    <header className={cn("border-b bg-slate-100 md:shadow-md", className)}>
       {/* <TopNavigation/> */}
       <div className="bg-white py-2">
         <div className="flex flex-wrap items-center justify-between space-x-4 px-3 lg:container lg:px-0">
@@ -59,12 +62,26 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
             {/* <SideBarModal /> */}
           </div>
           {/* Brands Menu */}
-          <Link href="/my-account/wishlist">
-            <CustomButton btnType="button" icon="/heart.svg" />
-          </Link>
-          <Link href="/sign-in">
-            <UserCircle2 size={32} className="hover:text-white hover:bg-blue-950 hover:cursor-pointer rounded-full"/>
-          </Link>
+          <div className="hidden">
+            <Link href="/my-account/wishlist">
+              <Heart
+                size={32}
+                className="overflow-visible rounded-full hover:cursor-pointer hover:bg-blue-950 hover:text-white hover:shadow-md"
+              />
+            </Link>
+            <Link href="/sign-in">
+              <UserCircle2
+                size={32}
+                className="overflow-visible rounded-full hover:cursor-pointer hover:bg-blue-950 hover:text-white hover:shadow-md"
+              />
+            </Link>
+            <Link
+              href="/sign-in"
+              className="overflow-visible rounded-full hover:cursor-pointer hover:bg-blue-950 hover:text-white hover:shadow-md"
+            >
+              <ShoppingBagIcon size={32} />
+            </Link>
+          </div>
         </div>
       </div>
     </header>

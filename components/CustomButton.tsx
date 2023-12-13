@@ -8,7 +8,7 @@ interface CustomButtonProps {
   customButtonStyle?: string;
   children?: React.ReactNode;
 }
-
+// FIXME Unused components maybe
 const CustomButton = ({
   btnType,
   icon,

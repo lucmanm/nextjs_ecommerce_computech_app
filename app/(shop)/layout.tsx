@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import ModalProvider from "@/hook/modal-provider";
-import Header from "./components/Header";
+import Header from "./components/header-components/Header";
 import Footer from "./components/Footer";
 import { Cairo } from "next/font/google";
 import { MobileButtomMenu } from "./components/mobile-buttom-menu";

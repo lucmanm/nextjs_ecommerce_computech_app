@@ -2,7 +2,7 @@ import Container from "../components/container"
 
 const MyAddressBook = () => {
     return ( 
-        <Container>
+        <Container  title="Address Book">
             My Address
         </Container>
      );

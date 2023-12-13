@@ -2,7 +2,7 @@
 import React from "react";
 import { Settings } from "@/lib/constant";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-
+// FIXME unused  components maybe
 const Category = () => {
   const router = useRouter();
   const pathname = usePathname();

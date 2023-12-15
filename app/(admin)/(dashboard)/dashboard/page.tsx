@@ -1,7 +1,7 @@
 import React from "react";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
-import Container from "@/app/(admin)/components/Container";
+import Container from "@/app/(admin)/(dashboard)/dashboard/components/Container";
 import { redirect } from "next/navigation";
 
 const adminDashboard = async () => {

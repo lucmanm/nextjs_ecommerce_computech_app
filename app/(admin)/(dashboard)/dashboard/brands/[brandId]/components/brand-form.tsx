@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 
 import { useToast } from "@/components/ui/use-toast";
 import ImageUpload from "@/components/ui/image-upload";
-import Container from "@/app/(admin)/components/Container";
+import Container from "@/app/(admin)/(dashboard)/dashboard/components/Container";
 // Icons
 import { Loader } from "lucide-react";
 

@@ -1,4 +1,4 @@
-import Container from "@/app/(admin)/components/Container";
+import Container from "@/app/(admin)/(dashboard)/dashboard/components/Container";
 
 const BannersPage = () => {
     return ( 

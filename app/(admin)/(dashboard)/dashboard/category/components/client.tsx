@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/app/(admin)/components/Container";
+import Container from "@/app/(admin)/(dashboard)/dashboard/components/Container";
 import { DataTable } from "@/components/ui/data-table";
 import {  columns } from "./columns";
 import { TCategory } from "@/types/type";

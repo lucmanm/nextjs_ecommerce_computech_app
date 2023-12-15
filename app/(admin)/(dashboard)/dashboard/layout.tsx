@@ -28,7 +28,7 @@ export default async function adminDashboardRootL({
     return (
       <html lang="en">
         <body className={`${fontSans.className} min-h-screen bg-background font-sans antialiased bg-slate-100`}>
-          <main className="flex border-2 border-black flex-1 min-h-screen">
+          <main className="flex border-2 flex-1 min-h-screen">
             <SideBar className="shadow-md shrink-0 basis-2/12" />
               <div className="shrink grow">
                 <Navigation className="flex-1 bg-white" />

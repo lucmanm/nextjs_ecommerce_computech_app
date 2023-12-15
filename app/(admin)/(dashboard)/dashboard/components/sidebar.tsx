@@ -1,16 +1,16 @@
-
 "use client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { data } from "autoprefixer";
 import {
-  BadgePlus,
   Clapperboard,
-  LayoutDashboardIcon,
+  ListOrdered,
+  LucideLayoutDashboard,
+  Package,
   Projector,
   Settings,
   SquareStack,
   Trello,
+  Users,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,53 +26,50 @@ type SideBarDataProps = {
 };
 
 const sideBarData: SideBarDataProps[] = [
-  // {
-  //   title: "Dashboard",
-  //   links: [],
-  // },
+  {
+    title: "",
+    links: [
+      {
+        name: "Dashboard",
+        icon: <LucideLayoutDashboard size={18} />,
+        url: "/dashboard",
+      },
+
+    ],
+  },
   {
     title: "Products",
     links: [
       {
         name: "Products",
-        icon: <LayoutDashboardIcon size={16} />,
+        icon: <Package size={18} />,
         url: "/dashboard/products",
       },
       {
-        name: "Create Product",
-        icon: <BadgePlus size={18} />,
-        url: "/dashboard/products/create",
-      },
-    ],
-  },
-  {
-    title: "Categories",
-    links: [
-      {
-        name: "Category List",
+        name: "Category",
         icon: <SquareStack size={18} />,
         url: "/dashboard/category",
       },
-      {
-        name: "Create Category",
-        icon: <BadgePlus size={18} />,
-        url: "/dashboard/category/create",
-      },
-    ],
-  },
-
-  {
-    title: "Brands",
-    links: [
       {
         name: "Brands",
         icon: <Trello size={18} />,
         url: "/dashboard/brands",
       },
+    ],
+  },
+  {
+    title: "Customers",
+    links: [
       {
-        name: "Create Brand",
-        icon: <BadgePlus size={18} />,
-        url: "/dashboard/brands/create",
+        name: "Customers",
+        icon: <Users size={18} />,
+
+        url: "/dashboard/",
+      },
+      {
+        name: "Orders",
+        icon: <ListOrdered size={18} />,
+        url: "/dashboard/",
       },
     ],
   },
@@ -106,22 +103,31 @@ type SideBarProps = {
 const SideBar: React.FC<SideBarProps> = ({ className }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const handleLink = (url: string) => {
-    router.push(url);
-  };
+  const handleLink = (url: string) => router.push(url);
+
   return (
     <div className={cn("bg-white pb-12", className)}>
       <div className="min-h-fit space-y-4 py-4">
-        <div >
-          <Link href="/dashboard" className={`hidden`}>
+        {/* Logo */}
+        <div className="pl-3 w-fit ">
+          <Link href="/dashboard" >
+              <Image
+                src="/computech-landscape-logo.png"
+                alt="computech logo"
+                height={24}
+                width={110}
+              />
+          </Link>
+          <Link href="/dashboard" className="hidden">
             <Image
               src="/computech-logo.png"
               alt="computech logo"
               height={24}
-              width={110}
+              width={24}
             />
           </Link>
         </div>
+        {/* Side bar Menu */}
         <div className="px-3 py-2">
           {sideBarData.map((data, index) => (
             <div key={index}>

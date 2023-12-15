@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader } from "lucide-react";
+import { Check, ChevronsUpDown, Loader } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Brand, Category, Image, Product } from "@prisma/client";
@@ -32,6 +32,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Decimal } from "@prisma/client/runtime/library";
 import { TProduct } from "@/types/type";
 import { productFormSchema } from "@/types/validation";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command";
+import { cn } from "@/lib/utils";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ProductFormProps {
   productData: (Product & { images: Image[] }) | null;
@@ -205,8 +209,70 @@ const ProductForm: React.FC<ProductFormProps> = ({
               </FormItem>
             )}
           />
+           <FormField
+          control={form.control}
+          name="brandId"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel>Language</FormLabel>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <FormControl>
+                    <Button
+                      variant="outline"
+                      role="combobox"
+                      className={cn(
+                        "w-[200px] justify-between",
+                        !field.value && "text-muted-foreground"
+                      )}
+                    >
+                      {field.value
+                        ? brands.find(
+                            (brand) => brand.id === field.value
+                          )?.brand
+                        : "Select brand"}
+                      <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                    </Button>
+                  </FormControl>
+                </PopoverTrigger>
+                <PopoverContent className="w-[200px] p-0">
+                  <Command>
+                    <CommandInput placeholder="Search brand..." />
+                    <CommandEmpty>No brand found.</CommandEmpty>
+                    <CommandGroup>
+                      <ScrollArea className="h-52">
 
-          <FormField
+                      {brands.map((brand) => (
+                        <CommandItem
+                        value={brand.brand}
+                        key={brand.id}
+                        onSelect={() => {
+                          form.setValue("brandId", brand.id)
+                          
+                        }}
+                        >
+                          <Check
+                            className={cn(
+                              "mr-2 h-4 w-4",
+                              brand.id === field.value
+                              ? "opacity-100"
+                              : "opacity-0"
+                              )}
+                              />
+                          {brand.brand}
+                        </CommandItem>
+                      ))}
+                      </ScrollArea>
+                    </CommandGroup>
+                  </Command>
+                </PopoverContent>
+              </Popover>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+          {/* <FormField
             control={form.control}
             name="brandId"
             render={({ field }) => (
@@ -238,7 +304,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                 <FormMessage />
               </FormItem>
             )}
-          />
+          /> */}
 
           <FormField
             control={form.control}
@@ -314,7 +380,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
             control={form.control}
             name="isLive"
             render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 ">
                 <FormControl>
                   <Checkbox
                     checked={field.value}

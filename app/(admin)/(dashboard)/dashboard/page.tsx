@@ -11,7 +11,6 @@ const adminDashboard = async () => {
     return (
       <Container title="Dashboard">
         <Overview/>
-        <h2> Welcome:{session?.user.username}</h2>
       </Container>
     );
   }

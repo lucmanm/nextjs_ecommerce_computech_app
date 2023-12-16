@@ -50,7 +50,7 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
 export async function PATCH(req: Request, { params }: { params: { productSlug: string } }) {
   try {
     const body = await req.json()
-    const product = productFormSchema.parse(body)
+    const {model, description, price, salePrice,stock, brandId, categoryId, isLive, isFeatured, images} = productFormSchema.parse(body)
     const productId = params.productSlug
 
     if (!productId) {
@@ -62,37 +62,37 @@ export async function PATCH(req: Request, { params }: { params: { productSlug: s
         id: productId
       },
       data: {
-        model: product.model,
-        description: product.description,
-        price: product.price,
-        salePrice: product.salePrice,
-        stock: product.stock,
-        brandId: product.brandId,
-        categoryId: product.categoryId,
-        isLive: product.isLive,
-        isFeatured: product.isFeatured,
-        // images: {
-        //   deleteMany: {}
-        // },
+        model,
+        description,
+        price, 
+        salePrice,
+        stock, 
+        brandId,
+        categoryId, 
+        isLive,
+        isFeatured,
+        images: {
+          deleteMany: {}
+        },
       },
     })
 
-    // const productData = await prisma.product.update({
-    //   where: {
-    //     id: productId
-    //   },
-    //   data: {
-    //     images: {
-    //       createMany: {
-    //         data: [
-    //           ...images.map((image: { imageUrl: string }) => image.imageUrl),
-    //         ]
-    //       }
-    //     }
-    //   }
+    await prisma.product.update({
+      where: {
+        id: productId
+      },
+      data: {
+        images: {
+          createMany: {
+            data: [
+              ...images.map((image: { imageUrl: string }) => image),
+            ]
+          }
+        }
+      }
+    })
 
-    // })
-    // return NextResponse.json(productData, { status: 201 })
+    return NextResponse.json({ status: 201 })
   } catch (error) {
     console.log("ERROR_PATCH_PRODUCT", error);
     return NextResponse.json({ message: "ERROR_PATCH_PRODUCT", error }, { status: 501 })

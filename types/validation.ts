@@ -52,4 +52,14 @@ export const sliderSchema = z.object({
     id: z.string(),
     label: z.string(),
     imageUrl: z.string(),
+});
+
+
+// Iamges Home Props 
+export const imageSchema = z.object({
+    id: z.string().optional(),
+    productId: z.string().optional(),
+    imageUrl: z.string(),
+    createdAt: z.date().optional(),
+    updateAt: z.date().optional()
   });

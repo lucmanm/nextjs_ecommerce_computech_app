@@ -17,53 +17,50 @@ model User {
 }
 
 model Category {
-  id        String   @id @default(uuid())
+  id        String    @id @default(uuid())
   category  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  product Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  product   Product[]
 }
 
 model Brand {
-  id        String   @id @default(uuid())
-  brand     String   @unique
+  id        String    @id @default(uuid())
+  brand     String    @unique
   imageUrl  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  product Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  product   Product[]
 }
 
 model Product {
   id          String     @id @default(uuid())
   description String
-  longDescription String
   price       Decimal
   model       String
   salePrice   Decimal    @db.Decimal(10, 2)
   stock       Int
   brandId     String
   categoryId  String
-  taxValue    Decimal
-  isLive      Boolean    @default(true)
-  isFeatured  Boolean    @default(false)
-  brand       Brand      @relation(fields: [brandId], references: [id])
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-  images      Image[]
-  category    Category   @relation(fields: [categoryId], references: [id])
+  isFeatured  Boolean    @default(false)
+  isLive      Boolean    @default(true)
+  taxValue    Decimal
   cart        Cart[]
+  images      Image[]
+  brand       Brand      @relation(fields: [brandId], references: [id])
+  category    Category   @relation(fields: [categoryId], references: [id])
   wishlist    Wishlist[]
 }
 
 model Image {
   id        String   @id @default(uuid())
   productId String
-  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   imageUrl  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
 model Slider {
@@ -78,15 +75,15 @@ model Cart {
   id         String   @id @default(uuid())
   quantityId Int
   productId  String
-  product    Product  @relation(fields: [productId], references: [id])
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
+  product    Product  @relation(fields: [productId], references: [id])
 }
 
 model Wishlist {
   id        String   @id @default(uuid())
   productId String
-  product   Product  @relation(fields: [productId], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id])
 }

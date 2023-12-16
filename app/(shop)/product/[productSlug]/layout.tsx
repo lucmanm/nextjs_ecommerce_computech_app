@@ -8,7 +8,8 @@ export default function DashboardLayout({
 }) {
   return (
     <Container classname="flex gap-x-4">
-      <PorductsFilters className="basis-1/6 hidden lg:block"/>
+      {/* CONTINUE Filtrt not complete */}
+      <PorductsFilters className="basis-1/6 hidden"/>
       <div className="lg:basis-5/6 basis-full">
 
       {children}

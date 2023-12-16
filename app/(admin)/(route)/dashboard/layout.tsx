@@ -32,6 +32,7 @@ export default async function adminDashboardRootL({
             <SideBar className="shadow-md shrink-0 basis-2/12" />
               <div className="shrink grow">
                 <Navigation className="flex-1 bg-white" />
+                <div className="border shadow-md"/>
                 <div>{children}</div>
               </div>
           </main>

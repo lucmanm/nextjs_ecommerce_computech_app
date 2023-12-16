@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -11,8 +12,11 @@ const searchSchema = z.object({
 });
 
 type TSearch = z.infer<typeof searchSchema>;
+type SearchInput ={
+  className?: string
+}
+const SearchInput: React.FC<SearchInput> = ({className}) => {
 
-const SearchInput = () => {
   const router = useRouter();
 
   const {
@@ -31,7 +35,7 @@ const SearchInput = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className={cn("",className)}>
       <div className="relative flex-1">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3" />
         <Input

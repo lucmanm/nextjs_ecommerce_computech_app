@@ -53,7 +53,7 @@ export const sliderSchema = z.object({
     id: z.string(),
     label: z.string(),
     imageUrl: z.string(),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional()
+    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional().or(z.date())
 });
 
 

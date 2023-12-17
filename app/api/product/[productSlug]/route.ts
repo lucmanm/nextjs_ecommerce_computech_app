@@ -5,6 +5,8 @@ import { NextResponse } from "next/server"
 
 export async function GET(req: Request, { params }: { params: { productSlug: string } }) {
   try {
+    // Decode to remove the space the params
+    const decodedURI = params.productSlug.replace(/\s+/gi, '_');
 
     const productData = await prisma.product.findMany({
       where: {
@@ -13,12 +15,16 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
             OR: [
               {
                 brand: {
-                  brand: params.productSlug
+                  brand: {
+                    contains: decodedURI
+                  }
                 }
               },
               {
                 category: {
-                  category: params.productSlug
+                  category: {
+                    contains: decodedURI
+                  }
                 },
               }
 
@@ -36,6 +42,7 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
 
     if (!productData) {
       return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE" }, { status: 500 })
+
     } else {
       return NextResponse.json({ productData }, { status: 200 })
     }

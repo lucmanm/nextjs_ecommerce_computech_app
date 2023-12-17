@@ -8,7 +8,7 @@ import { TBrand } from "@/types/type";
 
 export const columns: ColumnDef<TBrand>[] = [
   {
-    accessorKey: "brand",
+    accessorKey: "brandName",
     header: "Brand",
   },
   {

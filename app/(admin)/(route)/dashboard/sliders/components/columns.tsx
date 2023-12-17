@@ -3,6 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import CellAction from "./cell-action";
 import { TSlider } from "@/types/type";
+import Image from "next/image";
 
 export const columns: ColumnDef<TSlider>[] = [
   {
@@ -12,6 +13,16 @@ export const columns: ColumnDef<TSlider>[] = [
   {
     accessorKey: "imageUrl",
     header: "Image",
+    cell: ({ row }) => (
+      <div className="">
+        <Image
+          alt={row.original.label}
+          src={row.original.imageUrl}
+          width={500}
+          height={50}
+        />
+      </div>
+    ),
   },
 
   {

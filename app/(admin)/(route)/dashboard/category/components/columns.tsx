@@ -8,7 +8,7 @@ import { TCategory } from "@/types/type";
 
 export const columns: ColumnDef<TCategory>[] = [
   {
-    accessorKey: "category",
+    accessorKey: "categoryName",
     header: "Category",
   },
   {

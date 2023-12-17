@@ -7,13 +7,10 @@ import { TProduct } from "@/types/type";
 
 export const revalidate = 0;
 
-const ProductTypePage = async ({
-  params,
-}: {
-  params: { productSlug: string };
+const ProductTypePage = async ({params}: {params: { productSlug: string };
 }) => {
-  const productBySlug: TProduct[] = await getProductType(params.productSlug);
-
+  const decodedUrl = decodeURIComponent(params.productSlug).replace(/\\s+/g, '')
+  const productBySlug: TProduct[] = await getProductType(decodedUrl);
   return (
     <>
       {productBySlug.length === 0 ? (

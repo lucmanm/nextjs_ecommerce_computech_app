@@ -10,6 +10,7 @@ export const dynamic = 'force-dynamic'
 const SearchPage = async ({searchParams} :{searchParams: { q: string | undefined }}) => {
   const searchQuery = searchParams.q
   
+  
   const searchedProducts: TProduct[] = await getSearchProducts(searchQuery);
 
   return (

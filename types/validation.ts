@@ -35,9 +35,8 @@ export const productFormSchema = z.object({
 
 // Brand Schema
 export const brandSchema = z.object({
-    id: z.string().optional(),
-    brand: z.string().min(1, "Please enter brand name."),
-    imageUrl: z.string().min(1, "Please upload image"),
+    brandName: z.string().min(1, "Please enter brand name."),
+    brandImageUrl: z.string().min(1, "Please upload image"),
 })
 
 // Category Schema

@@ -1,10 +1,12 @@
 import { prisma } from "@/lib/db"
 import { productFormSchema } from "@/types/validation"
-import { Image, Product } from "@prisma/client"
 import { NextResponse } from "next/server"
 
 export async function GET(req: Request, { params }: { params: { productSlug: string } }) {
   try {
+    
+   
+    const decodeURI =  params.productSlug.replace(/\s+/gi, '_')
 
     const productData = await prisma.product.findMany({
       where: {
@@ -13,15 +15,19 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
             OR: [
               {
                 brand: {
-                  brand: params.productSlug
+                  brandName: {
+                    contains: decodeURI.toLowerCase()
+                  },
                 }
               },
               {
                 category: {
-                  category: params.productSlug
+                  category:{
+                    contains: decodeURI.toLowerCase()
+                  }
+                  
                 },
               }
-
             ]
           }, {
             isLive: true

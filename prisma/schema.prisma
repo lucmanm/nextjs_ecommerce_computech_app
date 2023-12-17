@@ -25,12 +25,12 @@ model Category {
 }
 
 model Brand {
-  id        String    @id @default(uuid())
-  brand     String    @unique
-  imageUrl  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  product   Product[]
+  brandId       String    @id
+  brandName     String    @unique(map: "Brand_brand_key")
+  brandImageUrl String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  product       Product[]
 }
 
 model Product {
@@ -49,7 +49,7 @@ model Product {
   taxValue    Decimal
   cart        Cart[]
   images      Image[]
-  brand       Brand      @relation(fields: [brandId], references: [id])
+  brand       Brand      @relation(fields: [brandId], references: [brandId])
   category    Category   @relation(fields: [categoryId], references: [id])
   wishlist    Wishlist[]
 }

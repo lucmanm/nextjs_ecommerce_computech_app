@@ -1,14 +1,3 @@
-//Top Navigation Information
-export const topNavigationMenu = [
-    {
-        title: "SignIn",
-        url: "/sign-in",
-        imageSrc: "profile.svg",
-        altImage: "user",
-    },
-    { title: "Wishlist", url: "/", imageSrc: "heart.svg", altImage: "heart" },
-    { title: "Tracking", url: "/", imageSrc: "truck.svg", altImage: "truck" },
-];
 
 export const sliderImages = [
     { title: "Desktop", url: "/slider-images/Desktop.png", link: "/" },

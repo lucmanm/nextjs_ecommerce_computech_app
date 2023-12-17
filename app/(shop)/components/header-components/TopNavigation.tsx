@@ -1,6 +1,18 @@
-import { topNavigationMenu } from "@/lib/constant";
 import Image from "next/image";
 import Link from "next/link";
+
+
+//Top Navigation Information
+ const topNavigationMenu = [
+    {
+        title: "SignIn",
+        url: "/sign-in",
+        imageSrc: "/profile.svg",
+        altImage: "user",
+    },
+    { title: "Wishlist", url: "/", imageSrc: "/heart.svg", altImage: "heart" },
+    { title: "Tracking", url: "/", imageSrc: "/truck.svg", altImage: "truck" },
+];
 
 const TopNavigation = () => {
     return (
@@ -27,7 +39,7 @@ const TopNavigation = () => {
                     height={18}
                     alt="language"
                 />
-                <span>langage</span>
+                <span>Arabic</span>
             </div>
         </div>
     );

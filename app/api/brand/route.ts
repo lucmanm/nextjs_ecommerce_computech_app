@@ -1,7 +1,6 @@
 import { prisma } from "@/lib/db";
 import { brandSchema } from "@/types/validation";
 import { NextResponse } from "next/server";
-import { z } from "zod";
 
 
 export const GET = async (req: Request) => {
@@ -20,14 +19,12 @@ export const GET = async (req: Request) => {
 
 export async function POST(req: Request) {
   try {
-
-
     const body = await req.json();
 
-    const { brand, imageUrl } = brandSchema.parse(body);
+    const { brandName, brandImageUrl } = brandSchema.parse(body);
 
     const checkbBrandName = await prisma.brand.findFirst({
-      where: { brand },
+      where: { brandName },
     });
 
     if (checkbBrandName) {
@@ -36,16 +33,13 @@ export async function POST(req: Request) {
 
     const brandData = await prisma.brand.create({
       data: {
-        brand,
-        imageUrl,
+        brandName,
+        brandImageUrl,
       },
     });
 
     return NextResponse.json(
-      {
-        brand: brandData,
-        messsage: "Brand Created Successfully",
-      },
+      { brandData, messsage: "Brand Created Successfully" },
       { status: 201 }
     );
   } catch (error) {

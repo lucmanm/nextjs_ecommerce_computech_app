@@ -42,6 +42,7 @@ export const brandSchema = z.object({
 
 // Category Schema
 export const categorySchema = z.object({
+    categoryId: z.string().optional(),
     categoryName: z.string().min(1, "Please Enter Category."),
     createdAt: z.date().transform((date) => date.toLocaleDateString()).optional()
 });

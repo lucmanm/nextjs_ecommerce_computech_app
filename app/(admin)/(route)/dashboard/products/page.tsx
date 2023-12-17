@@ -19,8 +19,8 @@ const ProductsPage = async () => {
     price: item.price.toString(),
     salePrice: item.salePrice.toString(),
     stock: item.stock,
-    brand: item.brand.brand,
-    category: item.category.category,
+    brand: item.brand.brandName,
+    category: item.category.categoryName,
     createdAt: new Date(item.createdAt).toLocaleDateString("en-US", {
       day: "numeric",
       month: "short",

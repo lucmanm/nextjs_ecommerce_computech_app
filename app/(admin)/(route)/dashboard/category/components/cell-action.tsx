@@ -28,13 +28,13 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await fetch(`/api/category/${data.id}`, {
+      await fetch(`/api/category/${data.categoryId}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          id: data.id,
+          categoryId: data.categoryId,
         }),
       });
 
@@ -71,7 +71,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => router.push(`${pathname}/${data.id}`)}
+            onClick={() => router.push(`${pathname}/${data.categoryId}`)}
             className="hover:cursor-pointer"
           >
             <Edit className="mr-2 h-4 w-4" />

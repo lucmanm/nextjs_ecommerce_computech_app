@@ -1,9 +1,9 @@
 import { getProductType } from "@/lib/actions/getProduct";
-import NoResults from "../../components/no-result";
-import ProductCard from "@/app/(shop)/components/ProductCard";
 import { Suspense } from "react";
 import Loading from "./components/loading";
 import { TProduct } from "@/types/type";
+import ProductCard from "../../_components/ProductCard";
+import NoResults from "../../_components/no-result";
 
 export const revalidate = 0;
 

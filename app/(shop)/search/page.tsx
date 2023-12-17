@@ -1,9 +1,9 @@
 
 import { getSearchProducts } from "@/lib/actions/getSearch";
-import Container from "../components/Container";
-import ProductCard from "@/app/(shop)/components/ProductCard";
 import { TProduct } from "@/types/type";
-import NoResults from "../components/no-result";
+import Container from "../_components/Container";
+import NoResults from "../_components/no-result";
+import ProductCard from "../_components/ProductCard";
 
 export const dynamic = 'force-dynamic'
 

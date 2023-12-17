@@ -5,14 +5,14 @@ import BrandSlider from "./components/sliders/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
 import { getProductListH, getProducts } from "@/lib/actions/getProduct";
 import { SplideProductsSlider } from "./components/sliders/splide-products-slider";
-import { TProduct } from "@/types/type";
+import { TBrand, TProduct } from "@/types/type";
 
 export const revalidate = 0;
 
 export default async function ShopPage() {
   const slider = await getSliders();
 
-  const brands = await getBrands();
+  const brands: TBrand[] = await getBrands();
 
   const products: TProduct[] = await getProducts();
   const printersData: TProduct[] = await getProductListH("printers");

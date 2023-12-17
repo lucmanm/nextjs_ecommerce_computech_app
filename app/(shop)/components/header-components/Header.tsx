@@ -15,7 +15,6 @@ import Logo from "./logo";
 import { TBrand, TCategory } from "@/types/type";
 import { getBrands } from "@/lib/actions/getBrands";
 import CategoryDropdownMenu from "./category-dropdown-menu";
-import BrandDropdownMenu from "./brand-dropdown-menu";
 
 type HeaderProps = {
   className?: string;
@@ -24,7 +23,6 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = async ({ className }) => {
   const categories: TCategory[] = await getProductCategory();
   const brandData: TBrand[] = await getBrands();
-
   return (
     <header className={cn("border-b bg-slate-100 md:shadow-md", className)}>
       {/* <TopNavigation/> */}
@@ -40,7 +38,6 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
           <div className="flex items-center justify-center gap-x-2">
             {/* Product Category Menu */}
             <CategoryDropdownMenu title="All Category" categories={categories} />
-            <BrandDropdownMenu title="Brand" brandData={brandData} />
             {/* <SideBarModal /> */}
           </div>
           {/* Brands Menu */}

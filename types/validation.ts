@@ -38,7 +38,7 @@ export const brandSchema = z.object({
     brandId: z.string().optional(),
     brandName: z.string().min(1, "Please enter brand name."),
     brandImageUrl: z.string().min(1, "Please upload image"),
-    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional()
+    createdAt: z.date().transform((date) => date.toLocaleDateString()).optional().or(z.date())
 })
 
 // Category Schema

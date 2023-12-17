@@ -1,9 +1,8 @@
-import { notFound } from "next/navigation";
 
 import Info from "../components/info";
 import Gallery from "@/components/gallery";
 // Actions
-import { getProduct, getProductType } from "@/lib/actions/getProduct";
+import { getProduct } from "@/lib/actions/getProduct";
 import { TProduct } from "@/types/type";
 // Types
 

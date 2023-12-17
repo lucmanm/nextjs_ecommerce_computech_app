@@ -5,6 +5,5 @@ const envSchema = z.object({
     NEXTAUTH_SECRET: z.string().min(1),
     NEXT_PUBLIC_API_URL: z.string().min(1),
     NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string().min(1),
-    NEXTAUTH_URL: z.string().min(1)
 })
 export const parsedEnv = envSchema.parse(process.env)

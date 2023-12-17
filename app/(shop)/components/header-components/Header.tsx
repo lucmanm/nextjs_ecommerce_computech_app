@@ -27,7 +27,7 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
 
   return (
     <header className={cn("border-b bg-slate-100 md:shadow-md", className)}>
-      <TopNavigation/>
+      {/* <TopNavigation/> */}
       <div className="bg-white py-2">
         <div className="flex flex-wrap items-center justify-between space-x-4 px-3 lg:container lg:px-0">
           {/* Side menu */}

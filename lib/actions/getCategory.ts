@@ -1,7 +1,7 @@
 export async function getProductCategory() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/category`);
   if (!res.ok) {
-    throw new Error("Failed to fetch product categories");
+    throw new Error("FAIL_FETCH_GET_CATEGORY");
   }
   const data = await res.json();
   return data.categories;

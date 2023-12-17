@@ -1,6 +1,5 @@
-import { parsedEnv } from "../env";
 
-const URL = `${parsedEnv.NEXT_PUBLIC_API_URL}/brand`;
+const URL = `${process.env.NEXT_PUBLIC_API_URL}/brand`;
 
 export async function getBrands() {
 

@@ -11,7 +11,7 @@ const CategoryPage = async ({ params }: {params: {categoryId: string}}) => {
 
   const categoryData = await prisma.category.findFirst({
     where: {
-      id: params.categoryId,
+      categoryId: params.categoryId,
     },
   });
 

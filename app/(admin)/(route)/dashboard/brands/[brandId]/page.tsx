@@ -11,7 +11,7 @@ const BrandPage = async ({ params }: { params: { brandId: string } }) => {
   
   const brand = await prisma.brand.findFirst({
     where: {
-      id: params.brandId,
+      brandId: params.brandId,
     },
   });
 

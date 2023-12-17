@@ -28,7 +28,7 @@ import { categorySchema } from "@/types/validation";
 
 
 type CategoryProps = {
-  initialData: TCategory;
+  initialData: {categoryName: string }| null;
 }
 
 export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {

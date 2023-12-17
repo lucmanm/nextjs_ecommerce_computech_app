@@ -15,8 +15,8 @@ import { toast } from "@/components/ui/use-toast";
 import { TBrand } from "@/types/type";
 
 type CellActionProps = {
-  data: TBrand;
-}
+  data: TBrand  ;
+};
 
 const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const router = useRouter();
@@ -28,13 +28,13 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const onDelete = async () => {
     try {
       setLoading(true);
-      await fetch(`/api/brand/${data.id}`, {
+      await fetch(`/api/brand/${data.brandId}`, {
         method: "DELETE",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify({
-          id: data.id,
+          id: data.brandId,
         }),
       });
 
@@ -71,7 +71,7 @@ const CellAction: React.FC<CellActionProps> = ({ data }) => {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => router.push(`${pathname}/${data.id}`)}
+            onClick={() => router.push(`${pathname}/${data.brandId}`)}
             className="hover:cursor-pointer"
           >
             <Edit className="mr-2 h-4 w-4" />

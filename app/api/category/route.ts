@@ -27,10 +27,10 @@ export async function POST(req: Request) {
 
     try {
         const body = await req.json();
-        const { category } = categorySchema.parse(body);
+        const { categoryName } = categorySchema.parse(body);
 
         const checkbCategoryName = await prisma.category.findFirst({
-            where: { category },
+            where: { categoryName },
         });
         if (checkbCategoryName) {
             return NextResponse.json({
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
         }
 
         const createCategory = await prisma.category.create({
-            data: { category },
+            data: { categoryName },
         });
 
         return NextResponse.json({

@@ -49,8 +49,8 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
   const form = useForm<TBrand>({
     resolver: zodResolver(brandSchema),
     defaultValues: initialData || {
-      brand: "",
-      imageUrl: "",
+      brandName: "",
+      brandImageUrl: "",
     },
   });
 
@@ -64,8 +64,8 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            brand: values.brand,
-            imageUrl: values.imageUrl,
+            brand: values.brandName,
+            brandImageUrl: values.brandImageUrl,
           }),
         });
         if (response.ok) {
@@ -83,8 +83,8 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            brand: values.brand,
-            imageUrl: values.imageUrl,
+            brand: values.brandName,
+            brandImageUrl: values.brandImageUrl,
           }),
         });
         if (response.ok) {
@@ -121,7 +121,7 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
           >
             <FormField
               control={form.control}
-              name="imageUrl"
+              name="brandImageUrl"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Slider Image</FormLabel>
@@ -139,7 +139,7 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
             />
             <FormField
               control={form.control}
-              name="brand"
+              name="brandName"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Brand Name</FormLabel>

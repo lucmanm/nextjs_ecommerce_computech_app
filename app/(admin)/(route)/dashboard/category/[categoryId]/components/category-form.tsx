@@ -28,9 +28,7 @@ import { categorySchema } from "@/types/validation";
 
 
 type CategoryProps = {
-  initialData: {
-    category: string
-  } | null;
+  initialData: TCategory;
 }
 
 export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
@@ -51,7 +49,7 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
   const form = useForm<TCategory>({
     resolver: zodResolver(categorySchema),
     defaultValues: initialData || {
-      category: "",
+      categoryName: "",
     },
   });
 
@@ -66,7 +64,7 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            category: values.category,
+            category: values.categoryName,
           }),
         });
         if (response.ok) {
@@ -84,7 +82,7 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            category: values.category,
+            category: values.categoryName,
           }),
         });
         if (response.ok) {
@@ -122,7 +120,7 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
           >
             <FormField
               control={form.control}
-              name="category"
+              name="categoryName"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Category Name</FormLabel>

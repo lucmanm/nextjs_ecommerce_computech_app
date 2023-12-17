@@ -8,15 +8,15 @@ export async function PATCH(req: Request, { params }: { params: { brandId: strin
   try {
 
     const body = await req.json();
-    const { brand, imageUrl } = brandSchema.parse(body);
+    const { brandName, brandImageUrl } = brandSchema.parse(body);
 
     const brandData = await prisma.brand.update({
       where: {
-        id: params.brandId,
+        brandId: params.brandId,
       },
       data: {
-        brand,
-        imageUrl,
+        brandName,
+        brandImageUrl,
       },
     });
 
@@ -38,7 +38,7 @@ export async function DELETE(req: Request, { params }: { params: { brandId: stri
   try {
     const brandData = await prisma.brand.delete({
       where: {
-        id: params.brandId,
+        brandId: params.brandId,
       }
     });
 

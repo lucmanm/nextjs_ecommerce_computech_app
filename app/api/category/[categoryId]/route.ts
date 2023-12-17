@@ -6,12 +6,12 @@ export async function PATCH(req: Request, { params }: { params: { categoryId: st
   try {
     
     const body = await req.json();
-    const { category } = categorySchema.parse(body);
+    const { categoryName } = categorySchema.parse(body);
     
     const UpdateCategory = await prisma.category.update({
       where: { categoryId: params.categoryId },
       data: {
-        categoryName: category
+        categoryName
       },
     });
 

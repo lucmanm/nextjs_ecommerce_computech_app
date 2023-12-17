@@ -17,8 +17,8 @@ export const columns: ColumnDef<TBrand>[] = [
     cell: ({ row }) => (
       <div className="">
         <Image
-          alt={row.original.brand}
-          src={row.original.imageUrl}
+          alt={row.original.brandName}
+          src={row.original.brandImageUrl}
           width={50}
           height={50}
         />

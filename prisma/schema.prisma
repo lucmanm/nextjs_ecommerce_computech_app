@@ -17,7 +17,7 @@ model User {
 }
 
 model Category {
-  categoryId   String    @id
+  categoryId   String    @id @default(uuid())
   categoryName String
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
@@ -25,8 +25,8 @@ model Category {
 }
 
 model Brand {
-  brandId       String    @id
-  brandName     String    @unique(map: "Brand_brand_key")
+  brandId       String    @id @default(uuid())
+  brandName     String    
   brandImageUrl String
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt

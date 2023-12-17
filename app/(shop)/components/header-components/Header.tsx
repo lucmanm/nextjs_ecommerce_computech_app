@@ -1,7 +1,7 @@
 import { logoUrl } from "@/lib/constant";
 import Link from "next/link";
 import { getProductCategory } from "@/lib/actions/getCategory";
-import DropdownMenu from "./DropdownMenu";
+import DropdownMenu from "./category-dropdown-menu";
 import SearchInput from "./SearchInput";
 import { cn } from "@/lib/utils";
 import SheetSide from "../sheets/menu-sheet";
@@ -12,15 +12,18 @@ import {
 } from "lucide-react";
 import TopNavigation from "./TopNavigation";
 import Logo from "./logo";
+import { TBrand, TCategory } from "@/types/type";
+import { getBrands } from "@/lib/actions/getBrands";
+import CategoryDropdownMenu from "./category-dropdown-menu";
+import BrandDropdownMenu from "./brand-dropdown-menu";
 
 type HeaderProps = {
   className?: string;
 };
 
 const Header: React.FC<HeaderProps> = async ({ className }) => {
-  const categories = await getProductCategory();
-  // Destructuring ArrafetchProductsy of Logo
-  const [, { title, url }] = logoUrl;
+  const categories: TCategory[] = await getProductCategory();
+  const brandData: TBrand[] = await getBrands();
 
   return (
     <header className={cn("border-b bg-slate-100 md:shadow-md", className)}>
@@ -36,7 +39,8 @@ const Header: React.FC<HeaderProps> = async ({ className }) => {
               <SearchInput className="flex-1" />
           <div className="flex items-center justify-center gap-x-2">
             {/* Product Category Menu */}
-            <DropdownMenu title="All Category" categories={categories} />
+            <CategoryDropdownMenu title="All Category" categories={categories} />
+            <BrandDropdownMenu title="Brand" brandData={brandData} />
             {/* <SideBarModal /> */}
           </div>
           {/* Brands Menu */}

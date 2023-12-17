@@ -9,9 +9,9 @@ export async function PATCH(req: Request, { params }: { params: { categoryId: st
     const { category } = categorySchema.parse(body);
     
     const UpdateCategory = await prisma.category.update({
-      where: { id: params.categoryId },
+      where: { categoryId: params.categoryId },
       data: {
-        category: category
+        categoryName: category
       },
     });
 
@@ -30,7 +30,7 @@ export async function DELETE(req: Request, { params }: { params: { categoryId: s
 ) {
   try {
     const deleteCategory = await prisma.category.delete({
-      where: { id: params.categoryId }
+      where: { categoryId: params.categoryId }
     });
 
     return NextResponse.json(

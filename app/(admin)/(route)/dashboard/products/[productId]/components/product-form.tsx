@@ -229,8 +229,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
                     >
                       {field.value
                         ? brands.find(
-                            (brand) => brand.id === field.value
-                          )?.brand
+                            (brand) => brand.brandId === field.value
+                          )?.brandName
                         : "Select brand"}
                       <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
@@ -245,22 +245,22 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
                       {brands.map((brand) => (
                         <CommandItem
-                        value={brand.brand}
-                        key={brand.id}
+                        value={brand.brandName}
+                        key={brand.brandId}
                         onSelect={() => {
-                          form.setValue("brandId", brand.id)
+                          form.setValue("brandId", brand.brandId)
                           
                         }}
                         >
                           <Check
                             className={cn(
                               "mr-2 h-4 w-4",
-                              brand.id === field.value
+                              brand.brandId === field.value
                               ? "opacity-100"
                               : "opacity-0"
                               )}
                               />
-                          {brand.brand}
+                          {brand.brandName}
                         </CommandItem>
                       ))}
                       </ScrollArea>
@@ -325,8 +325,8 @@ const ProductForm: React.FC<ProductFormProps> = ({
                     >
                       {field.value
                         ? categories.find(
-                            (category) => category.id === field.value
-                          )?.category
+                            (category) => category.categoryId === field.value
+                          )?.categoryName
                         : "Select Category"}
                       <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                     </Button>
@@ -341,22 +341,22 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
                       {categories.map((category) => (
                         <CommandItem
-                        value={category.category}
-                        key={category.id}
+                        value={category.categoryName}
+                        key={category.categoryId}
                         onSelect={() => {
-                          form.setValue("categoryId", category.id)
+                          form.setValue("categoryId", category.categoryId)
                           
                         }}
                         >
                           <Check
                             className={cn(
                               "mr-2 h-4 w-4 ",
-                              category.id === field.value
+                              category.categoryId === field.value
                               ? "opacity-100"
                               : "opacity-0"
                               )}
                               />
-                          {category.category}
+                          {category.categoryName}
                         </CommandItem>
                       ))}
                       </ScrollArea>

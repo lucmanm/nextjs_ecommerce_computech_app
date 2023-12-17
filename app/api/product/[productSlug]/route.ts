@@ -4,14 +4,9 @@ import { NextResponse } from "next/server"
 
 export async function GET(req: Request, { params }: { params: { productSlug: string } }) {
   try {
-<<<<<<< HEAD
     
    
     const decodeURI =  params.productSlug.replace(/\s+/gi, '_')
-=======
-    // Decode to remove the space the params
-    const decodedURI = params.productSlug.replace(/\s+/gi, '_');
->>>>>>> e1e6514aed8220126c4a18ece4ab6082f4a5a13b
 
     const productData = await prisma.product.findMany({
       where: {
@@ -20,29 +15,17 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
             OR: [
               {
                 brand: {
-<<<<<<< HEAD
                   brandName: {
                     contains: decodeURI.toLowerCase()
                   },
-=======
-                  brand: {
-                    contains: decodedURI
-                  }
->>>>>>> e1e6514aed8220126c4a18ece4ab6082f4a5a13b
                 }
               },
               {
                 category: {
-<<<<<<< HEAD
-                  category:{
+                  categoryName:{
                     contains: decodeURI.toLowerCase()
                   }
                   
-=======
-                  category: {
-                    contains: decodedURI
-                  }
->>>>>>> e1e6514aed8220126c4a18ece4ab6082f4a5a13b
                 },
               }
             ]

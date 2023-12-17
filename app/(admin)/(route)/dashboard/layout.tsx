@@ -4,11 +4,11 @@ import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { Toaster } from "@/components/ui/toaster";
-import { Inter as FontSans } from "next/font/google"
+import { Inter  } from "next/font/google"
 import SideBar from "./components/sidebar";
 
 
-export const fontSans = FontSans({
+export const fontSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 })

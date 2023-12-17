@@ -17,11 +17,11 @@ model User {
 }
 
 model Category {
-  id        String    @id @default(uuid())
-  category  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  product   Product[]
+  categoryId   String    @id
+  categoryName String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  product      Product[]
 }
 
 model Brand {
@@ -50,7 +50,7 @@ model Product {
   cart        Cart[]
   images      Image[]
   brand       Brand      @relation(fields: [brandId], references: [brandId])
-  category    Category   @relation(fields: [categoryId], references: [id])
+  category    Category   @relation(fields: [categoryId], references: [categoryId])
   wishlist    Wishlist[]
 }
 

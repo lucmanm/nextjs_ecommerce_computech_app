@@ -1,4 +1,3 @@
-import ProfileCard from "./components/profile-card";
 import SideBarMenu from "./components/side-menu";
 
 export default function MyAccountLayout({

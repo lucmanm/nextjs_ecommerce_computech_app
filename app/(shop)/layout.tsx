@@ -1,9 +1,9 @@
 import "@/styles/globals.css";
 import ModalProvider from "@/hook/modal-provider";
-import Header from "./components/header-components/Header";
-import Footer from "./components/Footer";
 import { Cairo } from "next/font/google";
-import { MobileButtomMenu } from "./components/mobile-buttom-menu";
+import Header from "./_components/header-components/Header";
+import { MobileButtomMenu } from "./_components/mobile-buttom-menu";
+import Footer from "./_components/Footer";
 
 const cairo = Cairo({ subsets: ["latin"] });
 

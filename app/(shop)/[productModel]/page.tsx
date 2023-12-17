@@ -1,9 +1,9 @@
 
-import Info from "../components/info";
 import Gallery from "@/components/gallery";
 // Actions
 import { getProduct } from "@/lib/actions/getProduct";
 import { TProduct } from "@/types/type";
+import Info from "../_components/info";
 // Types
 
 // FIXME no not found page

@@ -1,11 +1,11 @@
 // import Slider from "@/components/Slider";
-import CarouselSlider from "@/app/(shop)/components/sliders/CarouselSlider";
 import { getSliders } from "@/lib/actions/getSliders";
-import BrandSlider from "./components/sliders/brand-slider";
 import { getBrands } from "@/lib/actions/getBrands";
 import { getProductListH, getProducts } from "@/lib/actions/getProduct";
-import { SplideProductsSlider } from "./components/sliders/splide-products-slider";
 import { TBrand, TProduct } from "@/types/type";
+import CarouselSlider from "./_components/sliders/CarouselSlider";
+import BrandSlider from "./_components/sliders/brand-slider";
+import { SplideProductsSlider } from "./_components/sliders/splide-products-slider";
 
 export const revalidate = 0;
 

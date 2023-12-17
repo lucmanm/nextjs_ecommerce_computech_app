@@ -3,7 +3,7 @@
 import Gallery from "@/components/gallery";
 import Modal from "../../../components/modals/modal";
 import usePreviewModal from "@/hook/use-preview-modal";
-import Info from "@/app/(shop)/components/info";
+import Info from "./info";
 
 const PreviewModal = () => {
   const previewModal = usePreviewModal();

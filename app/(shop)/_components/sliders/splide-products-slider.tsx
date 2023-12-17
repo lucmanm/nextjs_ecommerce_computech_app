@@ -1,10 +1,9 @@
 "use client";
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
-import ProductCard from "@/app/(shop)/components/ProductCard";
 import { TProduct } from "@/types/type";
 import Title from "@/components/ui/Title";
-import { Suspense } from "react";
-import Loading from "../loading";
+import ProductCard from "../ProductCard";
+
 
 type SplideProductsSliderProps = {
   productsData: TProduct[];

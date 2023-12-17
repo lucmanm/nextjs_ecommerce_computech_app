@@ -13,18 +13,18 @@ export const metadata = {
     "An Online Computer Store Selling Desktop Computer, Laptop, Printer, Servers etc.",
 };
 
-export default function RootLayout({children}: {children: React.ReactNode}) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en">
-      <body
-        className={`${cairo.className} flex h-screen min-h-screen flex-col bg-slate-100`}
-      >
-      <Header className="z-30"/>
+    <main className="flex h-screen min-h-screen flex-col bg-slate-100">
+      <Header className="z-30" />
       <ModalProvider />
       <main className="lg:container">{children}</main>
-      <MobileButtomMenu/>
+      <MobileButtomMenu />
       <Footer />
-      </body>
-    </html>
+    </main>
   );
 }

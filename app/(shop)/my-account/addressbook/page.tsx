@@ -1,4 +1,4 @@
-import Container from "../components/container"
+import Container from "../_components/container"
 
 const MyAddressBook = () => {
     return ( 

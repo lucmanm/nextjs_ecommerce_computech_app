@@ -2,8 +2,11 @@
 // Hooks
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
+
+//Icons
+import { Loader } from "lucide-react";
 
 // Components
 import {
@@ -16,22 +19,19 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-
 import { useToast } from "@/components/ui/use-toast";
-import ImageUpload from "@/components/ui/image-upload";
-import Container from "@/app/(admin)/(route)/dashboard/components/Container";
-// Icons
-import { Loader } from "lucide-react";
+import Container from "@/app/(admin)/(route)/dashboard/_components/Container";
 
-// type &  Schema
-import { TBrand } from "@/types/type";
-import { brandSchema } from "@/types/validation";
+// Type & Schema
+import { TCategory } from "@/types/type";
+import { categorySchema } from "@/types/validation";
 
-type BrandProps = {
-  initialData: TBrand  | null;
+
+type CategoryProps = {
+  initialData: {categoryName: string }| null;
 }
 
-export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
+export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
 
@@ -39,33 +39,32 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit Brand" : "Create Brand";
-  const description = initialData ? "Edit a Brand" : "Create a new Brand";
+  const title = initialData ? "Edit Category" : "Create Category";
+  const description = initialData ? "Edit a Category" : "Create a new Category";
   const toastMessage = initialData
-    ? "Brand updated successfully?"
-    : "Created successfully Brand";
+    ? "Category updated successfully?"
+    : "Created successfully Category";
   const action = initialData ? "Save Changes" : "Create";
 
-  const form = useForm<TBrand>({
-    resolver: zodResolver(brandSchema),
+  const form = useForm<TCategory>({
+    resolver: zodResolver(categorySchema),
     defaultValues: initialData || {
-      brandName: "",
-      brandImageUrl: "",
+      categoryName: "",
     },
   });
 
-  const onSubmit = async (values: TBrand) => {
+  const onSubmit = async (values: TCategory) => {
     try {
       setLoading(true);
+      
       if (initialData) {
-        const response = await fetch(`/api/brand/${params.brandId}`, {
+        const response = await fetch(`/api/category/${params.categoryId}`, {
           method: "PATCH",
           headers: {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            brand: values.brandName,
-            brandImageUrl: values.brandImageUrl,
+            category: values.categoryName,
           }),
         });
         if (response.ok) {
@@ -74,17 +73,16 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
             variant: "success",
           });
           router.refresh();
-          router.push("/dashboard/brands");
+          router.push("/dashboard/category");
         }
       } else {
-        const response = await fetch(`/api/brand`, {
+        const response = await fetch(`/api/category`, {
           method: "POST",
           headers: {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            brand: values.brandName,
-            brandImageUrl: values.brandImageUrl,
+            category: values.categoryName,
           }),
         });
         if (response.ok) {
@@ -93,17 +91,18 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
             variant: "success",
           });
           router.refresh();
-          router.push("/dashboard/brands");
+          router.push("/dashboard/category");
         } else {
           toast({
-            description: "Brand exist",
+            description: "Category exist",
             variant: "destructive",
           });
         }
       }
+
     } catch (error) {
       toast({
-        description: `[ERROR_POST_PATCH_BRAND]: ${error}`,
+        description: `[ERROR_CATEGORY], Something Went Wong: ${error}`,
         variant: "destructive",
       });
     } finally {
@@ -117,36 +116,18 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
+            className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize"
           >
             <FormField
               control={form.control}
-              name="brandImageUrl"
+              name="categoryName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Slider Image</FormLabel>
-                  <FormControl>
-                    <ImageUpload
-                      value={field.value ? [field.value] : []}
-                      disabled={loading}
-                      onChange={(url) => field.onChange(url)}
-                      onRemove={() => field.onChange("")}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="brandName"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Brand Name</FormLabel>
+                  <FormLabel>Category Name</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Brand Name"
+                      placeholder="Please enter category."
                       {...field}
                     />
                   </FormControl>
@@ -156,7 +137,7 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
             />
             <Button
               type="submit"
-              size={"sm"}
+              size="sm"
               variant="default"
               className="w-full"
               disabled={loading}

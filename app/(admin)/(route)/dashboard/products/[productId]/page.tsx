@@ -1,6 +1,6 @@
-import Container from "@/app/(admin)/(route)/dashboard/components/Container";
+import Container from "@/app/(admin)/(route)/dashboard/_components/Container";
 import { prisma } from "@/lib/db";
-import ProductForm from "./components/product-form";
+import ProductForm from "./_components/product-form";
 import { notFound } from "next/navigation";
 import { TImage, TProduct } from "@/types/type";
 import { imageSchema, productFormSchema } from "@/types/validation";

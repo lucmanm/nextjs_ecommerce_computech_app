@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-import ClientBrand from "./components/client";
+import ClientBrand from "./_components/client";
 import { formatter } from "@/lib/utils";
 import { ProductColumnProps } from "@/types";
 export const revalidate = 0;

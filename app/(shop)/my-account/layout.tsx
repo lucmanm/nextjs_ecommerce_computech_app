@@ -1,4 +1,4 @@
-import SideBarMenu from "./components/side-menu";
+import SideBarMenu from "./_components/side-menu";
 
 export default function MyAccountLayout({
   children,

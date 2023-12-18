@@ -1,8 +1,11 @@
 "use client";
+// Hooks
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+
+// Components
 import {
   Form,
   FormControl,
@@ -12,22 +15,23 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useParams, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
-import { Loader } from "lucide-react";
-import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import ImageUpload from "@/components/ui/image-upload";
-import Container from "@/app/(admin)/(route)/dashboard/components/Container";
-import { sliderSchema } from "@/types/validation";
-import { TSlider } from "@/types/type";
+import Container from "@/app/(admin)/(route)/dashboard/_components/Container";
+// Icons
+import { Loader } from "lucide-react";
 
+// type &  Schema
+import { TBrand } from "@/types/type";
+import { brandSchema } from "@/types/validation";
 
-interface SliderFormProps {
-  initialData: TSlider | null;
+type BrandProps = {
+  initialData: TBrand  | null;
 }
 
-export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
+export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
 
@@ -35,33 +39,33 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit TSlider" : "Create Slider";
-  const description = initialData ? "Edit a Slider" : "Create a new Slider";
+  const title = initialData ? "Edit Brand" : "Create Brand";
+  const description = initialData ? "Edit a Brand" : "Create a new Brand";
   const toastMessage = initialData
-    ? "Slider updated successfully?"
-    : "Created successfully Slider";
+    ? "Brand updated successfully?"
+    : "Created successfully Brand";
   const action = initialData ? "Save Changes" : "Create";
 
-  const form = useForm<TSlider>({
-    resolver: zodResolver(sliderSchema),
+  const form = useForm<TBrand>({
+    resolver: zodResolver(brandSchema),
     defaultValues: initialData || {
-      label: "",
-      imageUrl: "",
+      brandName: "",
+      brandImageUrl: "",
     },
   });
 
-  const onSubmit = async (values: TSlider) => {
+  const onSubmit = async (values: TBrand) => {
     try {
       setLoading(true);
       if (initialData) {
-        const response = await fetch(`/api/sliders/${params.sliderId}`, {
+        const response = await fetch(`/api/brand/${params.brandId}`, {
           method: "PATCH",
           headers: {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            label: values.label,
-            imageUrl: values.imageUrl,
+            brand: values.brandName,
+            brandImageUrl: values.brandImageUrl,
           }),
         });
         if (response.ok) {
@@ -70,17 +74,17 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
             variant: "success",
           });
           router.refresh();
-          router.push("/dashboard/sliders");
+          router.push("/dashboard/brands");
         }
       } else {
-        const response = await fetch(`/api/sliders`, {
+        const response = await fetch(`/api/brand`, {
           method: "POST",
           headers: {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            label: values.label,
-            imageUrl: values.imageUrl,
+            brand: values.brandName,
+            brandImageUrl: values.brandImageUrl,
           }),
         });
         if (response.ok) {
@@ -89,12 +93,17 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
             variant: "success",
           });
           router.refresh();
-          router.push("/dashboard/sliders");
+          router.push("/dashboard/brands");
+        } else {
+          toast({
+            description: "Brand exist",
+            variant: "destructive",
+          });
         }
       }
     } catch (error) {
       toast({
-        description: `[ERROR_SLIDER], Something Went Wong: ${error}`,
+        description: `[ERROR_POST_PATCH_BRAND]: ${error}`,
         variant: "destructive",
       });
     } finally {
@@ -112,7 +121,7 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
           >
             <FormField
               control={form.control}
-              name="imageUrl"
+              name="brandImageUrl"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Slider Image</FormLabel>
@@ -130,14 +139,14 @@ export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
             />
             <FormField
               control={form.control}
-              name="label"
+              name="brandName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Slider Label</FormLabel>
+                  <FormLabel>Brand Name</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Slider label"
+                      placeholder="Brand Name"
                       {...field}
                     />
                   </FormControl>

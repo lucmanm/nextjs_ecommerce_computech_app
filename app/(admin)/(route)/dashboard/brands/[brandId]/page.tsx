@@ -1,7 +1,7 @@
 import { prisma } from "@/lib/db";
 
 import { notFound } from "next/navigation";
-import { BrandForm } from "./components/brand-form";
+import { BrandForm } from "./_components/brand-form";
 
 const BrandPage = async ({ params }: { params: { brandId: string } }) => {
   

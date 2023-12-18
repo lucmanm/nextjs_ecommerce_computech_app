@@ -12,7 +12,7 @@ type PropductProps = {
 }
 
 const ProductCard: React.FC<PropductProps> =  ({ productData }) => {
-  const previewModal = usePreviewModal();
+  const {onOpenData} = usePreviewModal();
   const router = useRouter();
 
   const handleNavigation = () => {
@@ -22,7 +22,7 @@ const ProductCard: React.FC<PropductProps> =  ({ productData }) => {
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
     event.stopPropagation();
 
-    previewModal.onOpen(productData);
+    onOpenData(productData);
   };
 
   return (

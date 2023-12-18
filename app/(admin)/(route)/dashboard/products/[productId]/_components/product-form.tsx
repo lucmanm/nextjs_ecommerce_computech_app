@@ -26,7 +26,7 @@ import { Check, ChevronsUpDown, Loader } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Brand, Category, Image, Product } from "@prisma/client";
-import Container from "@/app/(admin)/(route)/dashboard/components/Container";
+import Container from "@/app/(admin)/(route)/dashboard/_components/Container";
 import ImageUpload from "@/components/ui/image-upload";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Decimal } from "@prisma/client/runtime/library";

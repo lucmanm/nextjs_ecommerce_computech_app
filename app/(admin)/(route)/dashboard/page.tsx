@@ -1,9 +1,9 @@
 import React from "react";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
-import Container from "@/app/(admin)/(route)/dashboard/components/Container";
+import Container from "@/app/(admin)/(route)/dashboard/_components/Container";
 import { redirect } from "next/navigation";
-import Overview from "./components/overview";
+import Overview from "./_components/overview";
 
 const adminDashboard = async () => {
   const session = await getServerSession(authOptions);

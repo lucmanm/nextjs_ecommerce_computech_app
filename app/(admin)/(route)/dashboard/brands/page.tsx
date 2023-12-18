@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
-// Components
-import ClientBrand from "./components/client";
+// _components
+import ClientBrand from "./_components/client";
 
 // Schema & Type
 import { TBrand } from "@/types/type";

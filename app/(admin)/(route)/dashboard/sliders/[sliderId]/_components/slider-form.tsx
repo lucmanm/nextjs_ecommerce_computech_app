@@ -1,14 +1,8 @@
 "use client";
-// Hooks
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useParams, useRouter } from "next/navigation";
-import { useState } from "react";
-
-//Icons
-import { Loader } from "lucide-react";
-
-// Components
 import {
   Form,
   FormControl,
@@ -18,20 +12,22 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { useParams, useRouter } from "next/navigation";
+
+import { Loader } from "lucide-react";
+import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
-import Container from "@/app/(admin)/(route)/dashboard/components/Container";
+import ImageUpload from "@/components/ui/image-upload";
+import Container from "@/app/(admin)/(route)/dashboard/_components/Container";
+import { sliderSchema } from "@/types/validation";
+import { TSlider } from "@/types/type";
 
-// Type & Schema
-import { TCategory } from "@/types/type";
-import { categorySchema } from "@/types/validation";
 
-
-type CategoryProps = {
-  initialData: {categoryName: string }| null;
+interface SliderFormProps {
+  initialData: TSlider | null;
 }
 
-export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
+export const SliderForm: React.FC<SliderFormProps> = ({ initialData }) => {
   const params = useParams();
   const router = useRouter();
 
@@ -39,32 +35,33 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const title = initialData ? "Edit Category" : "Create Category";
-  const description = initialData ? "Edit a Category" : "Create a new Category";
+  const title = initialData ? "Edit TSlider" : "Create Slider";
+  const description = initialData ? "Edit a Slider" : "Create a new Slider";
   const toastMessage = initialData
-    ? "Category updated successfully?"
-    : "Created successfully Category";
+    ? "Slider updated successfully?"
+    : "Created successfully Slider";
   const action = initialData ? "Save Changes" : "Create";
 
-  const form = useForm<TCategory>({
-    resolver: zodResolver(categorySchema),
+  const form = useForm<TSlider>({
+    resolver: zodResolver(sliderSchema),
     defaultValues: initialData || {
-      categoryName: "",
+      label: "",
+      imageUrl: "",
     },
   });
 
-  const onSubmit = async (values: TCategory) => {
+  const onSubmit = async (values: TSlider) => {
     try {
       setLoading(true);
-      
       if (initialData) {
-        const response = await fetch(`/api/category/${params.categoryId}`, {
+        const response = await fetch(`/api/sliders/${params.sliderId}`, {
           method: "PATCH",
           headers: {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            category: values.categoryName,
+            label: values.label,
+            imageUrl: values.imageUrl,
           }),
         });
         if (response.ok) {
@@ -73,16 +70,17 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
             variant: "success",
           });
           router.refresh();
-          router.push("/dashboard/category");
+          router.push("/dashboard/sliders");
         }
       } else {
-        const response = await fetch(`/api/category`, {
+        const response = await fetch(`/api/sliders`, {
           method: "POST",
           headers: {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            category: values.categoryName,
+            label: values.label,
+            imageUrl: values.imageUrl,
           }),
         });
         if (response.ok) {
@@ -91,18 +89,12 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
             variant: "success",
           });
           router.refresh();
-          router.push("/dashboard/category");
-        } else {
-          toast({
-            description: "Category exist",
-            variant: "destructive",
-          });
+          router.push("/dashboard/sliders");
         }
       }
-
     } catch (error) {
       toast({
-        description: `[ERROR_CATEGORY], Something Went Wong: ${error}`,
+        description: `[ERROR_SLIDER], Something Went Wong: ${error}`,
         variant: "destructive",
       });
     } finally {
@@ -116,18 +108,36 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize"
+            className="my-2 w-1/2 space-y-2 rounded-md border-black bg-white p-4 capitalize "
           >
             <FormField
               control={form.control}
-              name="categoryName"
+              name="imageUrl"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category Name</FormLabel>
+                  <FormLabel>Slider Image</FormLabel>
+                  <FormControl>
+                    <ImageUpload
+                      value={field.value ? [field.value] : []}
+                      disabled={loading}
+                      onChange={(url) => field.onChange(url)}
+                      onRemove={() => field.onChange("")}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="label"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Slider Label</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Please enter category."
+                      placeholder="Slider label"
                       {...field}
                     />
                   </FormControl>
@@ -137,7 +147,7 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
             />
             <Button
               type="submit"
-              size="sm"
+              size={"sm"}
               variant="default"
               className="w-full"
               disabled={loading}

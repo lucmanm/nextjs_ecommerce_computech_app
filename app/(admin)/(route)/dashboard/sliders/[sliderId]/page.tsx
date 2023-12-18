@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/db";
-import { SliderForm } from "./components/slider-form";
+import { SliderForm } from "./_components/slider-form";
 
 import { notFound } from "next/navigation";
 

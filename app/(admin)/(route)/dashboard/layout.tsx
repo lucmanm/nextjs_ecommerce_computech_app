@@ -1,11 +1,11 @@
 import "@/styles/globals.css";
-import Navigation from "@/app/(admin)/(route)/dashboard/components/Navigation";
+import Navigation from "@/app/(admin)/(route)/dashboard/_components/Navigation";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import { Toaster } from "@/components/ui/toaster";
 import { Inter  } from "next/font/google"
-import SideBar from "./components/sidebar";
+import SideBar from "./_components/sidebar";
 
 
 export const fontSans = Inter({

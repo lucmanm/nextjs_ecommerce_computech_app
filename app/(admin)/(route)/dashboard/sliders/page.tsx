@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-import ClientSliderTable from "./components/client";
+import ClientSliderTable from "./_components/client";
 import { sliderSchema } from "@/types/validation";
 import { TSlider } from "@/types/type";
 

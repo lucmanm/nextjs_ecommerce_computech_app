@@ -1,5 +1,5 @@
 import Container from "../../_components/Container";
-import PorductsFilters from "./components/fitlers";
+import PorductsFilters from "./_components/fitlers";
 
 export default function DashboardLayout({
   children,

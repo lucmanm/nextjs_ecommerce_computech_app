@@ -1,4 +1,4 @@
-import Container from "@/app/(admin)/(route)/dashboard/components/Container";
+import Container from "@/app/(admin)/(route)/dashboard/_components/Container";
 
 const BannersPage = () => {
     return ( 

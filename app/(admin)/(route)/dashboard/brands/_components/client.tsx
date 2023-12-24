@@ -16,7 +16,7 @@ const ClientBrand: React.FC<BrandProps> = ({ data }) => {
       description="Manage your brands"
       btntype="create"
     >
-      <DataTable columns={columns} data={data} searchKey="brand" />
+      <DataTable columns={columns} data={data} searchKey="brandName" />
     </Container>
   );
 };

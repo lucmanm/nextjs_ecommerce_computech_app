@@ -64,7 +64,7 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            category: values.categoryName,
+            categoryName: values.categoryName,
           }),
         });
         if (response.ok) {
@@ -82,7 +82,7 @@ export const CategoryForm: React.FC<CategoryProps> = ({ initialData }) => {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            category: values.categoryName,
+            categoryName: values.categoryName,
           }),
         });
         if (response.ok) {

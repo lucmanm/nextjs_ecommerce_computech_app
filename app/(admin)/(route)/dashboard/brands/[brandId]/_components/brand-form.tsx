@@ -57,14 +57,16 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
   const onSubmit = async (values: TBrand) => {
     try {
       setLoading(true);
+      
       if (initialData) {
+        
         const response = await fetch(`/api/brand/${params.brandId}`, {
           method: "PATCH",
           headers: {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            brand: values.brandName,
+            brandName: values.brandName,
             brandImageUrl: values.brandImageUrl,
           }),
         });
@@ -77,14 +79,17 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
           router.push("/dashboard/brands");
         }
       } else {
+        
+        
         const response = await fetch(`/api/brand`, {
           method: "POST",
           headers: {
             "Content-type": "application/json",
           },
           body: JSON.stringify({
-            brand: values.brandName,
+            brandName: values.brandName,
             brandImageUrl: values.brandImageUrl,
+
           }),
         });
         if (response.ok) {
@@ -124,7 +129,6 @@ export const BrandForm: React.FC<BrandProps> = ({ initialData }) => {
               name="brandImageUrl"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Slider Image</FormLabel>
                   <FormControl>
                     <ImageUpload
                       value={field.value ? [field.value] : []}

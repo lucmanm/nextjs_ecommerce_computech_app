@@ -18,15 +18,17 @@ export const GET = async (req: Request) => {
 
 
 export async function POST(req: Request) {
+
   try {
     const body = await req.json();
 
     const { brandName, brandImageUrl } = brandSchema.parse(body);
 
+    console.log(brandName, brandImageUrl);
     const checkbBrandName = await prisma.brand.findFirst({
       where: { brandName },
     });
-
+    
     if (checkbBrandName) {
       return new NextResponse("Brand name Exist", { status: 500 });
     }

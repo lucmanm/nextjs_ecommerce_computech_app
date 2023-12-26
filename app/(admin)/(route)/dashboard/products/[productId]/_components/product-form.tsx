@@ -241,7 +241,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                     <CommandInput placeholder="Search brand..." />
                     <CommandEmpty>No brand found.</CommandEmpty>
                     <CommandGroup>
-                      <ScrollArea className="h-52 capitalize">
+                      <ScrollArea className="max-h-52 min-h-fit capitalize">
 
                       {brands.map((brand) => (
                         <CommandItem
@@ -337,7 +337,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                     <CommandInput placeholder="Search category..." />
                     <CommandEmpty>No brand found.</CommandEmpty>
                     <CommandGroup>
-                      <ScrollArea className="h-52 capitalize">
+                      <ScrollArea className="max-h-52 min-h-fit  capitalize">
 
                       {categories.map((category) => (
                         <CommandItem

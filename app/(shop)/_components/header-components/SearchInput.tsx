@@ -1,9 +1,9 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -16,7 +16,7 @@ type SearchInput ={
   className?: string
 }
 const SearchInput: React.FC<SearchInput> = ({className}) => {
-
+  const [input, setInput] = useState("")
   const router = useRouter();
 
   const {
@@ -30,12 +30,17 @@ const SearchInput: React.FC<SearchInput> = ({className}) => {
     },
   });
 
+  const handleOnchange = async (values: string) => {
+    
+  };
+
   const onSubmit = async (values: TSearch) => {
-    router.push(`/search?q=${values.search}`);
+    // router.push(`/search?q=${values.search}`);
+    
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={cn("",className)}>
+    <form onChange={handleSubmit(onSubmit)} className={cn("",className)}>
       <div className="relative flex-1">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3" />
         <Input
@@ -43,14 +48,15 @@ const SearchInput: React.FC<SearchInput> = ({className}) => {
           type="search"
           className="block w-full rounded-full border-gray-500 bg-slate-100 py-2 pl-5 text-gray-950 focus:border-blue-950"
           placeholder="Search Model, Product, etc..."
+          onChange={(e) => handleOnchange(e.target.value)}
         />
         {/* <Button 
         type="submit" 
         variant="ghost"
         className="rounded-full absolute top-0 right-0 py-0 px-4 hover:bg-blue-950 hover:text-white">
           <Search size={18}/>
-        </Button> */}
-        {/* <button
+        </Button>
+        <button
           type="submit"
           className="absolute right-1 top-1 rounded-full bg-blue-950 px-4 py-1 text-center font-medium text-white hover:bg-gray-200 hover:font-medium hover:text-blue-950 focus:font-medium focus:text-blue-950 focus:outline-none focus:ring-2 "
         >

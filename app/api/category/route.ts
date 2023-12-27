@@ -7,7 +7,11 @@ import { z } from "zod";
 
 export async function GET(req: Request) {
     try {
-        const categories = await prisma.category.findMany();
+        const categories = await prisma.category.findMany({
+            orderBy:{
+                categoryName: "asc"
+            }
+        });
         return NextResponse.json(
             { categories },
             { status: 200 }

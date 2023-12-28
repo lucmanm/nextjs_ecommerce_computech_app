@@ -1,3 +1,4 @@
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -7,21 +8,21 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, User2 } from "lucide-react";
+import { signOut } from "next-auth/react";
 
-const UserMenu = () => {
+const UserMenu = async () => {
+
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost" className="relative h-8 w-8 rounded-full ">
+        <Button variant="ghost" className="relative h-8 w-8 rounded-full ">
           <Avatar className="h-8 w-8 ">
-              <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-              <AvatarFallback>LM</AvatarFallback>
-            </Avatar >
+            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
+            <AvatarFallback>LM</AvatarFallback>
+          </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
@@ -34,13 +35,21 @@ const UserMenu = () => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup >
-          <DropdownMenuItem className="hover:cursor-pointer">Profile</DropdownMenuItem>
-          <DropdownMenuItem className="hover:cursor-pointer">Settings</DropdownMenuItem>
-          <DropdownMenuItem className="hover:cursor-pointer">New Team</DropdownMenuItem>
+        <DropdownMenuGroup>
+          <DropdownMenuItem className="hover:cursor-pointer">
+            Profile
+          </DropdownMenuItem>
+          <DropdownMenuItem className="hover:cursor-pointer">
+            Settings
+          </DropdownMenuItem>
+          <DropdownMenuItem className="hover:cursor-pointer">
+            New Team
+          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Log out</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => signOut()} className="cursor-pointer">
+          Log out
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

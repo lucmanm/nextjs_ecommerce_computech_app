@@ -12,24 +12,24 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
       where: {
         AND: [
           {
-            OR: [
-              {
+            OR: [{
                 brand: {
                   brandName: {
-                    contains: decodeURI.toLowerCase()
+                    contains: decodeURI,
+                    mode: "insensitive"
                   },
                 }
               },
               {
                 category: {
                   categoryName:{
-                    contains: decodeURI.toLowerCase()
+                    contains: decodeURI,
+                    mode: "insensitive"
                   }
                   
                 },
               }
-            ]
-          }, {
+            ]}, {
             isLive: true
           }
         ]

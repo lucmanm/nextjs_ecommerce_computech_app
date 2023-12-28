@@ -74,6 +74,6 @@
   }
 
   .h3 {
-    @apply text-xs lg:text-lg;
+    @apply text-xs lg:text-lg font-semibold;
   }
 }

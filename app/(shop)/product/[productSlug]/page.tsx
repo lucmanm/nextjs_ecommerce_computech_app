@@ -9,6 +9,7 @@ export const revalidate = 0;
 
 const ProductTypePage = async ({params}: {params: { productSlug: string };
 }) => {
+  // decode params to return to originalstring
   const decodedUrl = decodeURIComponent(params.productSlug).replace(/\\s+/g, '')
   const productBySlug: TProduct[] = await getProductType(decodedUrl);
   return (

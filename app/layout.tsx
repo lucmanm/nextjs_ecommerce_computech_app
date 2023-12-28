@@ -14,7 +14,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html lang="en">
       <body
-        className={`${cairo.className}`}
+        className={`${cairo.className} bg-slate-100` }
       >
       {children}
       </body>

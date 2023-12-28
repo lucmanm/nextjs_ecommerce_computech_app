@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="flex h-screen min-h-screen flex-col bg-slate-100">
+    <main className="flex h-screen min-h-screen flex-col">
       <Header className="z-30" />
       <ModalProvider />
       <main className="lg:container">{children}</main>

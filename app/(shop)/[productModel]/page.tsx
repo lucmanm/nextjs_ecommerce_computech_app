@@ -4,6 +4,7 @@ import Gallery from "@/components/gallery";
 import { getProduct } from "@/lib/actions/getProduct";
 import { TProduct } from "@/types/type";
 import Info from "../_components/info";
+import { notFound } from "next/navigation";
 // Types
 
 // FIXME no not found page
@@ -28,7 +29,7 @@ const ProductPage = async ({params,}: {params: { productModel: string }}) => {
       </div>
     );
   }else{
-    undefined
+    return notFound()
   }
 
   // const productByBrand: Product[] = await getProductType(params.productModel);

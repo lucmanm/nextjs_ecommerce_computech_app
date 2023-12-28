@@ -41,5 +41,5 @@ export default async function adminDashboardRootL({
       </html>
     );
   }
-  return redirect("/sign-in");
+  return redirect("/auth/sign-in");
 }

@@ -6,7 +6,7 @@ import Link from "next/link";
  const topNavigationMenu = [
     {
         title: "SignIn",
-        url: "/sign-in",
+        url: "/auth/sign-in",
         imageSrc: "/profile.svg",
         altImage: "user",
     },

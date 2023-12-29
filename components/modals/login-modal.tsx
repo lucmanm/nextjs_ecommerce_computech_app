@@ -1,10 +1,20 @@
-"use client"
-import { Dialog, DialogContent } from "../ui/dialog";
+"use client";
+import { Dialog, DialogContent, DialogHeader } from "../ui/dialog";
 
-const LoginModal = ({ children }: { children: React.ReactNode }) => {
+type LoginModalProps = {
+  children: React.ReactNode;
+  title: string;
+};
+
+const LoginModal: React.FC<LoginModalProps> = ({ children, title }) => {
   return (
-    <Dialog modal >
-      <DialogContent className="z-50">{children}</DialogContent>
+    <Dialog defaultOpen={true}>
+      <DialogContent className="max-w-md">
+        <DialogHeader className="text-center">
+          <h1 className="h1 text-center">{title}</h1>
+        </DialogHeader>
+        {children}
+      </DialogContent>
     </Dialog>
   );
 };

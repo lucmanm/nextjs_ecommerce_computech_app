@@ -7,15 +7,14 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const brandData = await getBrands()
+
+  const brandData = await getBrands();
+
   return (
     <Container classname="flex gap-x-4">
       {/* CONTINUE Filtrt not complete */}
-      <PorductsFilters className="basis-1/6" data={brandData}/>
-      <div className="lg:basis-5/6 basis-full">
-
-      {children}
-      </div>
+      <PorductsFilters className="basis-1/6" data={brandData} />
+      <div className="basis-full lg:basis-5/6">{children}</div>
     </Container>
   );
 }

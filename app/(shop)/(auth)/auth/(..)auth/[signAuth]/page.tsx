@@ -1,5 +1,8 @@
+"use client"
 import SignInForm from "@/components/block/SignInForm";
 import SignUpForm from "@/components/block/SignUpForm";
+import Modal from "@/components/modals/modal";
+import usePreviewModal from "@/hook/use-preview-modal";
 import { redirect } from "next/navigation";
 
 type AuthenticationProps = {
@@ -9,17 +12,19 @@ type AuthenticationProps = {
 };
 
 const Authentication: React.FC<AuthenticationProps> = ({ params }) => {
+ const previewmodal = usePreviewModal()
+
   if (params.signAuth === "sign-in") {
     return (
-      <div className="m-4">
+      <Modal open={true} onClose={previewmodal.onClose}>
         <SignInForm/>
-      </div>
+      </Modal>
     );
   } else if (params.signAuth === "sign-up") {
     return (
-      <div className="m-4">
+      <Modal open={true} onClose={previewmodal.onClose}>
         <SignUpForm />
-      </div>
+      </Modal>
     );
   } else {
     return redirect("/auth/sign-in");

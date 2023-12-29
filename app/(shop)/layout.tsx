@@ -15,10 +15,8 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-  loginmodal
 }: {
   children: React.ReactNode;
-  loginmodal: React.ReactNode;
 }) {
   return (
     <main className="flex h-screen min-h-screen flex-col">
@@ -26,7 +24,6 @@ export default function RootLayout({
       <ModalProvider />
       <main className="lg:container">
         {children}
-        {loginmodal}
       </main>
       <MobileButtomMenu />
       <Footer />

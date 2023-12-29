@@ -28,16 +28,18 @@ const ProductCard: React.FC<PropductProps> =  ({ productData }) => {
   return (
     <div
       onClick={handleNavigation}
-      className="flex w-full flex-col gap-3 overflow-hidden rounded-lg border border-gray-200 bg-white p-2  shadow-sm transition hover:z-auto hover:scale-105 hover:cursor-pointer hover:shadow-blue-600 lg:p-3"
+      className="flex w-full flex-col gap-3 overflow-hidden rounded-lg border border-gray-200 bg-white p-2  shadow-sm transition hover:z-auto hover:scale-105 hover:cursor-pointer hover:shadow-blue-600 lg:p-3 justify-between"
     >
       {/* issue #1: Enable to find image */}
       <Image
-        src={productData.images?.[0]?.imageUrl}
+        src={productData.images?.[0]?.imageUrl === undefined ? "/computech-logo.png" : productData.images?.[0]?.imageUrl }
         width={500}
         height={500}
         alt="Image"
         loading="lazy"
+        className="object-cover"
       />
+      <div className="felx flex-col">
 
       <div>
         <span className="inline-block self-start pb-1 pr-1 text-sm font-bold">
@@ -66,9 +68,10 @@ const ProductCard: React.FC<PropductProps> =  ({ productData }) => {
           <IconButton
             onClick={onPreview}
             icon={<ExpandIcon size={24} className="text-blue-950" />}
-          />
+            />
         </div>
       </div>
+            </div>
     </div>
   );
 };

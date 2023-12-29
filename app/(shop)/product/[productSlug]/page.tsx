@@ -1,6 +1,4 @@
 import { getProductType } from "@/lib/actions/getProduct";
-import { Suspense } from "react";
-import Loading from "./_components/loading";
 import { TProduct } from "@/types/type";
 import ProductCard from "../../_components/ProductCard";
 import NoResults from "../../_components/no-result";
@@ -19,9 +17,7 @@ const ProductTypePage = async ({params}: {params: { productSlug: string };
       ) : (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-4">
           {productBySlug.map((data, index) => (
-            <Suspense key={index} fallback={<Loading />}>
-              <ProductCard productData={data} />
-            </Suspense>
+              <ProductCard key={index} productData={data} />
           ))}
         </div>
       )}

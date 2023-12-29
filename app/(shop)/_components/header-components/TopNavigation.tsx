@@ -10,8 +10,8 @@ import Link from "next/link";
         imageSrc: "/profile.svg",
         altImage: "user",
     },
-    { title: "Wishlist", url: "/", imageSrc: "/heart.svg", altImage: "heart" },
-    { title: "Tracking", url: "/", imageSrc: "/truck.svg", altImage: "truck" },
+    // { title: "Wishlist", url: "/", imageSrc: "/heart.svg", altImage: "heart" },
+    // { title: "Tracking", url: "/", imageSrc: "/truck.svg", altImage: "truck" },
 ];
 
 const TopNavigation = () => {
@@ -39,7 +39,7 @@ const TopNavigation = () => {
                     height={18}
                     alt="language"
                 />
-                <span>Arabic</span>
+                <span>English</span>
             </div>
         </div>
     );

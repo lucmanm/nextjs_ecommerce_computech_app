@@ -1,3 +1,4 @@
+import LanguageSwitcher from "@/components/language-switcher";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -33,13 +34,14 @@ const TopNavigation = () => {
                 ))}
             </div>
             <div className="flex gap-x-2 p-2">
-                <Image
+                {/* <Image
                     src="/language.svg"
                     width={18}
                     height={18}
                     alt="language"
                 />
-                <span>English</span>
+                <span>English</span> */}
+                <LanguageSwitcher/>
             </div>
         </div>
     );

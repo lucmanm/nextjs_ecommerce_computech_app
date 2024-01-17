@@ -1,26 +1,30 @@
 import { prisma } from "@/lib/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 
-export const GET = async (req: Request) => {
+export const GET = async (req: NextRequest) => {
 
   try {
-    const { searchParams } = new URL(req.url)
+    // Search Query Option 1
+    const searchParams = req.nextUrl.searchParams 
+    const query  = searchParams ? searchParams.get("q") : null
 
-    const searchQuery = searchParams ? searchParams.get("q") : null
-    const searchOutput = decodeURI(searchQuery || "")
+    // Search Query Option 2
+    // const { searchParams } = new URL(req.url)
+    // const searchQuery = searchParams ? searchParams.get("q") : null
+    // const query = decodeURI(searchQuery || "")
 
     const products = await prisma.product.findMany({
       where: {
         OR: [{
           description: {
-            contains: searchOutput,
+            contains: query?.toString(),
             mode: "insensitive"
           }
         },
         {
           model: {
-            contains: searchOutput,
+            contains: query?.toString(),
             mode: "insensitive"
           }
         }

@@ -1,11 +1,15 @@
 import { prisma } from "@/lib/db"
 import { productFormSchema } from "@/types/validation"
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
 
-export async function GET(req: Request, { params }: { params: { productSlug: string } }) {
+export async function GET(req: NextRequest, { params }: { params: { productSlug: string } }) {
   try {
-    
+    const searchParams = req.nextUrl.searchParams
+    const searchQuery =searchParams ? searchParams.getAll("brand") : null
+   console.log(searchQuery);
    
+
+
     const decodeURI =  params.productSlug.replace(/\s+/gi, '_')
 
     const productData = await prisma.product.findMany({
@@ -44,7 +48,7 @@ export async function GET(req: Request, { params }: { params: { productSlug: str
       return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE" }, { status: 500 })
 
     } else {
-      return NextResponse.json({ productData }, { status: 200 })
+      return NextResponse.json({ searchQuery, productData }, { status: 200 })
     }
 
   } catch (error) {

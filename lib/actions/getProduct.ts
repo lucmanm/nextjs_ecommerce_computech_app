@@ -28,21 +28,23 @@ export async function getProducts() {
 //     return data.productData
 // }
 
-export async function getProductType({ brand, productSlug }:
-    {
-        brand: string 
-        productSlug: string
-    }
+export async function getProductType(
+    { brand, productSlug }:
+        {
+            productSlug: string
+            brand: { [key: string]: string | string[] | undefined }
+        }
 ) {
-  
-// console.log(productSlug, brand);
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/${productSlug}?brand=${brand}`);
-        if (!res.ok) { throw new Error("FAILED_FILTER_PRODUCTS") }
-        const data = await res.json();
-        return data.productData;
-   
-
+    // console.log(
+    //     "params", productSlug,
+    //     "searchParams", brand.brand
+    // );
+    // console.log(productSlug, brand);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/product/${productSlug}?brand=${brand.brand}`);
+    if (!res.ok) { throw new Error("FAILED_FETCH_PRODUCTS_FILTERS") }
+    const data = await res.json();
+    return data.productData;
 }
 
 

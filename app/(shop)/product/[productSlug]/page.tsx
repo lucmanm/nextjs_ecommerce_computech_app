@@ -10,18 +10,20 @@ const ProductTypePage = async ({
   searchParams,
 }: {
   params: { productSlug: string };
-  searchParams: string;
+  searchParams: { [key: string]: string | string[] | undefined };
 }) => {
+
+
 
   // decode params to return to originalstring
   const decodedUrl = decodeURIComponent(params.productSlug).replace(/\\s+/g,"");
 
   // fetch product slug with params of brand product category
   const productBySlug: TProduct[] = await getProductType({
-    brand: searchParams,
+    brand: searchParams, 
     productSlug: decodedUrl,
   });
-
+  
   return (
     <>
       {productBySlug.length === 0 ? (

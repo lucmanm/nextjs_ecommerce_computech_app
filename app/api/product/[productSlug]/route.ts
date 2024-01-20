@@ -2,18 +2,17 @@ import { prisma } from "@/lib/db"
 import { productFormSchema } from "@/types/validation"
 import { NextRequest, NextResponse } from "next/server"
 
-
 export async function GET(req: NextRequest, { params }: { params: { productSlug: string } }) {
 
   try {
-    const searchParams = new  URLSearchParams(req.nextUrl.searchParams)
-    const searchQuery = searchParams ? searchParams.get("brand")?.toString() : null
+    const searchParams = req.nextUrl.searchParams
+    const searchQuery = searchParams ? searchParams.get("brand") : null
     const decodeURI = decodeURIComponent(params.productSlug)
-    // const decodeURI = params.productSlug.replace(/\s+/gi, ' ')
-console.log(
-  "params:", decodeURI,
-  "query:", searchParams,
-);
+
+    console.log(
+      "params:", decodeURI,
+      "query:", searchQuery,
+    );
 
     const productData = await prisma.product.findMany({
       where: {
@@ -35,15 +34,14 @@ console.log(
                       contains: decodeURI,
                       mode: "insensitive"
                     }
-
                   },
-                }
+                },
               ]
           },
           {
             brand: {
               brandName: {
-                contains: searchQuery?.toString(),
+                contains: searchQuery?.toString()
               },
             }
           },
@@ -55,7 +53,6 @@ console.log(
       include: {
         images: true,
         brand: true,
-        category: true
       }
     })
     if (!productData) {

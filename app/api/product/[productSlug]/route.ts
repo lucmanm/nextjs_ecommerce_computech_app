@@ -2,38 +2,52 @@ import { prisma } from "@/lib/db"
 import { productFormSchema } from "@/types/validation"
 import { NextRequest, NextResponse } from "next/server"
 
+
 export async function GET(req: NextRequest, { params }: { params: { productSlug: string } }) {
+
   try {
-    const searchParams = req.nextUrl.searchParams
-    const searchQuery =searchParams ? searchParams.getAll("brand") : null
-   console.log(searchQuery);
-   
-
-
-    const decodeURI =  params.productSlug.replace(/\s+/gi, '_')
+    const searchParams = new  URLSearchParams(req.nextUrl.searchParams)
+    const searchQuery = searchParams ? searchParams.get("brand")?.toString() : null
+    const decodeURI = decodeURIComponent(params.productSlug)
+    // const decodeURI = params.productSlug.replace(/\s+/gi, ' ')
+console.log(
+  "params:", decodeURI,
+  "query:", searchParams,
+);
 
     const productData = await prisma.product.findMany({
       where: {
         AND: [
           {
-            OR: [{
-                brand: {
-                  brandName: {
-                    contains: decodeURI,
-                    mode: "insensitive"
+            OR:
+              [
+                {
+                  brand: {
+                    brandName: {
+                      contains: decodeURI,
+                      mode: "insensitive"
+                    },
+                  }
+                },
+                {
+                  category: {
+                    categoryName: {
+                      contains: decodeURI,
+                      mode: "insensitive"
+                    }
+
                   },
                 }
+              ]
+          },
+          {
+            brand: {
+              brandName: {
+                contains: searchQuery?.toString(),
               },
-              {
-                category: {
-                  categoryName:{
-                    contains: decodeURI,
-                    mode: "insensitive"
-                  }
-                  
-                },
-              }
-            ]}, {
+            }
+          },
+          {
             isLive: true
           }
         ]
@@ -41,15 +55,16 @@ export async function GET(req: NextRequest, { params }: { params: { productSlug:
       include: {
         images: true,
         brand: true,
+        category: true
       }
     })
-
     if (!productData) {
       return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE" }, { status: 500 })
 
     } else {
-      return NextResponse.json({ searchQuery, productData }, { status: 200 })
+      return NextResponse.json({ productData }, { status: 200 })
     }
+
 
   } catch (error) {
     return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE", error }, { status: 500 })
@@ -61,7 +76,7 @@ export async function GET(req: NextRequest, { params }: { params: { productSlug:
 export async function PATCH(req: Request, { params }: { params: { productSlug: string } }) {
   try {
     const body = await req.json()
-    const {model, description, price, salePrice,stock, brandId, categoryId, isLive, isFeatured, images} = productFormSchema.parse(body)
+    const { model, description, price, salePrice, stock, brandId, categoryId, isLive, isFeatured, images } = productFormSchema.parse(body)
     const productId = params.productSlug
 
     if (!productId) {
@@ -75,11 +90,11 @@ export async function PATCH(req: Request, { params }: { params: { productSlug: s
       data: {
         model,
         description,
-        price, 
+        price,
         salePrice,
-        stock, 
+        stock,
         brandId,
-        categoryId, 
+        categoryId,
         isLive,
         isFeatured,
         images: {

@@ -2,7 +2,6 @@ import { getProductType } from "@/lib/actions/getProduct";
 import { TProduct } from "@/types/type";
 import ProductCard from "../../_components/ProductCard";
 import NoResults from "../../_components/no-result";
-import { getFilerProducts } from "@/lib/actions/get-filter-products";
 
 export const revalidate = 0;
 
@@ -11,21 +10,17 @@ const ProductTypePage = async ({
   searchParams,
 }: {
   params: { productSlug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: string;
 }) => {
-  const filterProduct = await getFilerProducts({
-    brand: searchParams,
-    productCategory: params.productSlug,
-  });
-  console.log(filterProduct);
-  
 
   // decode params to return to originalstring
-  const decodedUrl = decodeURIComponent(params.productSlug).replace(
-    /\\s+/g,
-    ""
-  );
-  const productBySlug: TProduct[] = await getProductType(decodedUrl);
+  const decodedUrl = decodeURIComponent(params.productSlug).replace(/\\s+/g,"");
+
+  // fetch product slug with params of brand product category
+  const productBySlug: TProduct[] = await getProductType({
+    brand: searchParams,
+    productSlug: decodedUrl,
+  });
 
   return (
     <>

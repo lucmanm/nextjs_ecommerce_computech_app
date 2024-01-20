@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/db"
 import { productFormSchema } from "@/types/validation"
 import { NextRequest, NextResponse } from "next/server"
+import { string } from "zod"
 
 export async function GET(req: NextRequest, { params }: { params: { productSlug: string } }) {
 
@@ -11,57 +12,90 @@ export async function GET(req: NextRequest, { params }: { params: { productSlug:
 
     console.log(
       "params:", decodeURI,
+      "params typeof:", typeof decodeURI,
       "query:", searchQuery,
+      "query typeof:", typeof searchQuery,
     );
-
-    const productData = await prisma.product.findMany({
-      where: {
-        AND: [
-          {
-            OR:
-              [
-                {
-                  brand: {
-                    brandName: {
-                      contains: decodeURI,
-                      mode: "insensitive"
-                    },
-                  }
+    if(decodeURI && (searchQuery === "undefined" ||  searchQuery === null) ){
+      const productData = await prisma.product.findMany({
+        where: {
+  
+          OR: [
+            {
+              brand: {
+                brandName: {
+                  contains: decodeURI,
+                  mode: "insensitive",
                 },
-                {
-                  category: {
-                    categoryName: {
-                      contains: decodeURI,
-                      mode: "insensitive"
-                    }
-                  },
+              },
+            },
+            {
+              category: {
+                categoryName: {
+                  contains: decodeURI,
+                  mode: "insensitive",
                 },
-              ]
-          },
-          {
+              },
+            },
+          ],
+  
+          isLive: true,
+        },
+        include: {
+          images: true,
+          brand: true,
+        },
+      });
+      if (!productData) {
+        return NextResponse.json({ message: "FAILED_REQUEST_PRODUCTS" }, { status: 500 })
+      } else {
+        return NextResponse.json({ productData }, { status: 200 })
+      }
+    }
+   
+    else if(decodeURI && (searchQuery !== "undefined" ||  searchQuery !== null) ){
+      const productData = await prisma.product.findMany({
+        where: {
+  
+          OR: [
+            {
+              brand: {
+                brandName: {
+                  contains: decodeURI,
+                  mode: "insensitive",
+                },
+              },
+            },
+            {
+              category: {
+                categoryName: {
+                  contains: decodeURI,
+                  mode: "insensitive",
+                },
+              },
+            },
+          ],
+          
             brand: {
               brandName: {
-                contains: searchQuery?.toString()
+                contains: searchQuery?.toString(),
+                mode: "insensitive",
               },
-            }
-          },
-          {
-            isLive: true
-          }
-        ]
-      },
-      include: {
-        images: true,
-        brand: true,
+            },
+          
+          isLive: true,
+        },
+        include: {
+          images: true,
+          brand: true,
+        },
+      });
+      if (!productData) {
+        return NextResponse.json({ message: "FAILED_REQUEST_PRODUCTS" }, { status: 500 })
+      } else {
+        return NextResponse.json({ productData }, { status: 200 })
       }
-    })
-    if (!productData) {
-      return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE" }, { status: 500 })
-
-    } else {
-      return NextResponse.json({ productData }, { status: 200 })
     }
-
 
   } catch (error) {
     return NextResponse.json({ message: "FAILED_REQUEST_PRODUCT_TYPE", error }, { status: 500 })

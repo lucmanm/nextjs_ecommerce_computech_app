@@ -1,9 +1,6 @@
 import { prisma } from "@/lib/db";
 import { categorySchema } from "@/types/validation";
 import { NextResponse } from "next/server";
-import { z } from "zod";
-
-
 
 export async function GET(req: Request) {
     try {
@@ -24,8 +21,6 @@ export async function GET(req: Request) {
         );
     }
 };
-
-
 
 export async function POST(req: Request) {
 

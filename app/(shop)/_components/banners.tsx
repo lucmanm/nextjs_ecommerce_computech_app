@@ -11,7 +11,7 @@ function Banners() {
         height={50}
         />
       <Image
-        src={"/banners/LENOVO-PCST-2.png"}
+        src={"/banners/HP-PCST-2.png"}
         alt="LENOVO PCST 2"
         width={1000}
         height={50}

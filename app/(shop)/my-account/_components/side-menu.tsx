@@ -25,7 +25,7 @@ const SideBarMenu =  () => {
         {
             name: "Address Book",
             icons: <MapPin size={20}/>,
-            path: "/my-account/address-book"
+            path: "/my-account/addressbook"
         }
     ]
     return ( 

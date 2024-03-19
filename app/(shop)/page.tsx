@@ -6,6 +6,7 @@ import { TBrand, TProduct } from "@/types/type";
 import CarouselSlider from "./_components/sliders/CarouselSlider";
 import BrandSlider from "./_components/sliders/brand-slider";
 import { SplideProductsSlider } from "./_components/sliders/splide-products-slider";
+import Banners from "./_components/banners";
 
 export const revalidate = 0;
 
@@ -34,7 +35,7 @@ export default async function ShopPage() {
           data={brands}
           arrow={false}
         />
-
+        <Banners/>
         {/* Slider for front page */}
         <SplideProductsSlider productsData={products} title="Featured" />
         <SplideProductsSlider productsData={computersData} title="Computers" />
